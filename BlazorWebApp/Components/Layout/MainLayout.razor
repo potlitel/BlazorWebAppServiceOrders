@@ -1,0 +1,140 @@
+﻿@inherits LayoutComponentBase
+
+
+@* <div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div> *@
+
+
+ <RadzenLayout>
+    <RadzenHeader>
+        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="0">
+            <RadzenSidebarToggle Click="@ToggleSidebar" />
+            <RadzenLabel Text="Header" />
+        </RadzenStack>
+    </RadzenHeader>
+    <RadzenSidebar Responsive="false" Style="width: max-content" @bind-Expanded="sidebarExpanded">
+        <RadzenPanelMenu DisplayStyle="@(sidebarExpanded ? MenuItemDisplayStyle.IconAndText : MenuItemDisplayStyle.Icon)" ShowArrow="true">
+            <RadzenPanelMenuItem Text="Overview" Icon="home" Path="/" />
+            <RadzenPanelMenuItem Text="SO Documents" Icon="quick_reference" Path="serviceorderdocuments" />
+            <RadzenPanelMenuItem Text="SO Tasks Documents" Icon="data_check" Path="serviceordertasksdocuments" />
+            <RadzenPanelMenuItem Text="SO Features" Icon="pin_drop" Path="serviceorderfeatures" />
+            <RadzenPanelMenuItem Text="SO Registers" Icon="transform" Path="serviceorderregisters" />
+            <RadzenPanelMenuItem Text="Supplies" Icon="rule_settings" Path="supplies" />
+            <RadzenPanelMenuItem Text="Masters" Icon="tune">
+                <RadzenPanelMenuItem Text="Document types" Icon="photo_auto_merge" Path="documentstypes" />
+                <RadzenPanelMenuItem Text="SO Task States" Icon="history_edu" Path="" />
+                <RadzenPanelMenuItem Text="SO Types" Icon="menu_book" Path="" />
+                <RadzenPanelMenuItem Text="Supply Operations" Icon="settings_motion_mode" Path="" />
+            </RadzenPanelMenuItem>
+        </RadzenPanelMenu>
+    </RadzenSidebar>
+    <RadzenBody>
+        <div class="rz-p-4">
+            @Body
+        </div>
+    </RadzenBody>
+    <RadzenFooter>
+        Footer
+    </RadzenFooter>
+</RadzenLayout>
+
+
+@* <RadzenComponents />
+
+<RadzenLayout style="grid-template-areas: 'rz-sidebar rz-header' 'rz-sidebar rz-body';">
+    <RadzenHeader>
+        <RadzenRow JustifyContent="JustifyContent.Start" AlignItems="AlignItems.Center" Gap="0">
+            <RadzenColumn Size="5">
+                <RadzenSidebarToggle Click="@SidebarToggleClick"></RadzenSidebarToggle>
+            </RadzenColumn>
+            <RadzenColumn Size="7">
+                <RadzenStack AlignItems="AlignItems.Center" Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End" Gap="0.5rem" class="rz-px-2">
+                    <RadzenAppearanceToggle />
+                </RadzenStack>
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenHeader>
+    <RadzenBody Expanded="@_sidebarExpanded">
+        <RadzenRow class="rz-mx-auto rz-px-4 rz-pt-2 rz-pt-md-4 rz-pt-lg-6 rz-pt-xl-12 rz-pb-2 rz-pb-lg-12" Style="max-width: 1440px;">
+            <RadzenColumn Size="12">
+                @Body
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenBody>
+
+
+    @* --- START --*@
+
+    @* <RadzenSidebar Expanded="@_sidebarExpanded" Responsive="true">
+        <ChildContent>
+            <RadzenStack AlignItems="Radzen.AlignItems.Center" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding); border-bottom: var(--rz-panel-menu-item-border);">
+                <RadzenImage Path="images/logo.png" style="width: 48px; height: 48px;" AlternateText="Application logo"></RadzenImage>
+                <RadzenText Text="JV Demand" TextStyle="Radzen.Blazor.TextStyle.Subtitle1" class="rz-mb-0" style="color: var(--rz-sidebar-color);" />
+            </RadzenStack>
+            <RadzenStack AlignItems="Radzen.AlignItems.Start">
+                <RadzenButton Icon="keyboard_double_arrow_right" Visible="@(_menuDisplayStyle==MenuItemDisplayStyle.Icon)" Click="@(args => { _menuDisplayStyle = MenuItemDisplayStyle.IconAndText; })" />
+            </RadzenStack>
+            <RadzenStack AlignItems="Radzen.AlignItems.End">
+                <RadzenButton Icon="keyboard_double_arrow_left" Visible="@(_menuDisplayStyle==MenuItemDisplayStyle.IconAndText)" Click="@(args => { _menuDisplayStyle = MenuItemDisplayStyle.Icon; })" />
+            </RadzenStack>
+            <RadzenPanelMenu DisplayStyle="@_menuDisplayStyle">
+                <RadzenPanelMenuItem Text="Home" Icon="Home" Path="" />
+                <RadzenPanelMenuItem Text="Departments" Icon="diversity_3" Path="departments" />
+                <RadzenPanelMenuItem Text="Vendors" Icon="person" Path="vendors" />
+                <RadzenPanelMenuItem Text="Vendor Bundles" Icon="person_add" Path="vendor-bundles" />
+                <RadzenPanelMenuItem Text="Vendor Licence Modules" Icon="group_add" Path="vendor-licence-modules" />
+                <RadzenPanelMenuItem Text="Reports" Icon="lab_profile" Path="/reportindex" />
+            </RadzenPanelMenu>
+            <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding);">
+                <RadzenText Text="JV Demand v1.0.0" TextStyle="Radzen.Blazor.TextStyle.Caption" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+                <RadzenText Text="Copyright Ⓒ 2024" TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+            </RadzenStack>
+        </ChildContent>
+    </RadzenSidebar>
+
+
+    @* --- END --*@
+@* </RadzenLayout> *@
+
+@code {
+    private bool _sidebarExpanded = true;
+    private MenuItemDisplayStyle _menuStyle = MenuItemDisplayStyle.IconAndText;
+    bool sidebarExpanded = true;
+
+    void ToggleSidebar()
+    {
+        sidebarExpanded = !sidebarExpanded;
+        StateHasChanged();
+    }
+
+    MenuItemDisplayStyle _menuDisplayStyle = MenuItemDisplayStyle.IconAndText;
+
+    void SidebarToggleClick()
+    {
+        _sidebarExpanded = !_sidebarExpanded;
+    }
+
+    void MenuToggleClick()
+    {
+        _menuStyle = _menuStyle == MenuItemDisplayStyle.IconAndText ? MenuItemDisplayStyle.Icon : MenuItemDisplayStyle.IconAndText;
+    }
+}
