@@ -1,4 +1,7 @@
-﻿@using FSA.Razor.Components.Components.Shared
+﻿@using FSA.Management.Application.Infrastructure.Services.AppState
+@using FSA.Razor.Components.Components.Shared
+
+@inject IManagementAppState? appState;
 <h3>Supplies Operations</h3>
 
 @* <PageTitle>@(Localizer["CompanyGroups"])</PageTitle>

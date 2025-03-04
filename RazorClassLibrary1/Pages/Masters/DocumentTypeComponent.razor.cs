@@ -1,6 +1,7 @@
 ﻿using FSA.Core.DataType;
 using FSA.Core.Utils;
 using FSA.Management.Application.Features.CompanyGroups;
+using FSA.Management.Application.Infrastructure.Services.AppState;
 using Radzen;
 using RazorClassLibrary1.Dtos;
 
@@ -60,7 +61,7 @@ namespace RazorClassLibrary1.Pages.Masters
         {
             try
             {
-                //var user = AppState.GetUser();
+                var user = appState!.GetUser();
 
                 #region Actions
                 //var admin = user.IsAdmin();

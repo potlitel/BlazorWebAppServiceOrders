@@ -26,6 +26,7 @@ namespace RazorClassLibrary1.Extensions
             //Components
             services.AddFSARadzenComponentsServices();
             services.AddFSALocalizationServices(configuration);
+            services.AddManagementApplication(configuration);
             return services;
         }
     }
