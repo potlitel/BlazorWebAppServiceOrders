@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace BlazorWebApp.Components.Pages
+namespace BlazorWebApp.Components.Pages.Masters
 {
     public partial class DocumentsTypes
     {

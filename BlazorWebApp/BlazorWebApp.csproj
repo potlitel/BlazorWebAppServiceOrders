@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Components\Pages\ServiceOrderTaskState.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.8" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Radzen.Blazor" Version="6.1.2" />
@@ -14,6 +18,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RazorClassLibrary1\RazorClassLibrary1.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\Pages\ServiceOrderTaskState.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\Pages\ServiceOrderTaskState.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Components\Pages\Masters\ServiceOrderTaskState.razor" />
   </ItemGroup>
 
 </Project>
