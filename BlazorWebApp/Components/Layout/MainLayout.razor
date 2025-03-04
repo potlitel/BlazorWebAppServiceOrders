@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using FSA.Razor.Components.Components.Shared
+@inherits LayoutComponentBase
 
 
 @* <div class="page">
@@ -26,10 +27,21 @@
 
  <RadzenLayout>
     <RadzenHeader>
-        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="0">
-            <RadzenSidebarToggle Click="@ToggleSidebar" />
-            <RadzenLabel Text="Header" />
-        </RadzenStack>
+        <ChildContent>
+            <RadzenRow JustifyContent="JustifyContent.Start" AlignItems="AlignItems.Center" Gap="0">
+                <RadzenColumn Size="5">
+                    <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center">
+                        <RadzenSidebarToggle Click="@ToggleSidebar" />
+                           <RadzenLabel Text="sadasd" Style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" />
+                    </RadzenStack>
+                </RadzenColumn>
+                <RadzenColumn Size="7">
+                    <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End">
+                        <ThemeComponent />
+                    </RadzenStack>
+                </RadzenColumn>
+            </RadzenRow>
+        </ChildContent>
     </RadzenHeader>
     <RadzenSidebar Responsive="false" Style="width: max-content" @bind-Expanded="sidebarExpanded">
         <RadzenPanelMenu DisplayStyle="@(sidebarExpanded ? MenuItemDisplayStyle.IconAndText : MenuItemDisplayStyle.Icon)" ShowArrow="true">
