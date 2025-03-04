@@ -1,0 +1,17 @@
+﻿@using FSA.Razor.Components.Components.Shared
+<h3>Service Order Types</h3>
+
+@* <PageTitle>@(Localizer["CompanyGroups"])</PageTitle>
+
+<PageHeader Image="_content/FSA.Razor.Components/svg/company-group.svg" Text="@Localizer["CompanyGroups"]" /> *@
+
+<GenericDataGrid Items="ListItems"
+                 Pagination=@Pagination
+                 AddSufixTitle="AddDocumentType"
+                 DataColumns="DataColumns"
+                 Actions="ItemActions"
+                 GeneralActions="GeneralActions"
+                 GridConfiguration="GridConfiguration"
+                 SearchActionOnEnter="@Search"
+                 OnLoadData="@LoadData"
+                 ReturnToAction="@((args) => ExecuteToAction(args.Item1, args.Item2))" /> 
