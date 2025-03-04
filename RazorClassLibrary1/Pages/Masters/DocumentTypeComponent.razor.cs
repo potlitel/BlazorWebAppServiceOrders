@@ -100,7 +100,7 @@ namespace RazorClassLibrary1.Pages.Masters
                         {
                             Action = GridGeneralActions.ADD_ITEM,
                             Icon = "add",
-                            Title = "AddCompanyGroup",
+                            Title = "Add Document Type",
                             Style = ButtonStyle.Primary.GetHashCode(),
                             //Show = show => { return create; }
                         }
