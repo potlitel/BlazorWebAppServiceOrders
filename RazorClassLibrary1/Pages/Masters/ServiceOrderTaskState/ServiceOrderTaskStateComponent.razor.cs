@@ -34,7 +34,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
                 {
                     new DataColumn
                     {
-                        Property = nameof(DocumentTypeDto.Code),
+                        Property = nameof(ServiceOrderTaskStateDto.Code),
                         Title = "Code",
                         Filterable = true,
                         Sortable = true,
@@ -42,7 +42,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
                     },
                     new DataColumn
                     {
-                        Property = nameof(DocumentTypeDto.Description),
+                        Property = nameof(ServiceOrderTaskStateDto.Description),
                         Title = "Description",
                         Filterable = true,
                         Sortable = true,
@@ -50,7 +50,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
                     },
                     new DataColumn
                     {
-                        Property = nameof(DocumentTypeDto.IsActive),
+                        Property = nameof(ServiceOrderTaskStateDto.IsActive),
                         Title = "Active",
                         Filterable = true,
                         Sortable = true,
@@ -179,30 +179,32 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
         {
             try
             {
-                var item = _item as CompanyGroupDto;
-                item = item is null ? new CompanyGroupDto() : new CompanyGroupDto(item);
+                var item = _item as ServiceOrderTaskStateDto;
+                item = item is null ? new ServiceOrderTaskStateDto() : new ServiceOrderTaskStateDto(item);
 
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        //var result = await CustomDialogService.Open_AddCompanyGroupWithManager(item, new UserDto());
-                        //await LoadItems(true);
-                        break;
-                    case GridItemActions.ADD_SUB_ITEM:
-                        //result = await CustomDialogService.Open_AddManager(item, null);
-                        //if (result)
-                        //    await LoadItems(true);
+                        var result = await CustomDialogService.Open_AddEditMaster(item, "Add Service Order Task State");
+                        if (result)
+                        {
+                            //var response = await CreateSystemModuleService.Handle(item!);
+                            //NotificationService.ShowNotification(response.Succeeded,
+                            //                                     response.StatusCode.ToString(),
+                            //                                     item!.Code);
+                            await LoadItems(true);
+                        }
                         break;
                     case GridItemActions.EDIT_ITEM:
-                        //result = await CustomDialogService.Open_AddEditMaster(item, "EditCompanyGroup");
-                        //if (result)
-                        //{
-                        //    var response = await UpdateCompanyGroupService.Handle(item!);
-                        //    NotificationService.ShowNotification(response.Succeeded,
-                        //                                        response.StatusCode.ToString(),
-                        //                                        item!.Code);
-                        //    await LoadItems(true);
-                        //}
+                        result = await CustomDialogService.Open_AddEditMaster(item, "Edit Service Order Task State");
+                        if (result)
+                        {
+                            //var response = await UpdateSystemModuleService.Handle(item!);
+                            //NotificationService.ShowNotification(response.Succeeded,
+                            //                                    response.StatusCode.ToString(),
+                            //                                    item!.Code);
+                            await LoadItems(true);
+                        }
                         break;
                 }
             }
