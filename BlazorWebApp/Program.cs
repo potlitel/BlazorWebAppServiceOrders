@@ -35,7 +35,7 @@ List<Assembly> _extraAssemblies = new List<Assembly>()
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
-    .AddInteractiveWebAssemblyRenderMode();
-    //.AddAdditionalAssemblies([.. _extraAssemblies]);
+    .AddInteractiveWebAssemblyRenderMode()
+    .AddAdditionalAssemblies([.. _extraAssemblies]);
 
 app.Run();
