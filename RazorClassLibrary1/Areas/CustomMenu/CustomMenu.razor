@@ -1,0 +1,16 @@
+﻿@using FSA.Razor.Components.Components.Shared
+@using Radzen.Blazor
+
+<RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Center" Wrap="FlexWrap.Wrap">
+    <ThemeComponent />
+</RadzenStack>
+<RadzenMenu Responsive="false">
+    <RadzenMenuItem Text="Gretting" Icon="account_circle">
+        <RadzenMenuItem Text="Profile" Icon="manage_accounts"></RadzenMenuItem>
+        <RadzenMenuItem Text="Logout" Icon="logout"></RadzenMenuItem>
+    </RadzenMenuItem>
+</RadzenMenu>
+
+@code {
+
+}

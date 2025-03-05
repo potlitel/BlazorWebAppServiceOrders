@@ -1,4 +1,5 @@
 ﻿@using FSA.Razor.Components.Components.Shared
+@using RazorClassLibrary1.Areas.CustomMenu
 @inherits LayoutComponentBase
 
 
@@ -37,7 +38,7 @@
                 </RadzenColumn>
                 <RadzenColumn Size="7">
                     <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End">
-                        <ThemeComponent />
+                        <CustomMenu />
                     </RadzenStack>
                 </RadzenColumn>
             </RadzenRow>
