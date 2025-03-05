@@ -1,2 +1,25 @@
-﻿@using Microsoft.AspNetCore.Components.Web
+﻿@using FSA.Cache.Models
+@using FSA.Management.Application.Infrastructure.Services.AppState
+@using FSA.Razor.Components.Resources
+@using FSA.Razor.Components.Services
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.Extensions.Configuration
+@using Microsoft.Extensions.Localization
+@using Radzen
 @using static Microsoft.AspNetCore.Components.Web.RenderMode
+
+
+@inject IStringLocalizer<Resource> Localizer
+@inject NavigationManager NavigationManager
+@inject IConfiguration Configuration
+
+@inject ThemeService ThemeService
+@inject TooltipService TooltipService
+@inject ContextMenuService ContextMenuService
+@inject DialogService DialogService
+
+@inject IFSACustomDialogService CustomDialogService
+@inject IFSACustomNotificationService NotificationService
+@inject IFSAThemeService FSAThemeService
+@inject IFSAAppCache AppCache
+@inject IManagementAppState AppState

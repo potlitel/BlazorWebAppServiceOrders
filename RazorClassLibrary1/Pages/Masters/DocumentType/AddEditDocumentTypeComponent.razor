@@ -1,0 +1,18 @@
+﻿@using FSA.Razor.Components.Components.Shared
+@using Radzen.Blazor
+
+
+@if (IsLoading)
+{
+    <Loader />
+}
+else
+{
+    <FadeIn>
+        <RadzenColumn SizeMD=12>
+            <AddEditMasterComponent Item="@DocumentType"
+                                    IsSideDialog=@true
+                                    MasterSubmit=@MasterSubmit />
+        </RadzenColumn>
+    </FadeIn>
+}

@@ -149,7 +149,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
             catch (Exception ex)
             {
                 ListItems = new List<ServiceOrderTaskStateDto>().AsQueryable();
-                //NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
+                NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
         }
 
@@ -162,7 +162,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                //NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
+                NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
             finally
             {
@@ -209,7 +209,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                //NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
+                NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
             }
         }
     }

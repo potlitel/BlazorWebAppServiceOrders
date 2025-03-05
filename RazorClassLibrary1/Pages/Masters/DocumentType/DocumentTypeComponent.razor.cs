@@ -1,9 +1,14 @@
 ﻿using FSA.Core.DataType;
 using FSA.Core.Utils;
 using FSA.Management.Application.Features.CompanyGroups;
+using FSA.Management.Application.Features.Consortiums.Update;
+using FSA.Management.Application.Features.Consortiums;
+using FSA.Management.Application.Features.Users;
 using FSA.Management.Application.Infrastructure.Services.AppState;
 using Radzen;
 using RazorClassLibrary1.Dtos;
+using FSA.Management.Application.Features.SystemModules.Create;
+using FSA.Management.Application.Features.SystemModules.Update;
 
 
 namespace RazorClassLibrary1.Pages.Masters.DocumentType
@@ -144,7 +149,7 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
             catch (Exception ex)
             {
                 ListItems = new List<DocumentTypeDto>().AsQueryable();
-                //NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
+                NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
         }
 
@@ -157,7 +162,7 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                //NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
+                NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
             finally
             {
@@ -174,37 +179,39 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
         {
             try
             {
-                var item = _item as CompanyGroupDto;
-                item = item is null ? new CompanyGroupDto() : new CompanyGroupDto(item);
+                var item = _item as DocumentTypeDto;
+                item = item is null ? new DocumentTypeDto() : new DocumentTypeDto(item);
 
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        //var result = await CustomDialogService.Open_AddCompanyGroupWithManager(item, new UserDto());
-                        //await LoadItems(true);
-                        break;
-                    case GridItemActions.ADD_SUB_ITEM:
-                        //result = await CustomDialogService.Open_AddManager(item, null);
-                        //if (result)
-                        //    await LoadItems(true);
+                        var result = await CustomDialogService.Open_AddEditMaster(item, "Add Document Type");
+                        if (result)
+                        {
+                            //var response = await CreateSystemModuleService.Handle(item!);
+                            //NotificationService.ShowNotification(response.Succeeded,
+                            //                                     response.StatusCode.ToString(),
+                            //                                     item!.Code);
+                            await LoadItems(true);
+                        }
                         break;
                     case GridItemActions.EDIT_ITEM:
-                        //result = await CustomDialogService.Open_AddEditMaster(item, "EditCompanyGroup");
-                        //if (result)
-                        //{
-                        //    var response = await UpdateCompanyGroupService.Handle(item!);
-                        //    NotificationService.ShowNotification(response.Succeeded,
-                        //                                        response.StatusCode.ToString(),
-                        //                                        item!.Code);
-                        //    await LoadItems(true);
-                        //}
+                        result = await CustomDialogService.Open_AddEditMaster(item, "Edit Document Type");
+                        if (result)
+                        {
+                            //var response = await UpdateSystemModuleService.Handle(item!);
+                            //NotificationService.ShowNotification(response.Succeeded,
+                            //                                    response.StatusCode.ToString(),
+                            //                                    item!.Code);
+                            await LoadItems(true);
+                        }
                         break;
                 }
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                //NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
+                NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorConsortium"]);
             }
         }
     }
