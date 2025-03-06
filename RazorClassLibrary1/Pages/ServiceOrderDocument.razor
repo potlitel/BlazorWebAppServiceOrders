@@ -1,4 +1,22 @@
-﻿@* @page "/serviceorderdocuments" *@
-@rendermode InteractiveAuto
+﻿@using FSA.Management.Application.Infrastructure.Services.AppState
+@using FSA.Razor.Components.Components.Shared
+
+@inject IManagementAppState? appState;
+
 
 <h3>Service Order Documents</h3>
+
+@* <PageTitle>@(Localizer["CompanyGroups"])</PageTitle>
+
+<PageHeader Image="_content/FSA.Razor.Components/svg/company-group.svg" Text="@Localizer["CompanyGroups"]" /> *@
+
+<GenericDataGrid Items="ListItems"
+                 Pagination=@Pagination
+                 AddSufixTitle="AddDocumentType"
+                 DataColumns="DataColumns"
+                 Actions="ItemActions"
+                 GeneralActions="GeneralActions"
+                 GridConfiguration="GridConfiguration"
+                 SearchActionOnEnter="@Search"
+                 OnLoadData="@LoadData"
+                 ReturnToAction="@((args) => ExecuteToAction(args.Item1, args.Item2))" />
