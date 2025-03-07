@@ -9,6 +9,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
+builder.Services.AddFSASOCustomComponentsService();
+
 //builder.Services.AddRadzenComponents();//Radzen
 builder.Services.ConfigureSOComponents(builder.Configuration);
 

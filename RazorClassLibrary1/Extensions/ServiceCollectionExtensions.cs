@@ -40,6 +40,7 @@ namespace RazorClassLibrary1.Extensions
         public static IServiceCollection AddFSASOCustomComponentsService(this IServiceCollection services)
         {
             services.AddScoped<IFSASOCustomDialogService, FSASOCustomDialogService>();
+            services.AddScoped<IGitHubService, GitHubService>();
 
             return services;
         }
