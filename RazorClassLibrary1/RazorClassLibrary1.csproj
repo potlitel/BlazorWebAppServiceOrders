@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bogus" Version="35.6.2" />
     <PackageReference Include="FSA.Cache" Version="1.0.1" />
     <PackageReference Include="FSA.Core" Version="1.1.0" />
     <PackageReference Include="FSA.Razor.Components" Version="1.0.4" />

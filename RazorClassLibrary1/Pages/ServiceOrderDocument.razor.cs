@@ -1,4 +1,5 @@
-﻿using FSA.Core.DataType;
+﻿using Bogus;
+using FSA.Core.DataType;
 using FSA.Core.Utils;
 using Radzen;
 using RazorClassLibrary1.Dtos;
@@ -132,6 +133,13 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
+                ListItems = new Faker<ServiceOrderDocumentDto>()
+                                .RuleFor(x => x.Name, f => f.Finance.Account(15))
+                                .RuleFor(x => x.Url, f => f.Image.PicsumUrl())
+                                .RuleFor(x => x.ServiceOrderId, f => f.Random.Long())
+                                .RuleFor(x => x.DocumentTypeId, f => f.Random.Long())
+                                .Generate(50).ToList().AsQueryable();
+                TotalItems = 50;
                 //var key = $"GetAllCompanyGroupsService-{Pagination.GetCacheId()}";
                 //if (deleteCache)
                 //    AppCache.RemoveItem(key, CacheType.IndexedDB);
