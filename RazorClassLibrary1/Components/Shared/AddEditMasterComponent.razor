@@ -1,0 +1,49 @@
+﻿@using FSA.Razor.Components.Components.Shared
+@using Radzen.Blazor
+@typeparam TItem
+
+
+@if (IsLoading)
+{
+    <Loader />
+}
+else
+{
+     <FadeIn>
+         <RadzenColumn SizeMD=12>
+            <RadzenTemplateForm TItem="@(TItem)" Data="@Item" Submit="@Submit">
+                <RadzenStack>
+                    <RadzenStack Gap="1">
+                        <RadzenFormField Text="@(Localizer["Code"] + "*")" Variant="Variant.Outlined">
+                            <ChildContent>
+                                <RadzenTextBox Disabled=@(Busy || IsCreatedItem) @bind-Value="@Item.Code" Name="Code" Placeholder="@Localizer["Code"]" />
+                            </ChildContent>
+                            <Helper>
+                                <RadzenRequiredValidator Component="Code" />
+                                <RadzenLengthValidator Component="Code" Min="2" Max="50" />
+                            </Helper>
+                        </RadzenFormField>
+
+                        <RadzenFormField Text="@(Localizer["Description"] + "*")" Variant="Variant.Outlined">
+                            <ChildContent>
+                                <RadzenTextBox Disabled=@(Busy || IsCreatedItem) @bind-Value="@Item.Description" Name="Description" Placeholder="@Localizer["Description"]" />
+                            </ChildContent>
+                            <Helper>
+                                <RadzenRequiredValidator Component="Description" />
+                                <RadzenLengthValidator Component="Description" Min="2" Max="255" />
+                            </Helper>
+                        </RadzenFormField>
+
+                        <RadzenColumn class="rz-mt-2 rz-mb-2">
+                            <RadzenCheckBox Disabled=@(Busy || IsCreatedItem) @bind-Value=@(Item.IsActive) Name="IsActiveCheckBox" />
+                            <RadzenLabel Text="@(Localizer["IsActive"])" Component="IsActiveCheckBox" Style="margin-left: 8px; vertical-align: middle;" />
+                        </RadzenColumn>
+
+                    </RadzenStack>
+                </RadzenStack>
+                <AddEditFormActionsButtons Cancel="@Cancel" Busy=@(Busy || IsCreatedItem) CreateMode=@(Item!.Id == 0) />
+            </RadzenTemplateForm>
+        </RadzenColumn>
+     </FadeIn>
+
+}

@@ -1,0 +1,206 @@
+﻿@using FSA.Core.DataType
+@using FSA.Razor.Components.Components.Shared
+@using Radzen.Blazor
+@typeparam TItem
+
+@if (Items is null)
+{
+    <Loader />
+}
+else
+{
+    <FadeIn>
+
+        <div class="rz-mb-4">
+            <RadzenRow>
+                <RadzenFormField Text=@Localizer["Search"] Variant="@FSARadzenConfig.InputsVariant" Style="width:100%">
+                    <ChildContent>
+                        <RadzenTextBox ValueChanged="@SearchOnEnter" Name="Search" />
+                    </ChildContent>
+                </RadzenFormField>
+            </RadzenRow>
+        </div>
+        <RadzenRow>
+            <RadzenColumn Size="12">
+                <RadzenDataGrid @ref=DataGrid Data="@Items" TItem="TItem" IsLoading=@isLoading Count="@((int)Pagination.TotalItems)"
+                                Density="@(GridConfiguration.Density == DataDensity.Compact ? Density.Compact : Density.Default)"
+                                GridLines="DataGridGridLines.Both"
+                                AllowVirtualization="@GridConfiguration.AllowVirtualization" Style="border-radius:var(--rz-border-radius)"
+                                SelectionMode="@(GridConfiguration.SelectionMode == SelectionMode.Multiple ? DataGridSelectionMode.Multiple : DataGridSelectionMode.Single)" @bind-Value=@SelectedItems
+                                AllowFiltering="@GridConfiguration.AllowFiltering"
+                                FilterMode="FilterMode.Advanced"
+                                LogicalFilterOperator="LogicalFilterOperator.Or"
+                                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                                ColumnsShowingText="@Localizer["ColumnsShowingText"]"
+                                AllColumnsText="@Localizer["AllColumnsText"]"
+                                PageTitleFormat="@Localizer["PageTitleFormat"]"
+                                LastPageTitle="@Localizer["LastPageTitle"]"
+                                FirstPageTitle="@Localizer["FirstPageTitle"]"
+                                NextPageTitle="@Localizer["NextPageTitle"]"
+                                PrevPageTitle="@Localizer["PrevPageTitle"]"
+                                PagingSummaryFormat="@Localizer["PagingSummaryFormat"]"
+                                PageSizeText=""
+                                GroupPanelText=""
+                                Page="OnPage"
+                                LoadData="LoadData"
+                                AllowPaging="@(@GridConfiguration.AllowVirtualization ? false : GridConfiguration.AllowPaging)" PageSize="@GridConfiguration.PageSize" PageSizeOptions="@GridConfiguration.PageSizeOptions" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+                                AllowSorting="@GridConfiguration.AllowSorting" AllowMultiColumnSorting="@GridConfiguration.AllowMultiColumnSorting" ShowMultiColumnSortingIndex="@GridConfiguration.AllowMultiColumnSorting"
+                                AllowColumnReorder="@GridConfiguration.AllowColumnReorder"
+                                AllowGrouping="@GridConfiguration.AllowGrouping"
+                                AllowColumnPicking="@GridConfiguration.AllowColumnPicking"
+                                AllowColumnResize="@GridConfiguration.AllowColumnResize"
+                                AllowAlternatingRows="@GridConfiguration.AllowAlternatingRows"
+                                CellContextMenu="@OnCellContextMenu"
+                                ColumnWidth="250px">
+                    <EmptyTemplate>
+                        <p style="color: lightgrey; font-size: 24px; text-align: center; margin: 2rem;">@Localizer["EmptyTemplate"];</p>
+                    </EmptyTemplate>
+                    <LoadingTemplate>
+                        <LoadingComponent />
+                    </LoadingTemplate>
+                    <HeaderTemplate>
+                        <RadzenColumn Size="5">
+                            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center">
+                                @foreach (var action in GeneralActions)
+                                {
+                                    @if (action.Show(null!))
+                                    {
+                                        <RadzenButton Icon="@action.Icon"
+                                                      Variant="@FSARadzenConfig.ButtonsVariant"
+                                                      ButtonStyle="@((ButtonStyle)action.Style)"
+                                                      Click="@(args => ExecuteAction(new GridGeneralAction{ Action = action.Action }, null!))"
+                                                      MouseEnter="@(args => ShowTooltip(args, new GridGeneralAction{Title = action.Title, Action = action.Action }))"
+                                                      MouseLeave="CloseTooltip"
+                                                      class="rz-mr-2 rz-ripple"
+                                                      @onclick:stopPropagation="true">
+                                        </RadzenButton>
+                                    }
+                                }
+                            </RadzenStack>
+                        </RadzenColumn>
+                    </HeaderTemplate>
+                    <Columns>
+                        @if (GridConfiguration.SelectionMode == SelectionMode.Multiple)
+                        {
+                            <RadzenDataGridColumn TItem="TItem" Width="60px" MinWidth="60px" Frozen="true" Sortable="false" Filterable="false" Reorderable="false" Pickable="false" Groupable="false">
+                                <HeaderTemplate>
+                                    <RadzenCheckBox TriState="false" TValue="bool?"
+                                                    Value="@(SelectedItems == null || SelectedItems?.Any() != true ? false : !Items.All(i => SelectedItems.Contains(i)) ? null : Items.Any(i => SelectedItems.Contains(i)))"
+                                                    Change="@(args => SelectedItems = args == true ? Items.ToList() : null)" />
+                                </HeaderTemplate>
+                                <Template Context="data">
+                                    <RadzenCheckBox TriState="false" Value="@(SelectedItems != null && SelectedItems.Contains(data))"
+                                                    TValue="bool" Change=@(args => { if(!GridConfiguration.AllowRowSelectOnRowClick) { DataGrid.SelectRow(data); }}) />
+                                </Template>
+                            </RadzenDataGridColumn>
+                        }
+                        @foreach (DataColumn column in DataColumns)
+                        {
+                            if (column.Title == "Active")
+                            {
+                                <RadzenDataGridColumn TItem="TItem"
+                                                      Property="@column.Property"
+                                                      Sortable="@column.Sortable"
+                                                      Filterable="@column.Filterable"
+                                                      Pickable="@column.Pickable"
+                                                      Groupable="@column.Groupable"
+                                                      Frozen="@column.Frozen"
+                                                      Reorderable="@(!column.Frozen)"
+                                                      Title="@(Localizer[column.Title].ToString().ToUpper())"
+                                                      Visible="@column.Visible"
+                                                      MinWidth="@column.Width"
+                                                      Width="@column.Width">
+                                    <Template Context="data">
+                                        @{
+                                            bool active = IsActive(data);
+                                            <div style="display: grid; place-items: center">
+                                                <RadzenIcon Icon="@(active ? "check_circle" : "cancel")"
+                                                            IconColor="@(active ? Colors.Success : Colors.Danger)" />
+                                            </div>
+                                        }
+                                    </Template>
+                                </RadzenDataGridColumn>
+                            }
+                            else
+                            {
+                                <RadzenDataGridColumn TItem="TItem"
+                                                      Property="@column.Property"
+                                                      Sortable="@column.Sortable"
+                                                      Filterable="@column.Filterable"
+                                                      Pickable="@column.Pickable"
+                                                      Groupable="@column.Groupable"
+                                                      Frozen="@column.Frozen"
+                                                      Reorderable="@(!column.Frozen)"
+                                                      Title="@(Localizer[column.Title].ToString().ToUpper())"
+                                                      Visible="@column.Visible"
+                                                      MinWidth="@column.MinWidth"
+                                                      Width="@column.Width" />
+                            }
+
+                        }
+
+                        @if (Actions.Count > 0)
+                        {
+                            <RadzenDataGridColumn TItem="TItem" Context="item" Frozen="true" Filterable="false" Reorderable="false" Sortable="false" Groupable="false" Pickable="false" TextAlign="TextAlign.Center" Width=@WidtActions>
+                                <Template Context="item">
+
+                                    @switch (Actions.Count)
+                                    {
+                                        case > 2:
+                                            <div class="rz-display-none rz-display-sm-inline-flex align-items-center">
+                                                @foreach (var action in Actions.Where(a => a.Show(item)))
+                                                {
+                                                    <RadzenButton Icon="@action.Icon"
+                                                                  ButtonStyle="@((ButtonStyle)action.Style)"
+                                                                  Variant="@FSARadzenConfig.ButtonsVariant"
+                                                                  Size="ButtonSize.Small"
+                                                                  MouseEnter="@(args => ShowTooltip(args, action))"
+                                                                  MouseLeave="CloseTooltip"
+                                                                  Click="@(args => ExecuteAction(action, item))"
+                                                                  @onclick:stopPropagation="true"
+                                                                  class="rz-ml-1 rz-mr-1">
+                                                    </RadzenButton>
+                                                }
+                                            </div>
+                                            <div class="rz-display-inline-flex align-items-center rz-display-sm-none">
+                                                <RadzenSplitButton Click=@(args => ExecuteAction(args, item)) Variant="@FSARadzenConfig.ButtonsVariant" Text="@Localizer["Actions"]" Shade="Shade.Lighter" AlwaysOpenPopup=true Style="margin-right:1rem" Size="@(GridConfiguration.Density == DataDensity.Compact ? ButtonSize.ExtraSmall : ButtonSize.Small)">
+                                                    <ChildContent>
+                                                        @foreach (var action in Actions.Where(a => a.Show(item)))
+                                                        {
+                                                            <RadzenSplitButtonItem Icon="@action.Icon"
+                                                                                   Text="@Localizer[action.Title]"
+                                                                                   Value="@action.Action" />
+                                                        }
+                                                    </ChildContent>
+                                                </RadzenSplitButton>
+                                            </div>
+                                            break;
+                                        default:
+                                            @foreach (var action in Actions.Where(a => a.Show(item)))
+                                            {
+                                                <RadzenButton Icon="@action.Icon"
+                                                              ButtonStyle="@((ButtonStyle)action.Style)"
+                                                              Variant="@FSARadzenConfig.ButtonsVariant"
+                                                              Size="ButtonSize.Small"
+                                                              MouseEnter="@(args => ShowTooltip(args, action))"
+                                                              MouseLeave="CloseTooltip"
+                                                              Click="@(args => ExecuteAction(action, item))"
+                                                              @onclick:stopPropagation="true"
+                                                              class="rz-ml-1 rz-mr-1">
+                                                </RadzenButton>
+                                            }
+                                            break;
+                                    }
+
+
+                                </Template>
+                            </RadzenDataGridColumn>
+                        }
+
+                    </Columns>
+                </RadzenDataGrid>
+            </RadzenColumn>
+        </RadzenRow>
+
+    </FadeIn>
+}

@@ -1,10 +1,7 @@
 ﻿using FSA.Core.DataType;
-using FSA.Core.ServiceOrders.Dtos;
 using FSA.Core.Utils;
-using FSA.Management.Application.Features.CompanyGroups;
 using Radzen;
 using RazorClassLibrary1.Dtos;
-using System.Net.NetworkInformation;
 
 
 namespace RazorClassLibrary1.Pages
@@ -20,7 +17,7 @@ namespace RazorClassLibrary1.Pages
         private List<GridItemAction> ItemActions { get; set; } = new();
         private List<GridGeneralAction> GeneralActions { get; set; } = new();
         private Pagination Pagination { get; set; } = new Pagination(10);
-        record ItemCached(int TotalItems, IQueryable<DocumentTypeDto> Items);
+        record ItemCached(int TotalItems, IQueryable<ServiceOrderDocumentDto> Items);
 
         #endregion Properties
 
@@ -191,12 +188,19 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                var item = _item as CompanyGroupDto;
-                item = item is null ? new CompanyGroupDto() : new CompanyGroupDto(item);
+                var item = _item as ServiceOrderDocumentDto;
+                item = item is null ? new ServiceOrderDocumentDto() : new ServiceOrderDocumentDto(item);
 
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
+                        var result = await CustomSODialogService.Open_AddAdminEntity(item!);
+                        //myservice.log();
+                        //var result = await CustomDialogService.Open_AddAdminEntity(item!);
+                        //if (result)
+                        //    await LoadItems(true);
+                        //break;
+
                         //var result = await CustomDialogService.Open_AddCompanyGroupWithManager(item, new UserDto());
                         //await LoadItems(true);
                         break;

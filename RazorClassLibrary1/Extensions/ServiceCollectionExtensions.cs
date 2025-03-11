@@ -4,6 +4,7 @@ using FSA.Razor.Components.Extensions;
 using FSA.Razor.Components.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Radzen;
 using RazorClassLibrary1.Services;
 
 namespace RazorClassLibrary1.Extensions
@@ -26,7 +27,7 @@ namespace RazorClassLibrary1.Extensions
             ////Cache
             services.AddFSACacheServices();
             //Components
-            services.AddFSARadzenComponentsServices();
+            //services.AddFSARadzenComponentsServices();
             services.AddFSALocalizationServices(configuration);
             return services;
         }
@@ -39,8 +40,15 @@ namespace RazorClassLibrary1.Extensions
         /// <returns>A service instance of type <see cref="IServiceCollection"/>.</returns>
         public static IServiceCollection AddFSASOCustomComponentsService(this IServiceCollection services)
         {
+            services.AddScoped<IFSACustomNotificationService, FSACustomNotificationService>();
+            services.AddScoped<IFSACustomDialogService, FSACustomDialogService>();
+            services.AddScoped<IFSAThemeService, FSAAThemeService>();
+
             services.AddScoped<IFSASOCustomDialogService, FSASOCustomDialogService>();
             services.AddScoped<IGitHubService, GitHubService>();
+            services.AddScoped<IMyService, MyService>();
+
+            services.AddRadzenComponents();
 
             return services;
         }

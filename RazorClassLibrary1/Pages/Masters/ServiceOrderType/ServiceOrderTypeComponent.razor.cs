@@ -177,7 +177,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderType
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        var result = await CustomDialogService.Open_AddEditMaster(item, "Add Service Order Type");
+                        var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Service Order Type");
                         if (result)
                         {
                             //var response = await CreateSystemModuleService.Handle(item!);
@@ -188,7 +188,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderType
                         }
                         break;
                     case GridItemActions.EDIT_ITEM:
-                        result = await CustomDialogService.Open_AddEditMaster(item, "Edit Service Order Type");
+                        result = await CustomSODialogService.Open_AddEditMaster(item, "Edit Service Order Type");
                         if (result)
                         {
                             //var response = await UpdateSystemModuleService.Handle(item!);
@@ -203,7 +203,8 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderType
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
+                //NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
+                NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, "Error");
             }
         }
     }

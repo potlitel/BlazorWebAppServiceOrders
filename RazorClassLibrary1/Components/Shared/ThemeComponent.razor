@@ -1,0 +1,60 @@
+﻿@using FSA.Razor.Components.Helper
+@using Microsoft.JSInterop
+@using System.Text.Json
+@using Radzen.Blazor
+
+@inject IJSRuntime JSRuntime
+
+<RadzenButton Variant="@(IsLightMode ? Variant.Flat : Variant.Text)"
+              Icon="@(IsLightMode ? "dark_mode" : "light_mode")"
+              Click="ChangeTheme" />
+
+@code {
+    [Parameter]
+    public string LightTheme { get; set; } = "material";
+    [Parameter]
+    public string DarkTheme { get; set; } = "material-dark";
+
+    bool IsLightMode { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        await UpdateIcon();
+    }
+
+    private async Task UpdateIcon()
+    {
+        try
+        {
+            var responseCache = await AppCache.GetItem<ThemeCache?>("FSAWebTheme", CacheType.LocalStorage);
+            if (responseCache != null)
+                IsLightMode = responseCache.theme.Equals(LightTheme);
+        }
+        catch (Exception)
+        {
+        }
+    }
+
+    void ChangeTheme()
+    {
+        try
+        {
+            IsLightMode = !IsLightMode;
+            if (IsLightMode)
+            {
+                AppCache.SetItem("FSAWebTheme", new ThemeCache(LightTheme), CacheType.LocalStorage);
+                ThemeService.SetTheme(LightTheme);
+            }
+            else
+            {
+                AppCache.SetItem("FSAWebTheme", new ThemeCache(DarkTheme), CacheType.LocalStorage);
+                ThemeService.SetTheme(DarkTheme);
+            }
+        }
+        catch (Exception)
+        {
+        }
+    }
+}

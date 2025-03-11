@@ -1,10 +1,11 @@
-﻿using FSA.Core.Dtos;
-using FSA.Management.Application.Infrastructure.Services.AppState;
-using FSA.Razor.Components.Components.Shared;
+﻿using FSA.Management.Application.Infrastructure.Services.AppState;
 using FSA.Razor.Components.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using Radzen;
+using RazorClassLibrary1.Components.Shared;
+using RazorClassLibrary1.Dtos;
+using RazorClassLibrary1.Pages.SO_Document;
 
 namespace RazorClassLibrary1.Services
 {
@@ -12,7 +13,8 @@ namespace RazorClassLibrary1.Services
     {
         Task<bool> ConfirmDialog(string message, string title);
         Task<bool> OpenDialog(string title, RenderFragment rf);
-        Task<bool> Open_AddEditMaster(MasterDto item, string title);
+        Task<bool> Open_AddEditMaster(Dtos.MasterDto item, string title);
+        Task<bool> Open_AddAdminEntity(ServiceOrderDocumentDto Company);
     }
 
     public class FSASOCustomDialogService : IFSASOCustomDialogService
@@ -65,11 +67,11 @@ namespace RazorClassLibrary1.Services
             };
         }
 
-        public async Task<bool> Open_AddEditMaster(MasterDto item, string title)
+        public async Task<bool> Open_AddEditMaster(Dtos.MasterDto item, string title)
         {
             try
             {
-                var result = await dialogService.OpenSideAsync<AddEditMasterComponent<MasterDto>>(
+                var result = await dialogService.OpenSideAsync<AddEditMasterComponent<Dtos.MasterDto>>(
                     (item.Id == 0 ? localizer[title] : localizer[title]),
                     new Dictionary<string, object>()
                     {
@@ -84,6 +86,30 @@ namespace RazorClassLibrary1.Services
             {
                 return false;
             }
+        }
+
+        public async Task<bool> Open_AddAdminEntity(ServiceOrderDocumentDto Company)
+        {
+            try
+            {
+                //var title = localizer["AddAdminEntity"];
+
+                var result = await dialogService.OpenSideAsync<AddEditSODocument>(
+                    "title",
+                    new Dictionary<string, object>()
+                    {
+                { "Company", Company! },
+                { "IsSideDialog", true }
+                    },
+                    options: GetOptions()
+                );
+                return result is null ? false : (bool)result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
     }
 }

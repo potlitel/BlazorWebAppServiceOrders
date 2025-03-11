@@ -1,14 +1,7 @@
 ﻿using FSA.Core.DataType;
 using FSA.Core.Utils;
-using FSA.Management.Application.Features.CompanyGroups;
-using FSA.Management.Application.Features.Consortiums.Update;
-using FSA.Management.Application.Features.Consortiums;
-using FSA.Management.Application.Features.Users;
-using FSA.Management.Application.Infrastructure.Services.AppState;
 using Radzen;
 using RazorClassLibrary1.Dtos;
-using FSA.Management.Application.Features.SystemModules.Create;
-using FSA.Management.Application.Features.SystemModules.Update;
 
 
 namespace RazorClassLibrary1.Pages.Masters.DocumentType
@@ -185,7 +178,7 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        var result = await CustomDialogService.Open_AddEditMaster(item, "Add Document Type");
+                        var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Document Type");
                         if (result)
                         {
                             //var response = await CreateSystemModuleService.Handle(item!);
@@ -196,7 +189,7 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
                         }
                         break;
                     case GridItemActions.EDIT_ITEM:
-                        result = await CustomDialogService.Open_AddEditMaster(item, "Edit Document Type");
+                        result = await CustomSODialogService.Open_AddEditMaster(item, "Edit Document Type");
                         if (result)
                         {
                             //var response = await UpdateSystemModuleService.Handle(item!);
@@ -211,7 +204,8 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorConsortium"]);
+                //NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorConsortium"]);
+                NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, "Error");
             }
         }
     }

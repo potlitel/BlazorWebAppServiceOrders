@@ -1,4 +1,5 @@
 using BlazorWebApp.Components;
+using Radzen;
 using RazorClassLibrary1.Extensions;
 using System.Reflection;
 
@@ -9,11 +10,10 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
-builder.Services.AddFSASOCustomComponentsService();
-
 //builder.Services.AddRadzenComponents();//Radzen
 builder.Services.ConfigureSOComponents(builder.Configuration);
 
+builder.Services.AddFSASOCustomComponentsService();
 
 var app = builder.Build();
 

@@ -1,30 +1,23 @@
 ﻿using FSA.Core.DataType;
 using FSA.Core.Utils;
-using FSA.Management.Application.Features.CompanyGroups;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using Radzen;
 using RazorClassLibrary1.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 
-namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
+namespace RazorClassLibrary1.Pages.SO_Document
 {
-    public partial class SupplyOperationComponent
+    public partial class ServiceOrderDocument
     {
         #region Properties
 
-        private IQueryable<SupplyOperationDto>? ListItems { get; set; }
+        private IQueryable<ServiceOrderDocumentDto>? ListItems { get; set; }
         private int TotalItems { get; set; }
         private GridConfiguration GridConfiguration { get; set; } = new();
         private List<DataColumn> DataColumns { get; set; } = [];
         private List<GridItemAction> ItemActions { get; set; } = new();
         private List<GridGeneralAction> GeneralActions { get; set; } = new();
         private Pagination Pagination { get; set; } = new Pagination(10);
-        record ItemCached(int TotalItems, IQueryable<SupplyOperationDto> Items);
+        record ItemCached(int TotalItems, IQueryable<DocumentTypeDto> Items);
 
         #endregion Properties
 
@@ -34,23 +27,39 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
                 {
                     new DataColumn
                     {
-                        Property = nameof(SupplyOperationDto.Code),
-                        Title = "Code",
+                        Property = nameof(ServiceOrderDocumentDto.Name),
+                        Title = "Name",
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
                     },
                     new DataColumn
                     {
-                        Property = nameof(SupplyOperationDto.Description),
-                        Title = "Description",
+                        Property = nameof(ServiceOrderDocumentDto.Url),
+                        Title = "Url",
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
                     },
                     new DataColumn
                     {
-                        Property = nameof(SupplyOperationDto.IsActive),
+                        Property = nameof(ServiceOrderDocumentDto.ServiceOrderId),
+                        Title = "ServiceOrderId",
+                        Filterable = true,
+                        Sortable = true,
+                        MinWidth = "50px"
+                    },
+                new DataColumn
+                    {
+                        Property = nameof(ServiceOrderDocumentDto.DocumentTypeId),
+                        Title = "DocumentTypeId",
+                        Filterable = true,
+                        Sortable = true,
+                        MinWidth = "50px"
+                    },
+                    new DataColumn
+                    {
+                        Property = nameof(ServiceOrderDocumentDto.IsActive),
                         Title = "Active",
                         Filterable = true,
                         Sortable = true,
@@ -66,7 +75,7 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
         {
             try
             {
-                //var user = AppState.GetUser();
+                var user = AppState!.GetUser();
 
                 #region Actions
                 //var admin = user.IsAdmin();
@@ -106,7 +115,7 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
                         {
                             Action = GridGeneralActions.ADD_ITEM,
                             Icon = "add",
-                            Title = "Add Supply Operation",
+                            Title = "Add Service Order Document",
                             Style = ButtonStyle.Primary.GetHashCode(),
                             //Show = show => { return create; }
                         }
@@ -143,13 +152,13 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
                 //        Pagination = response.Pagination;
                 //    }
                 //}
-                ListItems = ListItems ?? new List<SupplyOperationDto>().AsQueryable();
+                ListItems = ListItems ?? new List<ServiceOrderDocumentDto>().AsQueryable();
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                ListItems = new List<SupplyOperationDto>().AsQueryable();
-                NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
+                ListItems = new List<ServiceOrderDocumentDto>().AsQueryable();
+                //NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
         }
 
@@ -162,7 +171,7 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
+                //NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
             finally
             {
@@ -179,32 +188,31 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
         {
             try
             {
-                var item = _item as SupplyOperationDto;
-                item = item is null ? new SupplyOperationDto() : new SupplyOperationDto(item);
+                var item = _item as ServiceOrderDocumentDto;
+                item = item is null ? new ServiceOrderDocumentDto() : new ServiceOrderDocumentDto(item);
 
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Supply Operation");
-                        if (result)
-                        {
-                            //var response = await CreateSystemModuleService.Handle(item!);
-                            //NotificationService.ShowNotification(response.Succeeded,
-                            //                                     response.StatusCode.ToString(),
-                            //                                     item!.Code);
-                            await LoadItems(true);
-                        }
+                        //myservice.log();
+                        var result = await CustomSODialogService.Open_AddAdminEntity(item!);
+                        await LoadItems(true);
+                        break;
+                    case GridItemActions.ADD_SUB_ITEM:
+                        //result = await CustomDialogService.Open_AddManager(item, null);
+                        //if (result)
+                        //    await LoadItems(true);
                         break;
                     case GridItemActions.EDIT_ITEM:
-                        result = await CustomSODialogService.Open_AddEditMaster(item, "Edit Supply Operation");
-                        if (result)
-                        {
-                            //var response = await UpdateSystemModuleService.Handle(item!);
-                            //NotificationService.ShowNotification(response.Succeeded,
-                            //                                    response.StatusCode.ToString(),
-                            //                                    item!.Code);
-                            await LoadItems(true);
-                        }
+                        //result = await CustomDialogService.Open_AddEditMaster(item, "EditCompanyGroup");
+                        //if (result)
+                        //{
+                        //    var response = await UpdateCompanyGroupService.Handle(item!);
+                        //    NotificationService.ShowNotification(response.Succeeded,
+                        //                                        response.StatusCode.ToString(),
+                        //                                        item!.Code);
+                        //    await LoadItems(true);
+                        //}
                         break;
                 }
             }
@@ -212,7 +220,6 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
             catch (Exception ex)
             {
                 //NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
-                NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, "Error");
             }
         }
     }

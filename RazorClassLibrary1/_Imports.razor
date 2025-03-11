@@ -6,6 +6,7 @@
 @using Microsoft.Extensions.Configuration
 @using Microsoft.Extensions.Localization
 @using Radzen
+@using RazorClassLibrary1.Services
 @using static Microsoft.AspNetCore.Components.Web.RenderMode
 
 
@@ -18,7 +19,9 @@
 @inject ContextMenuService ContextMenuService
 @inject DialogService DialogService
 
-@inject IFSACustomDialogService CustomDialogService
+@inject IFSASOCustomDialogService CustomSODialogService
+@inject IMyService myservice
+@* @inject IFSACustomDialogService CustomDialogService *@
 @inject IFSACustomNotificationService NotificationService
 @inject IFSAThemeService FSAThemeService
 @inject IFSAAppCache AppCache
