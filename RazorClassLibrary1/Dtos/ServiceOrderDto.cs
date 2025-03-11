@@ -18,6 +18,31 @@ namespace RazorClassLibrary1.Dtos
         public long? ParentServiceOrderId { get; set; }
         public long ServiceOrderTypeId { get; set; }
 
+        public ServiceOrderDto()
+        {
+            
+        }
+
+        /// <summary>
+        /// Class 's constructor: Recibe un objeto dto (ServiceOrderDto) e inicializa la clase ServiceOrderDto con los valores de dicho objeto
+        /// </summary>
+        /// <param name="dto">ServiceOrderDto instance</param>
+        public ServiceOrderDto(ServiceOrderDto dto)
+        {
+            Id = dto.Id;
+            CreatedAt = dto.CreatedAt;
+            UpdatedAt = dto.UpdatedAt;
+            IsActive = dto.IsActive;
+            Number = dto.Number;
+            EstimatedEndingDate = dto.EstimatedEndingDate;
+            Observations = dto.Observations;
+            Address = dto.Address;
+            OwnerId = dto.OwnerId;
+            ExecutorId = dto.ExecutorId;
+            ParentServiceOrderId = dto.ParentServiceOrderId;
+            ServiceOrderTypeId = dto.ServiceOrderTypeId;
+        }
+
         public static ServiceOrderDto ToDto(ServiceOrder entity)
         {
             if (entity is null)

@@ -10,6 +10,28 @@ namespace RazorClassLibrary1.Dtos
         public long SupplyOperationId { get; set; }
         public long ServiceOrderTaskId { get; set; }
 
+        public SupplyDto()
+        {
+            
+        }
+
+        /// <summary>
+        /// Class 's constructor: Recibe un objeto dto (SupplyDto) e inicializa la clase SupplyDto con los valores de dicho objeto
+        /// </summary>
+        /// <param name="dto">SupplyDto instance</param>
+        public SupplyDto(SupplyDto dto)
+        {
+            Id = dto.Id;
+            CreatedAt = dto.CreatedAt;
+            UpdatedAt = dto.UpdatedAt;
+            IsActive = dto.IsActive;
+            Amount = dto.Amount;
+            Price = dto.Price;
+            Description = dto.Description;
+            SupplyOperationId = dto.SupplyOperationId;
+            ServiceOrderTaskId = dto.ServiceOrderTaskId;
+        }
+
         public static SupplyDto ToDto(Supply entity)
         {
             if (entity is null)
