@@ -1,4 +1,5 @@
 ﻿using FSA.Management.Application.Infrastructure.Services.AppState;
+using FSA.Razor.Components.Components.Admin.Policies;
 using FSA.Razor.Components.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
@@ -88,21 +89,20 @@ namespace RazorClassLibrary1.Services
             }
         }
 
-        public async Task<bool> Open_AddAdminEntity(ServiceOrderDocumentDto Company)
+        public async Task<bool> Open_AddAdminEntity(ServiceOrderDocumentDto dto)
         {
             try
             {
-                //var title = localizer["AddAdminEntity"];
-
                 var result = await dialogService.OpenSideAsync<AddEditSODocument>(
-                    "title",
+                    (dto.Id == 0 ? localizer["AddServiceOrderDocument"] : localizer["EditServiceOrderDocument"]),
                     new Dictionary<string, object>()
                     {
-                { "Company", Company! },
-                { "IsSideDialog", true }
+                        { "ServiceOrderDocument", dto },
+                        { "IsSideDialog", true }
                     },
                     options: GetOptions()
                 );
+
                 return result is null ? false : (bool)result;
             }
             catch (Exception)

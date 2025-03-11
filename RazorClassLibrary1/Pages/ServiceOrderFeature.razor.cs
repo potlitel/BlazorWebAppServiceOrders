@@ -173,30 +173,22 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                var item = _item as CompanyGroupDto;
-                item = item is null ? new CompanyGroupDto() : new CompanyGroupDto(item);
+                //var item = _item as ServiceOrderDocumentDto;
+                //item = item is null ? new ServiceOrderDocumentDto() : new ServiceOrderDocumentDto(item);
+                var item = _item as DocumentTypeDto;
+                item = item is null ? new DocumentTypeDto() : new DocumentTypeDto(item);
 
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        //var result = await CustomDialogService.Open_AddCompanyGroupWithManager(item, new UserDto());
-                        //await LoadItems(true);
+                        var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Document Type");
+                        if (result)
+                        {
+                        }
                         break;
                     case GridItemActions.ADD_SUB_ITEM:
-                        //result = await CustomDialogService.Open_AddManager(item, null);
-                        //if (result)
-                        //    await LoadItems(true);
                         break;
                     case GridItemActions.EDIT_ITEM:
-                        //result = await CustomDialogService.Open_AddEditMaster(item, "EditCompanyGroup");
-                        //if (result)
-                        //{
-                        //    var response = await UpdateCompanyGroupService.Handle(item!);
-                        //    NotificationService.ShowNotification(response.Succeeded,
-                        //                                        response.StatusCode.ToString(),
-                        //                                        item!.Code);
-                        //    await LoadItems(true);
-                        //}
                         break;
                 }
             }

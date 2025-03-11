@@ -27,7 +27,7 @@ namespace RazorClassLibrary1.Extensions
             ////Cache
             services.AddFSACacheServices();
             //Components
-            //services.AddFSARadzenComponentsServices();
+            services.AddFSARadzenComponentsServices();
             services.AddFSALocalizationServices(configuration);
             return services;
         }
@@ -40,15 +40,15 @@ namespace RazorClassLibrary1.Extensions
         /// <returns>A service instance of type <see cref="IServiceCollection"/>.</returns>
         public static IServiceCollection AddFSASOCustomComponentsService(this IServiceCollection services)
         {
-            services.AddScoped<IFSACustomNotificationService, FSACustomNotificationService>();
-            services.AddScoped<IFSACustomDialogService, FSACustomDialogService>();
-            services.AddScoped<IFSAThemeService, FSAAThemeService>();
+            //services.AddScoped<IFSACustomNotificationService, FSACustomNotificationService>();
+            ////services.AddScoped<IFSACustomDialogService, FSACustomDialogService>();
+            //services.AddScoped<IFSAThemeService, FSAAThemeService>();
 
             services.AddScoped<IFSASOCustomDialogService, FSASOCustomDialogService>();
             services.AddScoped<IGitHubService, GitHubService>();
             services.AddScoped<IMyService, MyService>();
 
-            services.AddRadzenComponents();
+            //services.AddRadzenComponents();
 
             return services;
         }
