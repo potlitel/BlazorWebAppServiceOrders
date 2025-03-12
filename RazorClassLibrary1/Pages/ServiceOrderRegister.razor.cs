@@ -189,14 +189,14 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                var item = _item as CompanyGroupDto;
-                item = item is null ? new CompanyGroupDto() : new CompanyGroupDto(item);
+                var item = _item as ServiceOrderRegisterDto;
+                item = item is null ? new ServiceOrderRegisterDto() : new ServiceOrderRegisterDto(item);
 
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        //var result = await CustomDialogService.Open_AddCompanyGroupWithManager(item, new UserDto());
-                        //await LoadItems(true);
+                        var result = await CustomSODialogService.Open_AddEditSO_Register(item);
+                        await LoadItems(true);
                         break;
                     case GridItemActions.ADD_SUB_ITEM:
                         //result = await CustomDialogService.Open_AddManager(item, null);

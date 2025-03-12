@@ -173,15 +173,13 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                //var item = _item as ServiceOrderDocumentDto;
-                //item = item is null ? new ServiceOrderDocumentDto() : new ServiceOrderDocumentDto(item);
-                var item = _item as DocumentTypeDto;
-                item = item is null ? new DocumentTypeDto() : new DocumentTypeDto(item);
+                var item = _item as ServiceOrderFeatureDto;
+                item = item is null ? new ServiceOrderFeatureDto() : new ServiceOrderFeatureDto(item);
 
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Document Type");
+                        var result = await CustomSODialogService.Open_AddEditSO_Feature(item);
                         if (result)
                         {
                         }

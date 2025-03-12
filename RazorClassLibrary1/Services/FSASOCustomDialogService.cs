@@ -1,5 +1,4 @@
 ﻿using FSA.Management.Application.Infrastructure.Services.AppState;
-using FSA.Razor.Components.Components.Admin.Policies;
 using FSA.Razor.Components.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
@@ -7,6 +6,10 @@ using Radzen;
 using RazorClassLibrary1.Components.Shared;
 using RazorClassLibrary1.Dtos;
 using RazorClassLibrary1.Pages.SO_Document;
+using RazorClassLibrary1.Pages.SO_Feature;
+using RazorClassLibrary1.Pages.SO_Register;
+using RazorClassLibrary1.Pages.SO_Supply;
+using RazorClassLibrary1.Pages.SO_TaskDocument;
 
 namespace RazorClassLibrary1.Services
 {
@@ -16,6 +19,10 @@ namespace RazorClassLibrary1.Services
         Task<bool> OpenDialog(string title, RenderFragment rf);
         Task<bool> Open_AddEditMaster(Dtos.MasterDto item, string title);
         Task<bool> Open_AddEditSO_Document(ServiceOrderDocumentDto item);
+        Task<bool> Open_AddEditSO_Feature(ServiceOrderFeatureDto item);
+        Task<bool> Open_AddEditSO_Register(ServiceOrderRegisterDto item);
+        Task<bool> Open_AddEditSO_Supply(SupplyDto item);
+        Task<bool> Open_AddEditSO_TaskDocument(ServiceOrderTaskDocumentDto item);
     }
 
     public class FSASOCustomDialogService : IFSASOCustomDialogService
@@ -110,6 +117,94 @@ namespace RazorClassLibrary1.Services
                 return false;
             }
 
+        }
+
+        public async Task<bool> Open_AddEditSO_Feature(ServiceOrderFeatureDto dto)
+        {
+            try
+            {
+                var result = await dialogService.OpenSideAsync<AddEditSOFeatureComponent>(
+                    (dto.Id == 0 ? localizer["AddServiceOrderFeature"] : localizer["EditServiceOrderFeature"]),
+                    new Dictionary<string, object>()
+                    {
+                        { "ServiceOrderFeature", dto },
+                        { "IsSideDialog", true }
+                    },
+                    options: GetOptions()
+                );
+
+                return result is null ? false : (bool)result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> Open_AddEditSO_Register(ServiceOrderRegisterDto dto)
+        {
+            try
+            {
+                var result = await dialogService.OpenSideAsync<AddEditSORegisterComponent>(
+                    (dto.Id == 0 ? localizer["AddServiceOrderRegister"] : localizer["EditServiceOrderRegister"]),
+                    new Dictionary<string, object>()
+                    {
+                        { "ServiceOrderRegister", dto },
+                        { "IsSideDialog", true }
+                    },
+                    options: GetOptions()
+                );
+
+                return result is null ? false : (bool)result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> Open_AddEditSO_Supply(SupplyDto dto)
+        {
+            try
+            {
+                var result = await dialogService.OpenSideAsync<AddEditSOSupplyComponent>(
+                    (dto.Id == 0 ? localizer["AddSupply"] : localizer["EditSupply"]),
+                    new Dictionary<string, object>()
+                    {
+                        { "Supply", dto },
+                        { "IsSideDialog", true }
+                    },
+                    options: GetOptions()
+                );
+
+                return result is null ? false : (bool)result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> Open_AddEditSO_TaskDocument(ServiceOrderTaskDocumentDto dto)
+        {
+            try
+            {
+                var result = await dialogService.OpenSideAsync<AddEditSOTaskDocumentComponent>(
+                    (dto.Id == 0 ? localizer["AddServiceOrderTaskDocument"] : localizer["EditServiceOrderTaskDocument"]),
+                    new Dictionary<string, object>()
+                    {
+                        { "ServiceOrderTaskDocument", dto },
+                        { "IsSideDialog", true }
+                    },
+                    options: GetOptions()
+                );
+
+                return result is null ? false : (bool)result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ namespace RazorClassLibrary1.Pages.SO_Supply
     {
         #region Parameters
         [Parameter, EditorRequired]
-        public SupplyDto ServiceOrderDocument { get; set; } = new();
+        public SupplyDto Supply { get; set; } = new();
         [Parameter]
         public bool IsSideDialog { get; set; } = false;
         #endregion
