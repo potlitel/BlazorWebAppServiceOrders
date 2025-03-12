@@ -1,3 +1,20 @@
-﻿<div>
-    AddEditSOSupply Component
-</div>
+﻿@using FSA.Razor.Components.Components.Shared
+@using Radzen.Blazor
+@using RazorClassLibrary1.Dtos
+@if (IsLoading)
+{
+    <Loader />
+}
+else
+{
+    <FadeIn>
+        <RadzenColumn SizeMD=12>
+            <RadzenTemplateForm TItem="@(SupplyDto)" Data="@Supply" Visible="@(Supply != null)" Submit="@(async () => await Submit())">
+                <RadzenStack>
+                </RadzenStack>
+                <AddEditFormActionsButtons Cancel="@Cancel" Busy=@Busy CreateMode=@(Supply!.Id == 0) />
+            </RadzenTemplateForm>
+        </RadzenColumn>
+    </FadeIn>
+
+}
