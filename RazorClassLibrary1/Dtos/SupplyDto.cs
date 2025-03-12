@@ -4,9 +4,9 @@ namespace RazorClassLibrary1.Dtos
 {
     public class SupplyDto : BaseDto
     {
-        public required int Amount { get; set; }
-        public required double Price { get; set; }
-        public required string Description { get; set; } = string.Empty;
+        public int Amount { get; set; } = 0;
+        public double Price { get; set; } = 0;
+        public string Description { get; set; } = string.Empty;
         public long SupplyOperationId { get; set; }
         public long ServiceOrderTaskId { get; set; }
 

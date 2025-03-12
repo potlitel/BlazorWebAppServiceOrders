@@ -4,9 +4,9 @@ namespace RazorClassLibrary1.Dtos
 {
     public class ServiceOrderFeatureDto : BaseDto
     {
-        public required string FeatureId { get; set; } = string.Empty;
-        public required string Wkt { get; set; } = string.Empty;
-        public required long ServiceOrderId { get; set; }
+        public string FeatureId { get; set; } = string.Empty;
+        public string Wkt { get; set; } = string.Empty;
+        public long ServiceOrderId { get; set; }
 
         public ServiceOrderFeatureDto()
         {

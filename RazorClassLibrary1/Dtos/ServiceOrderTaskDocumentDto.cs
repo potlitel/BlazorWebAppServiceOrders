@@ -4,8 +4,8 @@ namespace RazorClassLibrary1.Dtos
 {
     public class ServiceOrderTaskDocumentDto : BaseDto
     {
-        public required string Name { get; set; }
-        public required string Url { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
         public long ServiceOrderTaskId { get; set; }
         public long DocumentTypeId { get; set; }
 

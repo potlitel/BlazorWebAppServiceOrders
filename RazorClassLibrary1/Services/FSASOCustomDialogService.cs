@@ -15,7 +15,7 @@ namespace RazorClassLibrary1.Services
         Task<bool> ConfirmDialog(string message, string title);
         Task<bool> OpenDialog(string title, RenderFragment rf);
         Task<bool> Open_AddEditMaster(Dtos.MasterDto item, string title);
-        Task<bool> Open_AddAdminEntity(ServiceOrderDocumentDto Company);
+        Task<bool> Open_AddEditSO_Document(ServiceOrderDocumentDto item);
     }
 
     public class FSASOCustomDialogService : IFSASOCustomDialogService
@@ -89,7 +89,7 @@ namespace RazorClassLibrary1.Services
             }
         }
 
-        public async Task<bool> Open_AddAdminEntity(ServiceOrderDocumentDto dto)
+        public async Task<bool> Open_AddEditSO_Document(ServiceOrderDocumentDto dto)
         {
             try
             {

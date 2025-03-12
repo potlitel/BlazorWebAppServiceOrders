@@ -206,7 +206,7 @@ namespace RazorClassLibrary1.Pages
                 {
                     case GridGeneralActions.ADD_ITEM:
                         //var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Document Type");
-                        var result = await CustomSODialogService.Open_AddAdminEntity(itemm);
+                        var result = await CustomSODialogService.Open_AddEditSO_Document(itemm);
                         if (result)
                         {
                         }
