@@ -11,7 +11,31 @@ else
         <RadzenColumn SizeMD=12>
             <RadzenTemplateForm TItem="@(ServiceOrderFeatureDto)" Data="@ServiceOrderFeature" Visible="@(ServiceOrderFeature != null)" Submit="@(async () => await Submit())">
                 <RadzenStack>
-                    </RadzenStack>
+
+                    <RadzenFormField Text="@(Localizer["Wkt"] + "*")" Variant="Variant.Outlined">
+                        <ChildContent>
+                            <RadzenTextBox Disabled=@Busy style="display: block" class="w-100" @bind-Value="@ServiceOrderFeature!.Wkt" Name="Wkt" Placeholder="@Localizer["Wkt"]" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="Wkt" />
+                            <RadzenLengthValidator Component="Wkt" Min="2" Max="50" />
+                        </Helper>
+                    </RadzenFormField>
+
+                    <FilterList Disabled=@Busy
+                                Name="ServiceOrders"
+                                Data=@ServiceOrders
+                                Selected=@ServiceOrderFeature!.ServiceOrder
+                                AllowClear="false"
+                                AllowVirtualization="true"
+                                Text=@Localizer["ServiceOrder"]
+                                TextProperty="Number"
+                                Change="@((args) => ChangeServiceOrder(args))" />
+                    <RadzenRequiredValidator Component="ServiceOrders" />
+
+
+
+                </RadzenStack>
                 <AddEditFormActionsButtons Cancel="@Cancel" Busy=@Busy CreateMode=@(ServiceOrderFeature!.Id == 0) />
             </RadzenTemplateForm>
         </RadzenColumn>

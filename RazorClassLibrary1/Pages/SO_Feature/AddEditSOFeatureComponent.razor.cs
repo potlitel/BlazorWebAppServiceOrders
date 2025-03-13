@@ -43,11 +43,6 @@ namespace RazorClassLibrary1.Pages.SO_Feature
                                      .RuleFor(x => x.Address, f => f.Address.FullAddress())
                                      .Generate(50).ToList();
 
-                DocumentTypes = fakerDoc
-                                     .RuleFor(x => x.Code, f => f.Finance.Bic())
-                                     .RuleFor(x => x.Description, f => f.Lorem.Sentence(8))
-                                     .Generate(15).ToList();
-
                 //var policyGroupsTask = GetAllPolicyGroupsService.Handle(null);
                 //var policyGroups = await policyGroupsTask;
 
@@ -69,17 +64,17 @@ namespace RazorClassLibrary1.Pages.SO_Feature
             }
         }
 
-        //async Task ChangeServiceOrder(object _item)
-        //{
-        //    try
-        //    {
-        //        var item = _item as ServiceOrderDto;
-        //        ServiceOrderDocument.ServiceOrder = item!;
-        //    }
-        //    catch (Exception)
-        //    {
-        //    }
-        //}
+        async Task ChangeServiceOrder(object _item)
+        {
+            try
+            {
+                var item = _item as ServiceOrderDto;
+                ServiceOrderFeature.ServiceOrder = item!;
+            }
+            catch (Exception)
+            {
+            }
+        }
 
         //async Task ChangeDocumentType(object _item)
         //{
