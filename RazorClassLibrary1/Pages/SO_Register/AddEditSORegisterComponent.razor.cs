@@ -19,6 +19,8 @@ namespace RazorClassLibrary1.Pages.SO_Register
         private bool IsLoading { get; set; } = true;
         private bool Busy { get; set; } = false;
 
+        public bool IsCreateItem { get; set; } = false;
+
         IEnumerable<ServiceOrderDto> ServiceOrders = [];
 
         IEnumerable<DocumentTypeDto> DocumentTypes = [];
@@ -69,17 +71,17 @@ namespace RazorClassLibrary1.Pages.SO_Register
             }
         }
 
-        //async Task ChangeServiceOrder(object _item)
-        //{
-        //    try
-        //    {
-        //        var item = _item as ServiceOrderDto;
-        //        ServiceOrderDocument.ServiceOrder = item!;
-        //    }
-        //    catch (Exception)
-        //    {
-        //    }
-        //}
+        async Task ChangeServiceOrder(object _item)
+        {
+            try
+            {
+                var item = _item as ServiceOrderDto;
+                ServiceOrderRegister.ServiceOrder = item!;
+            }
+            catch (Exception)
+            {
+            }
+        }
 
         //async Task ChangeDocumentType(object _item)
         //{

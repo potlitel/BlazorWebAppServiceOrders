@@ -9,6 +9,7 @@ namespace RazorClassLibrary1.Dtos
         public string StateTo { get; set; } = string.Empty;
         public string? Observations { get; set; }
         public long ServiceOrderId { get; set; }
+        public ServiceOrderDto ServiceOrder { get; set; } = new();
 
         public ServiceOrderRegisterDto()
         {

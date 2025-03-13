@@ -11,6 +11,58 @@ else
         <RadzenColumn SizeMD=12>
             <RadzenTemplateForm TItem="@(ServiceOrderRegisterDto)" Data="@ServiceOrderRegister" Visible="@(ServiceOrderRegister != null)" Submit="@(async () => await Submit())">
                 <RadzenStack>
+
+                    <RadzenFormField Text="@(Localizer["Trigger"] + "*")" Variant="Variant.Outlined">
+                        <ChildContent>
+                            <RadzenTextBox Disabled=@Busy style="display: block" class="w-100" @bind-Value="@ServiceOrderRegister!.Trigger" Name="Trigger" Placeholder="@Localizer["Trigger"]" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="Name" />
+                            <RadzenLengthValidator Component="Name" Min="2" Max="50" />
+                        </Helper>
+                    </RadzenFormField>
+
+                    <RadzenFormField Text="@(Localizer["StateFrom"] + "*")" Variant="Variant.Outlined">
+                        <ChildContent>
+                            <RadzenTextBox Disabled=@Busy style="display: block" class="w-100" @bind-Value="@ServiceOrderRegister!.StateFrom" Name="StateFrom" Placeholder="@Localizer["StateFrom"]" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="Name" />
+                            <RadzenLengthValidator Component="Name" Min="2" Max="50" />
+                        </Helper>
+                    </RadzenFormField>
+
+                    <RadzenFormField Text="@(Localizer["StateTo"] + "*")" Variant="Variant.Outlined">
+                        <ChildContent>
+                            <RadzenTextBox Disabled=@Busy style="display: block" class="w-100" @bind-Value="@ServiceOrderRegister!.StateTo" Name="StateTo" Placeholder="@Localizer["StateTo"]" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="Name" />
+                            <RadzenLengthValidator Component="Name" Min="2" Max="50" />
+                        </Helper>
+                    </RadzenFormField>
+
+                    <RadzenFormField Text="@(Localizer["Observations"] + "*")" Variant="@FSARadzenConfig.InputsVariant">
+                        <ChildContent>
+                            <RadzenTextArea Disabled=@(Busy || IsCreateItem) @bind-Value="@ServiceOrderRegister!.Observations" Rows="6" Name="Observations" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="Observations" />
+                            <RadzenLengthValidator Component="Observations" Min="2" Max="255" />
+                        </Helper>
+                    </RadzenFormField>
+
+                    <FilterList Disabled=@Busy
+                                Name="ServiceOrders"
+                                Data=@ServiceOrders
+                                Selected=@ServiceOrderRegister!.ServiceOrder
+                                AllowClear="false"
+                                AllowVirtualization="true"
+                                Text=@Localizer["ServiceOrder"]
+                                TextProperty="Number"
+                                Change="@((args) => ChangeServiceOrder(args))" />
+                    <RadzenRequiredValidator Component="ServiceOrders" />
+
                 </RadzenStack>
                 <AddEditFormActionsButtons Cancel="@Cancel" Busy=@Busy CreateMode=@(ServiceOrderRegister!.Id == 0) />
             </RadzenTemplateForm>
