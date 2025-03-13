@@ -11,6 +11,48 @@ else
         <RadzenColumn SizeMD=12>
             <RadzenTemplateForm TItem="@(SupplyDto)" Data="@Supply" Visible="@(Supply != null)" Submit="@(async () => await Submit())">
                 <RadzenStack>
+
+                    <RadzenFormField Text="@(Localizer["Amount"] + "*")" Variant="@FSARadzenConfig.InputsVariant">
+                        <ChildContent>
+                            <RadzenNumeric Format="#0.0000" Disabled=@Busy @bind-Value="@Supply!.Amount" Name="Amount" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="Amount" />
+                            <RadzenNumericRangeValidator Component="Amount" Min="1.00" Max="999999.00" />
+                        </Helper>
+                    </RadzenFormField>
+
+                    <RadzenFormField Text="@(Localizer["Price"] + "*")" Variant="@FSARadzenConfig.InputsVariant">
+                        <ChildContent>
+                            <RadzenNumeric Format="#0.0000" Disabled=@Busy @bind-Value="@Supply!.Price" Name="Price" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="Price" />
+                            <RadzenNumericRangeValidator Component="Price" Min="1.00" Max="999999.00" />
+                        </Helper>
+                    </RadzenFormField>
+
+                    <RadzenFormField Text="@(Localizer["Description"] + "*")" Variant="@FSARadzenConfig.InputsVariant">
+                        <ChildContent>
+                            <RadzenTextArea Disabled=@(Busy || IsCreateItem) @bind-Value="@Supply!.Description" Rows="6" Name="Description" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="Description" />
+                            <RadzenLengthValidator Component="Description" Min="2" Max="255" />
+                        </Helper>
+                    </RadzenFormField>
+
+                    <FilterList Disabled=@Busy
+                                Name="SupplyOperations"
+                                Data=@SupplyOperations
+                                Selected=@Supply!.SupplyOperation
+                                AllowClear="false"
+                                AllowVirtualization="true"
+                                Text=@Localizer["SupplyOperation"]
+                                TextProperty="Description"
+                                Change="@((args) => ChangeSupplyOperation(args))" />
+                    <RadzenRequiredValidator Component="SupplyOperations" />
+
                 </RadzenStack>
                 <AddEditFormActionsButtons Cancel="@Cancel" Busy=@Busy CreateMode=@(Supply!.Id == 0) />
             </RadzenTemplateForm>

@@ -8,7 +8,9 @@ namespace RazorClassLibrary1.Dtos
         public double Price { get; set; } = 0;
         public string Description { get; set; } = string.Empty;
         public long SupplyOperationId { get; set; }
+        public SupplyOperationDto SupplyOperation { get; set; } = new();
         public long ServiceOrderTaskId { get; set; }
+        public ServiceOrderTaskDocumentDto ServiceOrderTaskDocument { get; set; } = new();
 
         public SupplyDto()
         {
