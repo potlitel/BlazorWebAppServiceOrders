@@ -7,7 +7,9 @@ namespace RazorClassLibrary1.Dtos
         public string Name { get; set; }
         public string Url { get; set; }
         public long ServiceOrderTaskId { get; set; }
+        //public ServiceOrderTaskDto ServiceOrderTask { get; set; } = new();
         public long DocumentTypeId { get; set; }
+        public DocumentTypeDto DocumentType { get; set; } = new();
 
         public ServiceOrderTaskDocumentDto()
         {

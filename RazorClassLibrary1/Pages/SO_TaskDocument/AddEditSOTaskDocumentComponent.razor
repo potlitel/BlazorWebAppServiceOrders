@@ -11,6 +11,38 @@ else
         <RadzenColumn SizeMD=12>
             <RadzenTemplateForm TItem="@(ServiceOrderTaskDocumentDto)" Data="@ServiceOrderTaskDocument" Visible="@(ServiceOrderTaskDocument != null)" Submit="@(async () => await Submit())">
                 <RadzenStack>
+
+                    <RadzenFormField Text="@(Localizer["Name"] + "*")" Variant="Variant.Outlined">
+                        <ChildContent>
+                            <RadzenTextBox Disabled=@Busy style="display: block" class="w-100" @bind-Value="@ServiceOrderTaskDocument!.Name" Name="Name" Placeholder="@Localizer["Name"]" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="Name" />
+                            <RadzenLengthValidator Component="Name" Min="2" Max="50" />
+                        </Helper>
+                    </RadzenFormField>
+
+                    <RadzenFormField Text="@(Localizer["Url"] + "*")" Variant="Variant.Outlined">
+                        <ChildContent>
+                            <RadzenTextBox Disabled=@Busy style="display: block" class="w-100" @bind-Value="@ServiceOrderTaskDocument!.Url" Name="Url" Placeholder="@Localizer["Url"]" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="Name" />
+                            <RadzenLengthValidator Component="Name" Min="2" Max="50" />
+                        </Helper>
+                    </RadzenFormField>
+
+                    <FilterList Disabled=@Busy
+                                Name="DocumentTypes"
+                                Data=@DocumentTypes
+                                Selected=@ServiceOrderTaskDocument!.DocumentType
+                                AllowClear="false"
+                                AllowVirtualization="true"
+                                Text=@Localizer["DocumentType"]
+                                TextProperty="Description"
+                                Change="@((args) => ChangeDocumentType(args))" />
+                    <RadzenRequiredValidator Component="DocumentTypes" />
+
                 </RadzenStack>
                 <AddEditFormActionsButtons Cancel="@Cancel" Busy=@Busy CreateMode=@(ServiceOrderTaskDocument!.Id == 0) />
             </RadzenTemplateForm>

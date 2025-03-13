@@ -18,6 +18,7 @@ namespace RazorClassLibrary1.Pages.SO_TaskDocument
         public ServiceOrderTaskDocumentDto ServiceOrderTaskDocument { get; set; } = new();
         [Parameter]
         public bool IsSideDialog { get; set; } = false;
+        public bool IsCreateItem { get; set; } = false;
         #endregion
         #region Properties
         private bool IsLoading { get; set; } = true;
@@ -73,29 +74,29 @@ namespace RazorClassLibrary1.Pages.SO_TaskDocument
             }
         }
 
-        //async Task ChangeServiceOrder(object _item)
-        //{
-        //    try
-        //    {
-        //        var item = _item as ServiceOrderDto;
-        //        ServiceOrderDocument.ServiceOrder = item!;
-        //    }
-        //    catch (Exception)
-        //    {
-        //    }
-        //}
+        async Task ChangeServiceOrder(object _item)
+        {
+            try
+            {
+                //var item = _item as ServiceOrderDto;
+                //ServiceOrderTaskDocument.ServiceOrder = item!;
+            }
+            catch (Exception)
+            {
+            }
+        }
 
-        //async Task ChangeDocumentType(object _item)
-        //{
-        //    try
-        //    {
-        //        var item = _item as DocumentTypeDto;
-        //        ServiceOrderDocument.DocumentType = item!;
-        //    }
-        //    catch (Exception)
-        //    {
-        //    }
-        //}
+        async Task ChangeDocumentType(object _item)
+        {
+            try
+            {
+                var item = _item as DocumentTypeDto;
+                ServiceOrderTaskDocument.DocumentType = item!;
+            }
+            catch (Exception)
+            {
+            }
+        }
 
         protected async Task Submit()
         {
