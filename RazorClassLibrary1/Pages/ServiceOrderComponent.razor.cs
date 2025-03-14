@@ -216,11 +216,10 @@ namespace RazorClassLibrary1.Pages
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        //var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Document Type");
-                        //var result = await CustomSODialogService.Open_AddEditSO_Document(itemm);
-                        //if (result)
-                        //{
-                        //}
+                        var result = await CustomSODialogService.Open_AddEditSO_ServiceOrder(item);
+                        if (result)
+                        {
+                        }
                         break;
                     case GridItemActions.ADD_SUB_ITEM:
                         break;

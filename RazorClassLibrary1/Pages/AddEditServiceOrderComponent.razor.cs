@@ -29,7 +29,7 @@ namespace RazorClassLibrary1.Pages
 
         Faker<ServiceOrderDto> faker = new();
 
-        Faker<DocumentTypeDto> fakerDoc = new();
+        Faker<ServiceOrderTypeDto> fakerDoc = new();
 
         Faker<UserDto> fakerUsrs = new();
         #endregion
@@ -48,7 +48,7 @@ namespace RazorClassLibrary1.Pages
                                      .RuleFor(x => x.Address, f => f.Address.FullAddress())
                                      .Generate(50).ToList();
 
-                Types = (IEnumerable<ServiceOrderTypeDto>)fakerDoc
+                Types = fakerDoc
                                      .RuleFor(x => x.Code, f => f.Finance.Account(15))
                                      .RuleFor(x => x.Description, f => f.Address.FullAddress())
                                      .Generate(50).ToList();
