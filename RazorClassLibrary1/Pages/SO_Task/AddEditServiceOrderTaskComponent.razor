@@ -1,3 +1,64 @@
-﻿<div>
+﻿@using FSA.Razor.Components.Components.Shared
+@using Radzen.Blazor
+@using RazorClassLibrary1.Dtos
+@if (IsLoading)
+{
+    <Loader />
+}
+else
+{
+    <FadeIn>
+        <RadzenColumn SizeMD=12>
+            <RadzenTemplateForm TItem="@(ServiceOrderTaskDto)" Data="@ServiceOrderTask" Visible="@(ServiceOrderTask != null)" Submit="@(async () => await Submit())">
+                <RadzenStack>
 
-</div>
+                    <RadzenFormField Text="@(Localizer["Observations"] + "*")" Variant="Variant.Outlined">
+                        <ChildContent>
+                            <RadzenTextBox Disabled=@Busy style="display: block" class="w-100" Rows="6" @bind-Value="@ServiceOrderTask!.Observations" Name="Observations" Placeholder="@Localizer["Observations"]" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="Observations" />
+                            <RadzenLengthValidator Component="Observations" Min="2" Max="50" />
+                        </Helper>
+                    </RadzenFormField>
+
+                    <RadzenFormField Text="@(Localizer["ExecutionDate"] + "*")" Variant="@FSARadzenConfig.InputsVariant">
+                        <ChildContent>
+                            <RadzenDatePicker Disabled=@Busy @bind-Value="@ServiceOrderTask!.ExecutionDate" Name="ExecutionDate" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="ExecutionDate" />
+                        </Helper>
+                    </RadzenFormField>
+
+                    <FilterList Disabled=@Busy
+                                Name="States"
+                                Data=@States
+                                Selected=@ServiceOrderTask!.ServiceOrderTaskState
+                                AllowClear="false"
+                                AllowVirtualization="true"
+                                Text=@Localizer["States"]
+                                TextProperty="Number"
+                                Change="@((args) => ChangeServiceOrder(args))" />
+                    <RadzenRequiredValidator Component="States" />
+
+                    <FilterList Disabled=@Busy
+                                Name="ServiceOrders"
+                                Data=@ServiceOrders
+                                Selected=@ServiceOrderTask!.ServiceOrder
+                                AllowClear="false"
+                                AllowVirtualization="true"
+                                Text=@Localizer["ServiceOrder"]
+                                TextProperty="Number"
+                                Change="@((args) => ChangeServiceOrder(args))" />
+                    <RadzenRequiredValidator Component="ServiceOrders" />
+
+
+
+                </RadzenStack>
+                <AddEditFormActionsButtons Cancel="@Cancel" Busy=@Busy CreateMode=@(ServiceOrderTask!.Id == 0) />
+            </RadzenTemplateForm>
+        </RadzenColumn>
+    </FadeIn>
+
+}

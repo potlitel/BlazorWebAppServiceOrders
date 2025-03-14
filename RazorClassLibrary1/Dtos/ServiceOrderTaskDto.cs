@@ -10,7 +10,7 @@ namespace RazorClassLibrary1.Dtos
         public long ServiceOrderTaskStateId { get; set; }
         public virtual ServiceOrderTaskStateDto? ServiceOrderTaskState { get; set; }
         public long ServiceOrderId { get; set; }
-
+        public virtual ServiceOrderDto? ServiceOrder { get; set; }
         public virtual ICollection<SupplyDto> Supplies { get; set; } = [];
         public virtual ICollection<ServiceOrderTaskDocumentDto> Documents { get; set; } = [];
 
