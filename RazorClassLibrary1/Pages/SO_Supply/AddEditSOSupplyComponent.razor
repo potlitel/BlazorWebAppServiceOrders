@@ -53,6 +53,17 @@ else
                                 Change="@((args) => ChangeSupplyOperation(args))" />
                     <RadzenRequiredValidator Component="SupplyOperations" />
 
+                    <FilterList Disabled=@Busy
+                                Name="ServiceOrderTasks"
+                                Data=@ServiceOrderTasks
+                                Selected=@Supply!.ServiceOrderTask
+                                AllowClear="false"
+                                AllowVirtualization="true"
+                                Text=@Localizer["ServiceOrderTasks"]
+                                TextProperty="Observations"
+                                Change="@((args) => ChangeServiceOrderTask(args))" />
+                    <RadzenRequiredValidator Component="ServiceOrderTasks" />
+
                 </RadzenStack>
                 <AddEditFormActionsButtons Cancel="@Cancel" Busy=@Busy CreateMode=@(Supply!.Id == 0) />
             </RadzenTemplateForm>

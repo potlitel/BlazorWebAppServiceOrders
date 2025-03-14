@@ -22,7 +22,7 @@ namespace RazorClassLibrary1.Pages.SO_Supply
 
         IEnumerable<SupplyOperationDto> SupplyOperations = [];
 
-        IEnumerable<ServiceOrderTaskDocumentDto> ServiceOrderTaskDocuments = [];
+        IEnumerable<ServiceOrderTaskDto> ServiceOrderTasks = [];
 
         Faker<ServiceOrderDto> faker = new();
 
@@ -41,6 +41,10 @@ namespace RazorClassLibrary1.Pages.SO_Supply
                 SupplyOperations = new Faker<SupplyOperationDto>()
                                         .RuleFor(x => x.Code, f => f.Finance.Account(15))
                                         .RuleFor(x => x.Description, f => f.Address.FullAddress())
+                                        .Generate(50).ToList();
+
+                ServiceOrderTasks = new Faker<ServiceOrderTaskDto>()
+                                        .RuleFor(x => x.Observations, f => f.Address.FullAddress())
                                         .Generate(50).ToList();
 
                 //ServiceOrders = faker
@@ -88,17 +92,17 @@ namespace RazorClassLibrary1.Pages.SO_Supply
             }
         }
 
-        //async Task ChangeDocumentType(object _item)
-        //{
-        //    try
-        //    {
-        //        var item = _item as DocumentTypeDto;
-        //        ServiceOrderDocument.DocumentType = item!;
-        //    }
-        //    catch (Exception)
-        //    {
-        //    }
-        //}
+        async Task ChangeServiceOrderTask(object _item)
+        {
+            try
+            {
+                var item = _item as ServiceOrderTaskDto;
+                Supply.ServiceOrderTask = item!;
+            }
+            catch (Exception)
+            {
+            }
+        }
 
         protected async Task Submit()
         {

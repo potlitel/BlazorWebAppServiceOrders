@@ -10,7 +10,7 @@ namespace RazorClassLibrary1.Dtos
         public long SupplyOperationId { get; set; }
         public SupplyOperationDto SupplyOperation { get; set; } = new();
         public long ServiceOrderTaskId { get; set; }
-        public ServiceOrderTaskDocumentDto ServiceOrderTaskDocument { get; set; } = new();
+        public ServiceOrderTaskDto ServiceOrderTask { get; set; } = new();
 
         public SupplyDto()
         {
