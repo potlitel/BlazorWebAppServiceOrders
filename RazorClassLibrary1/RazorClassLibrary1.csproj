@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\SO\" />
+    <Folder Include="Pages\ServiceOrder\" />
   </ItemGroup>
 
 

@@ -3,6 +3,7 @@
 
 using FSA.Core.ServiceOrders.Models;
 using FSA.Core.ServiceOrders.Models.Masters;
+using FSA.Management.Application.Features.Users;
 
 namespace RazorClassLibrary1.Dtos
 {
@@ -12,9 +13,10 @@ namespace RazorClassLibrary1.Dtos
         public DateTime EstimatedEndingDate { get; set; }
         public string? Observations { get; set; }
         public string? Address { get; set; }
-
         public long OwnerId { get; set; }
+        public UserDto Owner { get; set; }
         public long ExecutorId { get; set; }
+        public UserDto Executor { get; set; }
         public long? ParentServiceOrderId { get; set; }
         public virtual ServiceOrderDto? ParentServiceOrder { get; set; }
         public long ServiceOrderTypeId { get; set; }
