@@ -12,13 +12,13 @@ else
             <RadzenTemplateForm TItem="@(ServiceOrderTaskDto)" Data="@ServiceOrderTask" Visible="@(ServiceOrderTask != null)" Submit="@(async () => await Submit())">
                 <RadzenStack>
 
-                    <RadzenFormField Text="@(Localizer["Observations"] + "*")" Variant="Variant.Outlined">
+                    <RadzenFormField Text="@(Localizer["Observations"] + "*")" Variant="@FSARadzenConfig.InputsVariant">
                         <ChildContent>
-                            <RadzenTextBox Disabled=@Busy style="display: block" class="w-100" Rows="6" @bind-Value="@ServiceOrderTask!.Observations" Name="Observations" Placeholder="@Localizer["Observations"]" />
+                            <RadzenTextArea Disabled=@(Busy || IsCreateItem) @bind-Value="@ServiceOrderTask!.Observations" Rows="6" Name="Observations" />
                         </ChildContent>
                         <Helper>
                             <RadzenRequiredValidator Component="Observations" />
-                            <RadzenLengthValidator Component="Observations" Min="2" Max="50" />
+                            <RadzenLengthValidator Component="Observations" Min="2" Max="255" />
                         </Helper>
                     </RadzenFormField>
 
@@ -38,8 +38,8 @@ else
                                 AllowClear="false"
                                 AllowVirtualization="true"
                                 Text=@Localizer["States"]
-                                TextProperty="Number"
-                                Change="@((args) => ChangeServiceOrder(args))" />
+                                TextProperty="Description"
+                                Change="@((args) => ChangeState(args))" />
                     <RadzenRequiredValidator Component="States" />
 
                     <FilterList Disabled=@Busy
@@ -51,7 +51,7 @@ else
                                 Text=@Localizer["ServiceOrder"]
                                 TextProperty="Number"
                                 Change="@((args) => ChangeServiceOrder(args))" />
-                    <RadzenRequiredValidator Component="ServiceOrders" />
+                    <RadzenRequiredValidator Component="ServiceOrders" /> 
 
 
 

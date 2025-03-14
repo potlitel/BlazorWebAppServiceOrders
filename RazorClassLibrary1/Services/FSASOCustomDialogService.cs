@@ -9,6 +9,7 @@ using RazorClassLibrary1.Pages.SO_Document;
 using RazorClassLibrary1.Pages.SO_Feature;
 using RazorClassLibrary1.Pages.SO_Register;
 using RazorClassLibrary1.Pages.SO_Supply;
+using RazorClassLibrary1.Pages.SO_Task;
 using RazorClassLibrary1.Pages.SO_TaskDocument;
 
 namespace RazorClassLibrary1.Services
@@ -23,6 +24,7 @@ namespace RazorClassLibrary1.Services
         Task<bool> Open_AddEditSO_Register(ServiceOrderRegisterDto item);
         Task<bool> Open_AddEditSO_Supply(SupplyDto item);
         Task<bool> Open_AddEditSO_TaskDocument(ServiceOrderTaskDocumentDto item);
+        Task<bool> Open_AddEditSO_ServiceOrderTask(ServiceOrderTaskDto item);
     }
 
     public class FSASOCustomDialogService : IFSASOCustomDialogService
@@ -194,6 +196,28 @@ namespace RazorClassLibrary1.Services
                     new Dictionary<string, object>()
                     {
                         { "ServiceOrderTaskDocument", dto },
+                        { "IsSideDialog", true }
+                    },
+                    options: GetOptions()
+                );
+
+                return result is null ? false : (bool)result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> Open_AddEditSO_ServiceOrderTask(ServiceOrderTaskDto dto)
+        {
+            try
+            {
+                var result = await dialogService.OpenSideAsync<AddEditServiceOrderTaskComponent>(
+                    (dto.Id == 0 ? localizer["AddServiceOrderTask"] : localizer["EditServiceOrderTask"]),
+                    new Dictionary<string, object>()
+                    {
+                        { "ServiceOrderTask", dto },
                         { "IsSideDialog", true }
                     },
                     options: GetOptions()

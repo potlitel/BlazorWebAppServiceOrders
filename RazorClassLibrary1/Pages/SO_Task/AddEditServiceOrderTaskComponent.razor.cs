@@ -17,6 +17,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
         #region Properties
         private bool IsLoading { get; set; } = true;
         private bool Busy { get; set; } = false;
+        public bool IsCreateItem { get; set; } = false;
 
         IEnumerable<ServiceOrderDto> ServiceOrders = [];
 
