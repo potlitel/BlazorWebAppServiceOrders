@@ -5,7 +5,11 @@ using Radzen;
 
 namespace RazorClassLibrary1.Services
 {
-    internal class FSAAThemeService : IFSAThemeService
+    public interface IFSASOThemeService
+    {
+        Task Update();
+    }
+    internal class FSAAThemeService : IFSASOThemeService
     {
         private readonly IFSAAppCache appCache;
 
@@ -21,19 +25,19 @@ namespace RazorClassLibrary1.Services
         {
             try
             {
-                ThemeCache themeCache = await appCache.GetItem<ThemeCache>("FSAWebTheme", CacheType.LocalStorage);
+                ThemeCache themeCache = await appCache.GetItem<ThemeCache>("FSASOWebTheme", CacheType.LocalStorage);
                 if (themeCache != null)
                 {
                     themeService.SetTheme(themeCache.theme);
                     return;
                 }
 
-                appCache.SetItem("FSAWebTheme", new ThemeCache("material"), CacheType.LocalStorage, 0);
+                appCache.SetItem("FSASOWebTheme", new ThemeCache("material"), CacheType.LocalStorage, 0);
                 themeService.SetTheme("material");
             }
             catch (Exception)
             {
-                appCache.SetItem("FSAWebTheme", new ThemeCache("material"), CacheType.LocalStorage, 0);
+                appCache.SetItem("FSASOWebTheme", new ThemeCache("material"), CacheType.LocalStorage, 0);
                 themeService.SetTheme("material");
             }
         }

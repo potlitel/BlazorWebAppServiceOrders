@@ -28,7 +28,7 @@
     {
         try
         {
-            var responseCache = await AppCache.GetItem<ThemeCache?>("FSAWebTheme", CacheType.LocalStorage);
+            var responseCache = await AppCache.GetItem<ThemeCache?>("FSASOWebTheme", CacheType.LocalStorage);
             if (responseCache != null)
                 IsLightMode = responseCache.theme.Equals(LightTheme);
         }
@@ -44,12 +44,12 @@
             IsLightMode = !IsLightMode;
             if (IsLightMode)
             {
-                AppCache.SetItem("FSAWebTheme", new ThemeCache(LightTheme), CacheType.LocalStorage);
+                AppCache.SetItem("FSASOWebTheme", new ThemeCache(LightTheme), CacheType.LocalStorage);
                 ThemeService.SetTheme(LightTheme);
             }
             else
             {
-                AppCache.SetItem("FSAWebTheme", new ThemeCache(DarkTheme), CacheType.LocalStorage);
+                AppCache.SetItem("FSASOWebTheme", new ThemeCache(DarkTheme), CacheType.LocalStorage);
                 ThemeService.SetTheme(DarkTheme);
             }
         }

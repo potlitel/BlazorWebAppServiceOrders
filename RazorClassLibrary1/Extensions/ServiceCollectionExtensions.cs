@@ -45,6 +45,7 @@ namespace RazorClassLibrary1.Extensions
             //services.AddScoped<IFSAThemeService, FSAAThemeService>();
 
             services.AddScoped<IFSASOCustomDialogService, FSASOCustomDialogService>();
+            services.AddScoped<IFSASOThemeService, FSAAThemeService>();
             services.AddScoped<IGitHubService, GitHubService>();
             services.AddScoped<IMyService, MyService>();
 

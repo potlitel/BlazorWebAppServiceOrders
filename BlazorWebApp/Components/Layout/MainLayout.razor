@@ -135,6 +135,18 @@
     private MenuItemDisplayStyle _menuStyle = MenuItemDisplayStyle.IconAndText;
     bool sidebarExpanded = true;
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await FSAThemeService.Update();
+
+            // SideBarHelper.IsMobile = await JSRuntime.InvokeAsync<bool>("isDevice");
+            // if (SideBarHelper.IsMobile)
+            //     SideBarHelper.Expanded = false;
+        }
+    }
+
     void ToggleSidebar()
     {
         sidebarExpanded = !sidebarExpanded;
