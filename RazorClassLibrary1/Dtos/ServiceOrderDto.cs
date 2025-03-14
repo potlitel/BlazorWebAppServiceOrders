@@ -2,6 +2,7 @@
 //using FSA.Core.ServiceOrders.Models;
 
 using FSA.Core.ServiceOrders.Models;
+using FSA.Core.ServiceOrders.Models.Masters;
 
 namespace RazorClassLibrary1.Dtos
 {
@@ -14,9 +15,15 @@ namespace RazorClassLibrary1.Dtos
 
         public long OwnerId { get; set; }
         public long ExecutorId { get; set; }
-
         public long? ParentServiceOrderId { get; set; }
+        public virtual ServiceOrderDto? ParentServiceOrder { get; set; }
         public long ServiceOrderTypeId { get; set; }
+        public virtual ServiceOrderTypeDto? Type { get; set; }
+
+        public virtual ICollection<ServiceOrderDocumentDto> Documents { get; set; } = [];
+        public virtual ICollection<ServiceOrderTaskDto> Tasks { get; set; } = [];
+        public virtual ICollection<ServiceOrderRegisterDto> Registers { get; set; } = [];
+        public virtual ICollection<ServiceOrderFeatureDto> Features { get; set; } = [];
 
         public ServiceOrderDto()
         {
@@ -39,8 +46,14 @@ namespace RazorClassLibrary1.Dtos
             Address = dto.Address;
             OwnerId = dto.OwnerId;
             ExecutorId = dto.ExecutorId;
+            ParentServiceOrder = dto.ParentServiceOrder;
             ParentServiceOrderId = dto.ParentServiceOrderId;
+            Type = dto.Type;
             ServiceOrderTypeId = dto.ServiceOrderTypeId;
+            Documents = dto.Documents;
+            Tasks = dto.Tasks;
+            Registers = dto.Registers;
+            Features = dto.Features;
         }
 
         public static ServiceOrderDto ToDto(ServiceOrder entity)
