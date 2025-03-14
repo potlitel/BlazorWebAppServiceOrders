@@ -35,7 +35,7 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
                     new DataColumn
                     {
                         Property = nameof(SupplyOperationDto.Code),
-                        Title = "Code",
+                        Title = (Localizer["Code"]),
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -43,7 +43,7 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
                     new DataColumn
                     {
                         Property = nameof(SupplyOperationDto.Description),
-                        Title = "Description",
+                        Title = (Localizer["Description"]),
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -51,7 +51,7 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
                     new DataColumn
                     {
                         Property = nameof(SupplyOperationDto.IsActive),
-                        Title = "Active",
+                        Title = (Localizer["Active"]),
                         Filterable = true,
                         Sortable = true,
                         Width = "120px",

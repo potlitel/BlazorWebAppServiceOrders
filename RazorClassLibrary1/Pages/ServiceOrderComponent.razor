@@ -5,11 +5,11 @@
 @inject IManagementAppState? appState;
 
 
-<h3>Service Orders</h3>
+<h3>@(Localizer["ServiceOrders"])</h3>
 
-@* <PageTitle>@(Localizer["CompanyGroups"])</PageTitle>
+<PageTitle>@(Localizer["ServiceOrders"])</PageTitle>
 
-<PageHeader Image="_content/FSA.Razor.Components/svg/company-group.svg" Text="@Localizer["CompanyGroups"]" /> *@
+@*<PageHeader Image="_content/FSA.Razor.Components/svg/company-group.svg" Text="@Localizer["CompanyGroups"]" /> *@
 
 <GenericDataGrid Items="ListItems"
                  Pagination=@Pagination

@@ -117,17 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Active" xml:space="preserve">
+    <value>Ativo</value>
+    <comment>Global</comment>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Endereço</value>
+    <comment>GridColumn</comment>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Aplicar</value>
+    <comment>Global</comment>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Limpar</value>
+    <comment>Global</comment>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Código</value>
+    <comment>GridColumn</comment>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descrição</value>
+    <comment>GridColumn</comment>
+  </data>
   <data name="Documenttypes" xml:space="preserve">
     <value>Tipos de documentos</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="EstimatedEndingDate" xml:space="preserve">
+    <value>Data de término estimada</value>
+    <comment>GridColumn</comment>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filtro</value>
+    <comment>Global</comment>
   </data>
   <data name="Masters" xml:space="preserve">
     <value>Mestras</value>
     <comment>Sidebar</comment>
   </data>
+  <data name="Number" xml:space="preserve">
+    <value>Número</value>
+    <comment>GridColumn</comment>
+  </data>
+  <data name="Observations" xml:space="preserve">
+    <value>Observações</value>
+    <comment>Global</comment>
+  </data>
   <data name="Overview" xml:space="preserve">
     <value>Visão geral</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Procurar</value>
+    <comment>Global</comment>
   </data>
   <data name="ServiceOrders" xml:space="preserve">
     <value>Ordens de serviço</value>
@@ -161,6 +205,14 @@
     <value>Tipos de ordem de serviço</value>
     <comment>Sidebar</comment>
   </data>
+  <data name="StateFrom" xml:space="preserve">
+    <value>Estado de</value>
+    <comment>GridColumn</comment>
+  </data>
+  <data name="StateTo" xml:space="preserve">
+    <value>Estado para</value>
+    <comment>GridColumn</comment>
+  </data>
   <data name="Supplies" xml:space="preserve">
     <value>Suprimentos</value>
     <comment>Sidebar</comment>
@@ -168,5 +220,13 @@
   <data name="SupplyOperations" xml:space="preserve">
     <value>Operações de Fornecimento</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="Trigger" xml:space="preserve">
+    <value>Acionar</value>
+    <comment>GridColumn</comment>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
+    <comment>GridColumn</comment>
   </data>
 </root>

@@ -27,7 +27,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderType
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderTypeDto.Code),
-                        Title = "Code",
+                        Title = (Localizer["Code"]),
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -35,7 +35,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderType
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderTypeDto.Description),
-                        Title = "Description",
+                        Title = (Localizer["Description"]),
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -43,7 +43,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderType
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderTypeDto.IsActive),
-                        Title = "Active",
+                        Title = (Localizer["Active"]),
                         Filterable = true,
                         Sortable = true,
                         Width = "120px",

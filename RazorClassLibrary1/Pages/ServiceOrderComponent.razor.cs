@@ -43,7 +43,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderDto.EstimatedEndingDate),
-                        Title = "Estimated Ending Date",
+                        Title = (Localizer["EstimatedEndingDate"]),
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "150px"
