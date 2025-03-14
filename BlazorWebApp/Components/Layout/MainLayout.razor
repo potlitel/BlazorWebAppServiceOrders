@@ -46,19 +46,19 @@
     </RadzenHeader>
     <RadzenSidebar Responsive="false" Style="width: max-content" @bind-Expanded="sidebarExpanded">
         <RadzenPanelMenu DisplayStyle="@(sidebarExpanded ? MenuItemDisplayStyle.IconAndText : MenuItemDisplayStyle.Icon)" ShowArrow="true">
-            <RadzenPanelMenuItem Text="Overview" Icon="home" Path="/" />
-            <RadzenPanelMenuItem Text="Service Orders" Icon="quick_reference" Path="serviceorders" />
-            <RadzenPanelMenuItem Text="Service Orders Tasks" Icon="quick_reference" Path="serviceordertasks" />
-            <RadzenPanelMenuItem Text="Service Orders Documents" Icon="quick_reference" Path="serviceorderdocuments" />
-            <RadzenPanelMenuItem Text="Service Orders Tasks Documents" Icon="data_check" Path="serviceordertasksdocuments" />
-            <RadzenPanelMenuItem Text="Service Orders Features" Icon="pin_drop" Path="serviceorderfeatures" />
-            <RadzenPanelMenuItem Text="Service Orders Registers" Icon="transform" Path="serviceorderregisters" />
-            <RadzenPanelMenuItem Text="Supplies" Icon="rule_settings" Path="supplies" />
-            <RadzenPanelMenuItem Text="Masters" Icon="tune">
-                <RadzenPanelMenuItem Text="Document types" Icon="photo_auto_merge" Path="documentstypes" />
-                <RadzenPanelMenuItem Text="SO Task States" Icon="history_edu" Path="serviceordertaskstates" />
-                <RadzenPanelMenuItem Text="SO Types" Icon="menu_book" Path="serviceordertypes" />
-                <RadzenPanelMenuItem Text="Supply Operations" Icon="settings_motion_mode" Path="suppliesoperations" />
+            <RadzenPanelMenuItem Text="@(Localizer["Overview"])" Icon="home" Path="/" />
+            <RadzenPanelMenuItem Text="@(Localizer["ServiceOrders"])" Icon="quick_reference" Path="serviceorders" />
+            <RadzenPanelMenuItem Text="@(Localizer["ServiceOrdersTasks"])" Icon="quick_reference" Path="serviceordertasks" />
+            <RadzenPanelMenuItem Text="@(Localizer["ServiceOrdersDocuments"])" Icon="quick_reference" Path="serviceorderdocuments" />
+            <RadzenPanelMenuItem Text="@(Localizer["ServiceOrdersTasksDocuments"])" Icon="data_check" Path="serviceordertasksdocuments" />
+            <RadzenPanelMenuItem Text="@(Localizer["ServiceOrdersFeatures"])" Icon="pin_drop" Path="serviceorderfeatures" />
+            <RadzenPanelMenuItem Text="@(Localizer["ServiceOrdersRegisters"])" Icon="transform" Path="serviceorderregisters" />
+            <RadzenPanelMenuItem Text="@(Localizer["Supplies"])" Icon="rule_settings" Path="supplies" />
+            <RadzenPanelMenuItem Text="@(Localizer["Masters"])" Icon="tune">
+                <RadzenPanelMenuItem Text="@(Localizer["Documenttypes"])" Icon="photo_auto_merge" Path="documentstypes" />
+                <RadzenPanelMenuItem Text="@(Localizer["ServiceOrderTasksStates"])" Icon="history_edu" Path="serviceordertaskstates" />
+                <RadzenPanelMenuItem Text="@(Localizer["ServiceOrderTypes"])" Icon="menu_book" Path="serviceordertypes" />
+                <RadzenPanelMenuItem Text="@(Localizer["SupplyOperations"])" Icon="settings_motion_mode" Path="suppliesoperations" />
             </RadzenPanelMenuItem>
         </RadzenPanelMenu>
     </RadzenSidebar>

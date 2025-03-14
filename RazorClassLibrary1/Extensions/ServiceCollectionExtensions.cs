@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Radzen;
 using RazorClassLibrary1.Services;
+using System.Globalization;
 
 namespace RazorClassLibrary1.Extensions
 {
@@ -28,7 +29,8 @@ namespace RazorClassLibrary1.Extensions
             services.AddFSACacheServices();
             //Components
             services.AddFSARadzenComponentsServices();
-            services.AddFSALocalizationServices(configuration);
+            //services.AddFSALocalizationServices(configuration);
+            services.AddFSA_ServiceOrders_LocalizationServices(configuration);
             return services;
         }
 
@@ -51,6 +53,39 @@ namespace RazorClassLibrary1.Extensions
 
             //services.AddRadzenComponents();
 
+            return services;
+        }
+
+        public static IServiceCollection AddFSA_ServiceOrders_LocalizationServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            //services.AddLocalization();
+
+            //var culture = configuration["FSASOManagement:App:Culture"];
+
+            //var cultureConf = new CultureInfo(culture!)
+            //{
+            //    NumberFormat = new NumberFormatInfo()
+            //    {
+            //        NumberDecimalDigits = 0,
+            //        NumberDecimalSeparator = "."
+            //    }
+            //};
+            //CultureInfo.DefaultThreadCurrentCulture = cultureConf;
+            //CultureInfo.DefaultThreadCurrentUICulture = cultureConf;
+
+            //return services;
+
+            services.AddLocalization();
+            CultureInfo obj = new CultureInfo(configuration["FSAManagement:App:Culture"])
+            {
+                NumberFormat = new NumberFormatInfo
+                {
+                    NumberDecimalDigits = 0,
+                    NumberDecimalSeparator = "."
+                }
+            };
+            CultureInfo.DefaultThreadCurrentCulture = obj;
+            CultureInfo.DefaultThreadCurrentUICulture = obj;
             return services;
         }
     }
