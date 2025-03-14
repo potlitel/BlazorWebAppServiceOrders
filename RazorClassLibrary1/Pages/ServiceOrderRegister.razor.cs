@@ -37,7 +37,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderRegisterDto.StateFrom),
-                        Title = "StateFrom",
+                        Title = "State From",
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -45,7 +45,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderRegisterDto.StateTo),
-                        Title = "StateTo",
+                        Title = "State To",
                         Filterable = true,
                         Sortable = true,
                         Width = "120px",
@@ -62,7 +62,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderRegisterDto.ServiceOrderId),
-                        Title = "ServiceOrderId",
+                        Title = "Service Order",
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"

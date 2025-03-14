@@ -53,7 +53,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(SupplyDto.SupplyOperationId),
-                        Title = "SupplyOperationId",
+                        Title = "Supply Operation",
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "50px"
@@ -61,7 +61,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(SupplyDto.ServiceOrderTaskId),
-                        Title = "ServiceOrderTaskId",
+                        Title = "Service Order Task",
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "50px"

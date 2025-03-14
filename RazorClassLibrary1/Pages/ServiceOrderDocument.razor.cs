@@ -45,7 +45,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderDocumentDto.ServiceOrderId),
-                        Title = "ServiceOrderId",
+                        Title = "Service Order",
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "50px"
@@ -53,7 +53,7 @@ namespace RazorClassLibrary1.Pages
                 new DataColumn
                     {
                         Property = nameof(ServiceOrderDocumentDto.DocumentTypeId),
-                        Title = "DocumentTypeId",
+                        Title = "Document Type",
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "50px"

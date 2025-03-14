@@ -46,7 +46,7 @@ namespace RazorClassLibrary1.Pages
                         Title = "Estimated Ending Date",
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "120px"
+                        MinWidth = "150px"
                     },
                     new DataColumn
                     {
