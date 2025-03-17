@@ -121,9 +121,49 @@
     <value>Active</value>
     <comment>Global</comment>
   </data>
+  <data name="AddDocumentType" xml:space="preserve">
+    <value>Add Document Type</value>
+    <comment>Modals</comment>
+  </data>
   <data name="Address" xml:space="preserve">
     <value>Address</value>
     <comment>GridColumn</comment>
+  </data>
+  <data name="AddServiceOrder" xml:space="preserve">
+    <value>Add Service Order</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddServiceOrderDocument" xml:space="preserve">
+    <value>Add Service Order Document</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddServiceOrderFeature" xml:space="preserve">
+    <value>Add Service Order Feature</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddServiceOrderRegister" xml:space="preserve">
+    <value>Add Service Order Register</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddServiceOrderTask" xml:space="preserve">
+    <value>Add Service Order Task</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddServiceOrderTaskDocument" xml:space="preserve">
+    <value>Add Service Order Task Document</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddServiceOrderType" xml:space="preserve">
+    <value>Add Service Order Type</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddSupplyOperation" xml:space="preserve">
+    <value>Add Supply Operation</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddTaskState" xml:space="preserve">
+    <value>Add Task State</value>
+    <comment>Modals</comment>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Aplicar</value>
@@ -144,6 +184,10 @@
   <data name="Documenttypes" xml:space="preserve">
     <value>Document types</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="EditDocumentType" xml:space="preserve">
+    <value>Edit Document Type</value>
+    <comment>Modals</comment>
   </data>
   <data name="EstimatedEndingDate" xml:space="preserve">
     <value>Estimated Ending Date</value>

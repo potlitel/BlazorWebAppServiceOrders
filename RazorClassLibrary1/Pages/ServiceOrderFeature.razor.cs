@@ -100,7 +100,7 @@ namespace RazorClassLibrary1.Pages
                         {
                             Action = GridGeneralActions.ADD_ITEM,
                             Icon = "add",
-                            Title = "Add Service Order Feature Type",
+                            Title = "Add Service Order Feature",
                             Style = ButtonStyle.Primary.GetHashCode(),
                             //Show = show => { return create; }
                         }

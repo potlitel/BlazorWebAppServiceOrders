@@ -121,9 +121,49 @@
     <value>Ativo</value>
     <comment>Global</comment>
   </data>
+  <data name="AddDocumentType" xml:space="preserve">
+    <value>Agregar tipo de documento</value>
+    <comment>Modals</comment>
+  </data>
   <data name="Address" xml:space="preserve">
     <value>Endereço</value>
     <comment>GridColumn</comment>
+  </data>
+  <data name="AddServiceOrder" xml:space="preserve">
+    <value>Agregar orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddServiceOrderDocument" xml:space="preserve">
+    <value>Agregar documento de orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddServiceOrderFeature" xml:space="preserve">
+    <value>Añadir feature de orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddServiceOrderRegister" xml:space="preserve">
+    <value>Agregar registro de orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddServiceOrderTask" xml:space="preserve">
+    <value>Agregar tarea de orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddServiceOrderTaskDocument" xml:space="preserve">
+    <value>Agregar documento de tarea de orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddServiceOrderType" xml:space="preserve">
+    <value>Agregar tipo de orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddSupplyOperation" xml:space="preserve">
+    <value>Agregar Operación de Suministro</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="AddTaskState" xml:space="preserve">
+    <value>Agregar estado de tarea</value>
+    <comment>Modals</comment>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Aplicar</value>
@@ -144,6 +184,10 @@
   <data name="Documenttypes" xml:space="preserve">
     <value>Tipos de documentos</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="EditDocumentType" xml:space="preserve">
+    <value>Editar Tipo de Documento</value>
+    <comment>Modals</comment>
   </data>
   <data name="EstimatedEndingDate" xml:space="preserve">
     <value>Data de término estimada</value>

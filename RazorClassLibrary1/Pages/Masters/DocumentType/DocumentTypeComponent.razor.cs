@@ -99,7 +99,7 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
                         {
                             Action = GridGeneralActions.ADD_ITEM,
                             Icon = "add",
-                            Title = "Add Document Type",
+                            Title = Localizer["AddDocumentType"],
                             Style = ButtonStyle.Primary.GetHashCode(),
                             //Show = show => { return create; }
                         }
@@ -178,7 +178,7 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Document Type");
+                        var result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["AddDocumentType"]);
                         if (result)
                         {
                             //var response = await CreateSystemModuleService.Handle(item!);
@@ -189,7 +189,7 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
                         }
                         break;
                     case GridItemActions.EDIT_ITEM:
-                        result = await CustomSODialogService.Open_AddEditMaster(item, "Edit Document Type");
+                        result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["EditDocumentType"]);
                         if (result)
                         {
                             //var response = await UpdateSystemModuleService.Handle(item!);

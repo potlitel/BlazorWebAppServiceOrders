@@ -70,11 +70,101 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Document Type.
+        /// </summary>
+        internal static string AddDocumentType {
+            get {
+                return ResourceManager.GetString("AddDocumentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         internal static string Address {
             get {
                 return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Service Order.
+        /// </summary>
+        internal static string AddServiceOrder {
+            get {
+                return ResourceManager.GetString("AddServiceOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Service Order Document.
+        /// </summary>
+        internal static string AddServiceOrderDocument {
+            get {
+                return ResourceManager.GetString("AddServiceOrderDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Service Order Feature.
+        /// </summary>
+        internal static string AddServiceOrderFeature {
+            get {
+                return ResourceManager.GetString("AddServiceOrderFeature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Service Order Register.
+        /// </summary>
+        internal static string AddServiceOrderRegister {
+            get {
+                return ResourceManager.GetString("AddServiceOrderRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Service Order Task.
+        /// </summary>
+        internal static string AddServiceOrderTask {
+            get {
+                return ResourceManager.GetString("AddServiceOrderTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Service Order Task Document.
+        /// </summary>
+        internal static string AddServiceOrderTaskDocument {
+            get {
+                return ResourceManager.GetString("AddServiceOrderTaskDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Service Order Type.
+        /// </summary>
+        internal static string AddServiceOrderType {
+            get {
+                return ResourceManager.GetString("AddServiceOrderType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Supply Operation.
+        /// </summary>
+        internal static string AddSupplyOperation {
+            get {
+                return ResourceManager.GetString("AddSupplyOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Task State.
+        /// </summary>
+        internal static string AddTaskState {
+            get {
+                return ResourceManager.GetString("AddTaskState", resourceCulture);
             }
         }
         
@@ -120,6 +210,15 @@ namespace RazorClassLibrary1.Resources {
         internal static string Documenttypes {
             get {
                 return ResourceManager.GetString("Documenttypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Document Type.
+        /// </summary>
+        internal static string EditDocumentType {
+            get {
+                return ResourceManager.GetString("EditDocumentType", resourceCulture);
             }
         }
         
