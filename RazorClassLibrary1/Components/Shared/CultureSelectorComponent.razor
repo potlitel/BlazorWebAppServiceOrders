@@ -1,12 +1,27 @@
-﻿@using Microsoft.JSInterop
+﻿@using FSA.Razor.Components.Components.Shared
+@using Microsoft.JSInterop
+@using Radzen.Blazor
 @* @inject IJSRuntime jsRuntime *@
 @inject IJSRuntime jsRuntime;
 
 @* <strong>Culture:</strong> *@
 
-<select class="form-control" @bind="Culture" style="width:300px; margin-left:10px;">
+@* <select class="form-control" @bind="Culture" style="width:300px; margin-left:10px;">
 	@foreach (var culture in cultures)
 	{
 		<option value="@culture">@culture.DisplayName</option>
 	}
-</select>
+</select> *@
+
+<RadzenDropDown Data="@Countries"
+                style="width: 80px !important; top: 9px;"
+                AllowFiltering="false"
+                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                FilterOperator="StringFilterOperator.StartsWith"
+                TValue="string"
+                TextProperty="@nameof(Country.FlagEmoji)"
+                ValueProperty="@nameof(Country.CountryCode)"
+                Class="w-100 rz-mb-4"
+                @bind-Value=@_selectedCountryCode
+                Change="languageChange">
+</RadzenDropDown>

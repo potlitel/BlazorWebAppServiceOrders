@@ -1,6 +1,9 @@
 ﻿@* @using FSA.Razor.Components.Components.Shared *@
 @using RazorClassLibrary1.Areas.CustomMenu
+@using RazorClassLibrary1.Helpers
 @inherits LayoutComponentBase
+
+@inject IJSRuntime JSRuntime
 
 
 @* <div class="page">
@@ -134,6 +137,17 @@
     private bool _sidebarExpanded = true;
     private MenuItemDisplayStyle _menuStyle = MenuItemDisplayStyle.IconAndText;
     bool sidebarExpanded = true;
+
+    SideBarHelper SideBarHelper = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // await FSAThemeService.Update();
+
+        // SideBarHelper.IsMobile = await JSRuntime.InvokeAsync<bool>("isDevice");
+        // if (SideBarHelper.IsMobile)
+        //     SideBarHelper.Expanded = false;
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
