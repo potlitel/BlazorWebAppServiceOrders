@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Globalization;
-using System.Text.RegularExpressions;
 
 
 namespace RazorClassLibrary1.Components.Shared
@@ -12,6 +11,7 @@ namespace RazorClassLibrary1.Components.Shared
         public NavigationManager NavManager { get; set; }
 
         private string _selectedCountryCode;
+        private string global = string.Empty;
         private HashSet<string> CountryCodes = new HashSet<string> { "US", "PT" };
 
         private List<Country> Countries => CountryCodes
@@ -30,9 +30,6 @@ namespace RazorClassLibrary1.Components.Shared
             public string CountryCode { get; set; } = string.Empty;
             public string FlagEmoji { get; set; } = string.Empty;
         }
-
-        //[Inject]
-        //public IJSRuntime JSRuntime { get; set; }
 
         CultureInfo[] cultures = new[]
         {
@@ -53,12 +50,7 @@ namespace RazorClassLibrary1.Components.Shared
             {
                 if (CultureInfo.CurrentCulture != value)
                 {
-                    //var js = (IJSInProcessRuntime)jsRuntime;
-                    //js.InvokeVoid("blazorCulture.set", value.Name);
-
                     jsRuntime.InvokeVoidAsync("blazorCulture.set", value.Name);
-
-
 					NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
                 }
             }
@@ -66,13 +58,11 @@ namespace RazorClassLibrary1.Components.Shared
 
         protected override async Task OnInitializedAsync()
         {
-            _selectedCountryCode = (Culture.Name == "en-US") ? "US" : "PT";
+            _selectedCountryCode = (Culture.CompareInfo.Name == "en-US") ? "US" : "PT";
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
 		{
-			//IServiceProvider serviceProvider = services.BuildServiceProvider();
-			//var jsInterop = serviceProvider.GetRequiredService<IJSRuntime>();
 			var result = await jsRuntime.InvokeAsync<string>("blazorCulture.get");
 
 			CultureInfo culture;
@@ -84,13 +74,11 @@ namespace RazorClassLibrary1.Components.Shared
 
 			CultureInfo.DefaultThreadCurrentCulture = culture;
 			CultureInfo.DefaultThreadCurrentUICulture = culture;
-
-            _selectedCountryCode = (Culture.Name == "en-US") ? "US" : "PT";
         }
 
         async Task languageChange() 
         {
-            if (CultureInfo.CurrentCulture.Name != _selectedCountryCode)
+            if (CultureInfo.CurrentCulture.Name != _selectedCountryCode.ToLower())
             {
                 jsRuntime.InvokeVoidAsync("blazorCulture.set", _selectedCountryCode);
                 NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
