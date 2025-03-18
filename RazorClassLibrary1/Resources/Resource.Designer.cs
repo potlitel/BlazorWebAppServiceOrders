@@ -22,7 +22,7 @@ namespace RazorClassLibrary1.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource {
+    public class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -358,7 +358,7 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Procurar.
+        ///   Looks up a localized string similar to Search.
         /// </summary>
         internal static string Search {
             get {

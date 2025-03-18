@@ -250,7 +250,7 @@
     <comment>Sidebar</comment>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Procurar</value>
+    <value>Search</value>
     <comment>Global</comment>
   </data>
   <data name="ServiceOrders" xml:space="preserve">

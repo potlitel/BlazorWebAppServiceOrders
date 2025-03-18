@@ -1,4 +1,5 @@
 ﻿@* @using FSA.Razor.Components.Components.Shared *@
+@using FSA.Razor.Components.Components.Shared
 @using RazorClassLibrary1.Areas.CustomMenu
 @using RazorClassLibrary1.Helpers
 @inherits LayoutComponentBase
@@ -28,7 +29,7 @@
     <a class="dismiss">🗙</a>
 </div> *@
 
-
+<FadeIn>
  <RadzenLayout>
     <RadzenHeader>
         <ChildContent>
@@ -74,7 +75,7 @@
         Footer
     </RadzenFooter>
 </RadzenLayout>
-
+</FadeIn>
 
 @* <RadzenComponents />
 
