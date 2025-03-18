@@ -1,4 +1,8 @@
-﻿@* <strong>Culture:</strong> *@
+﻿@using Microsoft.JSInterop
+@* @inject IJSRuntime jsRuntime *@
+@inject IJSRuntime jsRuntime;
+
+@* <strong>Culture:</strong> *@
 
 <select class="form-control" @bind="Culture" style="width:300px; margin-left:10px;">
 	@foreach (var culture in cultures)

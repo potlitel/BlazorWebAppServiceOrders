@@ -15,6 +15,8 @@ builder.Services.ConfigureSOComponents(builder.Configuration);
 
 builder.Services.AddFSASOCustomComponentsService();
 
+//builder.Services.AddLocalization();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

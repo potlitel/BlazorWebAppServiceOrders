@@ -1,12 +1,16 @@
 ﻿using FSA.Cache;
+using FSA.Core.Dtos;
 using FSA.Management.Application.DependencyContainers;
 using FSA.Razor.Components.Extensions;
 using FSA.Razor.Components.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.JSInterop;
 using Radzen;
 using RazorClassLibrary1.Services;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace RazorClassLibrary1.Extensions
 {
@@ -58,34 +62,48 @@ namespace RazorClassLibrary1.Extensions
 
         public static IServiceCollection AddFSA_ServiceOrders_LocalizationServices(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddLocalization();
+			#region ToDelete
+			//services.AddLocalization();
 
-            //var culture = configuration["FSASOManagement:App:Culture"];
+			//var culture = configuration["FSASOManagement:App:Culture"];
 
-            //var cultureConf = new CultureInfo(culture!)
+			//var cultureConf = new CultureInfo(culture!)
+			//{
+			//    NumberFormat = new NumberFormatInfo()
+			//    {
+			//        NumberDecimalDigits = 0,
+			//        NumberDecimalSeparator = "."
+			//    }
+			//};
+			//CultureInfo.DefaultThreadCurrentCulture = cultureConf;
+			//CultureInfo.DefaultThreadCurrentUICulture = cultureConf;
+
+			//return services;
+			#endregion
+
+			services.AddLocalization();
+            //CultureInfo obj = new CultureInfo(configuration["FSAManagement:App:Culture"])
             //{
-            //    NumberFormat = new NumberFormatInfo()
+            //    NumberFormat = new NumberFormatInfo
             //    {
             //        NumberDecimalDigits = 0,
             //        NumberDecimalSeparator = "."
             //    }
             //};
-            //CultureInfo.DefaultThreadCurrentCulture = cultureConf;
-            //CultureInfo.DefaultThreadCurrentUICulture = cultureConf;
 
-            //return services;
+            //if (obj != null)
+            //{
+            //    CultureInfo.DefaultThreadCurrentCulture = obj;
+            //    CultureInfo.DefaultThreadCurrentUICulture = obj;
+            //}
+            //else
+            //{
+            //    //var jsInterop = host.Services.GetRequiredService<IJSRuntime>();
+            //    //var result = await jsInterop.InvokeAsync<string>("blazorCulture.get");
+            //    obj = new CultureInfo("pt");
+            //}
 
-            services.AddLocalization();
-            CultureInfo obj = new CultureInfo(configuration["FSAManagement:App:Culture"])
-            {
-                NumberFormat = new NumberFormatInfo
-                {
-                    NumberDecimalDigits = 0,
-                    NumberDecimalSeparator = "."
-                }
-            };
-            CultureInfo.DefaultThreadCurrentCulture = obj;
-            CultureInfo.DefaultThreadCurrentUICulture = obj;
+
             return services;
         }
     }
