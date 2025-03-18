@@ -152,9 +152,11 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        StateHasChanged();
         if (firstRender)
         {
             await FSAThemeService.Update();
+            // FSAThemeService.Update().GetAwaiter().GetResult();
 
             // SideBarHelper.IsMobile = await JSRuntime.InvokeAsync<bool>("isDevice");
             // if (SideBarHelper.IsMobile)

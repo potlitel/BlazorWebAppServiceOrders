@@ -130,35 +130,35 @@
     <comment>GridColumn</comment>
   </data>
   <data name="AddServiceOrder" xml:space="preserve">
-    <value>Agregar orden de servicio</value>
+    <value>Agregar ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="AddServiceOrderDocument" xml:space="preserve">
-    <value>Agregar documento de orden de servicio</value>
+    <value>Agregar documento de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="AddServiceOrderFeature" xml:space="preserve">
-    <value>Añadir feature de orden de servicio</value>
+    <value>Añadir feature de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="AddServiceOrderRegister" xml:space="preserve">
-    <value>Agregar registro de orden de servicio</value>
+    <value>Agregar registro de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="AddServiceOrderTask" xml:space="preserve">
-    <value>Agregar tarea de orden de servicio</value>
+    <value>Agregar tarea de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="AddServiceOrderTaskDocument" xml:space="preserve">
-    <value>Agregar documento de tarea de orden de servicio</value>
+    <value>Agregar documento de tarea de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="AddServiceOrderType" xml:space="preserve">
-    <value>Agregar tipo de orden de servicio</value>
+    <value>Agregar tipo de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="AddSupplyOperation" xml:space="preserve">
-    <value>Agregar Operación de Suministro</value>
+    <value>Agregar Operaçõe de Fornecimento</value>
     <comment>Modals</comment>
   </data>
   <data name="AddTaskState" xml:space="preserve">
@@ -190,35 +190,35 @@
     <comment>Modals</comment>
   </data>
   <data name="EditServiceOrder" xml:space="preserve">
-    <value>Editar orden de servicio</value>
+    <value>Editar ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="EditServiceOrderDocument" xml:space="preserve">
-    <value>Editar documento de orden de servicio</value>
+    <value>Editar documento de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="EditServiceOrderFeature" xml:space="preserve">
-    <value>Editar feature de orden de servicio</value>
+    <value>Editar feature de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="EditServiceOrderRegister" xml:space="preserve">
-    <value>Editar registro de orden de servicio</value>
+    <value>Editar registro de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="EditServiceOrderTask" xml:space="preserve">
-    <value>Editar tarea de orden de servicio</value>
+    <value>Editar tarea de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="EditServiceOrderTaskDocument" xml:space="preserve">
-    <value>Editar documento de tarea de orden de servicio</value>
+    <value>Editar documento de tarea de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="EditServiceOrderType" xml:space="preserve">
-    <value>Editar tipo de orden de servicio</value>
+    <value>Editar tipo de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="EditSupplyOperation" xml:space="preserve">
-    <value>Editar Operación de Suministro</value>
+    <value>Editar Operaçõe de Fornecimento</value>
     <comment>Modals</comment>
   </data>
   <data name="EditTaskState" xml:space="preserve">
@@ -258,19 +258,19 @@
     <comment>Sidebar</comment>
   </data>
   <data name="ServiceOrdersDocuments" xml:space="preserve">
-    <value>Documentos de Ordens de Serviço</value>
+    <value>Documentos de Ordems de Serviço</value>
     <comment>Sidebar</comment>
   </data>
   <data name="ServiceOrdersFeatures" xml:space="preserve">
-    <value>Recursos de ordens de serviço</value>
+    <value>Recursos de ordems de serviço</value>
     <comment>Sidebar</comment>
   </data>
   <data name="ServiceOrdersRegisters" xml:space="preserve">
-    <value>Registros de Ordens de Serviço</value>
+    <value>Registros de Ordems de Serviço</value>
     <comment>Sidebar</comment>
   </data>
   <data name="ServiceOrdersTasks" xml:space="preserve">
-    <value>Tarefas de Ordens de Serviço</value>
+    <value>Tarefas de Ordems de Serviço</value>
     <comment>Sidebar</comment>
   </data>
   <data name="ServiceOrdersTasksDocuments" xml:space="preserve">

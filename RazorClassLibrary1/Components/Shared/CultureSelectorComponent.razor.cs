@@ -75,6 +75,9 @@ namespace RazorClassLibrary1.Components.Shared
 
 			CultureInfo.DefaultThreadCurrentCulture = culture;
 			CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+            _selectedCountryCode = (culture.CompareInfo.Name == "en-US" || culture.CompareInfo.Name == "us") ? "US" : "PT";
+            StateHasChanged();
         }
 
         async Task languageChange() 

@@ -106,7 +106,7 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
                         {
                             Action = GridGeneralActions.ADD_ITEM,
                             Icon = "add",
-                            Title = "Add Supply Operation",
+                            Title = Localizer["AddSupplyOperation"],
                             Style = ButtonStyle.Primary.GetHashCode(),
                             //Show = show => { return create; }
                         }
@@ -185,7 +185,7 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Supply Operation");
+                        var result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["AddSupplyOperation"]);
                         if (result)
                         {
                             //var response = await CreateSystemModuleService.Handle(item!);
@@ -196,7 +196,7 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
                         }
                         break;
                     case GridItemActions.EDIT_ITEM:
-                        result = await CustomSODialogService.Open_AddEditMaster(item, "Edit Supply Operation");
+                        result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["AddSupplyOperation"]);
                         if (result)
                         {
                             //var response = await UpdateSystemModuleService.Handle(item!);

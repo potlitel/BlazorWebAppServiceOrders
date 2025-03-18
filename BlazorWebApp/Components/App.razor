@@ -44,13 +44,15 @@
 
     string Href = string.Empty;
 
-    // protected override async Task OnInitializedAsync()
-    // {
-    //     // ThemeCache themeCache = await appCache.GetItem<ThemeCache>("FSASOWebTheme", CacheType.LocalStorage);
-    //     // Href = $"_content/Radzen.Blazor/css/{themeCache.theme}.css";
-    //     await base.OnInitializedAsync();
-    //     await UpdateIcon();
-    // }
+    protected override async Task OnInitializedAsync()
+    {
+        // ThemeCache themeCache = await appCache.GetItem<ThemeCache>("FSASOWebTheme", CacheType.LocalStorage);
+        // Href = $"_content/Radzen.Blazor/css/{themeCache.theme}.css";
+        //await base.OnInitializedAsync();
+        // await UpdateIcon();
+        //FSAThemeService.Update().GetAwaiter().GetResult();
+        // StateHasChanged();
+    }
 
     // private async Task UpdateIcon()
     // {

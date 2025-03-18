@@ -282,7 +282,7 @@
     <comment>Sidebar</comment>
   </data>
   <data name="ServiceOrderTypes" xml:space="preserve">
-    <value>Tipos de ordem de serviço</value>
+    <value>Service Order Types</value>
     <comment>Sidebar</comment>
   </data>
   <data name="StateFrom" xml:space="preserve">

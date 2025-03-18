@@ -99,7 +99,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
                         {
                             Action = GridGeneralActions.ADD_ITEM,
                             Icon = "add",
-                            Title = "Add Task State",
+                            Title = Localizer["AddTaskState"],
                             Style = ButtonStyle.Primary.GetHashCode(),
                             //Show = show => { return create; }
                         }
@@ -178,7 +178,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Service Order Task State");
+                        var result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["AddTaskState"]);
                         if (result)
                         {
                             //var response = await CreateSystemModuleService.Handle(item!);
@@ -189,7 +189,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
                         }
                         break;
                     case GridItemActions.EDIT_ITEM:
-                        result = await CustomSODialogService.Open_AddEditMaster(item, "Edit Service Order Task State");
+                        result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["EditTaskState"]);
                         if (result)
                         {
                             //var response = await UpdateSystemModuleService.Handle(item!);

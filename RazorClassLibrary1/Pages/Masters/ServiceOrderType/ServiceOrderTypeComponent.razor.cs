@@ -98,7 +98,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderType
                         {
                             Action = GridGeneralActions.ADD_ITEM,
                             Icon = "add",
-                            Title = "Add Service Order Type",
+                            Title = Localizer["AddServiceOrderType"],
                             Style = ButtonStyle.Primary.GetHashCode(),
                             //Show = show => { return create; }
                         }
@@ -177,7 +177,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderType
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Service Order Type");
+                        var result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["AddServiceOrderType"]);
                         if (result)
                         {
                             //var response = await CreateSystemModuleService.Handle(item!);
@@ -188,7 +188,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderType
                         }
                         break;
                     case GridItemActions.EDIT_ITEM:
-                        result = await CustomSODialogService.Open_AddEditMaster(item, "Edit Service Order Type");
+                        result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["EditServiceOrderType"]);
                         if (result)
                         {
                             //var response = await UpdateSystemModuleService.Handle(item!);

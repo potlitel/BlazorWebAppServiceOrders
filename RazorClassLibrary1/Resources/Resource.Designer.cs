@@ -430,7 +430,7 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tipos de ordem de serviço.
+        ///   Looks up a localized string similar to Service Order Types.
         /// </summary>
         internal static string ServiceOrderTypes {
             get {
