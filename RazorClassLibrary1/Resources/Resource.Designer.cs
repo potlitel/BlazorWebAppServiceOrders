@@ -22,7 +22,7 @@ namespace RazorClassLibrary1.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resource {
+    internal class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -196,7 +196,7 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Descrição.
+        ///   Looks up a localized string similar to Description.
         /// </summary>
         internal static string Description {
             get {
@@ -219,6 +219,87 @@ namespace RazorClassLibrary1.Resources {
         internal static string EditDocumentType {
             get {
                 return ResourceManager.GetString("EditDocumentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Service Order.
+        /// </summary>
+        internal static string EditServiceOrder {
+            get {
+                return ResourceManager.GetString("EditServiceOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Service Order Document.
+        /// </summary>
+        internal static string EditServiceOrderDocument {
+            get {
+                return ResourceManager.GetString("EditServiceOrderDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Service Order Feature.
+        /// </summary>
+        internal static string EditServiceOrderFeature {
+            get {
+                return ResourceManager.GetString("EditServiceOrderFeature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Service Order Register.
+        /// </summary>
+        internal static string EditServiceOrderRegister {
+            get {
+                return ResourceManager.GetString("EditServiceOrderRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Service Order Task.
+        /// </summary>
+        internal static string EditServiceOrderTask {
+            get {
+                return ResourceManager.GetString("EditServiceOrderTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Service Order Task Document.
+        /// </summary>
+        internal static string EditServiceOrderTaskDocument {
+            get {
+                return ResourceManager.GetString("EditServiceOrderTaskDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Service Order Type.
+        /// </summary>
+        internal static string EditServiceOrderType {
+            get {
+                return ResourceManager.GetString("EditServiceOrderType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Supply Operation.
+        /// </summary>
+        internal static string EditSupplyOperation {
+            get {
+                return ResourceManager.GetString("EditSupplyOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Task State.
+        /// </summary>
+        internal static string EditTaskState {
+            get {
+                return ResourceManager.GetString("EditTaskState", resourceCulture);
             }
         }
         

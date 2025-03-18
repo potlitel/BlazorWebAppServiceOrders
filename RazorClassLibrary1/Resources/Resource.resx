@@ -178,7 +178,7 @@
     <comment>GridColumn</comment>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Descrição</value>
+    <value>Description</value>
     <comment>GridColumn</comment>
   </data>
   <data name="Documenttypes" xml:space="preserve">
@@ -187,6 +187,42 @@
   </data>
   <data name="EditDocumentType" xml:space="preserve">
     <value>Edit Document Type</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrder" xml:space="preserve">
+    <value>Edit Service Order</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrderDocument" xml:space="preserve">
+    <value>Edit Service Order Document</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrderFeature" xml:space="preserve">
+    <value>Edit Service Order Feature</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrderRegister" xml:space="preserve">
+    <value>Edit Service Order Register</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrderTask" xml:space="preserve">
+    <value>Edit Service Order Task</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrderTaskDocument" xml:space="preserve">
+    <value>Edit Service Order Task Document</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrderType" xml:space="preserve">
+    <value>Edit Service Order Type</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditSupplyOperation" xml:space="preserve">
+    <value>Edit Supply Operation</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditTaskState" xml:space="preserve">
+    <value>Edit Task State</value>
     <comment>Modals</comment>
   </data>
   <data name="EstimatedEndingDate" xml:space="preserve">

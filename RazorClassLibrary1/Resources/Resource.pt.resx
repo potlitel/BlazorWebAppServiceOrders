@@ -189,6 +189,42 @@
     <value>Editar Tipo de Documento</value>
     <comment>Modals</comment>
   </data>
+  <data name="EditServiceOrder" xml:space="preserve">
+    <value>Editar orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrderDocument" xml:space="preserve">
+    <value>Editar documento de orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrderFeature" xml:space="preserve">
+    <value>Editar feature de orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrderRegister" xml:space="preserve">
+    <value>Editar registro de orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrderTask" xml:space="preserve">
+    <value>Editar tarea de orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrderTaskDocument" xml:space="preserve">
+    <value>Editar documento de tarea de orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditServiceOrderType" xml:space="preserve">
+    <value>Editar tipo de orden de servicio</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditSupplyOperation" xml:space="preserve">
+    <value>Editar Operación de Suministro</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="EditTaskState" xml:space="preserve">
+    <value>Editar estado de tarea</value>
+    <comment>Modals</comment>
+  </data>
   <data name="EstimatedEndingDate" xml:space="preserve">
     <value>Data de término estimada</value>
     <comment>GridColumn</comment>
