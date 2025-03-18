@@ -14,13 +14,7 @@ namespace RazorClassLibrary1.Components.Shared
         private string global = string.Empty;
         private HashSet<string> CountryCodes = new HashSet<string> { "US", "PT" };
 
-        private List<Country> Countries => CountryCodes
-            .Select(x => new Country
-            {
-                CountryCode = x,
-                FlagEmoji = IsoCountryCodeToFlagEmoji(x)
-            })
-            .ToList();
+        private List<Country> Countries = [];
 
         private string IsoCountryCodeToFlagEmoji(string countryCode) =>
             string.Concat(countryCode.ToUpper().Select(x => char.ConvertFromUtf32(x + 0x1F1A5)));
@@ -58,7 +52,14 @@ namespace RazorClassLibrary1.Components.Shared
 
         protected override async Task OnInitializedAsync()
         {
-            _selectedCountryCode = (Culture.CompareInfo.Name == "en-US") ? "US" : "PT";
+            Countries = CountryCodes
+            .Select(x => new Country
+            {
+                CountryCode = x,
+                FlagEmoji = IsoCountryCodeToFlagEmoji(x)
+            })
+            .ToList();
+            _selectedCountryCode = (Culture.CompareInfo.Name == "en-US" || Culture.CompareInfo.Name == "us") ? "US" : "PT";
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)

@@ -5,6 +5,8 @@
 
 @inject IJSRuntime JSRuntime
 
+<link href=@Href rel="stylesheet" />
+
 <RadzenButton Variant="@(IsLightMode ? Variant.Flat : Variant.Text)"
               Icon="@(IsLightMode ? "dark_mode" : "light_mode")"
               Click="ChangeTheme" />
@@ -16,6 +18,8 @@
     public string DarkTheme { get; set; } = "material-dark";
 
     bool IsLightMode { get; set; } = false;
+
+    string Href = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
