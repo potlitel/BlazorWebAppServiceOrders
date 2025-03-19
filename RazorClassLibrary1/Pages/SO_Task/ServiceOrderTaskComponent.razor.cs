@@ -37,7 +37,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderTaskDto.ExecutionDate),
-                        Title = "Execution Date",
+                        Title = Localizer["ExecutionDate"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -45,7 +45,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderTaskDto.ServiceOrderTaskStateId),
-                        Title = "State",
+                        Title = Localizer["State"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "50px"
@@ -53,7 +53,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
                 new DataColumn
                     {
                         Property = nameof(ServiceOrderTaskDto.ServiceOrderId),
-                        Title = "Service Order",
+                        Title = Localizer["ServiceOrder"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "50px"

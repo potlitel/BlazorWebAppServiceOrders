@@ -37,7 +37,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderFeatureDto.ServiceOrderId),
-                        Title = "Service Order",
+                        Title = Localizer["ServiceOrder"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"

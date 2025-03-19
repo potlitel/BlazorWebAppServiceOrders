@@ -29,7 +29,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(SupplyDto.Amount),
-                        Title = "Amount",
+                        Title = Localizer["Amount"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -37,7 +37,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(SupplyDto.Price),
-                        Title = "Price",
+                        Title = Localizer["Price"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -53,7 +53,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(SupplyDto.SupplyOperationId),
-                        Title = "Supply Operation",
+                        Title = Localizer["SupplyOperation"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "50px"
@@ -61,7 +61,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(SupplyDto.ServiceOrderTaskId),
-                        Title = "Service Order Task",
+                        Title = Localizer["ServiceOrderTask"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "50px"

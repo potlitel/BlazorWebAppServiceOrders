@@ -169,6 +169,15 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        internal static string Amount {
+            get {
+                return ResourceManager.GetString("Amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aplicar.
         /// </summary>
         internal static string Apply {
@@ -201,6 +210,15 @@ namespace RazorClassLibrary1.Resources {
         internal static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document Type.
+        /// </summary>
+        internal static string DocumentType {
+            get {
+                return ResourceManager.GetString("DocumentType", resourceCulture);
             }
         }
         
@@ -313,6 +331,15 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Execution Date.
+        /// </summary>
+        internal static string ExecutionDate {
+            get {
+                return ResourceManager.GetString("ExecutionDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Filter.
         /// </summary>
         internal static string Filter {
@@ -327,6 +354,15 @@ namespace RazorClassLibrary1.Resources {
         internal static string Masters {
             get {
                 return ResourceManager.GetString("Masters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
@@ -349,11 +385,20 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Visão geral.
+        ///   Looks up a localized string similar to Overview.
         /// </summary>
         internal static string Overview {
             get {
                 return ResourceManager.GetString("Overview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        internal static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
             }
         }
         
@@ -363,6 +408,15 @@ namespace RazorClassLibrary1.Resources {
         internal static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service Order.
+        /// </summary>
+        internal static string ServiceOrder {
+            get {
+                return ResourceManager.GetString("ServiceOrder", resourceCulture);
             }
         }
         
@@ -421,6 +475,15 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service Order Task.
+        /// </summary>
+        internal static string ServiceOrderTask {
+            get {
+                return ResourceManager.GetString("ServiceOrderTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service Order Tasks States.
         /// </summary>
         internal static string ServiceOrderTasksStates {
@@ -435,6 +498,15 @@ namespace RazorClassLibrary1.Resources {
         internal static string ServiceOrderTypes {
             get {
                 return ResourceManager.GetString("ServiceOrderTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State.
+        /// </summary>
+        internal static string State {
+            get {
+                return ResourceManager.GetString("State", resourceCulture);
             }
         }
         
@@ -462,6 +534,15 @@ namespace RazorClassLibrary1.Resources {
         internal static string Supplies {
             get {
                 return ResourceManager.GetString("Supplies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supply Operation.
+        /// </summary>
+        internal static string SupplyOperation {
+            get {
+                return ResourceManager.GetString("SupplyOperation", resourceCulture);
             }
         }
         

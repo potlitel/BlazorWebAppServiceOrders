@@ -165,6 +165,10 @@
     <value>Add Task State</value>
     <comment>Modals</comment>
   </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+    <comment>GridColumn</comment>
+  </data>
   <data name="Apply" xml:space="preserve">
     <value>Aplicar</value>
     <comment>Global</comment>
@@ -179,6 +183,10 @@
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
+    <comment>GridColumn</comment>
+  </data>
+  <data name="DocumentType" xml:space="preserve">
+    <value>Document Type</value>
     <comment>GridColumn</comment>
   </data>
   <data name="Documenttypes" xml:space="preserve">
@@ -229,6 +237,10 @@
     <value>Estimated Ending Date</value>
     <comment>GridColumn</comment>
   </data>
+  <data name="ExecutionDate" xml:space="preserve">
+    <value>Execution Date</value>
+    <comment>GidColumn</comment>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
     <comment>Global</comment>
@@ -236,6 +248,10 @@
   <data name="Masters" xml:space="preserve">
     <value>Masters</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+    <comment>GridColumn</comment>
   </data>
   <data name="Number" xml:space="preserve">
     <value>Number</value>
@@ -246,11 +262,19 @@
     <comment>Global</comment>
   </data>
   <data name="Overview" xml:space="preserve">
-    <value>Visão geral</value>
+    <value>Overview</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+    <comment>GridColumn</comment>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
+    <comment>Global</comment>
+  </data>
+  <data name="ServiceOrder" xml:space="preserve">
+    <value>Service Order</value>
     <comment>Global</comment>
   </data>
   <data name="ServiceOrders" xml:space="preserve">
@@ -277,6 +301,10 @@
     <value>Service Orders Tasks Documents</value>
     <comment>Sidebar</comment>
   </data>
+  <data name="ServiceOrderTask" xml:space="preserve">
+    <value>Service Order Task</value>
+    <comment>GridColumn</comment>
+  </data>
   <data name="ServiceOrderTasksStates" xml:space="preserve">
     <value>Service Order Tasks States</value>
     <comment>Sidebar</comment>
@@ -284,6 +312,10 @@
   <data name="ServiceOrderTypes" xml:space="preserve">
     <value>Service Order Types</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+    <comment>GridColumn</comment>
   </data>
   <data name="StateFrom" xml:space="preserve">
     <value>State From</value>
@@ -296,6 +328,10 @@
   <data name="Supplies" xml:space="preserve">
     <value>Supplies</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="SupplyOperation" xml:space="preserve">
+    <value>Supply Operation</value>
+    <comment>GridColumn</comment>
   </data>
   <data name="SupplyOperations" xml:space="preserve">
     <value>Supply Operations</value>

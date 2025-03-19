@@ -35,7 +35,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderDto.Number),
-                        Title = "Number",
+                        Title = Localizer["Number"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -43,7 +43,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderDto.EstimatedEndingDate),
-                        Title = (Localizer["EstimatedEndingDate"]),
+                        Title = Localizer["EstimatedEndingDate"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "150px"
@@ -51,7 +51,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderDto.Observations),
-                        Title = "Observations",
+                        Title = Localizer["Observations"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "50px"

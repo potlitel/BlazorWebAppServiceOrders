@@ -29,7 +29,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderTaskDocumentDto.Name),
-                        Title = "Name",
+                        Title = Localizer["Name"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -45,7 +45,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderTaskDocumentDto.ServiceOrderTaskId),
-                        Title = "Service Order Task",
+                        Title = Localizer["ServiceOrderTask"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -53,7 +53,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderTaskDocumentDto.DocumentTypeId),
-                        Title = "Document Type",
+                        Title = Localizer["DocumentType"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"

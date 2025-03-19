@@ -29,7 +29,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderRegisterDto.Trigger),
-                        Title = "Trigger",
+                        Title = Localizer["Trigger"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -37,7 +37,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderRegisterDto.StateFrom),
-                        Title = "State From",
+                        Title = Localizer["StateFrom"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -45,7 +45,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderRegisterDto.StateTo),
-                        Title = "State To",
+                        Title = Localizer["StateTo"],
                         Filterable = true,
                         Sortable = true,
                         Width = "120px",
@@ -54,7 +54,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderRegisterDto.Observations),
-                        Title = "Observations",
+                        Title = Localizer["Observations"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
@@ -62,7 +62,7 @@ namespace RazorClassLibrary1.Pages
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderRegisterDto.ServiceOrderId),
-                        Title = "Service Order",
+                        Title = Localizer["ServiceOrder"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"

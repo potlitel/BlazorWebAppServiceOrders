@@ -150,7 +150,7 @@
     <comment>Modals</comment>
   </data>
   <data name="AddServiceOrderTaskDocument" xml:space="preserve">
-    <value>Agregar documento de tarea de ordem de serviço</value>
+    <value>Agregar documento de tarefa de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="AddServiceOrderType" xml:space="preserve">
@@ -162,8 +162,12 @@
     <comment>Modals</comment>
   </data>
   <data name="AddTaskState" xml:space="preserve">
-    <value>Agregar estado de tarea</value>
+    <value>Agregar estado de tarefa</value>
     <comment>Modals</comment>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Quantia</value>
+    <comment>GridColumn</comment>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Aplicar</value>
@@ -179,6 +183,10 @@
   </data>
   <data name="Description" xml:space="preserve">
     <value>Descrição</value>
+    <comment>GridColumn</comment>
+  </data>
+  <data name="DocumentType" xml:space="preserve">
+    <value>Tipo de Documento</value>
     <comment>GridColumn</comment>
   </data>
   <data name="Documenttypes" xml:space="preserve">
@@ -210,7 +218,7 @@
     <comment>Modals</comment>
   </data>
   <data name="EditServiceOrderTaskDocument" xml:space="preserve">
-    <value>Editar documento de tarea de ordem de serviço</value>
+    <value>Editar documento de tarefa de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="EditServiceOrderType" xml:space="preserve">
@@ -222,12 +230,16 @@
     <comment>Modals</comment>
   </data>
   <data name="EditTaskState" xml:space="preserve">
-    <value>Editar estado de tarea</value>
+    <value>Editar estado de tarefa</value>
     <comment>Modals</comment>
   </data>
   <data name="EstimatedEndingDate" xml:space="preserve">
     <value>Data de término estimada</value>
     <comment>GridColumn</comment>
+  </data>
+  <data name="ExecutionDate" xml:space="preserve">
+    <value>Data de execução</value>
+    <comment>GidColumn</comment>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtro</value>
@@ -236,6 +248,10 @@
   <data name="Masters" xml:space="preserve">
     <value>Mestras</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nome</value>
+    <comment>GridColumn</comment>
   </data>
   <data name="Number" xml:space="preserve">
     <value>Número</value>
@@ -249,8 +265,16 @@
     <value>Visão geral</value>
     <comment>Sidebar</comment>
   </data>
+  <data name="Price" xml:space="preserve">
+    <value>Preço</value>
+    <comment>GridColumn</comment>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Procurar</value>
+    <comment>Global</comment>
+  </data>
+  <data name="ServiceOrder" xml:space="preserve">
+    <value>Ordem de serviço</value>
     <comment>Global</comment>
   </data>
   <data name="ServiceOrders" xml:space="preserve">
@@ -277,6 +301,10 @@
     <value>Ordens de serviço Tarefas Documentos</value>
     <comment>Sidebar</comment>
   </data>
+  <data name="ServiceOrderTask" xml:space="preserve">
+    <value>Tarefa de ordem de serviço</value>
+    <comment>GridColumn</comment>
+  </data>
   <data name="ServiceOrderTasksStates" xml:space="preserve">
     <value>Estados das tarefas da ordem de serviço</value>
     <comment>Sidebar</comment>
@@ -285,8 +313,12 @@
     <value>Tipos de ordem de serviço</value>
     <comment>Sidebar</comment>
   </data>
+  <data name="State" xml:space="preserve">
+    <value>Estado</value>
+    <comment>GridColumn</comment>
+  </data>
   <data name="StateFrom" xml:space="preserve">
-    <value>Estado de</value>
+    <value>Do estado</value>
     <comment>GridColumn</comment>
   </data>
   <data name="StateTo" xml:space="preserve">
@@ -296,6 +328,10 @@
   <data name="Supplies" xml:space="preserve">
     <value>Suprimentos</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="SupplyOperation" xml:space="preserve">
+    <value>Operação de Abastecimento</value>
+    <comment>GridColumn</comment>
   </data>
   <data name="SupplyOperations" xml:space="preserve">
     <value>Operações de Fornecimento</value>
