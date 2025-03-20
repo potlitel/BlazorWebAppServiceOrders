@@ -342,7 +342,7 @@
     <comment>GridColumn</comment>
   </data>
   <data name="StateTo" xml:space="preserve">
-    <value>Estado para</value>
+    <value>To State</value>
     <comment>GridColumn</comment>
   </data>
   <data name="Supplies" xml:space="preserve">

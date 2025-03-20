@@ -565,7 +565,7 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Estado para.
+        ///   Looks up a localized string similar to To State.
         /// </summary>
         internal static string StateTo {
             get {
