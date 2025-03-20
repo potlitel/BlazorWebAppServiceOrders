@@ -1,5 +1,5 @@
 ﻿using FSA.Management.Application.Infrastructure.Services.AppState;
-using FSA.Razor.Components.Resources;
+//using FSA.Razor.Components.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using Radzen;
@@ -12,6 +12,7 @@ using RazorClassLibrary1.Pages.SO_Register;
 using RazorClassLibrary1.Pages.SO_Supply;
 using RazorClassLibrary1.Pages.SO_Task;
 using RazorClassLibrary1.Pages.SO_TaskDocument;
+using RazorClassLibrary1.Resources;
 
 namespace RazorClassLibrary1.Services
 {
@@ -238,7 +239,7 @@ namespace RazorClassLibrary1.Services
             try
             {
                 var result = await dialogService.OpenSideAsync<AddEditServiceOrderComponent>(
-                    (dto.Id == 0 ? localizer["AddServiceOrder"] : localizer["EditServiceOrder"]),
+                    dto.Id == 0 ? localizer["AddServiceOrder"] : localizer["EditServiceOrder"],
                     new Dictionary<string, object>()
                     {
                         { "ServiceOrder", dto },

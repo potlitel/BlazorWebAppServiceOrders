@@ -241,6 +241,10 @@
     <value>Execution Date</value>
     <comment>GidColumn</comment>
   </data>
+  <data name="Executor" xml:space="preserve">
+    <value>Executor</value>
+    <comment>Modals</comment>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
     <comment>Global</comment>
@@ -264,6 +268,14 @@
   <data name="Overview" xml:space="preserve">
     <value>Overview</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Owner</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="ParentServiceOrder" xml:space="preserve">
+    <value>Parent Service Orden</value>
+    <comment>Modals</comment>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Price</value>
@@ -312,6 +324,10 @@
   <data name="ServiceOrderTasksStates" xml:space="preserve">
     <value>Service Order Tasks States</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="ServiceOrderType" xml:space="preserve">
+    <value>Service Order Type</value>
+    <comment>Modals</comment>
   </data>
   <data name="ServiceOrderTypes" xml:space="preserve">
     <value>Service Order Types</value>

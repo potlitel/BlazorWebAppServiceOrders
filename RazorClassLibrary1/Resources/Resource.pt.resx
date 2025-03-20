@@ -138,7 +138,7 @@
     <comment>Modals</comment>
   </data>
   <data name="AddServiceOrderFeature" xml:space="preserve">
-    <value>Añadir feature de ordem de serviço</value>
+    <value>Añadir recurso de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
   <data name="AddServiceOrderRegister" xml:space="preserve">
@@ -241,6 +241,10 @@
     <value>Data de execução</value>
     <comment>GidColumn</comment>
   </data>
+  <data name="Executor" xml:space="preserve">
+    <value>Executor</value>
+    <comment>Modals</comment>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtro</value>
     <comment>Global</comment>
@@ -264,6 +268,14 @@
   <data name="Overview" xml:space="preserve">
     <value>Visão geral</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Proprietário</value>
+    <comment>Modals</comment>
+  </data>
+  <data name="ParentServiceOrder" xml:space="preserve">
+    <value>Ordem de Serviço Padre</value>
+    <comment>Modals</comment>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Preço</value>
@@ -312,6 +324,10 @@
   <data name="ServiceOrderTasksStates" xml:space="preserve">
     <value>Estados das tarefas da ordem de serviço</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="ServiceOrderType" xml:space="preserve">
+    <value>Tipo de ordem de serviço</value>
+    <comment>Modals</comment>
   </data>
   <data name="ServiceOrderTypes" xml:space="preserve">
     <value>Tipos de ordem de serviço</value>

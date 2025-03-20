@@ -340,6 +340,15 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Executor.
+        /// </summary>
+        internal static string Executor {
+            get {
+                return ResourceManager.GetString("Executor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Filter.
         /// </summary>
         internal static string Filter {
@@ -390,6 +399,24 @@ namespace RazorClassLibrary1.Resources {
         internal static string Overview {
             get {
                 return ResourceManager.GetString("Overview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Owner.
+        /// </summary>
+        internal static string Owner {
+            get {
+                return ResourceManager.GetString("Owner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parent Service Orden.
+        /// </summary>
+        internal static string ParentServiceOrder {
+            get {
+                return ResourceManager.GetString("ParentServiceOrder", resourceCulture);
             }
         }
         
@@ -498,6 +525,15 @@ namespace RazorClassLibrary1.Resources {
         internal static string ServiceOrderTasksStates {
             get {
                 return ResourceManager.GetString("ServiceOrderTasksStates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service Order Type.
+        /// </summary>
+        internal static string ServiceOrderType {
+            get {
+                return ResourceManager.GetString("ServiceOrderType", resourceCulture);
             }
         }
         
