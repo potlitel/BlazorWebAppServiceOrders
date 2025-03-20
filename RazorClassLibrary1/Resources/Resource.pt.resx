@@ -157,6 +157,10 @@
     <value>Agregar tipo de ordem de serviço</value>
     <comment>Modals</comment>
   </data>
+  <data name="AddSupply" xml:space="preserve">
+    <value>Add Fornecimento</value>
+    <comment>Modals</comment>
+  </data>
   <data name="AddSupplyOperation" xml:space="preserve">
     <value>Agregar Operaçõe de Fornecimento</value>
     <comment>Modals</comment>
@@ -320,6 +324,10 @@
   <data name="ServiceOrderTask" xml:space="preserve">
     <value>Tarefa de ordem de serviço</value>
     <comment>GridColumn</comment>
+  </data>
+  <data name="ServiceOrderTasks" xml:space="preserve">
+    <value>Tarefas de ordem de serviço</value>
+    <comment>Modals</comment>
   </data>
   <data name="ServiceOrderTasksStates" xml:space="preserve">
     <value>Estados das tarefas da ordem de serviço</value>

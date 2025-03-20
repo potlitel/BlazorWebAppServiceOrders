@@ -157,6 +157,10 @@
     <value>Add Service Order Type</value>
     <comment>Modals</comment>
   </data>
+  <data name="AddSupply" xml:space="preserve">
+    <value>Add Supply</value>
+    <comment>Modals</comment>
+  </data>
   <data name="AddSupplyOperation" xml:space="preserve">
     <value>Add Supply Operation</value>
     <comment>Modals</comment>
@@ -320,6 +324,10 @@
   <data name="ServiceOrderTask" xml:space="preserve">
     <value>Service Order Task</value>
     <comment>GridColumn</comment>
+  </data>
+  <data name="ServiceOrderTasks" xml:space="preserve">
+    <value>Service Order Tasks</value>
+    <comment>Modals</comment>
   </data>
   <data name="ServiceOrderTasksStates" xml:space="preserve">
     <value>Service Order Tasks States</value>

@@ -151,6 +151,15 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Supply.
+        /// </summary>
+        internal static string AddSupply {
+            get {
+                return ResourceManager.GetString("AddSupply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Supply Operation.
         /// </summary>
         internal static string AddSupplyOperation {
@@ -516,6 +525,15 @@ namespace RazorClassLibrary1.Resources {
         internal static string ServiceOrderTask {
             get {
                 return ResourceManager.GetString("ServiceOrderTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service Order Tasks.
+        /// </summary>
+        internal static string ServiceOrderTasks {
+            get {
+                return ResourceManager.GetString("ServiceOrderTasks", resourceCulture);
             }
         }
         
