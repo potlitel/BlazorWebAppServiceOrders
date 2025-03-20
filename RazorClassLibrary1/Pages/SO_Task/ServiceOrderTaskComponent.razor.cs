@@ -116,7 +116,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
                         {
                             Action = GridGeneralActions.ADD_ITEM,
                             Icon = "add",
-                            Title = "Add Service Order Task",
+                            Title = @Localizer["AddServiceOrderTask"],
                             Style = ButtonStyle.Primary.GetHashCode(),
                             //Show = show => { return create; }
                         }
