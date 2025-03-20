@@ -281,6 +281,10 @@
     <value>Service Orders</value>
     <comment>Sidebar</comment>
   </data>
+  <data name="ServiceOrdersBasicLayout" xml:space="preserve">
+    <value>Service Orders Basic Layout</value>
+    <comment>Global</comment>
+  </data>
   <data name="ServiceOrdersDocuments" xml:space="preserve">
     <value>Service Orders Documents</value>
     <comment>Sidebar</comment>

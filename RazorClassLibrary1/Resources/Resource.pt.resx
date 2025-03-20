@@ -278,8 +278,12 @@
     <comment>Global</comment>
   </data>
   <data name="ServiceOrders" xml:space="preserve">
-    <value>Ordens de serviço</value>
+    <value>Ordems de serviço</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="ServiceOrdersBasicLayout" xml:space="preserve">
+    <value>Service Orders Basic Layout</value>
+    <comment>Global</comment>
   </data>
   <data name="ServiceOrdersDocuments" xml:space="preserve">
     <value>Documentos de Ordems de Serviço</value>

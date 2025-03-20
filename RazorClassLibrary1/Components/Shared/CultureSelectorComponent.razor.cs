@@ -86,6 +86,7 @@ namespace RazorClassLibrary1.Components.Shared
             {
                 jsRuntime.InvokeVoidAsync("blazorCulture.set", _selectedCountryCode);
                 NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
+                //StateHasChanged();
             }
         }
 	}

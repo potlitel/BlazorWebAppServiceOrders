@@ -1,4 +1,7 @@
 using BlazorWebApp.Components;
+using FSA.Cache.Models;
+using FSA.Razor.Components.Helper;
+using FSA.Razor.Components.Services;
 using Radzen;
 using RazorClassLibrary1.Extensions;
 using System.Reflection;
@@ -17,7 +20,21 @@ builder.Services.AddFSASOCustomComponentsService();
 
 //builder.Services.AddLocalization();
 
+//IServiceProvider sp = builder.Services.BuildServiceProvider();
+////await FSAThemeService.Update();
+//using var scope = sp.CreateScope();
+//var appCache = scope.ServiceProvider.GetRequiredService<IFSAAppCache>();
+//var themeService = scope.ServiceProvider.GetRequiredService<ThemeService>();
+//ThemeCache themeCache = await appCache.GetItem<ThemeCache>("FSAWebTheme", CacheType.LocalStorage);
+//if (themeCache != null)
+//{
+//    themeService.SetTheme(themeCache.theme);
+//    return;
+//}
+
 var app = builder.Build();
+
+await app.Services.InitialiseAppThemeAsync();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

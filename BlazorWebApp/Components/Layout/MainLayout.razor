@@ -152,7 +152,6 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        StateHasChanged();
         if (firstRender)
         {
             await FSAThemeService.Update();
@@ -162,6 +161,7 @@
             // if (SideBarHelper.IsMobile)
             //     SideBarHelper.Expanded = false;
         }
+        StateHasChanged();
     }
 
     void ToggleSidebar()

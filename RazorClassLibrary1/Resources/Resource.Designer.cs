@@ -430,6 +430,15 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service Orders Basic Layout.
+        /// </summary>
+        internal static string ServiceOrdersBasicLayout {
+            get {
+                return ResourceManager.GetString("ServiceOrdersBasicLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service Orders Documents.
         /// </summary>
         internal static string ServiceOrdersDocuments {

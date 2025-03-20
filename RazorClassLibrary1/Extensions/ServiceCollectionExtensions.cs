@@ -1,7 +1,9 @@
 ﻿using FSA.Cache;
+using FSA.Cache.Models;
 using FSA.Core.Dtos;
 using FSA.Management.Application.DependencyContainers;
 using FSA.Razor.Components.Extensions;
+using FSA.Razor.Components.Helper;
 using FSA.Razor.Components.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -105,6 +107,19 @@ namespace RazorClassLibrary1.Extensions
 
 
             return services;
+        }
+
+        public static async Task InitialiseAppThemeAsync(this IServiceProvider sp, bool development = false)
+        {
+            //using var scope = sp.CreateScope();
+            //var appCache = scope.ServiceProvider.GetRequiredService<IFSAAppCache>();
+            //ThemeCache themeCache = await appCache.GetItem<ThemeCache>("FSAWebTheme", CacheType.LocalStorage);
+            //var themeService = scope.ServiceProvider.GetRequiredService<ThemeService>();
+            //if (themeCache != null)
+            //{
+            //    themeService.SetTheme(themeCache.theme);
+            //    return;
+            //}
         }
     }
 }
