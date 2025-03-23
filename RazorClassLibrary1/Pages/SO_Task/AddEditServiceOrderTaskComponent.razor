@@ -51,9 +51,12 @@ else
                                 Text=@Localizer["ServiceOrder"]
                                 TextProperty="Number"
                                 Change="@((args) => ChangeServiceOrder(args))" />
-                    <RadzenRequiredValidator Component="ServiceOrders" /> 
+                    <RadzenRequiredValidator Component="ServiceOrders" />
 
-
+                    <RadzenColumn class="rz-mt-2 rz-mb-2">
+                        <RadzenCheckBox Disabled=@Busy @bind-Value=@(ServiceOrderTask!.IsActive) Name="IsActiveCheckBox" />
+                        <RadzenLabel Text="@(Localizer["IsActive"])" Component="IsActiveCheckBox" Style="margin-left: 8px; vertical-align: middle;" />
+                    </RadzenColumn>
 
                 </RadzenStack>
                 <AddEditFormActionsButtons Cancel="@Cancel" Busy=@Busy CreateMode=@(ServiceOrderTask!.Id == 0) />

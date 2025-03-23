@@ -64,6 +64,11 @@ else
                                 Change="@((args) => ChangeServiceOrderTask(args))" />
                     <RadzenRequiredValidator Component="ServiceOrderTasks" />
 
+                    <RadzenColumn class="rz-mt-2 rz-mb-2">
+                        <RadzenCheckBox Disabled=@Busy @bind-Value=@(Supply!.IsActive) Name="IsActiveCheckBox" />
+                        <RadzenLabel Text="@(Localizer["IsActive"])" Component="IsActiveCheckBox" Style="margin-left: 8px; vertical-align: middle;" />
+                    </RadzenColumn>
+
                 </RadzenStack>
                 <AddEditFormActionsButtons Cancel="@Cancel" Busy=@Busy CreateMode=@(Supply!.Id == 0) />
             </RadzenTemplateForm>
