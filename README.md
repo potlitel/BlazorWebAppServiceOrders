@@ -1,11 +1,19 @@
-# RCL_UI
+## Platform for displaying general user interfaces for managing service orders.
 
-https://stackoverflow.com/questions/38051528/passing-arguments-for-dockerfiles-using-docker-compose
-https://stackoverflow.com/questions/58695423/pass-args-to-the-dockerfile-from-docker-compose
+## Tech Stack
 
-primera opcion
-docker-compose -f "docker-compose.yml" up -d --build
+**UI:** [Radzen Blazor Components](https://blazor.radzen.com/?theme=material3)
 
-segunda opcion
+**Build Tool:** [Visual Studio](https://visualstudio.microsoft.com/)
 
-docker-compose -f "docker-compose.yml" build --build-arg FEED_ACCESSTOKEN="6xqkiqZd4aMMhxwqRliozxY5Z7qtDQ3edkLKBvwj1XqPy16K6IMhJQQJ99BCACAAAAAgJncgAAASAZDO2wAw"
+**Icons:** [Radzen Icons](https://blazor.radzen.com/icon?theme=material3)
+
+
+## Features
+
+- Light/dark mode
+- Responsive
+- Accessible
+- With built-in Sidebar component
+- Multi languages
+- Extra custom components
