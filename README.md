@@ -18,6 +18,32 @@
 - Multi languages
 - Extra custom components
 
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/potlitel/BlazorWebAppServiceOrders.git
+```
+
+Go to the project directory
+
+```bash
+  cd BlazorWebAppServiceOrders
+```
+
+Install dependencies
+
+```bash
+  dotnet restore --verbosity normal
+```
+
+Start the server
+
+```bash
+  dotnet run --project BlazorWebApp/BlazorWebApp.csproj
+```
+
 
 primera opcion
 docker-compose -f "docker-compose.yml" up -d --build
