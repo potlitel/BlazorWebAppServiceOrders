@@ -19,6 +19,8 @@
 - Extra custom components
 
 
+
+
 primera opcion
 docker-compose -f "docker-compose.yml" up -d --build
 
