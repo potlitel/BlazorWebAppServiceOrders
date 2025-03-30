@@ -29,6 +29,7 @@ ENV VSS_NUGET_EXTERNAL_FEED_ENDPOINTS="{\"endpointCredentials\": [{\"endpoint\":
 
 RUN echo $VSS_NUGET_EXTERNAL_FEED_ENDPOINTS
 
+RUN dotnet restore "./RazorClassLibrary1/RazorClassLibrary1.csproj" --configfile nuget.config
 RUN dotnet restore "./BlazorWebApp/BlazorWebApp.csproj" --configfile nuget.config
 
 COPY . .

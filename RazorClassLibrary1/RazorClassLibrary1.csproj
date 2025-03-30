@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
 	<NoWarn>$(NoWarn);NU1900</NoWarn>
+	<NoWarn>$(NoWarn);RZ10012</NoWarn>
+	<NoWarn>$(NoWarn);CS8767</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
