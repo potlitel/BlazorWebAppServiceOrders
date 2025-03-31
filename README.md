@@ -44,23 +44,31 @@ Start the server
   dotnet run --project BlazorWebApp/BlazorWebApp.csproj
 ```
 
----------------------------------------------------------
-Fix error:
-C:\Users\potli\source\repos\RCL_UI\RazorClassLibrary1\RazorClassLibrary1.csproj : warning NU1900: Error occurred while getting package vulnerability data: Response status code does not indicate success: 403
-        (Forbidden - User 'f769d339-28da-4051-b12f-9373a2b17a97' lacks permission to complete this action. You need to have 'ReadPackages'. (DevOps Activity ID: 40275F17-7813-4683-B7CC-3634EBF96715)). [C:\Users\po
-       tli\source\repos\RCL_UI\RCL_UI.sln]
+## Fix warning error
 
-<NoWarn>$(NoWarn);NU1900</NoWarn> on 
+warning NU1900: Error occurred while getting package vulnerability data: Response status code does not indicate success: 403 (Forbidden - User 'f769d339-28da-4051-b12f-9373a2b17a97' lacks permission to complete this action. You need to have 'ReadPackages'.)
 
+Open the corresponding project file and add the following statement for each warning:
+
+```bash
+  <NoWarn>$(NoWarn);NU1900</NoWarn>
+```
+in the section 
+
+```bash
+  <PropertyGroup>
+```
+
+remaining as follows:
+
+```bash
 <PropertyGroup>
   <TargetFramework>net8.0</TargetFramework>
   <Nullable>enable</Nullable>
   <ImplicitUsings>enable</ImplicitUsings>
 	<NoWarn>$(NoWarn);NU1900</NoWarn>
 </PropertyGroup>
- 
- for project.
- ----------------------------------------------------
+```
 
 ## Docker deployment
 
@@ -81,4 +89,4 @@ Passing the PAT via args
   docker-compose -f "docker-compose.yml" up -d
     ```
     
-- Navigate to: https://<hostname>/
+- Navigate to: https://server-name/
