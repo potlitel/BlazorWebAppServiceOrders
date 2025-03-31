@@ -62,9 +62,11 @@ C:\Users\potli\source\repos\RCL_UI\RazorClassLibrary1\RazorClassLibrary1.csproj 
  for project.
  ----------------------------------------------------
 
-primera opcion
+primera opcion (PAT Fijo)
 docker-compose -f "docker-compose.yml" up -d --build
 
-segunda opcion
+segunda opcion (set PAT value by args)
 
-docker-compose -f "docker-compose.yml" build --build-arg FEED_ACCESSTOKEN="your-PAT"
+1- Build the image using the follow command: docker-compose -f "docker-compose.yml" build --build-arg FEED_ACCESSTOKEN="your-PAT"
+2- Run container as follow: docker-compose -f "docker-compose.yml" up -d
+3- Navigate to: https://laptop-2f5ufph3/
