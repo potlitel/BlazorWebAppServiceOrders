@@ -118,7 +118,7 @@ namespace RazorClassLibrary1.Services
                 {
                     using var responseStream = await response.Content.ReadAsStreamAsync();
                     var page = await JsonSerializer.DeserializeAsync<IEnumerable<Issue>>(responseStream, options);
-                    issues.AddRange(page);
+                    issues.AddRange(page!);
                     var link = Link.FromHeader(response.Headers.GetValues("Link"));
                     OnProgress?.Invoke(new FetchProgressEventArgs { Current = 1, Total = link.LastPage });
 
@@ -135,7 +135,7 @@ namespace RazorClassLibrary1.Services
                             using (var stream = await response.Content.ReadAsStreamAsync())
                             {
                                 page = await JsonSerializer.DeserializeAsync<IEnumerable<Issue>>(stream, options);
-                                issues.AddRange(page);
+                                issues.AddRange(page!);
                             }
 
                             link = Link.FromHeader(response.Headers.GetValues("Link"));

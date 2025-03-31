@@ -34,7 +34,7 @@ builder.Services.AddFSASOCustomComponentsService();
 
 var app = builder.Build();
 
-await app.Services.InitialiseAppThemeAsync();
+//await app.Services.InitialiseAppThemeAsync();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

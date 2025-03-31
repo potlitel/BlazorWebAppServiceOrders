@@ -133,6 +133,7 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
+                await Task.CompletedTask;
                 //var key = $"GetAllCompanyGroupsService-{Pagination.GetCacheId()}";
                 //if (deleteCache)
                 //    AppCache.RemoveItem(key, CacheType.IndexedDB);

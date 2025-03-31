@@ -118,6 +118,7 @@ namespace RazorClassLibrary1.Pages.Masters
         {
             try
             {
+                await Task.CompletedTask;
                 //var key = $"GetAllCompanyGroupsService-{Pagination.GetCacheId()}";
                 //if (deleteCache)
                 //    AppCache.RemoveItem(key, CacheType.IndexedDB);
@@ -144,7 +145,7 @@ namespace RazorClassLibrary1.Pages.Masters
             catch (Exception ex)
             {
                 ListItems = new List<DocumentTypeDto>().AsQueryable();
-                //NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
+                NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
         }
 
@@ -157,7 +158,7 @@ namespace RazorClassLibrary1.Pages.Masters
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                //NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
+                NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
             finally
             {
@@ -180,6 +181,7 @@ namespace RazorClassLibrary1.Pages.Masters
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
+                        await Task.CompletedTask;
                         //var result = await CustomDialogService.Open_AddCompanyGroupWithManager(item, new UserDto());
                         //await LoadItems(true);
                         break;
@@ -204,7 +206,7 @@ namespace RazorClassLibrary1.Pages.Masters
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                //NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
+                NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
             }
         }
     }

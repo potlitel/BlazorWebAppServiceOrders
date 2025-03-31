@@ -89,6 +89,7 @@ namespace RazorClassLibrary1.Components.Shared
             if (DataGrid is not null)
             {
                 #region Filters
+
                 DataGrid.EqualsText = Localizer["EqualsText"];
                 DataGrid.NotEqualsText = Localizer["NotEqualsText"];
                 DataGrid.LessThanText = Localizer["LessThanText"];
@@ -178,7 +179,7 @@ namespace RazorClassLibrary1.Components.Shared
 
             List<ContextMenuItem> list = new();
             if (Actions.Count > 0)
-                foreach (var action in Actions.Where(a => a.Show(null)))
+                foreach (var action in Actions.Where(a => a.Show(null!)))
                     list.Add(new ContextMenuItem() { Text = Localizer[action.Title], Value = action.Action, Icon = action.Icon });
             ContextMenuService.Open(args, list, OnMenuItemClick);
         }
@@ -186,7 +187,7 @@ namespace RazorClassLibrary1.Components.Shared
         void OnMenuItemClick(MenuItemEventArgs args)
         {
             ContextMenuService.Close();
-            ExecuteAction((string)args.Value, SelectedItems[0]);
+            ExecuteAction((string)args.Value, SelectedItems[0]).ConfigureAwait(false);
         }
         #endregion
 

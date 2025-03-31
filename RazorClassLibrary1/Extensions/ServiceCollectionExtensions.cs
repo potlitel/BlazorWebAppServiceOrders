@@ -109,17 +109,17 @@ namespace RazorClassLibrary1.Extensions
             return services;
         }
 
-        public static async Task InitialiseAppThemeAsync(this IServiceProvider sp, bool development = false)
-        {
-            //using var scope = sp.CreateScope();
-            //var appCache = scope.ServiceProvider.GetRequiredService<IFSAAppCache>();
-            //ThemeCache themeCache = await appCache.GetItem<ThemeCache>("FSAWebTheme", CacheType.LocalStorage);
-            //var themeService = scope.ServiceProvider.GetRequiredService<ThemeService>();
-            //if (themeCache != null)
-            //{
-            //    themeService.SetTheme(themeCache.theme);
-            //    return;
-            //}
-        }
+        //public static async Task InitialiseAppThemeAsync(this IServiceProvider sp, bool development = false)
+        //{
+        //    //using var scope = sp.CreateScope();
+        //    //var appCache = scope.ServiceProvider.GetRequiredService<IFSAAppCache>();
+        //    //ThemeCache themeCache = await appCache.GetItem<ThemeCache>("FSAWebTheme", CacheType.LocalStorage);
+        //    //var themeService = scope.ServiceProvider.GetRequiredService<ThemeService>();
+        //    //if (themeCache != null)
+        //    //{
+        //    //    themeService.SetTheme(themeCache.theme);
+        //    //    return;
+        //    //}
+        //}
     }
 }

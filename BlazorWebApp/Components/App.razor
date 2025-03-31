@@ -38,10 +38,10 @@
 
 @code {
     [Inject]
-    private ThemeService themeService { get; set; }
+    private ThemeService themeService { get; set; } = null!;
 
     [Inject]
-    private IFSAAppCache appCache { get; set; }
+    private IFSAAppCache appCache { get; set; } = null!;
     // private IComponentRenderMode? PageRenderMode
     // => string.IsNullOrEmpty(Configuration["FSAManagement:App:RenderMode"]) ? InteractiveServer : InteractiveWebAssembly;
 
@@ -49,6 +49,7 @@
 
     protected override async Task OnInitializedAsync()
     {
+        await Task.CompletedTask;
         // ThemeCache themeCache = await appCache.GetItem<ThemeCache>("FSASOWebTheme", CacheType.LocalStorage);
         // Href = $"_content/Radzen.Blazor/css/{themeCache.theme}.css";
         //await base.OnInitializedAsync();
@@ -61,6 +62,7 @@
     {
         if (firstRender)
         {
+            await Task.CompletedTask;
             //ThemeCache themeCache = await appCache.GetItem<ThemeCache>("FSASOWebTheme", CacheType.LocalStorage);
             // Href = $"_content/Radzen.Blazor/css/{themeCache.theme}.css";
             // ThemeCache themeCache = await appCache.GetItem<ThemeCache>("FSAWebTheme", CacheType.LocalStorage);

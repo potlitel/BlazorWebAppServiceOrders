@@ -143,6 +143,7 @@
 
     protected override async Task OnInitializedAsync()
     {
+        await Task.CompletedTask;
         //await FSAThemeService.Update();
 
         // SideBarHelper.IsMobile = await JSRuntime.InvokeAsync<bool>("isDevice");

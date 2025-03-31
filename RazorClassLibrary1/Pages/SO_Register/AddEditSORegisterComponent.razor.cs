@@ -34,6 +34,7 @@ namespace RazorClassLibrary1.Pages.SO_Register
         {
             try
             {
+                await Task.CompletedTask;
                 IsLoading = true;
 
                 //https://github.com/bchavez/Bogus
@@ -75,6 +76,7 @@ namespace RazorClassLibrary1.Pages.SO_Register
         {
             try
             {
+                await Task.CompletedTask;
                 var item = _item as ServiceOrderDto;
                 ServiceOrderRegister.ServiceOrder = item!;
             }
@@ -99,6 +101,7 @@ namespace RazorClassLibrary1.Pages.SO_Register
         {
             try
             {
+                await Task.CompletedTask;
                 //Busy = true;
                 //Policy.PolicyGroupId = Policy.PolicyGroup.Id;
 

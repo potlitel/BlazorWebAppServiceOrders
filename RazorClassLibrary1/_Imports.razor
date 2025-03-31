@@ -6,6 +6,12 @@
 @using Microsoft.Extensions.Configuration
 @using Microsoft.Extensions.Localization
 @using Radzen
+
+@* @using FSA.Razor.Components.Helper *@
+@using Microsoft.JSInterop
+@using System.Text.Json
+@using Radzen.Blazor
+
 @using RazorClassLibrary1.Resources
 @using RazorClassLibrary1.Services
 
@@ -25,6 +31,6 @@
 @inject IMyService myservice
 @* @inject IFSACustomDialogService CustomDialogService *@
 @inject IFSACustomNotificationService NotificationService
-@inject IFSAThemeService FSAThemeService
+@* @inject IFSAThemeService FSAThemeService *@
 @inject IFSAAppCache AppCache
 @inject IManagementAppState AppState

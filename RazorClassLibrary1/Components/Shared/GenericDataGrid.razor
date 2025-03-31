@@ -86,11 +86,11 @@ else
                                 <HeaderTemplate>
                                     <RadzenCheckBox TriState="false" TValue="bool?"
                                                     Value="@(SelectedItems == null || SelectedItems?.Any() != true ? false : !Items.All(i => SelectedItems.Contains(i)) ? null : Items.Any(i => SelectedItems.Contains(i)))"
-                                                    Change="@(args => SelectedItems = args == true ? Items.ToList() : null)" />
+                                                    Change="@(args => SelectedItems = args == true ? Items.ToList() : null!)" />
                                 </HeaderTemplate>
                                 <Template Context="data">
                                     <RadzenCheckBox TriState="false" Value="@(SelectedItems != null && SelectedItems.Contains(data))"
-                                                    TValue="bool" Change=@(args => { if(!GridConfiguration.AllowRowSelectOnRowClick) { DataGrid.SelectRow(data); }}) />
+                                                    TValue="bool" Change=@(args => { if(!GridConfiguration.AllowRowSelectOnRowClick) { DataGrid!.SelectRow(data); }}) />
                                 </Template>
                             </RadzenDataGridColumn>
                         }

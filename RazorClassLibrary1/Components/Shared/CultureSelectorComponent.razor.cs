@@ -60,6 +60,7 @@ namespace RazorClassLibrary1.Components.Shared
             })
             .ToList();
             _selectedCountryCode = (Culture.CompareInfo.Name == "en-US" || Culture.CompareInfo.Name == "us") ? "US" : "PT";
+            await Task.CompletedTask;
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -84,7 +85,8 @@ namespace RazorClassLibrary1.Components.Shared
         {
             if (CultureInfo.CurrentCulture.Name != _selectedCountryCode.ToLower())
             {
-                jsRuntime.InvokeVoidAsync("blazorCulture.set", _selectedCountryCode);
+                //Antes no tenia el await
+                await jsRuntime.InvokeVoidAsync("blazorCulture.set", _selectedCountryCode);
                 NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
                 //StateHasChanged();
             }

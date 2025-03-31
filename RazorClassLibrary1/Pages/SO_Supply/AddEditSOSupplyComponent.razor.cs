@@ -33,6 +33,7 @@ namespace RazorClassLibrary1.Pages.SO_Supply
         {
             try
             {
+                await Task.CompletedTask;
                 IsLoading = true;
 
                 //https://github.com/bchavez/Bogus
@@ -84,6 +85,7 @@ namespace RazorClassLibrary1.Pages.SO_Supply
         {
             try
             {
+                await Task.CompletedTask;
                 var item = _item as SupplyOperationDto;
                 Supply.SupplyOperation = item!;
             }
@@ -96,6 +98,7 @@ namespace RazorClassLibrary1.Pages.SO_Supply
         {
             try
             {
+                await Task.CompletedTask;
                 var item = _item as ServiceOrderTaskDto;
                 Supply.ServiceOrderTask = item!;
             }
@@ -108,6 +111,7 @@ namespace RazorClassLibrary1.Pages.SO_Supply
         {
             try
             {
+                await Task.CompletedTask;
                 //Busy = true;
                 //Policy.PolicyGroupId = Policy.PolicyGroup.Id;
 

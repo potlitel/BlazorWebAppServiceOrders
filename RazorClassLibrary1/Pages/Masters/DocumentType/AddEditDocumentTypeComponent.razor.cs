@@ -33,6 +33,7 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
 
         async Task MasterSubmit()
         {
+            await Task.CompletedTask;
             //TODO: Implement create/update actions
         }
     }

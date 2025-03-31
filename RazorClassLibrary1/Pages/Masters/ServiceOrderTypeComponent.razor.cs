@@ -115,6 +115,7 @@ namespace RazorClassLibrary1.Pages.Masters
         {
             try
             {
+                await Task.CompletedTask;
                 //var key = $"GetAllCompanyGroupsService-{Pagination.GetCacheId()}";
                 //if (deleteCache)
                 //    AppCache.RemoveItem(key, CacheType.IndexedDB);
@@ -141,7 +142,7 @@ namespace RazorClassLibrary1.Pages.Masters
             catch (Exception ex)
             {
                 ListItems = new List<ServiceOrderTypeDto>().AsQueryable();
-                //NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
+                NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
         }
 
@@ -154,7 +155,7 @@ namespace RazorClassLibrary1.Pages.Masters
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                //NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
+                NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
             finally
             {
@@ -171,6 +172,7 @@ namespace RazorClassLibrary1.Pages.Masters
         {
             try
             {
+                await Task.CompletedTask;
                 var item = _item as CompanyGroupDto;
                 item = item is null ? new CompanyGroupDto() : new CompanyGroupDto(item);
 
@@ -201,7 +203,7 @@ namespace RazorClassLibrary1.Pages.Masters
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                //NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
+                NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
             }
         }
     }

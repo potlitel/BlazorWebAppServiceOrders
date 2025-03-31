@@ -147,6 +147,7 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
+                await Task.CompletedTask;
                 //ListItems = new Faker<ServiceOrderDocumentDto>()
                 //                .RuleFor(x => x.Name, f => f.Finance.Account(15))
                 //                .RuleFor(x => x.Url, f => f.Image.PicsumUrl())
@@ -180,7 +181,7 @@ namespace RazorClassLibrary1.Pages
             catch (Exception ex)
             {
                 ListItems = new List<ServiceOrderDto>().AsQueryable();
-                //NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
+                NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
         }
 
@@ -193,7 +194,7 @@ namespace RazorClassLibrary1.Pages
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                //NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
+                NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
             finally
             {
@@ -230,7 +231,7 @@ namespace RazorClassLibrary1.Pages
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                //NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
+                NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
             }
         }
     }

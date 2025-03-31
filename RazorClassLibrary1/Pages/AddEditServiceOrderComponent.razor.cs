@@ -37,6 +37,7 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
+                await Task.CompletedTask;
                 IsLoading = true;
 
                 //https://github.com/bchavez/Bogus
@@ -88,6 +89,7 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
+                await Task.CompletedTask;
                 var item = _item as ServiceOrderDto;
                 ServiceOrder.ParentServiceOrder = item!;
             }
@@ -100,6 +102,7 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
+                await Task.CompletedTask;
                 var item = _item as ServiceOrderTypeDto;
                 ServiceOrder.Type = item!;
             }
@@ -112,6 +115,7 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
+                await Task.CompletedTask;
                 var item = _item as UserDto;
                 ServiceOrder.Owner = item!;
             }
@@ -124,6 +128,7 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
+                await Task.CompletedTask;
                 var item = _item as UserDto;
                 ServiceOrder.Executor = item!;
             }
@@ -136,6 +141,7 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
+                await Task.CompletedTask;
                 //Busy = true;
                 //Policy.PolicyGroupId = Policy.PolicyGroup.Id;
 

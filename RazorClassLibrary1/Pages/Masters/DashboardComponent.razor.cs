@@ -48,7 +48,7 @@ namespace RazorClassLibrary1.Pages.Masters
         int currentPage = 0;
         int totalPages = 0;
         bool fetchingData = false;
-        string error = null;
+        string error = null!;
 
         class UserComparer : IEqualityComparer<User>
         {
@@ -67,12 +67,12 @@ namespace RazorClassLibrary1.Pages.Masters
         {
             public bool Equals(Label x, Label y)
             {
-                return x.Name.Equals(y.Name);
+                return x.Name!.Equals(y.Name);
             }
 
             public int GetHashCode(Label user)
             {
-                return user.Name.GetHashCode();
+                return user.Name!.GetHashCode();
             }
         }
 
@@ -131,18 +131,18 @@ namespace RazorClassLibrary1.Pages.Masters
                                 Count = group.Count()
                             });
 
-                    closedIssuesByDate = closedIssues.GroupBy(issue => issue.ClosedAt.Value.EndOfWeek())
+                    closedIssuesByDate = closedIssues.GroupBy(issue => issue.ClosedAt!.Value.EndOfWeek())
                             .Select(group => new IssueGroup
                             {
                                 Week = group.Key,
                                 Count = group.Count()
                             });
 
-                    labels = issues.SelectMany(issue => issue.Labels).Select(label => label.Name).Distinct();
+                    labels = issues.SelectMany(issue => issue.Labels).Select(label => label.Name!).Distinct();
 
                     labelGroups = issues.SelectMany(issue => issue.Labels)
                                         .GroupBy(label => label, new LabelComparer())
-                                        .Select(group => new LabelGroup { Label = Regex.Replace(group.Key.Name, ":\\w+:", ""), Color = $"#{group.Key.Color}", Count = group.Count() })
+                                        .Select(group => new LabelGroup { Label = Regex.Replace(group.Key.Name!, ":\\w+:", ""), Color = $"#{group.Key.Color}", Count = group.Count() })
                                         .Where(group => group.Label != "area-blazor")
                                         .OrderByDescending(group => group.Count)
                                         .Take(5);
@@ -159,12 +159,12 @@ namespace RazorClassLibrary1.Pages.Masters
                                         .Select(group => new { User = group.Key, Count = group.Count() })
                                         .OrderByDescending(group => group.Count)
                                         .Select(group => group.User)
-                                        .FirstOrDefault();
+                                        .FirstOrDefault()!;
 
                     users = issues.Select(issue => issue.User)
                                 .Distinct(new UserComparer());
 
-                    error = null;
+                    error = null!;
                     fetchingData = false;
                 }
                 catch (Exception ex)
