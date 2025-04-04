@@ -1,4 +1,8 @@
 #See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+#https://medium.com/@manishgupta.ait/deploy-your-app-with-https-enabled-using-lets-encrypt-docker-docker-compose-bf2fdc981406
+#https://github.com/SteveLTN/https-portal/tree/master?tab=readme-ov-file#prerequisite
+
+
 ARG FEED_ACCESSTOKEN
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 ARG FEED_ACCESSTOKEN
