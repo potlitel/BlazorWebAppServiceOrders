@@ -2,22 +2,23 @@
 using FSA.Core.Dtos;
 using FSA.Core.Utils;
 using Microsoft.Extensions.Configuration;
+using RazorClassLibrary1.Dtos;
+using RazorClassLibrary1.Helpers;
 
 namespace RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll
 {
     public interface IGetAllDocumentTypesService
     {
-        //Task<Result<GetAllDocumentTypesResponse>> Handle(Pagination? pagination);
-        Task<Root> Handle(Pagination? pagination);
+        Task<ResultSO<DocumentTypeDto>> Handle(Pagination? pagination);
     }
-    internal class GetAllDocumentTypesService : HttpClientServiceBase<GetAllDocumentTypesRequest, Result<GetAllDocumentTypesResponse>>,
+    internal class GetAllDocumentTypesService : HttpClientServiceBase<GetAllDocumentTypesRequest, ResultSO<DocumentTypeDto>>,
                                                 IGetAllDocumentTypesService
     {
         public GetAllDocumentTypesService(IHttpClientFactory httpClientFactory, IConfiguration configuration) : base(httpClientFactory, configuration)
         {
         }
 
-        public async Task<Root> Handle(Pagination? pagination)
+        public async Task<ResultSO<DocumentTypeDto>> Handle(Pagination? pagination)
         {
             try
             {
@@ -30,31 +31,31 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll
                 var result = await _httpClient.PostAsync(url, content);
                 result.EnsureSuccessStatusCode();
 
-                return await GetResponseAsyncc(result.Content);
+                return await GetResponseAsync(result.Content);
             }
             catch (Exception ex)
             {
-                throw ex;
-                //return Result<GetAllDocumentTypesResponse>.Failure([ex.Message], CustomStatusCode.StatusUnexpectedError);
+                //throw ex;
+                return ResultSO<DocumentTypeDto>.Failure([ex.Message], CustomStatusCode.StatusUnexpectedError);
             }
         }
 
-        public async Task<Root> GetResponseAsyncc(HttpContent content)
-        {
-            var stringContent = await content.ReadAsStringAsync();
+        //public async Task<GetAllDocumentTypesResponse> GetResponseAsyncc(HttpContent content)
+        //{
+        //    var stringContent = await content.ReadAsStringAsync();
 
-            Root? response;
-            try
-            {
-                //response = JsonSerializer.Deserialize<TResponse>(stringContent);
-                response = Newtonsoft.Json.JsonConvert.DeserializeObject<Root>(stringContent);
-            }
-            catch (Exception ex)
-            {
-                throw ex!;
-            }
+        //    GetAllDocumentTypesResponse? response;
+        //    try
+        //    {
+        //        //response = JsonSerializer.Deserialize<TResponse>(stringContent);
+        //        response = Newtonsoft.Json.JsonConvert.DeserializeObject<GetAllDocumentTypesResponse>(stringContent);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex!;
+        //    }
 
-            return response!;
-        }
+        //    return response!;
+        //}
     }
 }

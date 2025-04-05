@@ -1,7 +1,4 @@
-﻿using FSA.Core.DataTypes;
-using FSA.Core.Dtos;
-using Microsoft.Extensions.Configuration;
-using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll;
+﻿using Microsoft.Extensions.Configuration;
 using System.Text;
 using System.Text.Json;
 //using System.Text.Json;
