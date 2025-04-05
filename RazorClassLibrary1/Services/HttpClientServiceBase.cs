@@ -1,6 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using FSA.Core.DataTypes;
+using FSA.Core.Dtos;
+using Microsoft.Extensions.Configuration;
+using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll;
 using System.Text;
 using System.Text.Json;
+//using System.Text.Json;
 
 namespace RazorClassLibrary1.Services
 {
@@ -32,7 +36,18 @@ namespace RazorClassLibrary1.Services
         public async Task<TResponse> GetResponseAsync(HttpContent content)
         {
             var stringContent = await content.ReadAsStringAsync();
-            var response = JsonSerializer.Deserialize<TResponse>(stringContent);
+
+            TResponse? response;
+            try
+            {
+                //response = JsonSerializer.Deserialize<TResponse>(stringContent);
+                response = Newtonsoft.Json.JsonConvert.DeserializeObject<TResponse>(stringContent);
+            }
+            catch (Exception ex)
+            {
+                throw ex!;
+            }
+
             return response!;
         }
     }

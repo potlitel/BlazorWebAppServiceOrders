@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.JSInterop;
 using Radzen;
 using RazorClassLibrary1.Services;
+using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
@@ -56,6 +57,8 @@ namespace RazorClassLibrary1.Extensions
             services.AddScoped<IFSASOThemeService, FSAAThemeService>();
             services.AddScoped<IGitHubService, GitHubService>();
             services.AddScoped<IMyService, MyService>();
+
+            services.AddScoped<IGetAllDocumentTypesService, GetAllDocumentTypesService>();
 
             //services.AddRadzenComponents();
 
