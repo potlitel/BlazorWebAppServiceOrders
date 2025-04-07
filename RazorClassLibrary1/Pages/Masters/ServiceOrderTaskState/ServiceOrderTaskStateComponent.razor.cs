@@ -1,4 +1,5 @@
-﻿using FSA.Core.DataType;
+﻿using FSA.Cache.Models;
+using FSA.Core.DataType;
 using FSA.Core.Utils;
 using Radzen;
 using RazorClassLibrary1.Dtos;
@@ -117,26 +118,26 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
             try
             {
                 await Task.CompletedTask;
-                //var key = $"GetAllCompanyGroupsService-{Pagination.GetCacheId()}";
-                //if (deleteCache)
-                //    AppCache.RemoveItem(key, CacheType.IndexedDB);
+                var key = $"GetAllServiceOrderTasksStatesService-{Pagination.GetCacheId()}";
+                if (deleteCache)
+                    AppCache.RemoveItem(key, CacheType.IndexedDB);
 
-                //var ResponseItemCached = await AppCache.GetItem<ItemCached?>(key, CacheType.IndexedDB);
-                //if (ResponseItemCached != null)
-                //{
-                //    ListItems = ResponseItemCached.Items.AsQueryable();
-                //    TotalItems = ResponseItemCached.TotalItems;
-                //}
-                //else
-                //{
-                //    var response = await GetAllCompanyGroupsService.Handle(Pagination);
-                //    if (response.Succeeded)
-                //    {
-                //        TotalItems = (int)response.Pagination.TotalItems;
-                //        ListItems = response.Data!.CompanyGroups.AsQueryable();
-                //        Pagination = response.Pagination;
-                //    }
-                //}
+                var ResponseItemCached = await AppCache.GetItem<ItemCached?>(key, CacheType.IndexedDB);
+                if (ResponseItemCached != null)
+                {
+                    ListItems = ResponseItemCached.Items.AsQueryable();
+                    TotalItems = ResponseItemCached.TotalItems;
+                }
+                else
+                {
+                    var response = await GetAllServiceOrderTasksStatesService.Handle(Pagination);
+                    if (response.Succeeded)
+                    {
+                        TotalItems = (int)response.Pagination.TotalItems;
+                        ListItems = response.Data!.AsQueryable();
+                        Pagination = response.Pagination;
+                    }
+                }
                 ListItems = ListItems ?? new List<ServiceOrderTaskStateDto>().AsQueryable();
             }
             catch (UnauthorizedAccessException) { }

@@ -35,27 +35,8 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll
             }
             catch (Exception ex)
             {
-                //throw ex;
                 return ResultSO<DocumentTypeDto>.Failure([ex.Message], CustomStatusCode.StatusUnexpectedError);
             }
         }
-
-        //public async Task<GetAllDocumentTypesResponse> GetResponseAsyncc(HttpContent content)
-        //{
-        //    var stringContent = await content.ReadAsStringAsync();
-
-        //    GetAllDocumentTypesResponse? response;
-        //    try
-        //    {
-        //        //response = JsonSerializer.Deserialize<TResponse>(stringContent);
-        //        response = Newtonsoft.Json.JsonConvert.DeserializeObject<GetAllDocumentTypesResponse>(stringContent);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex!;
-        //    }
-
-        //    return response!;
-        //}
     }
 }
