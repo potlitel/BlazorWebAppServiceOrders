@@ -1,6 +1,12 @@
 ﻿@using FSA.Razor.Components.Components.Shared
 @using Radzen.Blazor
 @using RazorClassLibrary1.Dtos
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.GetAll
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll
+
+@inject IGetAllServiceOrderTypesService GetAllServiceOrderTypesService
+@inject IGetAllServiceOrdersService GetAllServiceOrderService
+
 @if (IsLoading)
 {
     <Loader />
@@ -55,8 +61,6 @@ else
                                 Name="Owners"
                                 Data=@Owners
                                 Selected=@ServiceOrder!.Owner
-                                AllowClear="false"
-                                AllowVirtualization="true"
                                 Text=@Localizer["Owner"]
                                 TextProperty="FirstName"
                                 Change="@((args) => ChangeOwners(args))" />
@@ -66,8 +70,6 @@ else
                                 Name="Executors"
                                 Data=@Executors
                                 Selected=@ServiceOrder!.Executor
-                                AllowClear="false"
-                                AllowVirtualization="true"
                                 Text=@Localizer["Executor"]
                                 TextProperty="FirstName"
                                 Change="@((args) => ChangeExecutors(args))" />
@@ -77,8 +79,6 @@ else
                                 Name="ServiceOrders"
                                 Data=@ServiceOrders
                                 Selected=@ServiceOrder!.ParentServiceOrder
-                                AllowClear="false"
-                                AllowVirtualization="true"
                                 Text=@Localizer["ParentServiceOrder"]
                                 TextProperty="Number"
                                 Change="@((args) => ChangeServiceOrder(args))" />
@@ -88,8 +88,6 @@ else
                                 Name="Types"
                                 Data=@Types
                                 Selected=@ServiceOrder!.Type
-                                AllowClear="false"
-                                AllowVirtualization="true"
                                 Text=@Localizer["ServiceOrderType"]
                                 TextProperty="Description"
                                 Change="@((args) => ChangeType(args))" />

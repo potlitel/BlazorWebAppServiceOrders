@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using FSA.Cache.Models;
 using FSA.Core.DataType;
 using FSA.Core.Utils;
 using Microsoft.AspNetCore.Components;
@@ -38,7 +39,7 @@ namespace RazorClassLibrary1.Pages
                         Title = Localizer["Number"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "120px"
+                        MinWidth = "160px"
                     },
                     new DataColumn
                     {
@@ -46,7 +47,7 @@ namespace RazorClassLibrary1.Pages
                         Title = Localizer["EstimatedEndingDate"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "150px"
+                        MinWidth = "100px"
                     },
                     new DataColumn
                     {
@@ -66,8 +67,24 @@ namespace RazorClassLibrary1.Pages
                     },
                 new DataColumn
                     {
-                        Property = nameof(ServiceOrderDto.Type),
+                        Property = nameof(ServiceOrderDto.ServiceOrderTypeId),//reemplazar por su correspondiente valor de entidad
                         Title = "Type",
+                        Filterable = true,
+                        Sortable = true,
+                        MinWidth = "50px"
+                    },
+                new DataColumn
+                    {
+                        Property = nameof(ServiceOrderDto.ParentServiceOrderId),//reemplazar por su correspondiente valor de entidad
+                        Title = "Parent SO",
+                        Filterable = true,
+                        Sortable = true,
+                        MinWidth = "50px"
+                    },
+                new DataColumn
+                    {
+                        Property = nameof(ServiceOrderDto.ExecutorId),//reemplazar por su correspondiente valor de entidad
+                        Title = "Executor",
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "50px"
@@ -147,35 +164,33 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                await Task.CompletedTask;
                 //ListItems = new Faker<ServiceOrderDocumentDto>()
                 //                .RuleFor(x => x.Name, f => f.Finance.Account(15))
                 //                .RuleFor(x => x.Url, f => f.Image.PicsumUrl())
                 //                .RuleFor(x => x.ServiceOrderId, f => f.Random.Long())
                 //                .RuleFor(x => x.DocumentTypeId, f => f.Random.Long())
                 //                .Generate(50).ToList().AsQueryable();
-                TotalItems = 50;
-                //var key = $"GetAllCompanyGroupsService-{Pagination.GetCacheId()}";
-                //if (deleteCache)
-                //    AppCache.RemoveItem(key, CacheType.IndexedDB);
+                var key = $"GetAllServiceOrdersService-{Pagination.GetCacheId()}";
+                if (deleteCache)
+                    AppCache.RemoveItem(key, CacheType.IndexedDB);
 
-                //var ResponseItemCached = await AppCache.GetItem<ItemCached?>(key, CacheType.IndexedDB);
-                //if (ResponseItemCached != null)
-                //{
-                //    ListItems = ResponseItemCached.Items.AsQueryable();
-                //    TotalItems = ResponseItemCached.TotalItems;
-                //}
-                //else
-                //{
-                //    var response = await GetAllCompanyGroupsService.Handle(Pagination);
-                //    if (response.Succeeded)
-                //    {
-                //        TotalItems = (int)response.Pagination.TotalItems;
-                //        ListItems = response.Data!.CompanyGroups.AsQueryable();
-                //        Pagination = response.Pagination;
-                //    }
-                //}
-                ListItems = ListItems ?? new List<ServiceOrderDto>().AsQueryable();
+                var ResponseItemCached = await AppCache.GetItem<ItemCached?>(key, CacheType.IndexedDB);
+                if (ResponseItemCached != null)
+                {
+                    ListItems = ResponseItemCached.Items.AsQueryable();
+                    TotalItems = ResponseItemCached.TotalItems;
+                }
+                else
+                {
+                    var response = await GetAllServiceOrdersService.Handle(Pagination);
+                    if (response.Succeeded)
+                    {
+                        TotalItems = (int)response.Pagination.TotalItems;
+                        ListItems = response.Data!.AsQueryable();
+                        Pagination = response.Pagination;
+                    }
+                }
+                //ListItems = ListItems ?? new List<ServiceOrderDto>().AsQueryable();
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
