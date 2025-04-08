@@ -78,6 +78,7 @@ else
                     <FilterList Disabled=@Busy
                                 Name="ServiceOrders"
                                 Data=@ServiceOrders
+                                AllowVirtualization = "true"
                                 Selected=@ServiceOrder!.ParentServiceOrder
                                 Text=@Localizer["ParentServiceOrder"]
                                 TextProperty="Number"
