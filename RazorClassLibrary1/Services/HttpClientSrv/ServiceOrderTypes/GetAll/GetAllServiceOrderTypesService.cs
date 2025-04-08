@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes
+namespace RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.GetAll
 {
     public interface IGetAllServiceOrderTypesService
     {
@@ -20,7 +20,7 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes
     internal class GetAllServiceOrderTypesService : HttpClientServiceBase<GetAllServiceOrderTypesRequest, ResultSO<ServiceOrderTypeDto>>,
                                                     IGetAllServiceOrderTypesService
     {
-        public GetAllServiceOrderTypesService(IHttpClientFactory httpClientFactory, 
+        public GetAllServiceOrderTypesService(IHttpClientFactory httpClientFactory,
                                               IConfiguration configuration) : base(httpClientFactory, configuration)
         {
         }

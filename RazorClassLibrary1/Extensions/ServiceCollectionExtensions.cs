@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RazorClassLibrary1.Services;
 using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll;
-using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.GetAll;
 
 namespace RazorClassLibrary1.Extensions
 {
