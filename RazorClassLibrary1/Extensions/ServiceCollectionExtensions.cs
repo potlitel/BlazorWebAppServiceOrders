@@ -1,20 +1,12 @@
 ﻿using FSA.Cache;
-using FSA.Cache.Models;
-using FSA.Core.Dtos;
 using FSA.Management.Application.DependencyContainers;
 using FSA.Razor.Components.Extensions;
-using FSA.Razor.Components.Helper;
-using FSA.Razor.Components.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.JSInterop;
-using Radzen;
 using RazorClassLibrary1.Services;
 using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll;
-using System.Globalization;
-using System.Text.RegularExpressions;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes;
 
 namespace RazorClassLibrary1.Extensions
 {
@@ -37,7 +29,6 @@ namespace RazorClassLibrary1.Extensions
             services.AddFSACacheServices();
             //Components
             services.AddFSARadzenComponentsServices();
-            //services.AddFSALocalizationServices(configuration);
             services.AddFSA_ServiceOrders_LocalizationServices(configuration);
             return services;
         }
@@ -50,10 +41,6 @@ namespace RazorClassLibrary1.Extensions
         /// <returns>A service instance of type <see cref="IServiceCollection"/>.</returns>
         public static IServiceCollection AddFSASOCustomComponentsService(this IServiceCollection services)
         {
-            //services.AddScoped<IFSACustomNotificationService, FSACustomNotificationService>();
-            ////services.AddScoped<IFSACustomDialogService, FSACustomDialogService>();
-            //services.AddScoped<IFSAThemeService, FSAAThemeService>();
-
             services.AddScoped<IFSASOCustomDialogService, FSASOCustomDialogService>();
             services.AddScoped<IFSASOThemeService, FSAAThemeService>();
             services.AddScoped<IGitHubService, GitHubService>();
@@ -61,8 +48,7 @@ namespace RazorClassLibrary1.Extensions
 
             services.AddScoped<IGetAllDocumentTypesService, GetAllDocumentTypesService>();
             services.AddScoped<IGetAllServiceOrderTasksStatesService, GetAllServiceOrderTasksStatesService>();
-
-            //services.AddRadzenComponents();
+            services.AddScoped<IGetAllServiceOrderTypesService, GetAllServiceOrderTypesService>();
 
             return services;
         }
@@ -113,18 +99,5 @@ namespace RazorClassLibrary1.Extensions
 
             return services;
         }
-
-        //public static async Task InitialiseAppThemeAsync(this IServiceProvider sp, bool development = false)
-        //{
-        //    //using var scope = sp.CreateScope();
-        //    //var appCache = scope.ServiceProvider.GetRequiredService<IFSAAppCache>();
-        //    //ThemeCache themeCache = await appCache.GetItem<ThemeCache>("FSAWebTheme", CacheType.LocalStorage);
-        //    //var themeService = scope.ServiceProvider.GetRequiredService<ThemeService>();
-        //    //if (themeCache != null)
-        //    //{
-        //    //    themeService.SetTheme(themeCache.theme);
-        //    //    return;
-        //    //}
-        //}
     }
 }
