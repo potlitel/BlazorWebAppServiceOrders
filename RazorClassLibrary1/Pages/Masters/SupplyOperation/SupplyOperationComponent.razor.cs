@@ -81,14 +81,14 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
                 #region ItemActions
                 ItemActions =
                     [
-                        new GridItemAction
-                        {
-                            Action = GridItemActions.ADD_SUB_ITEM,
-                            Icon = "add_circle",
-                            Title = "AddManager",
-                            Style = ButtonStyle.Primary.GetHashCode(),
-                            //Show = o => { return admin; }
-                        },
+                        //new GridItemAction
+                        //{
+                        //    Action = GridItemActions.ADD_SUB_ITEM,
+                        //    Icon = "add_circle",
+                        //    Title = "AddManager",
+                        //    Style = ButtonStyle.Primary.GetHashCode(),
+                        //    //Show = o => { return admin; }
+                        //},
                         new GridItemAction
                         {
                             Action = GridItemActions.EDIT_ITEM,
