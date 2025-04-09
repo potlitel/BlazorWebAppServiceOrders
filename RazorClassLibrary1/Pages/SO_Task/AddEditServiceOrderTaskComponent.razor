@@ -1,6 +1,12 @@
 ﻿@using FSA.Razor.Components.Components.Shared
 @using Radzen.Blazor
 @using RazorClassLibrary1.Dtos
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll
+
+@inject IGetAllServiceOrdersService GetAllServiceOrderService
+@inject IGetAllServiceOrderTasksStatesService GetAllServiceOrderTasksStatesService
+
 @if (IsLoading)
 {
     <Loader />
@@ -48,7 +54,7 @@ else
                                 Selected=@ServiceOrderTask!.ServiceOrder
                                 AllowClear="false"
                                 AllowVirtualization="true"
-                                Text=@Localizer["ServiceOrder"]
+                                Text=@Localizer["ServiceOrders"]
                                 TextProperty="Number"
                                 Change="@((args) => ChangeServiceOrder(args))" />
                     <RadzenRequiredValidator Component="ServiceOrders" />

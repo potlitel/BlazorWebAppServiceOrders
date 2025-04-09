@@ -89,6 +89,7 @@ else
                                 Name="Types"
                                 Data=@Types
                                 Selected=@ServiceOrder!.Type
+                                AllowClear = "false"
                                 Text=@Localizer["ServiceOrderType"]
                                 TextProperty="Description"
                                 Change="@((args) => ChangeType(args))" />

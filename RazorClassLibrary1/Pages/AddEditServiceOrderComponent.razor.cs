@@ -66,7 +66,11 @@ namespace RazorClassLibrary1.Pages
                     ServiceOrders = serviceOrders.Data.ToList();
 
                 if (serviceOrdersTypes.Succeeded)
+                {
                     Types = serviceOrdersTypes.Data.ToList();
+                    if (ServiceOrder.ServiceOrderTypeId == 0)
+                        ServiceOrder.Type = Types.First();
+                }
 
 
                 Owners = fakerUsrs

@@ -421,7 +421,7 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parent Service Orden.
+        ///   Looks up a localized string similar to Parent Service Order.
         /// </summary>
         internal static string ParentServiceOrder {
             get {

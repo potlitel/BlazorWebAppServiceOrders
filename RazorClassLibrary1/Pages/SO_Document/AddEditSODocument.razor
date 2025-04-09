@@ -2,6 +2,11 @@
 @using Radzen.Blazor
 @using RazorClassLibrary1.Components.Shared
 @using RazorClassLibrary1.Dtos
+@using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll
+
+@inject IGetAllServiceOrdersService GetAllServiceOrderService
+@inject IGetAllDocumentTypesService GetAllDocumentTypesService
 
 @if (IsLoading)
 {
@@ -37,12 +42,12 @@ else
                                 Name="ServiceOrders"
                                 Data=@ServiceOrders
                                 Selected=@ServiceOrderDocument!.ServiceOrder
-                                AllowClear="false"
+                                AllowClear = "false"
                                 AllowVirtualization="true"
-                                Text=@Localizer["ServiceOrder"]
+                                Text=@Localizer["ServiceOrders"]
                                 TextProperty="Number"
                                 Change="@((args) => ChangeServiceOrder(args))" />
-                    <RadzenRequiredValidator Component="ServiceOrders" />
+                    <RadzenRequiredValidator Component="ServiceOrders" /> 
 
                     <FilterList Disabled=@Busy
                                 Name="DocumentTypes"
