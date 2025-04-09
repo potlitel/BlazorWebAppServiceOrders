@@ -89,22 +89,22 @@ namespace RazorClassLibrary1.Pages
                 #region ItemActions
                 ItemActions =
                     [
-                        new GridItemAction
-                        {
-                            Action = GridItemActions.ADD_SUB_ITEM,
-                            Icon = "add_circle",
-                            Title = "AddManager",
-                            Style = ButtonStyle.Primary.GetHashCode(),
-                            //Show = o => { return admin; }
-                        },
-                        new GridItemAction
-                        {
-                            Action = GridItemActions.EDIT_ITEM,
-                            Icon = "edit",
-                            Title = "Edit",
-                            Style = ButtonStyle.Warning.GetHashCode(),
-                            //Show = show => { return (admin || update); }
-                        },
+                        //new GridItemAction
+                        //{
+                        //    Action = GridItemActions.ADD_SUB_ITEM,
+                        //    Icon = "add_circle",
+                        //    Title = "AddManager",
+                        //    Style = ButtonStyle.Primary.GetHashCode(),
+                        //    //Show = o => { return admin; }
+                        //},
+                        //new GridItemAction
+                        //{
+                        //    Action = GridItemActions.EDIT_ITEM,
+                        //    Icon = "edit",
+                        //    Title = "Edit",
+                        //    Style = ButtonStyle.Warning.GetHashCode(),
+                        //    //Show = show => { return (admin || update); }
+                        //},
 
                     ];
                 #endregion
@@ -112,14 +112,14 @@ namespace RazorClassLibrary1.Pages
                 #region GeneralActions
                 GeneralActions =
                     [
-                        new GridGeneralAction
-                        {
-                            Action = GridGeneralActions.ADD_ITEM,
-                            Icon = "add",
-                            Title = @Localizer["AddServiceOrderRegister"],
-                            Style = ButtonStyle.Primary.GetHashCode(),
-                            //Show = show => { return create; }
-                        }
+                        //new GridGeneralAction
+                        //{
+                        //    Action = GridGeneralActions.ADD_ITEM,
+                        //    Icon = "add",
+                        //    Title = @Localizer["AddServiceOrderRegister"],
+                        //    Style = ButtonStyle.Primary.GetHashCode(),
+                        //    //Show = show => { return create; }
+                        //}
                     ];
                 #endregion
 
