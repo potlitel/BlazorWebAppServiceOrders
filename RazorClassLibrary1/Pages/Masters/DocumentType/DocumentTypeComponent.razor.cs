@@ -1,6 +1,7 @@
 ﻿using FSA.Cache.Models;
 using FSA.Core.DataType;
 using FSA.Core.Utils;
+using FSA.Management.Application.Features.Roles.Create;
 using Radzen;
 using RazorClassLibrary1.Dtos;
 
@@ -185,10 +186,10 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
                         var result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["AddDocumentType"]);
                         if (result)
                         {
-                            //var response = await CreateSystemModuleService.Handle(item!);
-                            //NotificationService.ShowNotification(response.Succeeded,
-                            //                                     response.StatusCode.ToString(),
-                            //                                     item!.Code);
+                            var response = await CreateDocumentTypeService.Handle(item!);
+                            NotificationService.ShowNotification(response.Succeeded,
+                                                                 response.StatusCode.ToString(),
+                                                                 item!.Code);
                             await LoadItems(true);
                         }
                         break;

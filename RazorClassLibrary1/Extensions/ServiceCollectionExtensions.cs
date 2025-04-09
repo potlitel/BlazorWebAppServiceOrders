@@ -4,6 +4,7 @@ using FSA.Razor.Components.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RazorClassLibrary1.Services;
+using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll;
@@ -53,6 +54,8 @@ namespace RazorClassLibrary1.Extensions
             services.AddScoped<IGetAllServiceOrderTypesService, GetAllServiceOrderTypesService>();
             services.AddScoped<IGetAllSupplyOperationsService,GetAllSupplyOperationsService>();
             services.AddScoped<IGetAllServiceOrdersService,GetAllServiceOrdersService>();
+
+            services.AddScoped<ICreateDocumentTypeService, CreateDocumentTypeService>();
 
             return services;
         }
