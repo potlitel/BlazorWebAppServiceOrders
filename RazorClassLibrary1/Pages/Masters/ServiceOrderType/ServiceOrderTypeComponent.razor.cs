@@ -4,6 +4,7 @@ using FSA.Core.Utils;
 using FSA.Management.Application.Features.CompanyGroups;
 using Radzen;
 using RazorClassLibrary1.Dtos;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.Create;
 namespace RazorClassLibrary1.Pages.Masters.ServiceOrderType
 {
     public partial class ServiceOrderTypeComponent
@@ -182,10 +183,10 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderType
                         var result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["AddServiceOrderType"]);
                         if (result)
                         {
-                            //var response = await CreateSystemModuleService.Handle(item!);
-                            //NotificationService.ShowNotification(response.Succeeded,
-                            //                                     response.StatusCode.ToString(),
-                            //                                     item!.Code);
+                            var response = await CreateServiceOrderTypeService.Handle(item!);
+                            NotificationService.ShowNotification(response.Succeeded,
+                                                                 response.StatusCode.ToString(),
+                                                                 item!.Code);
                             await LoadItems(true);
                         }
                         break;

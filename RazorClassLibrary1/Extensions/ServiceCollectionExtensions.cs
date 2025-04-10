@@ -10,6 +10,7 @@ using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.SupplyOperations.GetAll;
 
@@ -60,6 +61,7 @@ namespace RazorClassLibrary1.Extensions
             services.AddScoped<ICreateDocumentTypeService, CreateDocumentTypeService>();
             services.AddScoped<ICreateServiceOrderService, CreateServiceOrderService>();
             services.AddScoped<ICreateServiceOrderTaskStateService, CreateServiceOrderTaskStateService>();
+            services.AddScoped<ICreateServiceOrderTypeService, CreateServiceOrderTypeService>();
 
             return services;
         }
