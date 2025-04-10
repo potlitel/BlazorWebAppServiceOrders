@@ -1,9 +1,11 @@
 ﻿@using FSA.Management.Application.Infrastructure.Services.AppState
 @using RazorClassLibrary1.Components.Shared
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.Create
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll
 
 @inject IManagementAppState? appState;
 @inject IGetAllServiceOrderTasksStatesService GetAllServiceOrderTasksStatesService
+@inject ICreateServiceOrderTaskStateService CreateServiceOrderTaskService
 
 <h3>@(Localizer["ServiceOrderTasksStates"])</h3>
 

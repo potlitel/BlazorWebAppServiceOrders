@@ -3,6 +3,7 @@ using FSA.Core.DataType;
 using FSA.Core.Utils;
 using Radzen;
 using RazorClassLibrary1.Dtos;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.Create;
 
 
 namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
@@ -183,10 +184,10 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderTaskState
                         var result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["AddTaskState"]);
                         if (result)
                         {
-                            //var response = await CreateSystemModuleService.Handle(item!);
-                            //NotificationService.ShowNotification(response.Succeeded,
-                            //                                     response.StatusCode.ToString(),
-                            //                                     item!.Code);
+                            var response = await CreateServiceOrderTaskService.Handle(item!);
+                            NotificationService.ShowNotification(response.Succeeded,
+                                                                 response.StatusCode.ToString(),
+                                                                 item!.Code);
                             await LoadItems(true);
                         }
                         break;
