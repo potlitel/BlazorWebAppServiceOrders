@@ -2,10 +2,12 @@
 @using Radzen.Blazor
 @using RazorClassLibrary1.Dtos
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.GetAll
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.Create
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll
 
 @inject IGetAllServiceOrderTypesService GetAllServiceOrderTypesService
 @inject IGetAllServiceOrdersService GetAllServiceOrderService
+@inject ICreateServiceOrderService CreateServiceOrderService
 
 @if (IsLoading)
 {

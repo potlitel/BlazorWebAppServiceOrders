@@ -3,6 +3,7 @@ using FSA.Core.ServiceOrders.Models;
 using FSA.Management.Application.Features.CompanyGroups.GetAll;
 using FSA.Management.Application.Features.CompanyTypes.GetAll;
 using FSA.Management.Application.Features.Users;
+using FSA.Management.Application.Features.Users.CreateAdminEntity;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using RazorClassLibrary1.Dtos;
@@ -134,8 +135,12 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                await Task.CompletedTask;
-                var item = _item as UserDto;
+                //await Task.CompletedTask;
+                //var item = _item as UserDto;
+                //item!.Id = 55;
+
+                UserDto item = new UserDto();
+                item.Id = 55;
                 ServiceOrder.Owner = item!;
             }
             catch (Exception)
@@ -147,8 +152,11 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                await Task.CompletedTask;
-                var item = _item as UserDto;
+                //await Task.CompletedTask;
+                //var item = _item as UserDto;
+                //item!.Id = 55;
+                UserDto item = new UserDto();
+                item.Id = 55;
                 ServiceOrder.Executor = item!;
             }
             catch (Exception)
@@ -160,8 +168,29 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                await Task.CompletedTask;
-                //Busy = true;
+                Busy = true;
+
+                ServiceOrder.ExecutorId = 18;
+                ServiceOrder.OwnerId = 54;
+                ServiceOrder.ParentServiceOrderId = ServiceOrder.ParentServiceOrder!.Id;
+                ServiceOrder.ServiceOrderTypeId = ServiceOrder.Type!.Id;
+
+
+                if (ServiceOrder.Id == 0)
+                {
+                    Busy = true;
+
+                    var response = await CreateServiceOrderService.Handle(ServiceOrder);
+                    NotificationService.ShowNotification(response.Succeeded,
+                                                         response.StatusCode.ToString(),
+                                                         ServiceOrder.Number);
+
+                    CloseDialog(response.Succeeded);
+                }
+                else 
+                {
+                
+                }
                 //Policy.PolicyGroupId = Policy.PolicyGroup.Id;
 
                 //if (Policy.Id == 0)
