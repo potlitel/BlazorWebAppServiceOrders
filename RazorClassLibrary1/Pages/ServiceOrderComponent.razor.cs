@@ -235,6 +235,7 @@ namespace RazorClassLibrary1.Pages
                         var result = await CustomSODialogService.Open_AddEditSO_ServiceOrder(item);
                         if (result)
                         {
+                            await LoadItems(true);
                         }
                         break;
                     case GridItemActions.ADD_SUB_ITEM:

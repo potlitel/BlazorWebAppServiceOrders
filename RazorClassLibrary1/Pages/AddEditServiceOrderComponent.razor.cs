@@ -25,7 +25,7 @@ namespace RazorClassLibrary1.Pages
         private bool Busy { get; set; } = false;
         public bool IsCreateItem { get; set; } = false;
 
-        IEnumerable<ServiceOrderDto> ServiceOrders = [];
+        IEnumerable<ServiceOrderDto> ServiceOrdersParents = [];
 
         IEnumerable<ServiceOrderTypeDto> Types = [];
         IEnumerable<UserDto> Owners = [];
@@ -44,6 +44,8 @@ namespace RazorClassLibrary1.Pages
                 await Task.CompletedTask;
                 IsLoading = true;
 
+                #region Bogus-ToDelete
+
                 //https://github.com/bchavez/Bogus
                 //https://medium.com/@fahrican.kcn/generating-mock-data-in-net-applications-a-comprehensive-guide-to-using-bogus-3fd60cc09f18#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjkxNGZiOWIwODcxODBiYzAzMDMyODQ1MDBjNWY1NDBjNmQ0ZjVlMmYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMTU2MzUxODk4NjQzOTMyNzIzMDIiLCJlbWFpbCI6InBvdGxpdGVsQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYmYiOjE3NDE3MDc1MTMsIm5hbWUiOiJBbGFpbiBKb3JnZSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMajJCbE9zZmZsM21IQWUxREd3dGlkUFkxdDF5cEpMM3U5aWxuWGwzOHAzN0tzUkp2bz1zOTYtYyIsImdpdmVuX25hbWUiOiJBbGFpbiIsImZhbWlseV9uYW1lIjoiSm9yZ2UiLCJpYXQiOjE3NDE3MDc4MTMsImV4cCI6MTc0MTcxMTQxMywianRpIjoiM2UyMDYyZTY3MzJmNzBmODgzY2JjMjUzYjE0ZTcxM2RhNzI3YmY2NCJ9.GDPLzC40vJtA0hCz9whdNZSJ8DzPPJQcGeWQY1fBqPWoS3VVH0soqoYlvg_bAexkZkH1X9RiDd7CmJ02wvxQhQSJIdCMMUH2xUMsu5bqJOD3koiWQ7J44dBHMlyMwlZ18cIgZHMvRPgQUH-Z6yEp8viggoCG83mllEnTOH8DobsFQxqstYhMfmJix_THkIfuLRqxcxSlZxxJwvYEq4CxDwHS0Wx3cQbSL3sPWVpUx4OBfEOdafeLb_4Q2ISUSEZjOhbPJrliIyUBWhoNn0UF1I8UgWd3bzPpTutuK6NSpukoKAKC6I42U8U6pStb7V_3Dosp2YEHhNwz_KEkExzp7w
                 //ServiceOrders = faker
@@ -57,6 +59,8 @@ namespace RazorClassLibrary1.Pages
                 //                     .RuleFor(x => x.Code, f => f.Finance.Account(15))
                 //                     .RuleFor(x => x.Description, f => f.Address.FullAddress())
                 //                     .Generate(50).ToList();
+                #endregion
+
                 var serviceOrdersTask = GetAllServiceOrderService.Handle(null);
                 var serviceOrdersTypesTask = GetAllServiceOrderTypesService.Handle(null);
 
@@ -64,7 +68,11 @@ namespace RazorClassLibrary1.Pages
                 var serviceOrdersTypes = await serviceOrdersTypesTask;
 
                 if (serviceOrders.Succeeded)
-                    ServiceOrders = serviceOrders.Data.ToList();
+                {
+                    ServiceOrdersParents = serviceOrders.Data.ToList();
+                    if (ServiceOrder.ParentServiceOrderId == 0 || ServiceOrder.ParentServiceOrderId is null)
+                        ServiceOrder.ParentServiceOrder = ServiceOrdersParents.First();
+                }
 
                 if (serviceOrdersTypes.Succeeded)
                 {
@@ -83,16 +91,6 @@ namespace RazorClassLibrary1.Pages
                                      .RuleFor(x => x.FirstName, f => f.Person.FirstName)
                                      .RuleFor(x => x.LastName, f => f.Person.LastName)
                                      .Generate(50).ToList();
-
-                //var policyGroupsTask = GetAllPolicyGroupsService.Handle(null);
-                //var policyGroups = await policyGroupsTask;
-
-                //if (policyGroups?.Succeeded == true)
-                //{
-                //    PolicyGroups = policyGroups.Data!.PolicyGroups.ToList();
-                //    if (Policy.PolicyGroupId == 0)
-                //        Policy.PolicyGroup = PolicyGroups.First();
-                //}
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
@@ -109,9 +107,8 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                await Task.CompletedTask;
                 var item = _item as ServiceOrderDto;
-                ServiceOrder.ParentServiceOrder = item!;
+                await Task.FromResult(ServiceOrder.ParentServiceOrder = item!);
             }
             catch (Exception)
             {
@@ -122,9 +119,8 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                await Task.CompletedTask;
                 var item = _item as ServiceOrderTypeDto;
-                ServiceOrder.Type = item!;
+                await Task.FromResult(ServiceOrder.Type = item!);
             }
             catch (Exception)
             {
@@ -136,12 +132,10 @@ namespace RazorClassLibrary1.Pages
             try
             {
                 //await Task.CompletedTask;
-                //var item = _item as UserDto;
-                //item!.Id = 55;
-
-                UserDto item = new UserDto();
-                item.Id = 55;
-                ServiceOrder.Owner = item!;
+                var item = _item as UserDto;
+                //UserDto item = new UserDto();
+                //item.Id = 55;
+                await Task.FromResult(ServiceOrder.Owner = item!);
             }
             catch (Exception)
             {
@@ -153,11 +147,11 @@ namespace RazorClassLibrary1.Pages
             try
             {
                 //await Task.CompletedTask;
-                //var item = _item as UserDto;
+                var item = _item as UserDto;
                 //item!.Id = 55;
-                UserDto item = new UserDto();
-                item.Id = 55;
-                ServiceOrder.Executor = item!;
+                //UserDto item = new UserDto();
+                //item.Id = 55;
+                await Task.FromResult(ServiceOrder.Executor = item!);
             }
             catch (Exception)
             {
@@ -172,7 +166,7 @@ namespace RazorClassLibrary1.Pages
 
                 ServiceOrder.ExecutorId = 18;
                 ServiceOrder.OwnerId = 54;
-                ServiceOrder.ParentServiceOrderId = ServiceOrder.ParentServiceOrder!.Id;
+                ServiceOrder.ParentServiceOrderId = ServiceOrder.ParentServiceOrder?.Id; //using null propagation.
                 ServiceOrder.ServiceOrderTypeId = ServiceOrder.Type!.Id;
 
 
@@ -189,26 +183,8 @@ namespace RazorClassLibrary1.Pages
                 }
                 else 
                 {
-                
+                    //Put Update logic here!!!
                 }
-                //Policy.PolicyGroupId = Policy.PolicyGroup.Id;
-
-                //if (Policy.Id == 0)
-                //{
-                //    var response = await CreatePolicyService.Handle(Policy);
-                //    NotificationService.ShowNotification(response.Succeeded,
-                //                                         response.StatusCode.ToString(),
-                //                                         Policy.Code);
-                //    CloseDialog(response.Succeeded);
-                //}
-                //else
-                //{
-                //    var response = await UpdatePolicyService.Handle(Policy);
-                //    NotificationService.ShowNotification(response.Succeeded,
-                //                                        response.StatusCode.ToString(),
-                //                                        Policy.Code);
-                //    CloseDialog(response.Succeeded);
-                //}
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)

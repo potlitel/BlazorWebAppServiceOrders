@@ -51,13 +51,24 @@ else
 
                     <RadzenFormField Text="@(Localizer["Address"] + "*")" Variant="@FSARadzenConfig.InputsVariant">
                         <ChildContent>
-                            <RadzenTextArea Disabled=@(Busy || IsCreateItem) @bind-Value="@ServiceOrder!.Address" Rows="3" Name="Observations" />
+                            <RadzenTextArea Disabled=@(Busy || IsCreateItem) @bind-Value="@ServiceOrder!.Address" Rows="3" Name="Address" />
                         </ChildContent>
                         <Helper>
                             <RadzenRequiredValidator Component="Address" />
                             <RadzenLengthValidator Component="Address" Min="2" Max="255" />
                         </Helper>
                     </RadzenFormField>
+
+                    <FilterList Disabled=@Busy
+                                Name="ServiceOrders"
+                                Data=@ServiceOrdersParents
+                                AllowClear = "false"
+                                AllowVirtualization="true"
+                                Selected=@ServiceOrder!.ParentServiceOrder
+                                Text=@Localizer["ParentServiceOrder"]
+                                TextProperty="Number"
+                                Change="@((args) => ChangeServiceOrder(args))" />
+                    <RadzenRequiredValidator Component="ServiceOrders" /> 
 
                     <FilterList Disabled=@Busy
                                 Name="Owners"
@@ -76,16 +87,6 @@ else
                                 TextProperty="FirstName"
                                 Change="@((args) => ChangeExecutors(args))" />
                     <RadzenRequiredValidator Component="Executors" />
-
-                    <FilterList Disabled=@Busy
-                                Name="ServiceOrders"
-                                Data=@ServiceOrders
-                                AllowVirtualization = "true"
-                                Selected=@ServiceOrder!.ParentServiceOrder
-                                Text=@Localizer["ParentServiceOrder"]
-                                TextProperty="Number"
-                                Change="@((args) => ChangeServiceOrder(args))" />
-                    <RadzenRequiredValidator Component="ServiceOrders" />
 
                     <FilterList Disabled=@Busy
                                 Name="Types"
