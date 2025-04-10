@@ -20,7 +20,7 @@ else
             <RadzenTemplateForm TItem="@(ServiceOrderDto)" Data="@ServiceOrder" Visible="@(ServiceOrder != null)" Submit="@(async () => await Submit())">
                 <RadzenStack>
 
-                    <RadzenFormField Text="@(Localizer["Number"] + "*")" Variant="Variant.Outlined">
+                    @* <RadzenFormField Text="@(Localizer["Number"] + "*")" Variant="Variant.Outlined">
                         <ChildContent>
                             <RadzenTextBox Disabled=@Busy style="display: block" class="w-100" @bind-Value="@ServiceOrder!.Number" Name="Number" Placeholder="@Localizer["Number"]" />
                         </ChildContent>
@@ -28,16 +28,16 @@ else
                             <RadzenRequiredValidator Component="Number" />
                             <RadzenLengthValidator Component="Number" Min="2" Max="50" />
                         </Helper>
-                    </RadzenFormField>
+                    </RadzenFormField> *@
 
-                    <RadzenFormField Text="@(Localizer["EstimatedEndingDate"] + "*")" Variant="@FSARadzenConfig.InputsVariant">
+                    @* <RadzenFormField Text="@(Localizer["EstimatedEndingDate"] + "*")" Variant="@FSARadzenConfig.InputsVariant">
                         <ChildContent>
                             <RadzenDatePicker Disabled=@Busy @bind-Value="@ServiceOrder!.EstimatedEndingDate" Name="EstimatedEndingDate" />
                         </ChildContent>
                         <Helper>
                             <RadzenRequiredValidator Component="EstimatedEndingDate" />
                         </Helper>
-                    </RadzenFormField>
+                    </RadzenFormField> *@
 
                     <RadzenFormField Text="@(Localizer["Observations"] + "*")" Variant="@FSARadzenConfig.InputsVariant">
                         <ChildContent>
