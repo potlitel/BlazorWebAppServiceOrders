@@ -3,11 +3,13 @@
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.Create
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.GetAll
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.Update
 @* @using FSA.Razor.Components.Components.Shared *@
 
 @inject IManagementAppState? appState;
 @inject IGetAllServiceOrderTypesService GetAllServiceOrderTypesService;
 @inject ICreateServiceOrderTypeService CreateServiceOrderTypeService
+@inject IUpdateServiceOrderTypeService UpdateServiceOrderTypeService
 
 <h3>@(Localizer["ServiceOrderTypes"])</h3>
 
