@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RazorClassLibrary1.Services;
 using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll;
+using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.Update;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.Create;
@@ -64,6 +65,8 @@ namespace RazorClassLibrary1.Extensions
             services.AddScoped<ICreateServiceOrderTaskStateService, CreateServiceOrderTaskStateService>();
             services.AddScoped<ICreateServiceOrderTypeService, CreateServiceOrderTypeService>();
             services.AddScoped<ICreateSupplyOperationService, CreateSupplyOperationService>();
+
+            services.AddScoped<IUpdateDocumentTypeService, UpdateDocumentTypeService>();
 
             return services;
         }

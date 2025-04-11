@@ -2,10 +2,12 @@
 @using RazorClassLibrary1.Components.Shared
 @using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.Create
 @using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll
+@using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.Update
 
 @inject IManagementAppState? appState;
 @inject IGetAllDocumentTypesService GetAllDocumentTypesService
 @inject ICreateDocumentTypeService CreateDocumentTypeService
+@inject IUpdateDocumentTypeService UpdateDocumentTypeService
 
 
 <h3>@(Localizer["Documenttypes"])</h3>

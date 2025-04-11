@@ -197,10 +197,10 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
                         result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["EditDocumentType"]);
                         if (result)
                         {
-                            //var response = await UpdateSystemModuleService.Handle(item!);
-                            //NotificationService.ShowNotification(response.Succeeded,
-                            //                                    response.StatusCode.ToString(),
-                            //                                    item!.Code);
+                            var response = await UpdateDocumentTypeService.Handle(item!);
+                            NotificationService.ShowNotification(response.Succeeded,
+                                                                response.StatusCode.ToString(),
+                                                                item!.Code);
                             await LoadItems(true);
                         }
                         break;

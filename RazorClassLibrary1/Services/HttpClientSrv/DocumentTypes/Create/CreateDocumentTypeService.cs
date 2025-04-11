@@ -29,7 +29,7 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.Create
 
                 var _httpClient = await GetWebApiAsync(HttpClientName("FSAManagement:AuthServicesSettings:Name"));
 
-                var url = $"so/supply-operations";
+                var url = $"so/document-types";
                 var result = await _httpClient.PostAsync(url, content);
                 result.EnsureSuccessStatusCode();
 
