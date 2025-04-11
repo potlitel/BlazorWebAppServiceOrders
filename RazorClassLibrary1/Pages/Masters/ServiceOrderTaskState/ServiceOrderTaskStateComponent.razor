@@ -2,10 +2,12 @@
 @using RazorClassLibrary1.Components.Shared
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.Create
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.Update
 
 @inject IManagementAppState? appState;
 @inject IGetAllServiceOrderTasksStatesService GetAllServiceOrderTasksStatesService
 @inject ICreateServiceOrderTaskStateService CreateServiceOrderTaskService
+@inject IUpdateServiceOrderTaskStateService UpdateServiceOrderTaskStateService
 
 <h3>@(Localizer["ServiceOrderTasksStates"])</h3>
 
