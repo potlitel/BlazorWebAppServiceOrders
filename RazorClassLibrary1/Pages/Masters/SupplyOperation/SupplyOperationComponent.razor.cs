@@ -8,6 +8,7 @@ using Radzen;
 using RazorClassLibrary1.Dtos;
 using RazorClassLibrary1.Services.HttpClientSrv.SupplyOperations.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.SupplyOperations.GetAll;
+using RazorClassLibrary1.Services.HttpClientSrv.SupplyOperations.Update;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -203,10 +204,10 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
                         result = await CustomSODialogService.Open_AddEditMaster(item, Localizer["AddSupplyOperation"]);
                         if (result)
                         {
-                            //var response = await UpdateSystemModuleService.Handle(item!);
-                            //NotificationService.ShowNotification(response.Succeeded,
-                            //                                    response.StatusCode.ToString(),
-                            //                                    item!.Code);
+                            var response = await UpdateSupplyOperationService.Handle(item!);
+                            NotificationService.ShowNotification(response.Succeeded,
+                                                                response.StatusCode.ToString(),
+                                                                item!.Code);
                             await LoadItems(true);
                         }
                         break;

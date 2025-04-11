@@ -17,6 +17,7 @@ using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.Update;
 using RazorClassLibrary1.Services.HttpClientSrv.SupplyOperations.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.SupplyOperations.GetAll;
+using RazorClassLibrary1.Services.HttpClientSrv.SupplyOperations.Update;
 
 namespace RazorClassLibrary1.Extensions
 {
@@ -71,6 +72,7 @@ namespace RazorClassLibrary1.Extensions
             services.AddScoped<IUpdateDocumentTypeService, UpdateDocumentTypeService>();
             services.AddScoped<IUpdateServiceOrderTaskStateService, UpdateServiceOrderTaskStateService>();
             services.AddScoped<IUpdateServiceOrderTypeService, UpdateServiceOrderTypeService>();
+            services.AddScoped<IUpdateSupplyOperationService, UpdateSupplyOperationService>();
 
             return services;
         }
