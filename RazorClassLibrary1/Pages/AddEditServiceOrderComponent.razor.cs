@@ -72,6 +72,11 @@ namespace RazorClassLibrary1.Pages
                     ServiceOrdersParents = serviceOrders.Data.ToList();
                     if (ServiceOrder.ParentServiceOrderId == 0 || ServiceOrder.ParentServiceOrderId is null)
                         ServiceOrder.ParentServiceOrder = ServiceOrdersParents.First();
+                    else
+                    {
+                        var parent = ServiceOrdersParents.FirstOrDefault(item => item.Id == ServiceOrder.ParentServiceOrderId);
+                        ServiceOrder.ParentServiceOrder = parent;
+                    }
                 }
 
                 if (serviceOrdersTypes.Succeeded)
@@ -79,6 +84,10 @@ namespace RazorClassLibrary1.Pages
                     Types = serviceOrdersTypes.Data.ToList();
                     if (ServiceOrder.ServiceOrderTypeId == 0)
                         ServiceOrder.Type = Types.First();
+                    else {
+                        var type = Types.FirstOrDefault(item => item.Id == ServiceOrder.ServiceOrderTypeId);
+                        ServiceOrder.Type = type;
+                    }
                 }
 
 
