@@ -10,6 +10,10 @@ using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetById;
 using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.Update;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetByExecutor;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetById;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetByOwner;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.Update;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetById;
@@ -77,11 +81,15 @@ namespace RazorClassLibrary1.Extensions
             services.AddScoped<IUpdateServiceOrderTaskStateService, UpdateServiceOrderTaskStateService>();
             services.AddScoped<IUpdateServiceOrderTypeService, UpdateServiceOrderTypeService>();
             services.AddScoped<IUpdateSupplyOperationService, UpdateSupplyOperationService>();
+            services.AddScoped<IUpdateServiceOrderService, UpdateServiceOrderService>();
 
             services.AddScoped<IGetDocumentTypeByIdService, GetDocumentTypeByIdService>();
             services.AddScoped<IGetServiceOrderTaskStateByIdService, GetServiceOrderTaskStateByIdService>();
             services.AddScoped<IGetServiceOrderTypeByIdService, GetServiceOrderTypeByIdService>();
             services.AddScoped<IGetSupplyOperationByIdService, GetSupplyOperationByIdService>();
+            services.AddScoped<IGetServiceOrderByIdService, GetServiceOrderByIdService>();
+            services.AddScoped<IGetServiceOrderByExecutorService, GetServiceOrderByExecutorService>();
+            services.AddScoped<IGetServiceOrderByOwnerService, GetServiceOrderByOwnerService>();
 
             return services;
         }

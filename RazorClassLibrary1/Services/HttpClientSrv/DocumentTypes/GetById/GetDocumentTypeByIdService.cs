@@ -4,10 +4,10 @@ using Microsoft.Extensions.Configuration;
 
 namespace RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetById
 {
-    public interface IGetDocumentTypeByIdService
-    {
-        Task<Result<GetDocumentTypeByIdResponse>> Handle(int id);
-    }
+        public interface IGetDocumentTypeByIdService
+        {
+            Task<Result<GetDocumentTypeByIdResponse>> Handle(int id);
+        }
     internal class GetDocumentTypeByIdService : HttpClientServiceBase<GetDocumentTypeByIdRequest, Result<GetDocumentTypeByIdResponse>>,
                                                 IGetDocumentTypeByIdService
     {
