@@ -1,0 +1,41 @@
+﻿@using FSA.Core.ServiceOrders.Dtos
+@using FSA.Razor.Components.Components.Shared
+
+<FadeIn>
+     <RadzenStack Gap="1rem">
+
+        <RadzenRow>
+            <RadzenIcon Icon="room" /><RadzenColumn>@Localizer["MaxLatitude"]</RadzenColumn>
+            <RadzenColumn>
+                @* @if (ServiceOrder.Number) { } *@
+
+                Hola hola
+
+                @* @DisplayValue(ServiceOrder.Number) *@
+
+                @* @if (Municipality.MunicipalityDatas.Count() > 0)
+                {
+                    @DisplayValue(Municipality.MunicipalityDatas.ElementAt(0).MaxLatitude.ToString())
+                }
+                else
+                {
+                    @DisplayValue("-")
+                } *@
+            </RadzenColumn>
+        </RadzenRow>
+
+     </RadzenStack>
+</FadeIn>
+
+@code {
+
+    [Parameter]
+    public ServiceOrderDto ServiceOrder { get; set; } = null!;
+    [Parameter]
+    public bool IsSideDialog { get; set; } = false;
+
+    RenderFragment DisplayValue(string value)
+    {
+       return @<p>@value</p>;
+    }
+}

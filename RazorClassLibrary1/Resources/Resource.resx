@@ -177,6 +177,10 @@
     <value>Aplicar</value>
     <comment>Global</comment>
   </data>
+  <data name="BasicInfo" xml:space="preserve">
+    <value>Basic Info</value>
+    <comment>Modal</comment>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Clear</value>
     <comment>Global</comment>
@@ -188,6 +192,10 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
     <comment>GridColumn</comment>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>Documents</value>
+    <comment>Modal</comment>
   </data>
   <data name="DocumentType" xml:space="preserve">
     <value>Document Type</value>
@@ -249,6 +257,10 @@
     <value>Executor</value>
     <comment>Modals</comment>
   </data>
+  <data name="Features" xml:space="preserve">
+    <value>Features</value>
+    <comment>Modal</comment>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
     <comment>Global</comment>
@@ -285,6 +297,10 @@
     <value>Price</value>
     <comment>GridColumn</comment>
   </data>
+  <data name="Registers" xml:space="preserve">
+    <value>Registers</value>
+    <comment>Modal</comment>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
     <comment>Global</comment>
@@ -292,6 +308,10 @@
   <data name="ServiceOrder" xml:space="preserve">
     <value>Service Order</value>
     <comment>Global</comment>
+  </data>
+  <data name="ServiceOrderData" xml:space="preserve">
+    <value>Service Order Details</value>
+    <comment>Modals</comment>
   </data>
   <data name="ServiceOrders" xml:space="preserve">
     <value>Service Orders</value>
@@ -364,6 +384,10 @@
   <data name="SupplyOperations" xml:space="preserve">
     <value>Supply Operations</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Tasks</value>
+    <comment>Modal</comment>
   </data>
   <data name="Trigger" xml:space="preserve">
     <value>Trigger</value>

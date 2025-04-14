@@ -1,4 +1,5 @@
-﻿using FSA.Management.Application.Infrastructure.Services.AppState;
+﻿using FSA.Management.Application.Features.Municipalities;
+using FSA.Management.Application.Infrastructure.Services.AppState;
 //using FSA.Razor.Components.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
@@ -6,6 +7,7 @@ using Radzen;
 using RazorClassLibrary1.Components.Shared;
 using RazorClassLibrary1.Dtos;
 using RazorClassLibrary1.Pages;
+using RazorClassLibrary1.Pages.SO_Details;
 using RazorClassLibrary1.Pages.SO_Document;
 using RazorClassLibrary1.Pages.SO_Feature;
 using RazorClassLibrary1.Pages.SO_Register;
@@ -28,6 +30,7 @@ namespace RazorClassLibrary1.Services
         Task<bool> Open_AddEditSO_TaskDocument(ServiceOrderTaskDocumentDto item);
         Task<bool> Open_AddEditSO_ServiceOrderTask(ServiceOrderTaskDto item);
         Task<bool> Open_AddEditSO_ServiceOrder(ServiceOrderDto item);
+        Task<bool> Open_ServiceOrderData(ServiceOrderDto item);
     }
 
     public class FSASOCustomDialogService : IFSASOCustomDialogService
@@ -254,6 +257,38 @@ namespace RazorClassLibrary1.Services
             {
                 return false;
             }
+        }
+
+        public async Task<bool> Open_ServiceOrderData(ServiceOrderDto dto)
+        {
+            try
+            {
+                var result = await dialogService.OpenAsync<ServiceOrderDetailsComponent>(
+                    localizer["ServiceOrderData"],
+                    new Dictionary<string, object>()
+                    {
+                        { "ServiceOrder", dto },
+                        { "IsSideDialog", true }
+                    },
+                    options: GetDialogOptions()
+                );
+
+                return result is null ? false : (bool)result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private DialogOptions GetDialogOptions()
+        {
+            return new DialogOptions
+            {
+                CloseDialogOnOverlayClick = true,
+                Width = "1250px",
+                ShowClose = false,
+            };
         }
     }
 }

@@ -31,6 +31,10 @@
             var responseCache = await AppCache.GetItem<ThemeCache?>("FSASOWebTheme", CacheType.LocalStorage);
             if (responseCache != null)
                 IsLightMode = responseCache.theme.Equals(LightTheme);
+
+            //https://forum.radzen.com/t/how-to-change-the-theme/14781/4
+            //https://forum.radzen.com/t/blazor-server-change-theme-dynamically/5164/11
+            Href = IsLightMode ? $"/css/material-base.css" : $"_content/Radzen.Blazor/css/material-dark.css";
         }
         catch (Exception)
         {

@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static FSA.Management.Application.Domain.Constants.Permissions;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 
 namespace RazorClassLibrary1.Pages
@@ -122,11 +124,11 @@ namespace RazorClassLibrary1.Pages
                     [
                         new GridItemAction
                         {
-                            Action = GridItemActions.ADD_SUB_ITEM,
-                            Icon = "add_circle",
-                            Title = "AddManager",
-                            Style = ButtonStyle.Primary.GetHashCode(),
-                            //Show = o => { return admin; }
+                            Action = GridItemActions.VIEW_DETAILS,
+                            Icon = "preview",
+                            Title = "ViewData",
+                            Style = ButtonStyle.Info.GetHashCode(),
+                            //Show = o => { return (admin || update); }
                         },
                         new GridItemAction
                         {
@@ -238,7 +240,8 @@ namespace RazorClassLibrary1.Pages
                             await LoadItems(true);
                         }
                         break;
-                    case GridItemActions.ADD_SUB_ITEM:
+                    case GridItemActions.VIEW_DETAILS:
+                        await CustomSODialogService.Open_ServiceOrderData(item!);
                         break;
                     case GridItemActions.EDIT_ITEM:
                         result = await CustomSODialogService.Open_AddEditSO_ServiceOrder(item);

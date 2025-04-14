@@ -1,0 +1,85 @@
+﻿@using FSA.Razor.Components.Components.Shared
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll
+@inject IGetAllServiceOrderTasksStatesService GetAllServiceOrderTasksStatesService
+
+<FadeIn>
+
+    <RadzenTabs @bind-SelectedIndex=@selectedIndex>
+        <Tabs>
+            <RadzenTabsItem Text="@Localizer["BasicInfo"]">
+                
+                <RadzenStack Gap="1rem">
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="room" /><RadzenColumn>@Localizer["Number"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrder.Number
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="room" /><RadzenColumn>@Localizer["EstimatedEndingDate"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrder.EstimatedEndingDate
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="room" /><RadzenColumn>@Localizer["Observations"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrder.Observations
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="room" /><RadzenColumn>@Localizer["Address"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrder.Address
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                </RadzenStack>
+
+            </RadzenTabsItem>
+            <RadzenTabsItem Text="@Localizer["Documents"]">
+                Orders
+            </RadzenTabsItem>
+            <RadzenTabsItem Text="@Localizer["Tasks"]">
+                Order Details
+            </RadzenTabsItem>
+            <RadzenTabsItem Text="@Localizer["Features"]">
+                Order Details
+            </RadzenTabsItem>
+            <RadzenTabsItem Text="@Localizer["Registers"]">
+                
+                <h4>Modificar o status desta Ordem de Serviço</h4>
+
+                <br/>
+
+                <RadzenSteps Change="@OnChange">
+                    <Steps>
+                        @foreach (var item in SOStates)
+                        {
+                             <RadzenStepsItem Text=@item.Description />
+                        }
+
+                        @* <RadzenStepsItem Text="Pendiente">
+                        </RadzenStepsItem>
+                        <RadzenStepsItem Text="Programada">
+                        </RadzenStepsItem>
+                        <RadzenStepsItem Text="En proceso">
+                        </RadzenStepsItem>
+                        <RadzenStepsItem Text="En espera">
+                        </RadzenStepsItem>
+                        <RadzenStepsItem Text="Terminada">
+                        </RadzenStepsItem>
+                        <RadzenStepsItem Text="Cancelada">
+                        </RadzenStepsItem> *@
+                    </Steps>
+                </RadzenSteps>
+
+            </RadzenTabsItem>
+        </Tabs>
+    </RadzenTabs>
+     
+</FadeIn>
