@@ -69,14 +69,14 @@ namespace RazorClassLibrary1.Pages
 
                 if (serviceOrders.Succeeded)
                 {
-                    ServiceOrdersParents = serviceOrders.Data.ToList();
-                    if (ServiceOrder.ParentServiceOrderId == 0 || ServiceOrder.ParentServiceOrderId is null)
-                        ServiceOrder.ParentServiceOrder = ServiceOrdersParents.First();
-                    else
-                    {
+                    //ServiceOrdersParents = serviceOrders.Data.ToList();
+                    //if (ServiceOrder.ParentServiceOrderId == 0 || ServiceOrder.ParentServiceOrderId is null)
+                    //    ServiceOrder.ParentServiceOrder = ServiceOrdersParents.First();
+                    //else
+                    //{
                         var parent = ServiceOrdersParents.FirstOrDefault(item => item.Id == ServiceOrder.ParentServiceOrderId);
                         ServiceOrder.ParentServiceOrder = parent;
-                    }
+                    //}
                 }
 
                 if (serviceOrdersTypes.Succeeded)
