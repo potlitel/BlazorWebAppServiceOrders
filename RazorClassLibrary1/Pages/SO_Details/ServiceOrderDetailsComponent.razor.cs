@@ -32,7 +32,11 @@ namespace RazorClassLibrary1.Pages.SO_Details
                 var states = await statesTask;
 
                 if (states.Succeeded)
+                {
                     SOStates = states.Data.ToList();
+                    var random = new Random();
+                    selectedIndex = random.Next(0, SOStates.Count());
+                }
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
@@ -51,6 +55,8 @@ namespace RazorClassLibrary1.Pages.SO_Details
             NotificationService.ShowNotification(true,
                                                  $"Succesfully register state {index}",
                                                  ServiceOrder.Number);
+
+            selectedIndex = index;
         }
     }
 }
