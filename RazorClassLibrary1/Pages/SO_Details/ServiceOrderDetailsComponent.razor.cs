@@ -1,10 +1,6 @@
-﻿using FSA.Core.ServiceOrders.Models;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Radzen;
 using RazorClassLibrary1.Dtos;
-using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.Create;
-using System;
-using System.Linq;
 
 
 namespace RazorClassLibrary1.Pages.SO_Details
@@ -21,11 +17,6 @@ namespace RazorClassLibrary1.Pages.SO_Details
 
         IEnumerable<ServiceOrderTaskStateDto> SOStates = [];
 
-        //RenderFragment DisplayValue(string value)
-        //{
-        //    return @<p>@value</p>;
-        //}
-
         protected override async Task OnInitializedAsync()
         {
             try
@@ -41,7 +32,6 @@ namespace RazorClassLibrary1.Pages.SO_Details
                 {
                     SOStates = states.Data.ToList();
                     var random = new Random();
-                    //selectedIndex = random.Next(0, SOStates.Count());
                 }
 
                 if (currentRegister.Succeeded)
@@ -67,13 +57,28 @@ namespace RazorClassLibrary1.Pages.SO_Details
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index">THe index</param>
+        /// <returns></returns>
         async Task OnChange(int index)
+        {
+            await SaveServiceOrderRegister(index);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns></returns>
+        private async Task SaveServiceOrderRegister(int index)
         {
             var stateFrom = SOStates.ElementAt(selectedIndex);
             var stateTo = SOStates.ElementAt(index);
 
-            //Console.WriteLine($"Step with index {index} was selected.");
-            ServiceOrderRegisterDto serviceOrderRegisterDto = new ServiceOrderRegisterDto {
+            ServiceOrderRegisterDto serviceOrderRegisterDto = new ServiceOrderRegisterDto
+            {
                 Trigger = "custom trigger",
                 StateFrom = stateFrom.Description,
                 StateTo = stateTo.Description,
@@ -84,7 +89,7 @@ namespace RazorClassLibrary1.Pages.SO_Details
 
             var response = await CreateServiceOrderRegisterService.Handle(serviceOrderRegisterDto);
             NotificationService.ShowNotification(response.Succeeded,
-                                                  $"Succesfully register state {index}",
+                                                 Localizer["UpdSORegister"] + " " + stateTo.Description,
                                                  ServiceOrder.Number);
 
             selectedIndex = index;

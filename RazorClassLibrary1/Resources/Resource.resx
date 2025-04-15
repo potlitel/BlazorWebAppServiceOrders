@@ -397,4 +397,8 @@
     <value>Type</value>
     <comment>GridColumn</comment>
   </data>
+  <data name="UpdSORegister" xml:space="preserve">
+    <value>OS status has been changed to</value>
+    <comment>Msg</comment>
+  </data>
 </root>

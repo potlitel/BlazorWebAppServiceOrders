@@ -689,5 +689,14 @@ namespace RazorClassLibrary1.Resources {
                 return ResourceManager.GetString("Type", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OS status has been changed to.
+        /// </summary>
+        internal static string UpdSORegister {
+            get {
+                return ResourceManager.GetString("UpdSORegister", resourceCulture);
+            }
+        }
     }
 }

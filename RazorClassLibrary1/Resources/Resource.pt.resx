@@ -397,4 +397,8 @@
     <value>Tipo</value>
     <comment>GridColumn</comment>
   </data>
+  <data name="UpdSORegister" xml:space="preserve">
+    <value>O status da Ordem de Serviço foi alterado para</value>
+    <comment>Msg</comment>
+  </data>
 </root>

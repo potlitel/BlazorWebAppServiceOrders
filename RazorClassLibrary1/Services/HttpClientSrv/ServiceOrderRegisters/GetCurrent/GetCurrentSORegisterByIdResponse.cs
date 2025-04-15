@@ -16,7 +16,7 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.GetCur
         public DateTime UpdatedAt { get; set; }
         public bool IsActive { get; set; }
     }
-
+    //https://json2csharp.com/
     public class Root
     {
         public Data Data { get; set; }
