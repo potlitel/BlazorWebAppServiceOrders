@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Radzen;
 using RazorClassLibrary1.Dtos;
+using System;
 
 
 namespace RazorClassLibrary1.Pages.SO_Details
@@ -14,6 +15,8 @@ namespace RazorClassLibrary1.Pages.SO_Details
         public bool IsSideDialog { get; set; } = false;
 
         int selectedIndex = 0;
+
+        string SORegisterObservations = string.Empty;
 
         IEnumerable<ServiceOrderTaskStateDto> SOStates = [];
 
@@ -82,7 +85,7 @@ namespace RazorClassLibrary1.Pages.SO_Details
                 Trigger = "custom trigger",
                 StateFrom = stateFrom.Description,
                 StateTo = stateTo.Description,
-                Observations = "lorem ipsum",
+                Observations = SORegisterObservations,
                 ServiceOrderId = ServiceOrder.Id,
             };
 
@@ -93,6 +96,12 @@ namespace RazorClassLibrary1.Pages.SO_Details
                                                  ServiceOrder.Number);
 
             selectedIndex = index;
+            SORegisterObservations = string.Empty;
+        }
+
+        void Change(string text)
+        {
+            Console.WriteLine($"{text}");
         }
     }
 }
