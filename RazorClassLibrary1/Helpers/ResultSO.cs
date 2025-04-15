@@ -74,4 +74,71 @@ namespace RazorClassLibrary1.Helpers
             return result.Succeeded;
         }
     }
+
+
+    public class ResultSOO<TData> : Result
+    {
+        public TData Data { get; set; }
+
+        public ResultSOO()
+        {
+        }
+
+        public ResultSOO(bool succeeded, TData data, List<string> errors, Pagination pagination, CustomStatusCode statusCode)
+            : base(succeeded, errors, pagination, statusCode)
+        {
+            Data = data;
+        }
+
+        public ResultSOO(bool succeeded, TData data, List<string> errors, CustomStatusCode statusCode)
+            : base(succeeded, errors, statusCode)
+        {
+            Data = data;
+        }
+
+        public static ResultSOO<TData> SuccessWith(TData data, CustomStatusCode statusCode)
+        {
+            return new ResultSOO<TData>(succeeded: true, data, new List<string>(), statusCode);
+        }
+
+        public static ResultSOO<TData> SuccessWith(TData data, Pagination pagination, CustomStatusCode statusCode)
+        {
+            return new ResultSOO<TData>(succeeded: true, data, new List<string>(), pagination, statusCode);
+        }
+
+        //public new static ResultSOO<TData> Failure(IEnumerable<string> errors, CustomStatusCode statusCode)
+        //{
+        //    return new Result<TData>(succeeded: false, null!, errors.ToList(), statusCode);
+        //}
+
+        public static Result<TData> Failure(IEnumerable<string> errors, TData data, CustomStatusCode statusCode)
+        {
+            return new Result<TData>(succeeded: false, data, errors.ToList(), statusCode);
+        }
+
+        //public static implicit operator ResultSOO<TData>(string error)
+        //{
+        //    return Failure(new List<string> { error }, CustomStatusCode.StatusBadRequest);
+        //}
+
+        //public static implicit operator ResultSOO<TData>(List<string> errors)
+        //{
+        //    return Failure(errors, CustomStatusCode.StatusBadRequest);
+        //}
+
+        //public static implicit operator ResultSOO<TData>(CustomStatusCode statusCode)
+        //{
+        //    return Failure(new List<string>(), statusCode);
+        //}
+
+        public static implicit operator ResultSOO<TData>(TData data)
+        {
+            return SuccessWith(data, CustomStatusCode.StatusOk);
+        }
+
+        public static implicit operator bool(ResultSOO<TData> result)
+        {
+            return result.Succeeded;
+        }
+    }
 }

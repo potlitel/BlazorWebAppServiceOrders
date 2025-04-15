@@ -1,8 +1,10 @@
 ﻿@using FSA.Razor.Components.Components.Shared
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.Create
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.GetCurrent
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll
 @inject IGetAllServiceOrderTasksStatesService GetAllServiceOrderTasksStatesService
 @inject ICreateServiceOrderRegisterService CreateServiceOrderRegisterService
+@inject IGetCurrentSORegisterByIdService GetCurrentSORegisterByIdService
 
 <FadeIn>
 

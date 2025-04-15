@@ -4,6 +4,7 @@ using Radzen;
 using RazorClassLibrary1.Dtos;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.Create;
 using System;
+using System.Linq;
 
 
 namespace RazorClassLibrary1.Pages.SO_Details
@@ -30,13 +31,29 @@ namespace RazorClassLibrary1.Pages.SO_Details
             try
             {
                 var statesTask = GetAllServiceOrderTasksStatesService.Handle(null);
+                int soId = (int)ServiceOrder.Id;
+                var currentRegisterTask = GetCurrentSORegisterByIdService.Handle(soId);
+
                 var states = await statesTask;
+                var currentRegister = await currentRegisterTask;
 
                 if (states.Succeeded)
                 {
                     SOStates = states.Data.ToList();
                     var random = new Random();
-                    selectedIndex = random.Next(0, SOStates.Count());
+                    //selectedIndex = random.Next(0, SOStates.Count());
+                }
+
+                if (currentRegister.Succeeded)
+                {
+                    //Get current register of this Service Order
+                    var register = currentRegister.Data;
+
+                    if (register is not null)
+                    {
+                        var index = SOStates.ToList().FindIndex(item => item.Description == register.StateTo);
+                        selectedIndex = index;
+                    }
                 }
             }
             catch (UnauthorizedAccessException) { }
@@ -69,10 +86,6 @@ namespace RazorClassLibrary1.Pages.SO_Details
             NotificationService.ShowNotification(response.Succeeded,
                                                   $"Succesfully register state {index}",
                                                  ServiceOrder.Number);
-
-            //NotificationService.ShowNotification(true,
-            //                                     $"Succesfully register state {index}",
-            //                                     ServiceOrder.Number);
 
             selectedIndex = index;
         }
