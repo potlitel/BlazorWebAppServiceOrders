@@ -8,6 +8,7 @@ using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetById;
 using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.Update;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetByExecutor;
@@ -76,6 +77,7 @@ namespace RazorClassLibrary1.Extensions
             services.AddScoped<ICreateServiceOrderTaskStateService, CreateServiceOrderTaskStateService>();
             services.AddScoped<ICreateServiceOrderTypeService, CreateServiceOrderTypeService>();
             services.AddScoped<ICreateSupplyOperationService, CreateSupplyOperationService>();
+            services.AddScoped<ICreateServiceOrderRegisterService, CreateServiceOrderRegisterService>();
 
             services.AddScoped<IUpdateDocumentTypeService, UpdateDocumentTypeService>();
             services.AddScoped<IUpdateServiceOrderTaskStateService, UpdateServiceOrderTaskStateService>();

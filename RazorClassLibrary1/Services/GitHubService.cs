@@ -109,47 +109,47 @@ namespace RazorClassLibrary1.Services
 
             using (var http = new HttpClient())
             {
-                var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.github.com/repos/dotnet/aspnetcore/issues?state=all&labels=area-blazor&per_page=100&since={since:yyyy-MM-ddThh:mm:ssZ}");
-                request.Headers.Add("User-Agent", "Radzen");
+                //var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.github.com/repos/dotnet/aspnetcore/issues?state=all&labels=area-blazor&per_page=100&since={since:yyyy-MM-ddThh:mm:ssZ}");
+                //request.Headers.Add("User-Agent", "Radzen");
 
-                var response = await http.SendAsync(request);
+                //var response = await http.SendAsync(request);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    using var responseStream = await response.Content.ReadAsStreamAsync();
-                    var page = await JsonSerializer.DeserializeAsync<IEnumerable<Issue>>(responseStream, options);
-                    issues.AddRange(page!);
-                    var link = Link.FromHeader(response.Headers.GetValues("Link"));
-                    OnProgress?.Invoke(new FetchProgressEventArgs { Current = 1, Total = link.LastPage });
+                //if (response.IsSuccessStatusCode)
+                //{
+                //    using var responseStream = await response.Content.ReadAsStreamAsync();
+                //    var page = await JsonSerializer.DeserializeAsync<IEnumerable<Issue>>(responseStream, options);
+                //    issues.AddRange(page!);
+                //    var link = Link.FromHeader(response.Headers.GetValues("Link"));
+                //    OnProgress?.Invoke(new FetchProgressEventArgs { Current = 1, Total = link.LastPage });
 
-                    while (link.Next != null)
-                    {
-                        OnProgress?.Invoke(new FetchProgressEventArgs { Current = link.NextPage, Total = link.LastPage });
-                        request = new HttpRequestMessage(HttpMethod.Get, link.Next);
-                        request.Headers.Add("User-Agent", "Radzen");
+                //    while (link.Next != null)
+                //    {
+                //        OnProgress?.Invoke(new FetchProgressEventArgs { Current = link.NextPage, Total = link.LastPage });
+                //        request = new HttpRequestMessage(HttpMethod.Get, link.Next);
+                //        request.Headers.Add("User-Agent", "Radzen");
 
-                        response = await http.SendAsync(request);
+                //        response = await http.SendAsync(request);
 
-                        if (response.IsSuccessStatusCode)
-                        {
-                            using (var stream = await response.Content.ReadAsStreamAsync())
-                            {
-                                page = await JsonSerializer.DeserializeAsync<IEnumerable<Issue>>(stream, options);
-                                issues.AddRange(page!);
-                            }
+                //        if (response.IsSuccessStatusCode)
+                //        {
+                //            using (var stream = await response.Content.ReadAsStreamAsync())
+                //            {
+                //                page = await JsonSerializer.DeserializeAsync<IEnumerable<Issue>>(stream, options);
+                //                issues.AddRange(page!);
+                //            }
 
-                            link = Link.FromHeader(response.Headers.GetValues("Link"));
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    throw new ApplicationException(response.ReasonPhrase);
-                }
+                //            link = Link.FromHeader(response.Headers.GetValues("Link"));
+                //        }
+                //        else
+                //        {
+                //            break;
+                //        }
+                //    }
+                //}
+                //else
+                //{
+                //    throw new ApplicationException(response.ReasonPhrase);
+                //}
             }
 
             return issues;

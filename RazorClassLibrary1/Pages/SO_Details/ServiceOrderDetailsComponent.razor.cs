@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using RazorClassLibrary1.Dtos;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.Create;
 using System;
 
 
@@ -10,7 +11,7 @@ namespace RazorClassLibrary1.Pages.SO_Details
     public partial class ServiceOrderDetailsComponent
     {
         [Parameter]
-        public ServiceOrderDto ServiceOrder { get; set; } = null!;
+        public ServiceOrderDto ServiceOrder { get; set; } = new();
         
         [Parameter]
         public bool IsSideDialog { get; set; } = false;
@@ -49,12 +50,29 @@ namespace RazorClassLibrary1.Pages.SO_Details
             }
         }
 
-        void OnChange(int index)
+        async Task OnChange(int index)
         {
+            var stateFrom = SOStates.ElementAt(selectedIndex);
+            var stateTo = SOStates.ElementAt(index);
+
             //Console.WriteLine($"Step with index {index} was selected.");
-            NotificationService.ShowNotification(true,
-                                                 $"Succesfully register state {index}",
+            ServiceOrderRegisterDto serviceOrderRegisterDto = new ServiceOrderRegisterDto {
+                Trigger = "custom trigger",
+                StateFrom = stateFrom.Description,
+                StateTo = stateTo.Description,
+                Observations = "lorem ipsum",
+                ServiceOrderId = ServiceOrder.Id,
+            };
+
+
+            var response = await CreateServiceOrderRegisterService.Handle(serviceOrderRegisterDto);
+            NotificationService.ShowNotification(response.Succeeded,
+                                                  $"Succesfully register state {index}",
                                                  ServiceOrder.Number);
+
+            //NotificationService.ShowNotification(true,
+            //                                     $"Succesfully register state {index}",
+            //                                     ServiceOrder.Number);
 
             selectedIndex = index;
         }
