@@ -71,15 +71,15 @@
                 <ChildContent>
 
                 <RadzenRow Size="12" SizeMD="4">
-                    <RadzenText Text="Observations on the change of state" />
+                    @* <RadzenText Text="Observations on the change of state" /> *@
                 </RadzenRow>
-                <RadzenTextArea Placeholder="Observations" @bind-Value="@SORegisterObservations" Rows="6" Style="width:55%"/>
+                <RadzenTextArea Placeholder="Put some observations here before changing this service order's state" @bind-Value="@SORegisterObservations" Rows="6" Style="width:55%"/>
 
                 <RadzenSteps Change="@OnChange" SelectedIndex="selectedIndex">
                     <Steps>
                         @foreach (var item in SOStates)
                         {
-                            <RadzenStepsItem Text=@item.Description Disabled="@string.IsNullOrEmpty(SORegisterObservations)" />
+                            <RadzenStepsItem Text=@item.Description onmouseover="" Disabled="@string.IsNullOrEmpty(SORegisterObservations)" />
                         }
                     </Steps>
                 </RadzenSteps>

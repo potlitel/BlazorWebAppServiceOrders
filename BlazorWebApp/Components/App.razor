@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="BlazorWebApp.styles.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     @* <HeadOutlet @rendermode="InteractiveServer" /> *@
-    <RadzenTheme Theme="material" @rendermode="InteractiveServer" />
-    @* <RadzenTheme Theme="@theme" @rendermode="InteractiveServer" /> *@
+    @* <RadzenTheme Theme="material" @rendermode="InteractiveServer" /> *@
+    <RadzenTheme Theme="@theme" @rendermode="InteractiveServer" />
 </head>
 
 <body>
@@ -38,42 +38,42 @@
 </html>
 
 @code {
-    // [Inject]
-    // private ThemeService themeService { get; set; } = null!;
+    [Inject]
+    private ThemeService themeService { get; set; } = null!;
 
-    // [Inject]
-    // private IFSAAppCache appCache { get; set; } = null!;
+    [Inject]
+    private IFSAAppCache appCache { get; set; } = null!;
 
-    // string theme = string.Empty;
-    // string Href = string.Empty;
+    string theme = string.Empty;
+    string Href = string.Empty;
 
-    // private async Task<string> UpdateIcon()
-    // {
-    //     try
-    //     {
-    //         var responseCache = await appCache.GetItem<ThemeCache?>("FSASOWebTheme", CacheType.LocalStorage);
-    //         if (responseCache != null)
-    //             theme = responseCache.theme;
-    //         else
-    //             theme = "material";
-    //         return theme;
-    //     }
-    //     catch (Exception)
-    //     {
-    //         return theme;
-    //     }
-    // }
+    private async Task<string> UpdateIcon()
+    {
+        try
+        {
+            var responseCache = await appCache.GetItem<ThemeCache?>("FSASOWebTheme", CacheType.LocalStorage);
+            if (responseCache != null)
+                theme = responseCache.theme;
+            else
+                theme = "material";
+            return theme;
+        }
+        catch (Exception)
+        {
+            return theme;
+        }
+    }
 
-    // protected override void OnInitialized()
-    // {
-    //     //UpdateIcon().GetAwaiter().GetResult();
-    // }
+    protected override void OnInitialized()
+    {
+        //UpdateIcon().GetAwaiter().GetResult();
+    }
 
-    // protected override async Task OnAfterRenderAsync(bool firstRender)
-    // {
-    //     if (firstRender)
-    //     {
-    //         //await UpdateIcon();
-    //     }
-    // }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await UpdateIcon();
+        }
+    }
 }

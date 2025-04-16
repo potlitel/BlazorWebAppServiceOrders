@@ -192,7 +192,7 @@ namespace RazorClassLibrary1.Pages
                         Pagination = response.Pagination;
                     }
                 }
-                //ListItems = ListItems ?? new List<ServiceOrderDto>().AsQueryable();
+                ListItems = ListItems ?? new List<ServiceOrderDto>().AsQueryable();
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
