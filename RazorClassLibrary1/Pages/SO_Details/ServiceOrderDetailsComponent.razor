@@ -70,10 +70,10 @@
                 </HeaderTemplate>
                 <ChildContent>
 
-                <RadzenRow>
+                <RadzenRow Size="12" SizeMD="4">
                     <RadzenText Text="Observations on the change of state" />
                 </RadzenRow>
-                <RadzenTextArea Placeholder="Observations" @bind-Value="@SORegisterObservations" />
+                <RadzenTextArea Placeholder="Observations" @bind-Value="@SORegisterObservations" Rows="6" Style="width:55%"/>
 
                 <RadzenSteps Change="@OnChange" SelectedIndex="selectedIndex">
                     <Steps>
