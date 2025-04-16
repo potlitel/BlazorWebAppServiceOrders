@@ -66,14 +66,14 @@
 
     protected override void OnInitialized()
     {
-        UpdateIcon().GetAwaiter().GetResult();
+        //UpdateIcon().GetAwaiter().GetResult();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await UpdateIcon();
+            //await UpdateIcon();
         }
     }
 }
