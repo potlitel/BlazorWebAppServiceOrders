@@ -42,7 +42,7 @@ namespace RazorClassLibrary1.Pages.SO_Register
 
                 if (serviceOrders.Succeeded)
                 {
-                    ServiceOrders = serviceOrders.Data.ToList();
+                    ServiceOrders = serviceOrders.Data!.ToList();
                     if (ServiceOrderRegister.ServiceOrderId == 0)
                         ServiceOrderRegister.ServiceOrder = ServiceOrders.First();
                 }

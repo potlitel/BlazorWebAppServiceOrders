@@ -53,7 +53,7 @@ namespace RazorClassLibrary1.Pages.SO_Document
 
                 if (serviceOrders.Succeeded)
                 {
-                    ServiceOrders = serviceOrders.Data.ToList();
+                    ServiceOrders = serviceOrders.Data!.ToList();
                     if (ServiceOrderDocument.ServiceOrderId == 0)
                         ServiceOrderDocument.ServiceOrder = ServiceOrders.First();
                 }

@@ -55,7 +55,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
 
                 if (serviceOrders.Succeeded) 
                 {
-                    ServiceOrders = serviceOrders.Data.ToList();
+                    ServiceOrders = serviceOrders.Data!.ToList();
                     if (ServiceOrderTask.ServiceOrderId == 0)
                         ServiceOrderTask.ServiceOrder = ServiceOrders.First();
                 }

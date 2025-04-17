@@ -39,7 +39,7 @@ namespace RazorClassLibrary1.Pages.SO_Feature
                 var serviceOrders = await serviceOrdersTask;
 
                 if (serviceOrders.Succeeded) {
-                    ServiceOrders = serviceOrders.Data.ToList();
+                    ServiceOrders = serviceOrders.Data!.ToList();
                     if (ServiceOrderFeature.ServiceOrderId == 0)
                         ServiceOrderFeature.ServiceOrder = ServiceOrders.First();
                 }

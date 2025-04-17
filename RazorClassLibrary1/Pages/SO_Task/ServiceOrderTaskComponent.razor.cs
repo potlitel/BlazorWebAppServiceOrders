@@ -33,7 +33,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
                         Title = "Observations",
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "120px"
+                        MinWidth = "250px"
                     },
                     new DataColumn
                     {
@@ -41,7 +41,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
                         Title = Localizer["ExecutionDate"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "120px"
+                        MinWidth = "50px"
                     },
                     new DataColumn
                     {
@@ -49,7 +49,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
                         Title = Localizer["State"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "50px"
+                        MinWidth = "30px"
                     },
                 new DataColumn
                     {
@@ -93,8 +93,16 @@ namespace RazorClassLibrary1.Pages.SO_Task
                         new GridItemAction
                         {
                             Action = GridItemActions.ADD_SUB_ITEM,
-                            Icon = "add_circle",
-                            Title = "AddManager",
+                            Icon = "cases",
+                            Title = "ViewDocs",
+                            Style = ButtonStyle.Primary.GetHashCode(),
+                            //Show = o => { return admin; }
+                        },
+                        new GridItemAction
+                        {
+                            Action = GridItemActions.ADD_SUB_ITEM,
+                            Icon = "quick_reference",
+                            Title = "ViewServiceOrder",
                             Style = ButtonStyle.Primary.GetHashCode(),
                             //Show = o => { return admin; }
                         },
