@@ -92,9 +92,9 @@ namespace RazorClassLibrary1.Pages.SO_Task
                     [
                         new GridItemAction
                         {
-                            Action = GridItemActions.ADD_SUB_ITEM,
-                            Icon = "cases",
-                            Title = "ViewDocs",
+                            Action = GridItemActions.VIEW_DETAILS,
+                            Icon = "preview",
+                            Title = "ViewData",
                             Style = ButtonStyle.Primary.GetHashCode(),
                             //Show = o => { return admin; }
                         },
@@ -209,7 +209,8 @@ namespace RazorClassLibrary1.Pages.SO_Task
                         {
                         }
                         break;
-                    case GridItemActions.ADD_SUB_ITEM:
+                    case GridItemActions.VIEW_DETAILS:
+                        await CustomSODialogService.Open_ServiceOrderTaskData(item!);
                         break;
                     case GridItemActions.EDIT_ITEM:
                         break;

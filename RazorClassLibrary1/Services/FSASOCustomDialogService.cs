@@ -31,6 +31,7 @@ namespace RazorClassLibrary1.Services
         Task<bool> Open_AddEditSO_ServiceOrderTask(ServiceOrderTaskDto item);
         Task<bool> Open_AddEditSO_ServiceOrder(ServiceOrderDto item);
         Task<bool> Open_ServiceOrderData(ServiceOrderDto item);
+        Task<bool> Open_ServiceOrderTaskData(ServiceOrderTaskDto item);
     }
 
     public class FSASOCustomDialogService : IFSASOCustomDialogService
@@ -289,6 +290,28 @@ namespace RazorClassLibrary1.Services
                 Width = "1250px",
                 ShowClose = false,
             };
+        }
+
+        public async Task<bool> Open_ServiceOrderTaskData(ServiceOrderTaskDto dto)
+        {
+            try
+            {
+                var result = await dialogService.OpenAsync<ServiceOrderTaskDetailsComponent>(
+                    localizer["ServiceOrderTaskData"],
+                    new Dictionary<string, object>()
+                    {
+                        { "ServiceOrderTask", dto },
+                        { "IsSideDialog", true }
+                    },
+                    options: GetDialogOptions()
+                );
+
+                return result is null ? false : (bool)result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

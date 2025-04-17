@@ -1,0 +1,70 @@
+﻿@using D20Tek.BlazorComponents
+
+@* <div class="rz-p-0 rz-p-md-6">
+    <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 620px">
+        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Start" Gap="1rem" class="rz-p-6">
+            <SpanTimer TimerDurationSpan="@value" WarningThreshold=1800 AlertThreshold=900/>
+            <CountdownTimer CountdownTarget="@ServiceOrderTask.ExecutionDate" LabelText="Execution:" ExpirationMessage="Happy Birthday!" />
+            <RadzenStack Gap="0">
+                <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-2 rz-my-0">Service Order Task</RadzenText>
+                <RadzenText TextStyle="TextStyle.Body1"><b>@ServiceOrderTask.ServiceOrderId</b></RadzenText>
+                <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-4 rz-mb-0">Company</RadzenText>
+                <RadzenText TextStyle="TextStyle.Body1"><b>Otro dato</b></RadzenText>
+            </RadzenStack>
+        </RadzenStack>
+        <RadzenCard class="rz-background-color-primary-light rz-shadow-0 rz-border-radius-0 rz-p-8" style="margin: 1rem calc(-1 * var(--rz-card-padding));">
+            <RadzenText TextStyle="TextStyle.H6" class="rz-color-on-primary-light"><strong>Delivery Information</strong></RadzenText>
+            <RadzenRow RowGap="0">
+                <RadzenColumn SizeSM="8">
+                    <RadzenText TextStyle="TextStyle.Overline" class="rz-color-on-primary-light rz-display-flex rz-mt-4 rz-mb-0">Country</RadzenText>
+                    <RadzenText TextStyle="TextStyle.Body1" class="rz-color-on-primary-light"><b>@(ServiceOrderTask.Observations)</b></RadzenText>
+                    <RadzenText TextStyle="TextStyle.Overline" class="rz-color-on-primary-light rz-display-flex rz-mt-4 rz-mb-0">City</RadzenText>
+                    <RadzenText TextStyle="TextStyle.Body1" class="rz-color-on-primary-light"><b>@(ServiceOrderTask.Id)</b></RadzenText>
+                </RadzenColumn>
+            </RadzenRow>
+        </RadzenCard>
+    </RadzenCard>
+</div> *@
+
+<FadeIn>
+
+    @* <RadzenTabs @bind-SelectedIndex=@selectedIndex> *@
+    <RadzenTabs SelectedIndex="0">
+        <Tabs>
+            <RadzenTabsItem Text="@Localizer["BasicInfo"]" Icon="page_info">
+                
+                <RadzenStack Gap="1rem">
+                    <RadzenRow>
+                        <RadzenIcon Icon="calendar_month" /><RadzenColumn>@Localizer["ExecutionDate"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderTask.ExecutionDate <CountdownTimer CountdownTarget="@ServiceOrderTask.ExecutionDate" LabelText="Remaining time:" ExpirationMessage="Happy Birthday!" />
+                        </RadzenColumn>
+                    </RadzenRow>
+                    <RadzenRow>
+                        <RadzenIcon Icon="subject" /><RadzenColumn>@Localizer["Observations"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderTask.Observations
+                        </RadzenColumn>
+                    </RadzenRow>
+                    <RadzenRow>
+                        <RadzenIcon Icon="history_edu" /><RadzenColumn>@Localizer["State"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderTask.ServiceOrderTaskStateId
+                        </RadzenColumn>
+                    </RadzenRow>
+                    <RadzenRow>
+                        <RadzenIcon Icon="quick_reference" /><RadzenColumn>@Localizer["ServiceOrder"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderTask.ServiceOrderId
+                        </RadzenColumn>
+                    </RadzenRow>
+                </RadzenStack>
+
+            </RadzenTabsItem>
+            <RadzenTabsItem Text="@Localizer["Documents"]" Icon="cases">
+                Put documents info here!!!
+            </RadzenTabsItem>
+        </Tabs>
+    </RadzenTabs>
+     
+</FadeIn>

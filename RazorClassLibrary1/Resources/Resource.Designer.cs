@@ -574,6 +574,15 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service Order Task Details.
+        /// </summary>
+        internal static string ServiceOrderTaskData {
+            get {
+                return ResourceManager.GetString("ServiceOrderTaskData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service Order Tasks.
         /// </summary>
         internal static string ServiceOrderTasks {

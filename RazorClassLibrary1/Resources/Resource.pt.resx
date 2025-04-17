@@ -345,6 +345,10 @@
     <value>Tarefa de ordem de serviço</value>
     <comment>GridColumn</comment>
   </data>
+  <data name="ServiceOrderTaskData" xml:space="preserve">
+    <value>Detalhes da Tarefa de ordem de serviço</value>
+    <comment>Modals</comment>
+  </data>
   <data name="ServiceOrderTasks" xml:space="preserve">
     <value>Tarefas de ordem de serviço</value>
     <comment>Modals</comment>
