@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using FSA.Cache.Models;
 using FSA.Core.DataType;
 using FSA.Core.Utils;
 using Radzen;
@@ -133,34 +134,26 @@ namespace RazorClassLibrary1.Pages.SO_Task
         {
             try
             {
-                await Task.CompletedTask;
-                //ListItems = new Faker<ServiceOrderDocumentDto>()
-                //                .RuleFor(x => x.Name, f => f.Finance.Account(15))
-                //                .RuleFor(x => x.Url, f => f.Image.PicsumUrl())
-                //                .RuleFor(x => x.ServiceOrderId, f => f.Random.Long())
-                //                .RuleFor(x => x.DocumentTypeId, f => f.Random.Long())
-                //                .Generate(50).ToList().AsQueryable();
-                TotalItems = 50;
-                //var key = $"GetAllCompanyGroupsService-{Pagination.GetCacheId()}";
-                //if (deleteCache)
-                //    AppCache.RemoveItem(key, CacheType.IndexedDB);
+                var key = $"GetAllServiceOrdersTasksService-{Pagination.GetCacheId()}";
+                if (deleteCache)
+                    AppCache.RemoveItem(key, CacheType.IndexedDB);
 
-                //var ResponseItemCached = await AppCache.GetItem<ItemCached?>(key, CacheType.IndexedDB);
-                //if (ResponseItemCached != null)
-                //{
-                //    ListItems = ResponseItemCached.Items.AsQueryable();
-                //    TotalItems = ResponseItemCached.TotalItems;
-                //}
-                //else
-                //{
-                //    var response = await GetAllCompanyGroupsService.Handle(Pagination);
-                //    if (response.Succeeded)
-                //    {
-                //        TotalItems = (int)response.Pagination.TotalItems;
-                //        ListItems = response.Data!.CompanyGroups.AsQueryable();
-                //        Pagination = response.Pagination;
-                //    }
-                //}
+                var ResponseItemCached = await AppCache.GetItem<ItemCached?>(key, CacheType.IndexedDB);
+                if (ResponseItemCached != null)
+                {
+                    ListItems = ResponseItemCached.Items.AsQueryable();
+                    TotalItems = ResponseItemCached.TotalItems;
+                }
+                else
+                {
+                    var response = await GetAllServiceOrdersTasksService.Handle(Pagination);
+                    if (response.Succeeded)
+                    {
+                        TotalItems = (int)response.Pagination.TotalItems;
+                        ListItems = response.Data!.AsQueryable();
+                        Pagination = response.Pagination;
+                    }
+                }
                 ListItems = ListItems ?? new List<ServiceOrderTaskDto>().AsQueryable();
             }
             catch (UnauthorizedAccessException) { }
