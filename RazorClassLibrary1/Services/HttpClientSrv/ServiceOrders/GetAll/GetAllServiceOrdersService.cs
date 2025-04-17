@@ -1,24 +1,23 @@
 ﻿using FSA.Core.DataTypes;
+using FSA.Core.Dtos;
 using FSA.Core.Utils;
 using Microsoft.Extensions.Configuration;
 using RazorClassLibrary1.Dtos;
-using RazorClassLibrary1.Helpers;
-using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll;
 
 namespace RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll
 {
     public interface IGetAllServiceOrdersService
     {
-        Task<ResultSO<ServiceOrderDto>> Handle(Pagination? pagination);
+        Task<Result<IEnumerable<ServiceOrderDto>>> Handle(Pagination? pagination);
     }
-    internal class GetAllServiceOrdersService : HttpClientServiceBase<GetAllServiceOrdersRequest, ResultSO<ServiceOrderDto>>,
+    internal class GetAllServiceOrdersService : HttpClientServiceBase<GetAllServiceOrdersRequest, Result<IEnumerable<ServiceOrderDto>>>,
                                                 IGetAllServiceOrdersService
     {
         public GetAllServiceOrdersService(IHttpClientFactory httpClientFactory, IConfiguration configuration) : base(httpClientFactory, configuration)
         {
         }
 
-        public async Task<ResultSO<ServiceOrderDto>> Handle(Pagination? pagination)
+        public async Task<Result<IEnumerable<ServiceOrderDto>>> Handle(Pagination? pagination)
         {
             try
             {
@@ -35,7 +34,7 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll
             }
             catch (Exception ex)
             {
-                return ResultSO<ServiceOrderDto>.Failure([ex.Message], CustomStatusCode.StatusUnexpectedError);
+                return Result<IEnumerable<ServiceOrderDto>>.Failure([ex.Message], CustomStatusCode.StatusUnexpectedError);
             }
         }
     }

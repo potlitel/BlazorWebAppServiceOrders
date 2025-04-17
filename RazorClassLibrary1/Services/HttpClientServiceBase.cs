@@ -14,7 +14,7 @@ namespace RazorClassLibrary1.Services
             this.httpClientFactory = httpClientFactory;
             this.configuration = configuration;
         }
-
+        public IConfiguration Configuration() => configuration;
         public string HttpClientName(string httpClientName) => configuration[httpClientName]!;
 
         public async Task<HttpClient> GetWebApiAsync(string httpClientName)

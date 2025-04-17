@@ -126,6 +126,7 @@ namespace RazorClassLibrary1.Components.Shared
             {
                 search = value;
                 Pagination.Page = 1;
+                Pagination.TakeItems = 10; //No iba
                 Pagination.FilterTerm = search;
                 await DataGrid!.GoToPage(0);
 

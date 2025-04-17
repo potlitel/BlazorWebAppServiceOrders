@@ -166,12 +166,6 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                //ListItems = new Faker<ServiceOrderDocumentDto>()
-                //                .RuleFor(x => x.Name, f => f.Finance.Account(15))
-                //                .RuleFor(x => x.Url, f => f.Image.PicsumUrl())
-                //                .RuleFor(x => x.ServiceOrderId, f => f.Random.Long())
-                //                .RuleFor(x => x.DocumentTypeId, f => f.Random.Long())
-                //                .Generate(50).ToList().AsQueryable();
                 var key = $"GetAllServiceOrdersService-{Pagination.GetCacheId()}";
                 if (deleteCache)
                     AppCache.RemoveItem(key, CacheType.IndexedDB);
