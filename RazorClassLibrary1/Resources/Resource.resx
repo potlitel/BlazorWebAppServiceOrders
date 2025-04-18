@@ -245,6 +245,10 @@
     <value>Edit Task State</value>
     <comment>Modals</comment>
   </data>
+  <data name="EmptyTemplate" xml:space="preserve">
+    <value>There are no records for this entity.</value>
+    <comment>Grid</comment>
+  </data>
   <data name="EstimatedEndingDate" xml:space="preserve">
     <value>Estimated Ending Date</value>
     <comment>GridColumn</comment>

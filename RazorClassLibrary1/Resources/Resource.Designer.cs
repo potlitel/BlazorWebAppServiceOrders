@@ -349,6 +349,15 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no records for this entity..
+        /// </summary>
+        internal static string EmptyTemplate {
+            get {
+                return ResourceManager.GetString("EmptyTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Estimated Ending Date.
         /// </summary>
         internal static string EstimatedEndingDate {

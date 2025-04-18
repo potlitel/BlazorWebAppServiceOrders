@@ -10,6 +10,7 @@ using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetById;
 using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.Update;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.GetAll;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.GetAllBySOId;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.GetCurrent;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll;
@@ -100,6 +101,7 @@ namespace RazorClassLibrary1.Extensions
             services.AddScoped<IGetServiceOrderByOwnerService, GetServiceOrderByOwnerService>();
             services.AddScoped<IGetCurrentSORegisterByIdService, GetCurrentSORegisterByIdService>();
             services.AddScoped<IGetServiceOrderTasksBySOIdService, GetServiceOrderTasksBySOIdService>();
+            services.AddScoped<IGetServiceOrderRegistersBySOIdService, GetServiceOrderRegistersBySOIdService>();
 
             return services;
         }

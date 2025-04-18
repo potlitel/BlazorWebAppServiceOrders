@@ -245,6 +245,10 @@
     <value>Editar estado de tarefa</value>
     <comment>Modals</comment>
   </data>
+  <data name="EmptyTemplate" xml:space="preserve">
+    <value>Não há registros para a entidade.</value>
+    <comment>Grid</comment>
+  </data>
   <data name="EstimatedEndingDate" xml:space="preserve">
     <value>Data de término estimada</value>
     <comment>GridColumn</comment>
