@@ -1,0 +1,28 @@
+﻿@using FSA.Management.Application.Infrastructure.Services.AppState
+@using RazorClassLibrary1.Components.Shared
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.GetAll
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.GetAllBySOId
+@* @using FSA.Razor.Components.Components.Shared *@
+
+@inject IManagementAppState? appState;
+@inject IGetServiceOrderTasksBySOIdService GetServiceOrderTasksBySOIdService
+
+<h5>@(Localizer["ServiceOrdersTasks"]): @ServiceOrder.Number</h5>
+
+<PageTitle>@(Localizer["ServiceOrdersTasks"])</PageTitle>
+
+@* <PageTitle>@(Localizer["CompanyGroups"])</PageTitle>
+
+<PageHeader Image="_content/FSA.Razor.Components/svg/company-group.svg" Text="@Localizer["CompanyGroups"]" /> *@
+
+<GenericDataGrid Items="ListItems"
+                 Pagination=@Pagination
+                 AddSufixTitle="AddDocumentType"
+                 DataColumns="DataColumns"
+                 Actions="ItemActions"
+                 GeneralActions="GeneralActions"
+                 GridConfiguration="GridConfiguration"
+                 SearchActionOnEnter="@Search"
+                 OnLoadData="@LoadData"
+                 ReturnToAction="@((args) => ExecuteToAction(args.Item1, args.Item2))" />
+

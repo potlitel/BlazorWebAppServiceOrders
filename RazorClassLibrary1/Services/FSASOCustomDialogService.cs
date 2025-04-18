@@ -265,7 +265,7 @@ namespace RazorClassLibrary1.Services
             try
             {
                 var result = await dialogService.OpenAsync<ServiceOrderDetailsComponent>(
-                    localizer["ServiceOrderData"],
+                    localizer["ServiceOrderData"] + ": " + dto.Number,
                     new Dictionary<string, object>()
                     {
                         { "ServiceOrder", dto },

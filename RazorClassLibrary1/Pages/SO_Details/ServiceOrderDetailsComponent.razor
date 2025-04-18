@@ -18,7 +18,7 @@
                     <RadzenRow>
                         <RadzenIcon Icon="numbers" /><RadzenColumn>@Localizer["Number"]</RadzenColumn>
                         <RadzenColumn Size="8">
-                            @ServiceOrder.Number
+                            @ServiceOrder.Number @ServiceOrder.Tasks.Count()
                         </RadzenColumn>
                     </RadzenRow>
 
@@ -50,17 +50,16 @@
                 Orders
             </RadzenTabsItem>
             <RadzenTabsItem Text="@Localizer["Tasks"]" Icon="format_list_bulleted">
-                Order Details
+
+                <SO_TasksComponent ServiceOrder="@ServiceOrder" />
+
             </RadzenTabsItem>
             <RadzenTabsItem Text="@Localizer["Features"]" Icon="strategy">
                 Order Details
             </RadzenTabsItem>
             <RadzenTabsItem Text="@Localizer["Registers"]" Icon="sweep">
-                
-                @* <h4>Modificar o status desta Ordem de Serviço</h4>
 
-                <br/> *@
-                <RadzenFieldset AllowCollapse="true" Style="width: 100%; margin: 40px auto;" ExpandTitle="Expand orders." CollapseTitle="Collapse orders."
+                <RadzenFieldset AllowCollapse="true" Style="width: 100%; margin: 5px auto;" ExpandTitle="Expand orders." CollapseTitle="Collapse orders."
                 ExpandAriaLabel="Expand the list of orders." CollapseAriaLabel="Collapse the list of orders."
                 Expand=@(() => Change("Fieldset expanded")) Collapse=@(() => Change("Fieldset collapsed"))>
                 <HeaderTemplate>
@@ -70,10 +69,10 @@
                 </HeaderTemplate>
                 <ChildContent>
 
-                <RadzenRow Size="12" SizeMD="4">
+                @* <RadzenRow Size="12" SizeMD="4"> *@
                     @* <RadzenText Text="Observations on the change of state" /> *@
-                </RadzenRow>
-                <RadzenTextArea Placeholder="Put some observations here before changing this service order's state" @bind-Value="@SORegisterObservations" Rows="6" Style="width:55%"/>
+                @* </RadzenRow> *@
+                <RadzenTextArea Placeholder="Put some observations here before changing this service order's state" @bind-Value="@SORegisterObservations" Rows="2" Style="width:55%"/>
 
                 <RadzenSteps Change="@OnChange" SelectedIndex="selectedIndex">
                     <Steps>
@@ -91,6 +90,8 @@
                         </RadzenCard>
                     </SummaryTemplate>
                 </RadzenFieldset>
+
+                <SO_TasksComponent ServiceOrder="@ServiceOrder" />
 
             </RadzenTabsItem>
         </Tabs>

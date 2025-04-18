@@ -3,9 +3,6 @@ using FSA.Core.Dtos;
 using FSA.Core.Utils;
 using Microsoft.Extensions.Configuration;
 using RazorClassLibrary1.Dtos;
-using RazorClassLibrary1.Helpers;
-using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll;
-using System.Collections.Generic;
 
 namespace RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.GetAll
 {
