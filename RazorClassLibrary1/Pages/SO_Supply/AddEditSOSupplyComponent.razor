@@ -1,6 +1,13 @@
 ﻿@using FSA.Razor.Components.Components.Shared
 @using Radzen.Blazor
 @using RazorClassLibrary1.Dtos
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.GetAll
+@using RazorClassLibrary1.Services.HttpClientSrv.SupplyOperations.GetAll
+
+@inject IGetAllSupplyOperationsService GetAllSupplyOperationsService
+@inject IGetAllServiceOrdersTasksService GetAllServiceOrdersTasksService
+
+
 @if (IsLoading)
 {
     <Loader />
