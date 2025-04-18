@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Radzen;
 using RazorClassLibrary1.Dtos;
+using RazorClassLibrary1.Helpers;
 using System;
 
 
@@ -91,12 +92,18 @@ namespace RazorClassLibrary1.Pages.SO_Details
 
 
             var response = await CreateServiceOrderRegisterService.Handle(serviceOrderRegisterDto);
-            NotificationService.ShowNotification(response.Succeeded,
-                                                 Localizer["UpdSORegister"] + " " + stateTo.Description,
-                                                 ServiceOrder.Number);
 
-            selectedIndex = index;
-            SORegisterObservations = string.Empty;
+            if (response.Succeeded)
+            {
+                NotificationService.ShowNotification(response.Succeeded,
+                                                     Localizer["UpdSORegister"] + " " + stateTo.Description,
+                                                     ServiceOrder.Number);
+
+                selectedIndex = index;
+                SORegisterObservations = string.Empty;
+
+                await NotifierService.SendNotification(NotificationsKeys.UpdateRegistersList, response!);
+            }
         }
 
         void Change(string text)

@@ -203,20 +203,20 @@ namespace RazorClassLibrary1.Pages.SO_Details
                 var item = _item as ServiceOrderTaskDto;
                 item = item is null ? new ServiceOrderTaskDto() : new ServiceOrderTaskDto(item);
 
-                switch (action)
-                {
-                    //case GridGeneralActions.ADD_ITEM:
-                    //    var result = await CustomSODialogService.Open_AddEditSO_ServiceOrderTask(item);
-                    //    if (result)
-                    //    {
-                    //    }
-                    //    break;
-                    //case GridItemActions.VIEW_DETAILS:
-                    //    await CustomSODialogService.Open_ServiceOrderTaskData(item!);
-                    //    break;
-                    //case GridItemActions.EDIT_ITEM:
-                    //    break;
-                }
+                //switch (action)
+                //{
+                //    //case GridGeneralActions.ADD_ITEM:
+                //    //    var result = await CustomSODialogService.Open_AddEditSO_ServiceOrderTask(item);
+                //    //    if (result)
+                //    //    {
+                //    //    }
+                //    //    break;
+                //    //case GridItemActions.VIEW_DETAILS:
+                //    //    await CustomSODialogService.Open_ServiceOrderTaskData(item!);
+                //    //    break;
+                //    //case GridItemActions.EDIT_ITEM:
+                //    //    break;
+                //}
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)

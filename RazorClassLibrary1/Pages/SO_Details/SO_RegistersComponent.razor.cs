@@ -4,7 +4,7 @@ using FSA.Core.Utils;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using RazorClassLibrary1.Dtos;
-using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.GetAll;
+using RazorClassLibrary1.Helpers;
 
 
 namespace RazorClassLibrary1.Pages.SO_Details
@@ -77,6 +77,7 @@ namespace RazorClassLibrary1.Pages.SO_Details
                 };
             CreateActions();
             await LoadItems(false);
+            NotifierService.Notifier += OnNotify;
         }
         private void CreateActions()
         {
@@ -228,6 +229,22 @@ namespace RazorClassLibrary1.Pages.SO_Details
             {
                 NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
             }
+        }
+
+        private async Task OnNotify(string key, object? value)
+        {
+            // Actualizar estado según la notificación
+            if (key == NotificationsKeys.UpdateRegistersList)
+                await LoadItems(false);
+            await InvokeAsync(() =>
+            {
+                StateHasChanged();
+            });
+        }
+
+        public void Dispose()
+        {
+            NotifierService.Notifier -= OnNotify;
         }
     }
 }

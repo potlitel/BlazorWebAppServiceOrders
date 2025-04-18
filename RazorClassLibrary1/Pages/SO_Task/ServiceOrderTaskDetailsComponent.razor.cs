@@ -22,24 +22,24 @@ namespace RazorClassLibrary1.Pages.SO_Task
 
         //string timeSpanFormat => (value < TimeSpan.Zero ? "'-'" : "") + "d'd 'h'h 'm'min 's's'";
 
-        protected override async Task OnInitializedAsync()
-        {
-            //value = new(1, 12, 30, 0);
-            //value = new(0, 0, 0, 15);
+        //protected override async Task OnInitializedAsync()
+        //{
+        //    //value = new(1, 12, 30, 0);
+        //    //value = new(0, 0, 0, 15);
 
-            //value = TimeSpan.FromTicks(ServiceOrderTask.ExecutionDate.Ticks);
+        //    //value = TimeSpan.FromTicks(ServiceOrderTask.ExecutionDate.Ticks);
 
-            //var dateTime1 = new DateTime(1970, 1, 1, 0, 0, 0);
-            //var dateTime2 = DateTime.Now;
-            //TimeSpan span = dateTime1 - dateTime2;
-            //Console.WriteLine(span.ToString());
-            //Console.WriteLine(span.ToString(@"hh\:mm\:ss"));
+        //    //var dateTime1 = new DateTime(1970, 1, 1, 0, 0, 0);
+        //    //var dateTime2 = DateTime.Now;
+        //    //TimeSpan span = dateTime1 - dateTime2;
+        //    //Console.WriteLine(span.ToString());
+        //    //Console.WriteLine(span.ToString(@"hh\:mm\:ss"));
 
-            //value = DateTime.Now.TimeOfDay;
-            //value = DateTimeToTimeSpan(ServiceOrderTask.ExecutionDate);
-            //var result = span.ToString(@"hh\:mm\:ss");
-            //value = span.LocalizedTimeFormat(new CultureInfo("en-US"));
-        }
+        //    //value = DateTime.Now.TimeOfDay;
+        //    //value = DateTimeToTimeSpan(ServiceOrderTask.ExecutionDate);
+        //    //var result = span.ToString(@"hh\:mm\:ss");
+        //    //value = span.LocalizedTimeFormat(new CultureInfo("en-US"));
+        //}
 
         TimeSpan DateTimeToTimeSpan(DateTime? ts)
         {

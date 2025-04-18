@@ -103,6 +103,8 @@ namespace RazorClassLibrary1.Extensions
             services.AddScoped<IGetServiceOrderTasksBySOIdService, GetServiceOrderTasksBySOIdService>();
             services.AddScoped<IGetServiceOrderRegistersBySOIdService, GetServiceOrderRegistersBySOIdService>();
 
+            services.AddScoped<NotifierService>();
+
             return services;
         }
 
