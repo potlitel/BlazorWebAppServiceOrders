@@ -34,7 +34,8 @@ namespace RazorClassLibrary1.Pages
                         Title = Localizer["Trigger"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "120px"
+                        MinWidth = "120px",
+                        Width = "150px",
                     },
                     new DataColumn
                     {
@@ -42,7 +43,8 @@ namespace RazorClassLibrary1.Pages
                         Title = Localizer["StateFrom"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "120px"
+                        MinWidth = "120px",
+                        Width = "170px",
                     },
                     new DataColumn
                     {
@@ -50,7 +52,7 @@ namespace RazorClassLibrary1.Pages
                         Title = Localizer["StateTo"],
                         Filterable = true,
                         Sortable = true,
-                        Width = "120px",
+                        Width = "170px",
                         MinWidth = "120px"
                     },
                     new DataColumn
@@ -67,7 +69,8 @@ namespace RazorClassLibrary1.Pages
                         Title = Localizer["ServiceOrder"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "120px"
+                        MinWidth = "120px",
+                        Width = "210px",
                     }
                 };
             CreateActions();

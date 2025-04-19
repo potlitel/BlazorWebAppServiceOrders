@@ -33,7 +33,8 @@ namespace RazorClassLibrary1.Pages.SO_Task
                         Title = "Observations",
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "250px"
+                        MinWidth = "250px",
+                        Width = "300px",
                     },
                     new DataColumn
                     {
@@ -41,7 +42,8 @@ namespace RazorClassLibrary1.Pages.SO_Task
                         Title = Localizer["ExecutionDate"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "50px"
+                        MinWidth = "50px",
+                        Width = "180px",
                     },
                     new DataColumn
                     {
@@ -49,7 +51,8 @@ namespace RazorClassLibrary1.Pages.SO_Task
                         Title = Localizer["State"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "30px"
+                        MinWidth = "30px",
+                        Width = "140px",
                     },
                 new DataColumn
                     {
@@ -57,7 +60,8 @@ namespace RazorClassLibrary1.Pages.SO_Task
                         Title = Localizer["ServiceOrder"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "50px"
+                        MinWidth = "50px",
+                        Width = "180px",
                     },
                     new DataColumn
                     {

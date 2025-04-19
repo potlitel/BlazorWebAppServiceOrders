@@ -41,7 +41,8 @@ namespace RazorClassLibrary1.Pages
                         Title = Localizer["Number"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "160px"
+                        MinWidth = "160px",
+                        Width = "170px",
                     },
                     new DataColumn
                     {
@@ -49,7 +50,8 @@ namespace RazorClassLibrary1.Pages
                         Title = Localizer["EstimatedEndingDate"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "100px"
+                        MinWidth = "100px",
+                        Width = "180px",
                     },
                     new DataColumn
                     {
@@ -57,40 +59,42 @@ namespace RazorClassLibrary1.Pages
                         Title = Localizer["Observations"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "50px"
+                        MinWidth = "50px",
+                        Width = "280px",
                     },
-                new DataColumn
-                    {
-                        Property = nameof(ServiceOrderDto.Address),
-                        Title = "Address",
-                        Filterable = true,
-                        Sortable = true,
-                        MinWidth = "50px"
-                    },
-                new DataColumn
-                    {
-                        Property = nameof(ServiceOrderDto.ServiceOrderTypeId),//reemplazar por su correspondiente valor de entidad
-                        Title = "Type",
-                        Filterable = true,
-                        Sortable = true,
-                        MinWidth = "50px"
-                    },
-                new DataColumn
-                    {
-                        Property = nameof(ServiceOrderDto.ParentServiceOrderId),//reemplazar por su correspondiente valor de entidad
-                        Title = "Parent SO",
-                        Filterable = true,
-                        Sortable = true,
-                        MinWidth = "50px"
-                    },
-                new DataColumn
-                    {
-                        Property = nameof(ServiceOrderDto.ExecutorId),//reemplazar por su correspondiente valor de entidad
-                        Title = "Executor",
-                        Filterable = true,
-                        Sortable = true,
-                        MinWidth = "50px"
-                    },
+                //new DataColumn
+                //    {
+                //        Property = nameof(ServiceOrderDto.Address),
+                //        Title = "Address",
+                //        Filterable = true,
+                //        Sortable = true,
+                //        MinWidth = "50px",
+                //        Width = "210px",
+                //    },
+                //new DataColumn
+                //    {
+                //        Property = nameof(ServiceOrderDto.ServiceOrderTypeId),//reemplazar por su correspondiente valor de entidad
+                //        Title = "Type",
+                //        Filterable = true,
+                //        Sortable = true,
+                //        MinWidth = "50px"
+                //    },
+                //new DataColumn
+                //    {
+                //        Property = nameof(ServiceOrderDto.ParentServiceOrderId),//reemplazar por su correspondiente valor de entidad
+                //        Title = "Parent SO",
+                //        Filterable = true,
+                //        Sortable = true,
+                //        MinWidth = "50px"
+                //    },
+                //new DataColumn
+                //    {
+                //        Property = nameof(ServiceOrderDto.ExecutorId),//reemplazar por su correspondiente valor de entidad
+                //        Title = "Executor",
+                //        Filterable = true,
+                //        Sortable = true,
+                //        MinWidth = "50px"
+                //    },
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderDto.IsActive),

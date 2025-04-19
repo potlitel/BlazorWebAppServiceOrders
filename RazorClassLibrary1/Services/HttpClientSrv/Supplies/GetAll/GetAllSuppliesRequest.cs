@@ -1,0 +1,9 @@
+﻿using FSA.Core.Dtos;
+using FSA.Core.Utils;
+using MediatR;
+using RazorClassLibrary1.Dtos;
+
+namespace RazorClassLibrary1.Services.HttpClientSrv.Supplies.GetAll
+{
+    public record GetAllSuppliesRequest(Pagination? Pagination) : IRequest<Result<SupplyDto>>;
+}
