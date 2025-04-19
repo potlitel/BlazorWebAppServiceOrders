@@ -91,20 +91,20 @@ namespace RazorClassLibrary1.Pages
                     [
                         new GridItemAction
                         {
-                            Action = GridItemActions.ADD_SUB_ITEM,
-                            Icon = "add_circle",
-                            Title = "AddManager",
-                            Style = ButtonStyle.Primary.GetHashCode(),
-                            //Show = o => { return admin; }
+                           Action = GridItemActions.VIEW_DETAILS,
+                            Icon = "preview",
+                            Title = "ViewData",
+                            Style = ButtonStyle.Info.GetHashCode(),
+                            //Show = o => { return (admin || update); }
                         },
-                        new GridItemAction
-                        {
-                            Action = GridItemActions.EDIT_ITEM,
-                            Icon = "edit",
-                            Title = "Edit",
-                            Style = ButtonStyle.Warning.GetHashCode(),
-                            //Show = show => { return (admin || update); }
-                        },
+                        //new GridItemAction
+                        //{
+                        //    Action = GridItemActions.EDIT_ITEM,
+                        //    Icon = "edit",
+                        //    Title = "Edit",
+                        //    Style = ButtonStyle.Warning.GetHashCode(),
+                        //    //Show = show => { return (admin || update); }
+                        //},
 
                     ];
                 #endregion
