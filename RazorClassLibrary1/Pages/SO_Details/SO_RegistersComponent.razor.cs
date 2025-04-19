@@ -141,7 +141,7 @@ namespace RazorClassLibrary1.Pages.SO_Details
             try
             {
                 //await Task.CompletedTask;
-                var key = $"GetAllServiceOrderRegistersService-{Pagination.GetCacheId()}";
+                var key = $"GetServiceOrderRegistersBySOIdService-{Pagination.GetCacheId()}";
                 if (deleteCache)
                     AppCache.RemoveItem(key, CacheType.IndexedDB);
 
@@ -236,6 +236,8 @@ namespace RazorClassLibrary1.Pages.SO_Details
             // Actualizar estado según la notificación
             if (key == NotificationsKeys.UpdateRegistersList)
                 await LoadItems(false);
+
+            StateHasChanged();
             await InvokeAsync(() =>
             {
                 StateHasChanged();

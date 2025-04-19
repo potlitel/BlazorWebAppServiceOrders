@@ -44,6 +44,44 @@
                         </RadzenColumn>
                     </RadzenRow>
 
+                    <RadzenRow>
+                        <RadzenIcon Icon="where_to_vote" /><RadzenColumn>@Localizer["ServiceOrderType"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrder.ServiceOrderTypeId
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="where_to_vote" /><RadzenColumn>@Localizer["ParentServiceOrder"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrder.ParentServiceOrderId
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="where_to_vote" /><RadzenColumn>@Localizer["Executor"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrder.Executor
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="where_to_vote" /><RadzenColumn>@Localizer["Owner"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrder.Owner
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="where_to_vote" /><RadzenColumn>@Localizer["Active"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                             <div style="display: grid; place-items: right">
+                                <RadzenIcon Icon="@(@ServiceOrder.IsActive ? "check_circle" : "cancel")"
+                                            IconColor="@(@ServiceOrder.IsActive ? Colors.Success : Colors.Danger)" />
+                            </div>
+                        </RadzenColumn>
+                    </RadzenRow>
+
                 </RadzenStack>
 
             </RadzenTabsItem>

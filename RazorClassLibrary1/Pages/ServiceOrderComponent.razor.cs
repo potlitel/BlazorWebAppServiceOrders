@@ -134,14 +134,14 @@ namespace RazorClassLibrary1.Pages
                             Style = ButtonStyle.Info.GetHashCode(),
                             //Show = o => { return (admin || update); }
                         },
-                        new GridItemAction
-                        {
-                            Action = GridItemActions.EDIT_ITEM,
-                            Icon = "edit",
-                            Title = "Edit",
-                            Style = ButtonStyle.Warning.GetHashCode(),
-                            //Show = show => { return (admin || update); }
-                        },
+                        //new GridItemAction
+                        //{
+                        //    Action = GridItemActions.EDIT_ITEM,
+                        //    Icon = "edit",
+                        //    Title = "Edit",
+                        //    Style = ButtonStyle.Warning.GetHashCode(),
+                        //    //Show = show => { return (admin || update); }
+                        //},
 
                     ];
                 #endregion
