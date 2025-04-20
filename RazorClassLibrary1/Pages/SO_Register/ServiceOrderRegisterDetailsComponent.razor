@@ -1,3 +1,43 @@
-﻿<div>
+﻿@using FSA.Razor.Components.Components.Shared
 
-</div>
+
+<FadeIn>
+    <RadzenStack Gap="1rem">
+
+        <RadzenRow>
+            <RadzenIcon Icon="numbers" /><RadzenColumn>@Localizer["Number"]</RadzenColumn>
+            <RadzenColumn Size="8">
+                @ServiceOrderRegister.ServiceOrderId
+            </RadzenColumn>
+        </RadzenRow>
+
+        <RadzenRow>
+            <RadzenIcon Icon="start" /><RadzenColumn>@Localizer["Trigger"]</RadzenColumn>
+            <RadzenColumn Size="8">
+                @ServiceOrderRegister.Trigger
+            </RadzenColumn>
+        </RadzenRow>
+
+        <RadzenRow>
+            <RadzenIcon Icon="line_start_diamond" /><RadzenColumn>@Localizer["StateFrom"]</RadzenColumn>
+            <RadzenColumn Size="8">
+                @ServiceOrderRegister.StateFrom
+            </RadzenColumn>
+        </RadzenRow>
+
+        <RadzenRow>
+            <RadzenIcon Icon="line_end_diamond" /><RadzenColumn>@Localizer["StateTo"]</RadzenColumn>
+            <RadzenColumn Size="8">
+                @ServiceOrderRegister.StateTo
+            </RadzenColumn>
+        </RadzenRow>
+
+        <RadzenRow>
+            <RadzenIcon Icon="subject" /><RadzenColumn>@Localizer["Observations"]</RadzenColumn>
+            <RadzenColumn Size="8">
+                <RadzenTextArea Disabled="true" @bind-Value=@ServiceOrderRegister.Observations Cols="40" Rows="6" />
+            </RadzenColumn>
+        </RadzenRow>
+
+    </RadzenStack>
+</FadeIn>

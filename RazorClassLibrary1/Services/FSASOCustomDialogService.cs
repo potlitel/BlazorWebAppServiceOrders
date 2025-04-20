@@ -330,7 +330,7 @@ namespace RazorClassLibrary1.Services
                     options: new DialogOptions
                     {
                         CloseDialogOnOverlayClick = true,
-                        Width = "550px",
+                        Width = "570px",
                         ShowClose = false,
                     }
                 );
