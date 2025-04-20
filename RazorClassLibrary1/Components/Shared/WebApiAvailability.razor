@@ -2,22 +2,49 @@
 <RadzenIcon Icon="@(isConected ? "wifi" : "wifi_off")"></RadzenIcon>
 
 @code {
-    private PeriodicTimer _timer;
-    private CancellationTokenSource _cts = new();
+
     private bool isConected = true;
 
-    protected override void OnInitialized()
-    {
-        //set timer
-        _timer = new PeriodicTimer(TimeSpan.FromSeconds(5));
-        _ = SaveContentPeriodically();
+    private readonly CancellationTokenSource _timerCancellationToken = new();
 
-        // while (await timer.WaitForNextTickAsync())
-        // {
-        //     //do something here every 10s
-        // }
+    /// <summary>
+    /// <see cref="OnAfterRenderAsync"/>: ...
+    /// https://timmoth.com/posts/ZF2d7lLLn0aU8eWX31Sbnw
+    /// </summary>
+    /// <param name="firstRender">Boolean value</param>
+    /// <returns>An instance of the <see cref="Task"/> object.</returns>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            using var timer = new PeriodicTimer(TimeSpan.FromSeconds(1));
+            while (!_timerCancellationToken.IsCancellationRequested && await timer.WaitForNextTickAsync())
+            {
+                isConected = IsAddressAvailable("http://localhost:7002/swagger/index.html");
+                await InvokeAsync(StateHasChanged);
+            }
+            // Make sure any subsequent logic is not called after the component is disposed
+            return;
+        }
+        // You don't need to call base.OnAfterRenderAsync if your component derives directly from ComponentBase
+        // await base.OnAfterRenderAsync(firstRender);
     }
 
+    /// <summary>
+    /// <see cref="Dispose"/>: ...
+    /// </summary>
+    public void Dispose()
+    {
+        _timerCancellationToken.Cancel();
+        _timerCancellationToken.Dispose();
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// <see cref="IsAddressAvailable"/>: Obtiene un objeto de tipo ServiceOrderTask mediante su identificador.
+    /// </summary>
+    /// <param name="address">string value with url.</param>
+    /// <returns></returns>
     public bool IsAddressAvailable(string address)
     {
         try
@@ -31,28 +58,4 @@
             return false;
         }
     }
-
-    private async Task SaveContentPeriodically()
-    {
-        try
-        {
-            while (await _timer.WaitForNextTickAsync(_cts.Token))
-            {
-                // if (NeedsSave)
-                // {
-                //     await SaveContentAsync();
-                //     NeedsSave = false;
-                // }
-                // isConected = IsAddressAvailable(Configuration["FSAManagement:AuthServicesSettings:ApiUrl"]!);
-                isConected = IsAddressAvailable("http://localhost:7002/swagger/index.html");
-                StateHasChanged();
-            }
-        }
-        catch (OperationCanceledException)
-        {
-            // Handle the cancellation
-        }
-    }
-
-
 }
