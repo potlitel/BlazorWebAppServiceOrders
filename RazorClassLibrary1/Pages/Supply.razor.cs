@@ -45,15 +45,15 @@ namespace RazorClassLibrary1.Pages
                         MinWidth = "90px",
                         Width = "140px",
                     },
-                    new DataColumn
-                    {
-                        Property = nameof(SupplyDto.Description),
-                        Title = "Description",
-                        Filterable = true,
-                        Sortable = true,
-                        MinWidth = "150px",
-                        Width = "190px",
-                    },
+                    //new DataColumn
+                    //{
+                    //    Property = nameof(SupplyDto.Description),
+                    //    Title = "Description",
+                    //    Filterable = true,
+                    //    Sortable = true,
+                    //    MinWidth = "150px",
+                    //    Width = "190px",
+                    //},
                     new DataColumn
                     {
                         Property = nameof(SupplyDto.SupplyOperationId),
@@ -103,14 +103,14 @@ namespace RazorClassLibrary1.Pages
                 #region ItemActions
                 ItemActions =
                     [
-                        //new GridItemAction
-                        //{
-                        //    Action = GridItemActions.ADD_SUB_ITEM,
-                        //    Icon = "add_circle",
-                        //    Title = "AddManager",
-                        //    Style = ButtonStyle.Primary.GetHashCode(),
-                        //    //Show = o => { return admin; }
-                        //},
+                        new GridItemAction
+                        {
+                            Action = GridItemActions.VIEW_DETAILS,
+                            Icon = "preview",
+                            Title = "ViewData",
+                            Style = ButtonStyle.Info.GetHashCode(),
+                            //Show = o => { return (admin || update); }
+                        },
                         new GridItemAction
                         {
                             Action = GridItemActions.EDIT_ITEM,
