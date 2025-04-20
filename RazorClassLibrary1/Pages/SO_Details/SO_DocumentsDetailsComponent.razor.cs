@@ -1,29 +1,33 @@
-﻿using FSA.Cache.Models;
+﻿using Bogus;
 using FSA.Core.DataType;
 using FSA.Core.Utils;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
 using Radzen;
 using RazorClassLibrary1.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 
 namespace RazorClassLibrary1.Pages.SO_Details
 {
-    public partial class SO_TasksComponent
+    public partial class SO_DocumentsDetailsComponent
     {
-        [Parameter]
-        public ServiceOrderDto ServiceOrder { get; set; } = new();
-
         #region Properties
 
-        private IQueryable<ServiceOrderTaskDto>? ListItems { get; set; }
+        private IQueryable<ServiceOrderDocumentDto>? ListItems { get; set; }
         private int TotalItems { get; set; }
         private GridConfiguration GridConfiguration { get; set; } = new();
         private List<DataColumn> DataColumns { get; set; } = [];
         private List<GridItemAction> ItemActions { get; set; } = new();
         private List<GridGeneralAction> GeneralActions { get; set; } = new();
         private Pagination Pagination { get; set; } = new Pagination(10);
-        record ItemCached(int TotalItems, IQueryable<ServiceOrderTaskDto> Items);
+        record ItemCached(int TotalItems, IQueryable<ServiceOrderDocumentDto> Items);
 
         #endregion Properties
+
 
         protected override async Task OnInitializedAsync()
         {
@@ -31,39 +35,31 @@ namespace RazorClassLibrary1.Pages.SO_Details
                 {
                     new DataColumn
                     {
-                        Property = nameof(ServiceOrderTaskDto.Observations),
-                        Title = "Observations",
+                        Property = nameof(ServiceOrderDocumentDto.Name),
+                        Title = Localizer["Name"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "250px"
+                        MinWidth = "120px"
                     },
                     new DataColumn
                     {
-                        Property = nameof(ServiceOrderTaskDto.ExecutionDate),
-                        Title = Localizer["ExecutionDate"],
+                        Property = nameof(ServiceOrderDocumentDto.Url),
+                        Title = "Url",
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "50px"
-                    },
-                    new DataColumn
-                    {
-                        Property = nameof(ServiceOrderTaskDto.ServiceOrderTaskStateId),
-                        Title = Localizer["State"],
-                        Filterable = true,
-                        Sortable = true,
-                        MinWidth = "30px"
+                        MinWidth = "120px"
                     },
                 new DataColumn
                     {
-                        Property = nameof(ServiceOrderTaskDto.ServiceOrderId),
-                        Title = Localizer["ServiceOrder"],
+                        Property = nameof(ServiceOrderDocumentDto.DocumentTypeId),
+                        Title = Localizer["DocumentType"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "50px"
                     },
                     new DataColumn
                     {
-                        Property = nameof(ServiceOrderTaskDto.IsActive),
+                        Property = nameof(ServiceOrderDocumentDto.IsActive),
                         Title = "Active",
                         Filterable = true,
                         Sortable = true,
@@ -92,22 +88,14 @@ namespace RazorClassLibrary1.Pages.SO_Details
                 #region ItemActions
                 ItemActions =
                     [
-                        //new GridItemAction
-                        //{
-                        //    Action = GridItemActions.VIEW_DETAILS,
-                        //    Icon = "preview",
-                        //    Title = "ViewData",
-                        //    Style = ButtonStyle.Primary.GetHashCode(),
-                        //    //Show = o => { return admin; }
-                        //},
-                        //new GridItemAction
-                        //{
-                        //    Action = GridItemActions.ADD_SUB_ITEM,
-                        //    Icon = "quick_reference",
-                        //    Title = "ViewServiceOrder",
-                        //    Style = ButtonStyle.Primary.GetHashCode(),
-                        //    //Show = o => { return admin; }
-                        //},
+                        new GridItemAction
+                        {
+                            Action = GridItemActions.VIEW_DETAILS,
+                            Icon = "preview",
+                            Title = "ViewData",
+                            Style = ButtonStyle.Info.GetHashCode(),
+                            //Show = o => { return (admin || update); }
+                        },
                         //new GridItemAction
                         //{
                         //    Action = GridItemActions.EDIT_ITEM,
@@ -127,7 +115,7 @@ namespace RazorClassLibrary1.Pages.SO_Details
                         {
                             Action = GridGeneralActions.ADD_ITEM,
                             Icon = "add",
-                            Title = @Localizer["AddServiceOrderTask"],
+                            Title = @Localizer["AddServiceOrderDocument"],
                             Style = ButtonStyle.Primary.GetHashCode(),
                             //Show = show => { return create; }
                         }
@@ -144,32 +132,40 @@ namespace RazorClassLibrary1.Pages.SO_Details
         {
             try
             {
-                var key = $"GetServiceOrderTasksBySOIdService-{Pagination.GetCacheId()}";
-                if (deleteCache)
-                    AppCache.RemoveItem(key, CacheType.IndexedDB);
+                await Task.CompletedTask;
+                //ListItems = new Faker<ServiceOrderDocumentDto>()
+                //                .RuleFor(x => x.Name, f => f.Finance.Account(15))
+                //                .RuleFor(x => x.Url, f => f.Image.PicsumUrl())
+                //                .RuleFor(x => x.ServiceOrderId, f => f.Random.Long())
+                //                .RuleFor(x => x.DocumentTypeId, f => f.Random.Long())
+                //                .Generate(50).ToList().AsQueryable();
+                //TotalItems = 50;
+                //var key = $"GetAllCompanyGroupsService-{Pagination.GetCacheId()}";
+                //if (deleteCache)
+                //    AppCache.RemoveItem(key, CacheType.IndexedDB);
 
-                var ResponseItemCached = await AppCache.GetItem<ItemCached?>(key, CacheType.IndexedDB);
-                if (ResponseItemCached != null)
-                {
-                    ListItems = ResponseItemCached.Items.AsQueryable();
-                    TotalItems = ResponseItemCached.TotalItems;
-                }
-                else
-                {
-                    var response = await GetServiceOrderTasksBySOIdService.Handle((int)ServiceOrder.Id, Pagination);
-                    if (response.Succeeded)
-                    {
-                        TotalItems = (int)response.Pagination.TotalItems;
-                        ListItems = response.Data!.AsQueryable();
-                        Pagination = response.Pagination;
-                    }
-                }
-                ListItems = ListItems ?? new List<ServiceOrderTaskDto>().AsQueryable();
+                //var ResponseItemCached = await AppCache.GetItem<ItemCached?>(key, CacheType.IndexedDB);
+                //if (ResponseItemCached != null)
+                //{
+                //    ListItems = ResponseItemCached.Items.AsQueryable();
+                //    TotalItems = ResponseItemCached.TotalItems;
+                //}
+                //else
+                //{
+                //    var response = await GetAllCompanyGroupsService.Handle(Pagination);
+                //    if (response.Succeeded)
+                //    {
+                //        TotalItems = (int)response.Pagination.TotalItems;
+                //        ListItems = response.Data!.CompanyGroups.AsQueryable();
+                //        Pagination = response.Pagination;
+                //    }
+                //}
+                ListItems = ListItems ?? new List<ServiceOrderDocumentDto>().AsQueryable();
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
             {
-                ListItems = new List<ServiceOrderTaskDto>().AsQueryable();
+                ListItems = new List<ServiceOrderDocumentDto>().AsQueryable();
                 NotificationService.ShowNotification(NotificationSeverity.Error, $"{ex.Message}");
             }
         }
@@ -200,23 +196,26 @@ namespace RazorClassLibrary1.Pages.SO_Details
         {
             try
             {
-                var item = _item as ServiceOrderTaskDto;
-                item = item is null ? new ServiceOrderTaskDto() : new ServiceOrderTaskDto(item);
+                var itemm = _item as ServiceOrderDocumentDto;
+                itemm = itemm is null ? new ServiceOrderDocumentDto() : new ServiceOrderDocumentDto(itemm);
 
-                //switch (action)
-                //{
-                //    //case GridGeneralActions.ADD_ITEM:
-                //    //    var result = await CustomSODialogService.Open_AddEditSO_ServiceOrderTask(item);
-                //    //    if (result)
-                //    //    {
-                //    //    }
-                //    //    break;
-                //    //case GridItemActions.VIEW_DETAILS:
-                //    //    await CustomSODialogService.Open_ServiceOrderTaskData(item!);
-                //    //    break;
-                //    //case GridItemActions.EDIT_ITEM:
-                //    //    break;
-                //}
+                var item = _item as DocumentTypeDto;
+                item = item is null ? new DocumentTypeDto() : new DocumentTypeDto(item);
+
+                switch (action)
+                {
+                    case GridGeneralActions.ADD_ITEM:
+                        //var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Document Type");
+                        var result = await CustomSODialogService.Open_AddEditSO_Document(itemm);
+                        if (result)
+                        {
+                        }
+                        break;
+                    case GridItemActions.ADD_SUB_ITEM:
+                        break;
+                    case GridItemActions.EDIT_ITEM:
+                        break;
+                }
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
