@@ -317,6 +317,10 @@
     <value>Service Order Details</value>
     <comment>Modals</comment>
   </data>
+  <data name="ServiceOrderRegisterData" xml:space="preserve">
+    <value>Service Order Register Details</value>
+    <comment>Modals</comment>
+  </data>
   <data name="ServiceOrders" xml:space="preserve">
     <value>Service Orders</value>
     <comment>Sidebar</comment>
@@ -384,6 +388,10 @@
   <data name="Supplies" xml:space="preserve">
     <value>Supplies</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="SupplyData" xml:space="preserve">
+    <value>Supply Details</value>
+    <comment>Modals</comment>
   </data>
   <data name="SupplyOperation" xml:space="preserve">
     <value>Supply Operation</value>

@@ -212,10 +212,8 @@ namespace RazorClassLibrary1.Pages
                         var result = await CustomSODialogService.Open_AddEditSO_Supply(item);
                         await LoadItems(true);
                         break;
-                    case GridItemActions.ADD_SUB_ITEM:
-                        //result = await CustomDialogService.Open_AddManager(item, null);
-                        //if (result)
-                        //    await LoadItems(true);
+                    case GridItemActions.VIEW_DETAILS:
+                        await CustomSODialogService.Open_ServiceOrderSupplyData(item!);
                         break;
                     case GridItemActions.EDIT_ITEM:
                         //result = await CustomDialogService.Open_AddEditMaster(item, "EditCompanyGroup");

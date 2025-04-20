@@ -317,6 +317,10 @@
     <value>Detalhes da ordem de serviço</value>
     <comment>Modals</comment>
   </data>
+  <data name="ServiceOrderRegisterData" xml:space="preserve">
+    <value>Detalhes da Registro de ordem de serviço</value>
+    <comment>Modals</comment>
+  </data>
   <data name="ServiceOrders" xml:space="preserve">
     <value>Ordems de serviço</value>
     <comment>Sidebar</comment>
@@ -384,6 +388,10 @@
   <data name="Supplies" xml:space="preserve">
     <value>Suprimentos</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="SupplyData" xml:space="preserve">
+    <value>Detalhes da suprimento</value>
+    <comment>Modals</comment>
   </data>
   <data name="SupplyOperation" xml:space="preserve">
     <value>Operação de Abastecimento</value>

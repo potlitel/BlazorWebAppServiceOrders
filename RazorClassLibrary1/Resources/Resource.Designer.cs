@@ -511,6 +511,15 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service Order Register Details.
+        /// </summary>
+        internal static string ServiceOrderRegisterData {
+            get {
+                return ResourceManager.GetString("ServiceOrderRegisterData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service Orders.
         /// </summary>
         internal static string ServiceOrders {
@@ -660,6 +669,15 @@ namespace RazorClassLibrary1.Resources {
         internal static string Supplies {
             get {
                 return ResourceManager.GetString("Supplies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supply Details.
+        /// </summary>
+        internal static string SupplyData {
+            get {
+                return ResourceManager.GetString("SupplyData", resourceCulture);
             }
         }
         

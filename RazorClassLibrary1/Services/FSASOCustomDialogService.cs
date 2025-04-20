@@ -32,6 +32,8 @@ namespace RazorClassLibrary1.Services
         Task<bool> Open_AddEditSO_ServiceOrder(ServiceOrderDto item);
         Task<bool> Open_ServiceOrderData(ServiceOrderDto item);
         Task<bool> Open_ServiceOrderTaskData(ServiceOrderTaskDto item);
+        Task<bool> Open_ServiceOrderRegisterData(ServiceOrderRegisterDto item);
+        Task<bool> Open_ServiceOrderSupplyData(SupplyDto item);
     }
 
     public class FSASOCustomDialogService : IFSASOCustomDialogService
@@ -304,6 +306,60 @@ namespace RazorClassLibrary1.Services
                         { "IsSideDialog", true }
                     },
                     options: GetDialogOptions()
+                );
+
+                return result is null ? false : (bool)result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> Open_ServiceOrderRegisterData(ServiceOrderRegisterDto dto)
+        {
+            try
+            {
+                var result = await dialogService.OpenAsync<ServiceOrderRegisterDetailsComponent>(
+                    localizer["ServiceOrderRegisterData"],
+                    new Dictionary<string, object>()
+                    {
+                        { "ServiceOrderRegister", dto },
+                        { "IsSideDialog", true }
+                    },
+                    options: new DialogOptions
+                    {
+                        CloseDialogOnOverlayClick = true,
+                        Width = "550px",
+                        ShowClose = false,
+                    }
+                );
+
+                return result is null ? false : (bool)result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> Open_ServiceOrderSupplyData(SupplyDto dto)
+        {
+            try
+            {
+                var result = await dialogService.OpenAsync<ServiceOrderSupplyDetailsComponent>(
+                    localizer["SupplyData"],
+                    new Dictionary<string, object>()
+                    {
+                        { "Supply", dto },
+                        { "IsSideDialog", true }
+                    },
+                    options: new DialogOptions
+                    {
+                        CloseDialogOnOverlayClick = true,
+                        Width = "550px",
+                        ShowClose = false,
+                    }
                 );
 
                 return result is null ? false : (bool)result;
