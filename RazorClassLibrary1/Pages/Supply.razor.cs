@@ -45,15 +45,15 @@ namespace RazorClassLibrary1.Pages
                         MinWidth = "90px",
                         Width = "140px",
                     },
-                    //new DataColumn
-                    //{
-                    //    Property = nameof(SupplyDto.Description),
-                    //    Title = "Description",
-                    //    Filterable = true,
-                    //    Sortable = true,
-                    //    MinWidth = "150px",
-                    //    Width = "190px",
-                    //},
+                    new DataColumn
+                    {
+                        Property = nameof(SupplyDto.Description),
+                        Title = "Description",
+                        Filterable = true,
+                        Sortable = true,
+                        MinWidth = "150px",
+                        Width = "190px",
+                    },
                     new DataColumn
                     {
                         Property = nameof(SupplyDto.SupplyOperationId),
