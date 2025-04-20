@@ -1,31 +1,58 @@
 ﻿@using System.Net
-<RadzenIcon Icon="wifi"></RadzenIcon>
+<RadzenIcon Icon="@(isConected ? "wifi" : "wifi_off")"></RadzenIcon>
 
 @code {
-    // protected override async Task OnInitializedAsync()
-    // {
-    //     //set timer
-    //     var timer = new PeriodicTimer(TimeSpan.FromSeconds(5));
+    private PeriodicTimer _timer;
+    private CancellationTokenSource _cts = new();
+    private bool isConected = true;
 
-    //     while (await timer.WaitForNextTickAsync())
-    //     {
-    //         //do something here every 10s
-    //     }
-    // }
+    protected override void OnInitialized()
+    {
+        //set timer
+        _timer = new PeriodicTimer(TimeSpan.FromSeconds(5));
+        _ = SaveContentPeriodically();
 
-    // public bool IsAddressAvailable(string address)
-    // {
-    //     try
-    //     {
-    //         System.Net.WebClient client = new WebClient();
-    //         client.DownloadData(address);
-    //         return true;
-    //     }
-    //     catch
-    //     {
-    //         return false;
-    //     }
-    // }
+        // while (await timer.WaitForNextTickAsync())
+        // {
+        //     //do something here every 10s
+        // }
+    }
+
+    public bool IsAddressAvailable(string address)
+    {
+        try
+        {
+            System.Net.WebClient client = new WebClient();
+            client.DownloadData(address);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    private async Task SaveContentPeriodically()
+    {
+        try
+        {
+            while (await _timer.WaitForNextTickAsync(_cts.Token))
+            {
+                // if (NeedsSave)
+                // {
+                //     await SaveContentAsync();
+                //     NeedsSave = false;
+                // }
+                // isConected = IsAddressAvailable(Configuration["FSAManagement:AuthServicesSettings:ApiUrl"]!);
+                isConected = IsAddressAvailable("http://localhost:7002/swagger/index.html");
+                StateHasChanged();
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // Handle the cancellation
+        }
+    }
 
 
 }
