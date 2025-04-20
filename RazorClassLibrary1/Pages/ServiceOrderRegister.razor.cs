@@ -94,6 +94,14 @@ namespace RazorClassLibrary1.Pages
                 #region ItemActions
                 ItemActions =
                     [
+                    new GridItemAction
+                        {
+                            Action = GridItemActions.VIEW_DETAILS,
+                            Icon = "preview",
+                            Title = "ViewData",
+                            Style = ButtonStyle.Info.GetHashCode(),
+                            //Show = o => { return (admin || update); }
+                        },
                         //new GridItemAction
                         //{
                         //    Action = GridItemActions.ADD_SUB_ITEM,
