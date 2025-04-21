@@ -49,13 +49,13 @@
                     <RadzenRow>
                         <RadzenIcon Icon="history_edu" /><RadzenColumn>@Localizer["State"]</RadzenColumn>
                         <RadzenColumn Size="8">
-                            @ServiceOrderTask.ServiceOrderTaskStateId
+                            @ServiceOrderTask.ServiceOrderTaskState?.Description
                         </RadzenColumn>
                     </RadzenRow>
                     <RadzenRow>
                         <RadzenIcon Icon="quick_reference" /><RadzenColumn>@Localizer["ServiceOrder"]</RadzenColumn>
                         <RadzenColumn Size="8">
-                            @ServiceOrderTask.ServiceOrderId
+                            @ServiceOrderTask.ServiceOrder?.Number
                         </RadzenColumn>
                     </RadzenRow>
                 </RadzenStack>

@@ -23,7 +23,9 @@ namespace RazorClassLibrary1.Dtos
         {
             Observations = dto.Observations;
             ExecutionDate = dto.ExecutionDate;
+            ServiceOrderTaskState = dto.ServiceOrderTaskState;
             ServiceOrderTaskStateId = dto.ServiceOrderTaskStateId;
+            ServiceOrder = dto.ServiceOrder;
             ServiceOrderId = dto.ServiceOrderId;
             Supplies = dto.Supplies;
             Documents = dto.Documents;

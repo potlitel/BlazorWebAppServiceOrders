@@ -2,6 +2,7 @@
 using FSA.Cache.Models;
 using FSA.Core.DataType;
 using FSA.Core.Utils;
+using FSA.Management.Application.Features.Companies;
 using Radzen;
 using RazorClassLibrary1.Dtos;
 
@@ -47,7 +48,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
                     },
                     new DataColumn
                     {
-                        Property = nameof(ServiceOrderTaskDto.ServiceOrderTaskStateId),
+                        Property = $"{nameof(ServiceOrderTaskDto.ServiceOrderTaskState)}.{nameof(ServiceOrderTaskDto.ServiceOrderTaskState.Description)}",
                         Title = Localizer["State"],
                         Filterable = true,
                         Sortable = true,
@@ -56,7 +57,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
                     },
                 new DataColumn
                     {
-                        Property = nameof(ServiceOrderTaskDto.ServiceOrderId),
+                        Property = $"{nameof(ServiceOrderTaskDto.ServiceOrder)}.{nameof(ServiceOrderTaskDto.ServiceOrder.Number)}",
                         Title = Localizer["ServiceOrder"],
                         Filterable = true,
                         Sortable = true,

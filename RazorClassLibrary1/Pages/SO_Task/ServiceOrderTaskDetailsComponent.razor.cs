@@ -13,7 +13,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
     public partial class ServiceOrderTaskDetailsComponent
     {
         [Parameter]
-        public ServiceOrderTaskDto ServiceOrderTask { get; set; } = new();
+        public ServiceOrderTaskDto ServiceOrderTask { get; set; }
 
         [Parameter]
         public bool IsSideDialog { get; set; } = false;
