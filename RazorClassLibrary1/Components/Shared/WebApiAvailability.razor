@@ -1,5 +1,8 @@
 ﻿@using System.Net
-<RadzenIcon Icon="@(isConected ? "wifi" : "wifi_off")"></RadzenIcon>
+@inject TooltipService tooltipService
+
+
+<RadzenIcon Icon="@(isConected ? "wifi" : "wifi_off")" MouseEnter="@(args => ShowTooltip(args, new TooltipOptions(){ Position = TooltipPosition.Bottom }))"></RadzenIcon>
 
 @code {
 
@@ -29,6 +32,9 @@
         // You don't need to call base.OnAfterRenderAsync if your component derives directly from ComponentBase
         // await base.OnAfterRenderAsync(firstRender);
     }
+
+    void ShowTooltip(ElementReference elementReference, TooltipOptions options = null) => 
+        tooltipService.Open(elementReference, isConected ? "Connected to the service orders API." : "Service order API unavailable.", options);
 
     /// <summary>
     /// <see cref="Dispose"/>: ...
