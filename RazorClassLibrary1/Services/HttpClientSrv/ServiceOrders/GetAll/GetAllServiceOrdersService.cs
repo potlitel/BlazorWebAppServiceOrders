@@ -26,7 +26,8 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll
 
                 var _httpClient = await GetWebApiAsync(HttpClientName("FSAManagement:AuthServicesSettings:Name"));
 
-                var url = $"so/all";
+                //var url = $"so/all";
+                var url = $"so/include-related-objects/all";
                 var result = await _httpClient.PostAsync(url, content);
                 result.EnsureSuccessStatusCode();
 

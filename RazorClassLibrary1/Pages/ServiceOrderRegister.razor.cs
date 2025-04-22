@@ -65,7 +65,8 @@ namespace RazorClassLibrary1.Pages
                     //},
                     new DataColumn
                     {
-                        Property = nameof(ServiceOrderRegisterDto.ServiceOrderId),
+                        //Property = nameof(ServiceOrderRegisterDto.ServiceOrderId),
+                        Property = $"{nameof(ServiceOrderRegisterDto.ServiceOrder)}.{nameof(ServiceOrderRegisterDto.ServiceOrder.Number)}",
                         Title = Localizer["ServiceOrder"],
                         Filterable = true,
                         Sortable = true,

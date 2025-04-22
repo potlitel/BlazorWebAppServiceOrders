@@ -86,10 +86,10 @@ namespace RazorClassLibrary1.Pages
                 {
                     Types = serviceOrdersTypes.Data.ToList();
                     if (ServiceOrder.ServiceOrderTypeId == 0)
-                        ServiceOrder.Type = Types.First();
+                        ServiceOrder.ServiceOrderType = Types.First();
                     else {
                         var type = Types.FirstOrDefault(item => item.Id == ServiceOrder.ServiceOrderTypeId);
-                        ServiceOrder.Type = type;
+                        ServiceOrder.ServiceOrderType = type;
                     }
                 }
 
@@ -132,7 +132,7 @@ namespace RazorClassLibrary1.Pages
             try
             {
                 var item = _item as ServiceOrderTypeDto;
-                await Task.FromResult(ServiceOrder.Type = item!);
+                await Task.FromResult(ServiceOrder.ServiceOrderType = item!);
             }
             catch (Exception)
             {
@@ -158,11 +158,7 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                //await Task.CompletedTask;
                 var item = _item as UserDto;
-                //item!.Id = 55;
-                //UserDto item = new UserDto();
-                //item.Id = 55;
                 await Task.FromResult(ServiceOrder.Executor = item!);
             }
             catch (Exception)
@@ -179,7 +175,7 @@ namespace RazorClassLibrary1.Pages
                 ServiceOrder.ExecutorId = 18;
                 ServiceOrder.OwnerId = 54;
                 ServiceOrder.ParentServiceOrderId = ServiceOrder.ParentServiceOrder?.Id; //using null propagation.
-                ServiceOrder.ServiceOrderTypeId = ServiceOrder.Type!.Id;
+                ServiceOrder.ServiceOrderTypeId = ServiceOrder.ServiceOrderType!.Id;
 
 
                 if (ServiceOrder.Id == 0)

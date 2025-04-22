@@ -2,42 +2,126 @@
 
 
 <FadeIn>
-    <RadzenStack Gap="1rem">
 
-        <RadzenRow>
-            <RadzenIcon Icon="numbers" /><RadzenColumn>@Localizer["Number"]</RadzenColumn>
-            <RadzenColumn Size="8">
-                @ServiceOrderRegister.ServiceOrderId
-            </RadzenColumn>
-        </RadzenRow>
+    <RadzenTabs>
+        <Tabs>
+            <RadzenTabsItem Text="@Localizer["BasicInfo"]">
+                <RadzenStack Gap="1rem">
 
-        <RadzenRow>
-            <RadzenIcon Icon="start" /><RadzenColumn>@Localizer["Trigger"]</RadzenColumn>
-            <RadzenColumn Size="8">
-                @ServiceOrderRegister.Trigger
-            </RadzenColumn>
-        </RadzenRow>
+                    <RadzenRow>
+                        <RadzenIcon Icon="numbers" /><RadzenColumn>@Localizer["Number"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderRegister.ServiceOrder.Number
+                        </RadzenColumn>
+                    </RadzenRow>
 
-        <RadzenRow>
-            <RadzenIcon Icon="line_start_diamond" /><RadzenColumn>@Localizer["StateFrom"]</RadzenColumn>
-            <RadzenColumn Size="8">
-                @ServiceOrderRegister.StateFrom
-            </RadzenColumn>
-        </RadzenRow>
+                    <RadzenRow>
+                        <RadzenIcon Icon="start" /><RadzenColumn>@Localizer["Trigger"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderRegister.Trigger
+                        </RadzenColumn>
+                    </RadzenRow>
 
-        <RadzenRow>
-            <RadzenIcon Icon="line_end_diamond" /><RadzenColumn>@Localizer["StateTo"]</RadzenColumn>
-            <RadzenColumn Size="8">
-                @ServiceOrderRegister.StateTo
-            </RadzenColumn>
-        </RadzenRow>
+                    <RadzenRow>
+                        <RadzenIcon Icon="line_start_diamond" /><RadzenColumn>@Localizer["StateFrom"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderRegister.StateFrom
+                        </RadzenColumn>
+                    </RadzenRow>
 
-        <RadzenRow>
-            <RadzenIcon Icon="subject" /><RadzenColumn>@Localizer["Observations"]</RadzenColumn>
-            <RadzenColumn Size="8">
-                <RadzenTextArea Disabled="true" @bind-Value=@ServiceOrderRegister.Observations Cols="40" Rows="6" />
-            </RadzenColumn>
-        </RadzenRow>
+                    <RadzenRow>
+                        <RadzenIcon Icon="line_end_diamond" /><RadzenColumn>@Localizer["StateTo"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderRegister.StateTo
+                        </RadzenColumn>
+                    </RadzenRow>
 
-    </RadzenStack>
+                    <RadzenRow>
+                        <RadzenIcon Icon="subject" /><RadzenColumn>@Localizer["Observations"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            <RadzenTextArea Disabled="true" @bind-Value=@ServiceOrderRegister.Observations Cols="40" Rows="6" />
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                </RadzenStack>
+            </RadzenTabsItem>
+            <RadzenTabsItem Text="Related Service Order">
+                <RadzenStack Gap="1rem">
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="numbers" /><RadzenColumn>@Localizer["Number"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderRegister.ServiceOrder.Number
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="calendar_month" /><RadzenColumn>@Localizer["EstimatedEndingDate"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderRegister.ServiceOrder.EstimatedEndingDate
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="subject" /><RadzenColumn>@Localizer["Observations"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderRegister.ServiceOrder.Observations
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="where_to_vote" /><RadzenColumn>@Localizer["Address"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderRegister.ServiceOrder.Address
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="unknown_document" /><RadzenColumn>@Localizer["ServiceOrderType"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderRegister.ServiceOrder.ServiceOrderTypeId
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="account_child_invert" /><RadzenColumn>@Localizer["ParentServiceOrder"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderRegister.ServiceOrder.ParentServiceOrderId
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="engineering" /><RadzenColumn>@Localizer["Executor"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderRegister.ServiceOrder.Executor
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="attribution" /><RadzenColumn>@Localizer["Owner"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                            @ServiceOrderRegister.ServiceOrder.Owner
+                        </RadzenColumn>
+                    </RadzenRow>
+
+                    <RadzenRow>
+                        <RadzenIcon Icon="@(@ServiceOrderRegister.ServiceOrder.IsActive ? "toggle_on" : "toggle_off")" /><RadzenColumn>@Localizer["Active"]</RadzenColumn>
+                        <RadzenColumn Size="8">
+                             <div style="display: grid; place-items: right">
+                                <RadzenIcon Icon="@(@ServiceOrderRegister.ServiceOrder.IsActive ? "check_circle" : "cancel")"
+                                            IconColor="@(@ServiceOrderRegister.ServiceOrder.IsActive ? Colors.Success : Colors.Danger)" />
+                            </div>
+                        </RadzenColumn>
+                    </RadzenRow>
+                </RadzenStack>
+            </RadzenTabsItem>
+        </Tabs>
+    </RadzenTabs>
+
+    @code {
+        int selectedIndex = 0;
+    }
+
+
+    
 </FadeIn>

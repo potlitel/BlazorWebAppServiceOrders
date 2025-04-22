@@ -20,7 +20,7 @@ namespace RazorClassLibrary1.Dtos
         public long? ParentServiceOrderId { get; set; }
         public virtual ServiceOrderDto? ParentServiceOrder { get; set; }
         public long ServiceOrderTypeId { get; set; }
-        public virtual ServiceOrderTypeDto? Type { get; set; }
+        public virtual ServiceOrderTypeDto? ServiceOrderType { get; set; }
 
         public virtual ICollection<ServiceOrderDocumentDto> Documents { get; set; } = [];
         public virtual ICollection<ServiceOrderTaskDto> Tasks { get; set; } = [];
@@ -50,7 +50,7 @@ namespace RazorClassLibrary1.Dtos
             ExecutorId = dto.ExecutorId;
             ParentServiceOrder = dto.ParentServiceOrder;
             ParentServiceOrderId = dto.ParentServiceOrderId;
-            Type = dto.Type;
+            ServiceOrderType = dto.ServiceOrderType;
             ServiceOrderTypeId = dto.ServiceOrderTypeId;
             Documents = dto.Documents;
             Tasks = dto.Tasks;

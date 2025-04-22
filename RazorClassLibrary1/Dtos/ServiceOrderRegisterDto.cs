@@ -30,6 +30,7 @@ namespace RazorClassLibrary1.Dtos
             StateFrom = dto.StateFrom;
             StateTo = dto.StateTo;
             Observations = dto.Observations;
+            ServiceOrder = dto.ServiceOrder;
             ServiceOrderId = dto.ServiceOrderId;
         }
 

@@ -47,14 +47,14 @@
                     <RadzenRow>
                         <RadzenIcon Icon="unknown_document" /><RadzenColumn>@Localizer["ServiceOrderType"]</RadzenColumn>
                         <RadzenColumn Size="8">
-                            @ServiceOrder.ServiceOrderTypeId
+                            @ServiceOrder.ServiceOrderType?.Description
                         </RadzenColumn>
                     </RadzenRow>
 
                     <RadzenRow>
                         <RadzenIcon Icon="account_child_invert" /><RadzenColumn>@Localizer["ParentServiceOrder"]</RadzenColumn>
                         <RadzenColumn Size="8">
-                            @ServiceOrder.ParentServiceOrderId
+                            @ServiceOrder.ParentServiceOrder?.Number
                         </RadzenColumn>
                     </RadzenRow>
 
