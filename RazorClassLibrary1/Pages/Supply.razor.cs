@@ -56,7 +56,8 @@ namespace RazorClassLibrary1.Pages
                     },
                     new DataColumn
                     {
-                        Property = nameof(SupplyDto.SupplyOperationId),
+                        //Property = nameof(SupplyDto.SupplyOperationId),
+                        Property = $"{nameof(SupplyDto.SupplyOperation)}.{nameof(SupplyDto.SupplyOperation.Description)}",
                         Title = Localizer["SupplyOperation"],
                         Filterable = true,
                         Sortable = true,
@@ -65,7 +66,8 @@ namespace RazorClassLibrary1.Pages
                     },
                     new DataColumn
                     {
-                        Property = nameof(SupplyDto.ServiceOrderTaskId),
+                        //Property = nameof(SupplyDto.ServiceOrderTaskId),
+                        Property = $"{nameof(SupplyDto.ServiceOrderTask)}.{nameof(SupplyDto.ServiceOrderTask.Observations)}",
                         Title = Localizer["ServiceOrderTask"],
                         Filterable = true,
                         Sortable = true,
