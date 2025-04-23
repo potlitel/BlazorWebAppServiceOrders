@@ -46,7 +46,7 @@ namespace RazorClassLibrary1.Pages.Masters.ServiceOrderType
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderTypeDto.IsActive),
-                        Title = (Localizer["Active"]),
+                        Title = "Active",
                         Filterable = true,
                         Sortable = true,
                         Width = "120px",

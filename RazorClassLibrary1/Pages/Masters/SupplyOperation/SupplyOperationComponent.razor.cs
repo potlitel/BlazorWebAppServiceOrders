@@ -55,7 +55,7 @@ namespace RazorClassLibrary1.Pages.Masters.SupplyOperation
                     new DataColumn
                     {
                         Property = nameof(SupplyOperationDto.IsActive),
-                        Title = (Localizer["Active"]),
+                        Title = "Active",
                         Filterable = true,
                         Sortable = true,
                         Width = "120px",

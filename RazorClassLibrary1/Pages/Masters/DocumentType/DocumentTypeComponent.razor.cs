@@ -46,7 +46,7 @@ namespace RazorClassLibrary1.Pages.Masters.DocumentType
                     new DataColumn
                     {
                         Property = nameof(DocumentTypeDto.IsActive),
-                        Title = (Localizer["Active"]),
+                        Title = "Active",
                         Filterable = true,
                         Sortable = true,
                         Width = "120px",

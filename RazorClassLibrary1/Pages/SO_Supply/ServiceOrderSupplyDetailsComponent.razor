@@ -2,48 +2,42 @@
 
 
 <FadeIn>
-    <RadzenStack Gap="1rem">
 
-        @* <RadzenRow>
-            <RadzenColumn Size="6">
-                Alain
-            </RadzenColumn>
-            <RadzenColumn Size="6">
-                Jorge
-            </RadzenColumn>
-        </RadzenRow> *@
+    <RadzenPanel>
+        <RadzenStack Gap="1rem">
+            <RadzenRow>
+                <RadzenIcon Icon="calculate" />
+                <RadzenColumn>@Localizer["Amount"]</RadzenColumn>
+                <RadzenColumn Size="7">@Supply.Amount</RadzenColumn>
+            </RadzenRow>
 
-        <RadzenRow>
-            <RadzenIcon Icon="calculate" />
-            <RadzenColumn>@Localizer["Amount"]</RadzenColumn>
-            <RadzenColumn Size="7">@Supply.Amount</RadzenColumn>
-        </RadzenRow>
+            <RadzenRow>
+                <RadzenIcon Icon="attach_money" />
+                <RadzenColumn>@Localizer["Price"]</RadzenColumn>
+                <RadzenColumn Size="7">@Supply.Price</RadzenColumn>
+            </RadzenRow>
 
-        <RadzenRow>
-            <RadzenIcon Icon="attach_money" />
-            <RadzenColumn>@Localizer["Price"]</RadzenColumn>
-            <RadzenColumn Size="7">@Supply.Price</RadzenColumn>
-        </RadzenRow>
+            <RadzenRow>
+                <RadzenIcon Icon="manufacturing" />
+                <RadzenColumn >@Localizer["SupplyOperation"]</RadzenColumn>
+                <RadzenColumn Size="7">@Supply.SupplyOperation.Description</RadzenColumn>
+            </RadzenRow>
 
-        <RadzenRow>
-            <RadzenIcon Icon="manufacturing" />
-            <RadzenColumn >@Localizer["SupplyOperation"]</RadzenColumn>
-            <RadzenColumn Size="7">@Supply.SupplyOperation.Description</RadzenColumn>
-        </RadzenRow>
+            <RadzenRow>
+                <RadzenIcon Icon="format_list_bulleted" />
+                <RadzenColumn>@Localizer["ServiceOrderTask"]</RadzenColumn>
+                <RadzenColumn Size="7">@Supply.ServiceOrderTask.Observations</RadzenColumn>
+            </RadzenRow>
 
-        <RadzenRow>
-            <RadzenIcon Icon="format_list_bulleted" />
-            <RadzenColumn>@Localizer["ServiceOrderTask"]</RadzenColumn>
-            <RadzenColumn Size="7">@Supply.ServiceOrderTask.Observations</RadzenColumn>
-        </RadzenRow>
+            <RadzenRow>
+                <RadzenIcon Icon="subject" />
+                <RadzenColumn>@Localizer["Observations"]</RadzenColumn>
+                <RadzenColumn Size="7">
+                    <RadzenTextArea Disabled="true" @bind-Value=@Supply.Description Cols="40" Rows="6" />
+                </RadzenColumn>
+            </RadzenRow>
 
-        <RadzenRow>
-            <RadzenIcon Icon="subject" />
-            <RadzenColumn>@Localizer["Observations"]</RadzenColumn>
-            <RadzenColumn Size="7">
-                <RadzenTextArea Disabled="true" @bind-Value=@Supply.Description Cols="40" Rows="6" />
-            </RadzenColumn>
-        </RadzenRow>
+        </RadzenStack>
 
-    </RadzenStack>
+    </RadzenPanel>
 </FadeIn>
