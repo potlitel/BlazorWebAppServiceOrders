@@ -16,7 +16,7 @@
 
         <RadzenTextArea Placeholder="Put some observations here before changing this service order's state" @bind-Value="@SORegisterObservations" Rows="2" Style="width:55%" />
 
-        <RadzenSteps Change="@OnChange" SelectedIndex="selectedIndex">
+        <RadzenSteps Change="@OnChange" SelectedIndex="selectedIndex" ShowStepsButtons="false">
             <Steps>
                 @foreach (var item in SOStates)
                 {
