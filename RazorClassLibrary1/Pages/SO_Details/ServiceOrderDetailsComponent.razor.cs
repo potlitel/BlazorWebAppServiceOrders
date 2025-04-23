@@ -65,49 +65,49 @@ namespace RazorClassLibrary1.Pages.SO_Details
         /// </summary>
         /// <param name="index">THe index</param>
         /// <returns></returns>
-        async Task OnChange(int index)
-        {
-            await SaveServiceOrderRegister(index);
-        }
+        //async Task OnChange(int index)
+        //{
+        //    await SaveServiceOrderRegister(index);
+        //}
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns></returns>
-        private async Task SaveServiceOrderRegister(int index)
-        {
-            var stateFrom = SOStates.ElementAt(selectedIndex);
-            var stateTo = SOStates.ElementAt(index);
+        //private async Task SaveServiceOrderRegister(int index)
+        //{
+        //    var stateFrom = SOStates.ElementAt(selectedIndex);
+        //    var stateTo = SOStates.ElementAt(index);
 
-            ServiceOrderRegisterDto serviceOrderRegisterDto = new ServiceOrderRegisterDto
-            {
-                Trigger = "custom trigger",
-                StateFrom = stateFrom.Description,
-                StateTo = stateTo.Description,
-                Observations = SORegisterObservations,
-                ServiceOrderId = ServiceOrder.Id,
-            };
+        //    ServiceOrderRegisterDto serviceOrderRegisterDto = new ServiceOrderRegisterDto
+        //    {
+        //        Trigger = "custom trigger",
+        //        StateFrom = stateFrom.Description,
+        //        StateTo = stateTo.Description,
+        //        Observations = SORegisterObservations,
+        //        ServiceOrderId = ServiceOrder.Id,
+        //    };
 
 
-            var response = await CreateServiceOrderRegisterService.Handle(serviceOrderRegisterDto);
+        //    var response = await CreateServiceOrderRegisterService.Handle(serviceOrderRegisterDto);
 
-            if (response.Succeeded)
-            {
-                NotificationService.ShowNotification(response.Succeeded,
-                                                     Localizer["UpdSORegister"] + " " + stateTo.Description,
-                                                     ServiceOrder.Number);
+        //    if (response.Succeeded)
+        //    {
+        //        NotificationService.ShowNotification(response.Succeeded,
+        //                                             Localizer["UpdSORegister"] + " " + stateTo.Description,
+        //                                             ServiceOrder.Number);
 
-                selectedIndex = index;
-                SORegisterObservations = string.Empty;
+        //        selectedIndex = index;
+        //        SORegisterObservations = string.Empty;
 
-                await NotifierService.SendNotification(NotificationsKeys.UpdateRegistersList, response!);
-            }
-        }
+        //        await NotifierService.SendNotification(NotificationsKeys.UpdateRegistersList, response!);
+        //    }
+        //}
 
-        void Change(string text)
-        {
-            Console.WriteLine($"{text}");
-        }
+        //void Change(string text)
+        //{
+        //    Console.WriteLine($"{text}");
+        //}
     }
 }

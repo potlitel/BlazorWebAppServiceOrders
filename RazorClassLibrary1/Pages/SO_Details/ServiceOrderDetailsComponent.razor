@@ -3,13 +3,14 @@
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.GetCurrent
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll
 @inject IGetAllServiceOrderTasksStatesService GetAllServiceOrderTasksStatesService
-@inject ICreateServiceOrderRegisterService CreateServiceOrderRegisterService
+@* @inject ICreateServiceOrderRegisterService CreateServiceOrderRegisterService *@
 @inject IGetCurrentSORegisterByIdService GetCurrentSORegisterByIdService
-@inject NotifierService NotifierService
+@* @inject NotifierService NotifierService *@
 
 <FadeIn>
     <CascadingValue Value="@ServiceOrder">
-        <RadzenTabs SelectedIndex="0">
+        <CascadingValue Value="@SOStates">
+            <RadzenTabs SelectedIndex="0">
             <Tabs>
                 <RadzenTabsItem Text="@Localizer["BasicInfo"]" Icon="page_info">
                 
@@ -36,38 +37,8 @@
                     <RadzenTabs>
                         <Tabs>
                             <RadzenTabsItem Text="Main view" Icon="home_max_dots">
-                            
-                                <RadzenFieldset AllowCollapse="true" Style="width: 100%; margin: 5px auto;" ExpandTitle="Expand orders." CollapseTitle="Collapse orders."
-                                                ExpandAriaLabel="Expand the list of orders." CollapseAriaLabel="Collapse the list of orders."
-                                                Expand=@(() => Change("Fieldset expanded")) Collapse=@(() => Change("Fieldset collapsed"))>
-                                    <HeaderTemplate>
-                                        <RadzenStack Orientation="Orientation.Horizontal" Gap="0.25rem">
-                                            <RadzenIcon Icon="account_box" /><b>Modificar o status desta Ordem de Serviço</b>
-                                        </RadzenStack>
-                                    </HeaderTemplate>
-                                    <ChildContent>
-
-                                        <RadzenTextArea Placeholder="Put some observations here before changing this service order's state" @bind-Value="@SORegisterObservations" Rows="2" Style="width:55%" />
-
-                                        <RadzenSteps Change="@OnChange" SelectedIndex="selectedIndex">
-                                            <Steps>
-                                                @foreach (var item in SOStates)
-                                                {
-                                                    <RadzenStepsItem Text=@item.Description onmouseover="" Disabled="@string.IsNullOrEmpty(SORegisterObservations)" />
-                                                }
-                                            </Steps>
-                                        </RadzenSteps>
-
-                                    </ChildContent>
-                                    <SummaryTemplate>
-                                        <RadzenCard class="rz-mt-4">
-                                            <b>Orders</b>
-                                        </RadzenCard>
-                                    </SummaryTemplate>
-                                </RadzenFieldset>
-
+                                <SO_StepsComponent />
                                 <SO_RegistersComponent ServiceOrder="@ServiceOrder" />
-
                             </RadzenTabsItem>
                             <RadzenTabsItem Text="Timeline view" Icon="timeline">
                                 <SO_TimelineViewComponent />
@@ -75,11 +46,10 @@
                         </Tabs>
                     </RadzenTabs>
 
-                
-
                 </RadzenTabsItem>
 
             </Tabs>
         </RadzenTabs>
+        </CascadingValue>
     </CascadingValue>
 </FadeIn>

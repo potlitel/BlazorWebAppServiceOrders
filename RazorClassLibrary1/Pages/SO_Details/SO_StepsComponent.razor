@@ -1,0 +1,32 @@
+﻿@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.Create
+@inject ICreateServiceOrderRegisterService CreateServiceOrderRegisterService
+@inject NotifierService NotifierService
+
+<RadzenFieldset AllowCollapse="true" Style="width: 100%; margin: 5px auto;" ExpandTitle="Expand orders." CollapseTitle="Collapse orders."
+                ExpandAriaLabel="Expand the list of orders." CollapseAriaLabel="Collapse the list of orders."
+                Expand=@(() => Change("Fieldset expanded")) Collapse=@(() => Change("Fieldset collapsed"))>
+    <HeaderTemplate>
+        <RadzenStack Orientation="Orientation.Horizontal" Gap="0.25rem">
+            <RadzenIcon Icon="account_box" /><b>Modificar o status desta Ordem de Serviço</b>
+        </RadzenStack>
+    </HeaderTemplate>
+    <ChildContent>
+
+        <RadzenTextArea Placeholder="Put some observations here before changing this service order's state" @bind-Value="@SORegisterObservations" Rows="2" Style="width:55%" />
+
+        <RadzenSteps Change="@OnChange" SelectedIndex="selectedIndex">
+            <Steps>
+                @foreach (var item in SOStates)
+                {
+                    <RadzenStepsItem Text=@item.Description onmouseover="" Disabled="@string.IsNullOrEmpty(SORegisterObservations)" />
+                }
+            </Steps>
+        </RadzenSteps>
+
+    </ChildContent>
+    <SummaryTemplate>
+        <RadzenCard class="rz-mt-4">
+            <b>Orders</b>
+        </RadzenCard>
+    </SummaryTemplate>
+</RadzenFieldset>
