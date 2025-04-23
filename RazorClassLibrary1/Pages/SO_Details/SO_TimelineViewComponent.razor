@@ -10,7 +10,7 @@
         {
                 <RadzenTimelineItem PointStyle="@(item.CreatedAt.ToString() == maxRegister ? PointStyle.Primary : PointStyle.Base)" MouseEnter="@(args => ShowTooltip(args, @item.Observations!, new TooltipOptions(){ Position = TooltipPosition.Bottom, Delay = 500, Duration = 5000  }) )">
                 <LabelContent>
-                    <RadzenText TextStyle="TextStyle.Subtitle2" class="rz-m-0">@item.CreatedAt.ToString("dddd, dd MMMM yyyy")</RadzenText>
+                        <RadzenText TextStyle="TextStyle.Subtitle2" class="rz-m-0">@item.CreatedAt.ToString("dddd, dd MMMM yyyy HH:mm:ss")</RadzenText>
                 </LabelContent>
                 <ChildContent>
                     @* @item.StateFrom - @item.StateTo : @item.Observations *@
