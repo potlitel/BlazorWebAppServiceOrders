@@ -30,7 +30,9 @@ namespace RazorClassLibrary1.Dtos
             Amount = dto.Amount;
             Price = dto.Price;
             Description = dto.Description;
+            SupplyOperation = dto.SupplyOperation;
             SupplyOperationId = dto.SupplyOperationId;
+            ServiceOrderTask = dto.ServiceOrderTask;
             ServiceOrderTaskId = dto.ServiceOrderTaskId;
         }
 

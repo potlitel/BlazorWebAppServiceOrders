@@ -28,13 +28,13 @@
         <RadzenRow>
             <RadzenIcon Icon="manufacturing" />
             <RadzenColumn >@Localizer["SupplyOperation"]</RadzenColumn>
-            <RadzenColumn Size="7">@Supply.SupplyOperationId</RadzenColumn>
+            <RadzenColumn Size="7">@Supply.SupplyOperation.Description</RadzenColumn>
         </RadzenRow>
 
         <RadzenRow>
             <RadzenIcon Icon="format_list_bulleted" />
             <RadzenColumn>@Localizer["ServiceOrderTask"]</RadzenColumn>
-            <RadzenColumn Size="7">@Supply.ServiceOrderTaskId</RadzenColumn>
+            <RadzenColumn Size="7">@Supply.ServiceOrderTask.Observations</RadzenColumn>
         </RadzenRow>
 
         <RadzenRow>
