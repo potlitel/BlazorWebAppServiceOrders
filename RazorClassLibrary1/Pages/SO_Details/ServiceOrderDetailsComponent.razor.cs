@@ -2,7 +2,6 @@
 using Radzen;
 using RazorClassLibrary1.Dtos;
 using RazorClassLibrary1.Helpers;
-using System;
 
 
 namespace RazorClassLibrary1.Pages.SO_Details
@@ -18,6 +17,8 @@ namespace RazorClassLibrary1.Pages.SO_Details
         int selectedIndex = 0;
 
         string SORegisterObservations = string.Empty;
+
+        string maxRegister = string.Empty;
 
         IEnumerable<ServiceOrderTaskStateDto> SOStates = [];
 
@@ -49,6 +50,8 @@ namespace RazorClassLibrary1.Pages.SO_Details
                         selectedIndex = index;
                     }
                 }
+
+                maxRegister = ServiceOrder.Registers.Max(entry => entry.CreatedAt.ToString());
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)

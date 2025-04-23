@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Radzen;
 using RazorClassLibrary1.Dtos;
+using RazorClassLibrary1.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -107,6 +108,7 @@ namespace RazorClassLibrary1.Pages
                 };
             CreateActions();
             await LoadItems(false);
+            //NotifierService.Notifier += OnNotify;
         }
 
         private void CreateActions()
@@ -256,5 +258,23 @@ namespace RazorClassLibrary1.Pages
                 NotificationService.ShowNotification(NotificationSeverity.Error, ex.Message, Localizer["ErrorCompanyGroup"]);
             }
         }
+
+        //private async Task OnNotify(string key, object? value)
+        //{
+        //    // Actualizar estado según la notificación
+        //    if (key == NotificationsKeys.UpdateRegistersList)
+        //        await LoadItems(false);
+
+        //    StateHasChanged();
+        //    await InvokeAsync(() =>
+        //    {
+        //        StateHasChanged();
+        //    });
+        //}
+
+        //public void Dispose()
+        //{
+        //    NotifierService.Notifier -= OnNotify;
+        //}
     }
 }

@@ -98,41 +98,81 @@
             </RadzenTabsItem>
             <RadzenTabsItem Text="@Localizer["Registers"]" Icon="sweep">
 
-                <RadzenFieldset AllowCollapse="true" Style="width: 100%; margin: 5px auto;" ExpandTitle="Expand orders." CollapseTitle="Collapse orders."
-                ExpandAriaLabel="Expand the list of orders." CollapseAriaLabel="Collapse the list of orders."
-                Expand=@(() => Change("Fieldset expanded")) Collapse=@(() => Change("Fieldset collapsed"))>
-                <HeaderTemplate>
-                    <RadzenStack Orientation="Orientation.Horizontal" Gap="0.25rem">
-                            <RadzenIcon Icon="account_box" /><b>Modificar o status desta Ordem de Serviço</b>
-                    </RadzenStack>
-                </HeaderTemplate>
-                <ChildContent>
+                <RadzenTabs>
+                    <Tabs>
+                        <RadzenTabsItem Text="Main view">
+                            
+                            <RadzenFieldset AllowCollapse="true" Style="width: 100%; margin: 5px auto;" ExpandTitle="Expand orders." CollapseTitle="Collapse orders."
+                                            ExpandAriaLabel="Expand the list of orders." CollapseAriaLabel="Collapse the list of orders."
+                                            Expand=@(() => Change("Fieldset expanded")) Collapse=@(() => Change("Fieldset collapsed"))>
+                                <HeaderTemplate>
+                                    <RadzenStack Orientation="Orientation.Horizontal" Gap="0.25rem">
+                                        <RadzenIcon Icon="account_box" /><b>Modificar o status desta Ordem de Serviço</b>
+                                    </RadzenStack>
+                                </HeaderTemplate>
+                                <ChildContent>
 
-                @* <RadzenRow Size="12" SizeMD="4"> *@
-                    @* <RadzenText Text="Observations on the change of state" /> *@
-                @* </RadzenRow> *@
-                <RadzenTextArea Placeholder="Put some observations here before changing this service order's state" @bind-Value="@SORegisterObservations" Rows="2" Style="width:55%"/>
+                                    <RadzenTextArea Placeholder="Put some observations here before changing this service order's state" @bind-Value="@SORegisterObservations" Rows="2" Style="width:55%" />
 
-                <RadzenSteps Change="@OnChange" SelectedIndex="selectedIndex">
-                    <Steps>
-                        @foreach (var item in SOStates)
-                        {
-                            <RadzenStepsItem Text=@item.Description onmouseover="" Disabled="@string.IsNullOrEmpty(SORegisterObservations)" />
-                        }
-                    </Steps>
-                </RadzenSteps>
+                                    <RadzenSteps Change="@OnChange" SelectedIndex="selectedIndex">
+                                        <Steps>
+                                            @foreach (var item in SOStates)
+                                            {
+                                                <RadzenStepsItem Text=@item.Description onmouseover="" Disabled="@string.IsNullOrEmpty(SORegisterObservations)" />
+                                            }
+                                        </Steps>
+                                    </RadzenSteps>
 
-                    </ChildContent>
-                    <SummaryTemplate>
-                        <RadzenCard class="rz-mt-4">
-                            <b>Orders</b>
-                        </RadzenCard>
-                    </SummaryTemplate>
-                </RadzenFieldset>
+                                </ChildContent>
+                                <SummaryTemplate>
+                                    <RadzenCard class="rz-mt-4">
+                                        <b>Orders</b>
+                                    </RadzenCard>
+                                </SummaryTemplate>
+                            </RadzenFieldset>
 
-                <SO_RegistersComponent ServiceOrder="@ServiceOrder" />
+                            <SO_RegistersComponent ServiceOrder="@ServiceOrder" />
+
+                        </RadzenTabsItem>
+                        <RadzenTabsItem Text="Timeline view">
+                            <RadzenTimeline>
+                                <Items>
+                                    @foreach (var item in ServiceOrder.Registers.Reverse())
+                                    {
+                                        if (item.CreatedAt.ToString() == maxRegister)
+                                        {
+                                            <RadzenTimelineItem PointStyle="PointStyle.Primary">
+                                                <LabelContent>
+                                                    <RadzenText TextStyle="TextStyle.Subtitle2" class="rz-m-0">@item.CreatedAt</RadzenText>
+                                                </LabelContent>
+                                                <ChildContent>
+                                                    @item.StateFrom - @item.StateTo | @item.Observations
+                                                </ChildContent>
+                                            </RadzenTimelineItem>
+                                        }
+                                        else
+                                        {
+                                            <RadzenTimelineItem>
+                                                <LabelContent>
+                                                    <RadzenText TextStyle="TextStyle.Subtitle2" class="rz-m-0">@item.CreatedAt</RadzenText>
+                                                </LabelContent>
+                                                <ChildContent>
+                                                    @item.StateFrom - @item.StateTo | @item.Observations
+                                                </ChildContent>
+                                            </RadzenTimelineItem>
+                                        }
+                                        
+                                    }
+                                </Items>
+                            </RadzenTimeline>
+                        </RadzenTabsItem>
+                    </Tabs>
+                </RadzenTabs>
+
+                
 
             </RadzenTabsItem>
+
         </Tabs>
     </RadzenTabs>
      
