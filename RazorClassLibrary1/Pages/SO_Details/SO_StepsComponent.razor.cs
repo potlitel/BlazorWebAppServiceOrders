@@ -1,8 +1,6 @@
-﻿using FSA.Core.ServiceOrders.Models;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using RazorClassLibrary1.Dtos;
 using RazorClassLibrary1.Helpers;
-using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.Create;
 using RazorClassLibrary1.Services;
 
 
@@ -23,7 +21,28 @@ namespace RazorClassLibrary1.Pages.SO_Details
 
         protected override async Task OnInitializedAsync()
         {
+            try
+            {
+                var currentRegisterTask = GetCurrentSORegisterByIdService.Handle((int)ServiceOrder.Id);
+                var currentRegister = await currentRegisterTask;
 
+                if (currentRegister.Succeeded)
+                {
+                    //Get current register of this Service Order
+                    var register = currentRegister.Data;
+
+                    if (register is not null)
+                    {
+                        var index = SOStates.ToList().FindIndex(item => item.Description == register.StateTo);
+                        selectedIndex = index;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         /// <summary>

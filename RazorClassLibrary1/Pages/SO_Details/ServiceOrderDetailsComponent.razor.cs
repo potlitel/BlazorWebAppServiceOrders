@@ -26,10 +26,10 @@ namespace RazorClassLibrary1.Pages.SO_Details
             {
                 var statesTask = GetAllServiceOrderTasksStatesService.Handle(null);
                 int soId = (int)ServiceOrder.Id;
-                var currentRegisterTask = GetCurrentSORegisterByIdService.Handle(soId);
+                //var currentRegisterTask = GetCurrentSORegisterByIdService.Handle(soId);
 
                 var states = await statesTask;
-                var currentRegister = await currentRegisterTask;
+                //var currentRegister = await currentRegisterTask;
 
                 if (states.Succeeded)
                 {
@@ -37,17 +37,17 @@ namespace RazorClassLibrary1.Pages.SO_Details
                     var random = new Random();
                 }
 
-                if (currentRegister.Succeeded)
-                {
-                    //Get current register of this Service Order
-                    var register = currentRegister.Data;
+                //if (currentRegister.Succeeded)
+                //{
+                //    //Get current register of this Service Order
+                //    var register = currentRegister.Data;
 
-                    if (register is not null)
-                    {
-                        var index = SOStates.ToList().FindIndex(item => item.Description == register.StateTo);
-                        selectedIndex = index;
-                    }
-                }
+                //    if (register is not null)
+                //    {
+                //        var index = SOStates.ToList().FindIndex(item => item.Description == register.StateTo);
+                //        selectedIndex = index;
+                //    }
+                //}
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
@@ -59,55 +59,5 @@ namespace RazorClassLibrary1.Pages.SO_Details
                 //IsLoading = false;
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="index">THe index</param>
-        /// <returns></returns>
-        //async Task OnChange(int index)
-        //{
-        //    await SaveServiceOrderRegister(index);
-        //}
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns></returns>
-        //private async Task SaveServiceOrderRegister(int index)
-        //{
-        //    var stateFrom = SOStates.ElementAt(selectedIndex);
-        //    var stateTo = SOStates.ElementAt(index);
-
-        //    ServiceOrderRegisterDto serviceOrderRegisterDto = new ServiceOrderRegisterDto
-        //    {
-        //        Trigger = "custom trigger",
-        //        StateFrom = stateFrom.Description,
-        //        StateTo = stateTo.Description,
-        //        Observations = SORegisterObservations,
-        //        ServiceOrderId = ServiceOrder.Id,
-        //    };
-
-
-        //    var response = await CreateServiceOrderRegisterService.Handle(serviceOrderRegisterDto);
-
-        //    if (response.Succeeded)
-        //    {
-        //        NotificationService.ShowNotification(response.Succeeded,
-        //                                             Localizer["UpdSORegister"] + " " + stateTo.Description,
-        //                                             ServiceOrder.Number);
-
-        //        selectedIndex = index;
-        //        SORegisterObservations = string.Empty;
-
-        //        await NotifierService.SendNotification(NotificationsKeys.UpdateRegistersList, response!);
-        //    }
-        //}
-
-        //void Change(string text)
-        //{
-        //    Console.WriteLine($"{text}");
-        //}
     }
 }
