@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using System;
 using System.Globalization;
 
 
@@ -45,7 +46,10 @@ namespace RazorClassLibrary1.Components.Shared
                 if (CultureInfo.CurrentCulture != value)
                 {
                     jsRuntime.InvokeVoidAsync("blazorCulture.set", value.Name);
-					NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
+                    //NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
+                    //string url = NavManager.Uri;
+                    //NavManager.NavigateTo("/fake-page", false); // Navigate away
+                    //NavManager.NavigateTo(url, false);          // Navigate back
                 }
             }
         }
@@ -87,9 +91,23 @@ namespace RazorClassLibrary1.Components.Shared
             {
                 //Antes no tenia el await
                 await jsRuntime.InvokeVoidAsync("blazorCulture.set", _selectedCountryCode);
-                NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
-                //StateHasChanged();
+                SoftReload();
             }
         }
-	}
+
+        /// <summary>
+        /// <see cref="SoftReload"/>: Obtiene un objeto de tipo ServiceOrderTask mediante su identificador.        
+        /// </summary>
+        private void SoftReload()
+        {
+            //Forcing a Full Page Reload(Not SPA - friendly)
+            //NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
+            /// Soft Reload by Navigating Away and Back (SPA-friendly Hack)
+            //https://www.perplexity.ai/search/blazor-how-to-reload-page-with-wukqWyqzQVeBT5vSgsMAdg
+            string url = NavManager.Uri;
+            NavManager.NavigateTo("/fake-page", false); // Navigate away
+            NavManager.NavigateTo(url, false);          // Navigate back
+                                                        //StateHasChanged();
+        }
+    }
 }
