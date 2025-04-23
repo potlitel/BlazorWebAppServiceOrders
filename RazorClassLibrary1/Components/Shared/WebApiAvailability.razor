@@ -33,7 +33,7 @@
         // await base.OnAfterRenderAsync(firstRender);
     }
 
-    void ShowTooltip(ElementReference elementReference, TooltipOptions options = null) => 
+    void ShowTooltip(ElementReference elementReference, TooltipOptions options = null!) => 
         tooltipService.Open(elementReference, isConected ? "Connected to the service orders API." : "Service order API unavailable.", options);
 
     /// <summary>

@@ -34,17 +34,7 @@
                 </RadzenTabsItem>                
                 <RadzenTabsItem Text="@Localizer["Registers"]" Icon="sweep">
 
-                    <RadzenTabs>
-                        <Tabs>
-                            <RadzenTabsItem Text="Main view" Icon="home_max_dots">
-                                <SO_StepsComponent />
-                                <SO_RegistersComponent ServiceOrder="@ServiceOrder" />
-                            </RadzenTabsItem>
-                            <RadzenTabsItem Text="Timeline view" Icon="timeline">
-                                <SO_TimelineViewComponent />
-                            </RadzenTabsItem>
-                        </Tabs>
-                    </RadzenTabs>
+                    <SO_RegistersDetailsComponent />
 
                 </RadzenTabsItem>
 
