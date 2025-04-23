@@ -2,7 +2,10 @@
     <Tabs>
         <RadzenTabsItem Text="Main view" Icon="home_max_dots">
             <SO_StepsComponent />
-            <SO_RegistersComponent />
+            <RadzenPanel>
+                <SO_RegistersComponent />
+            </RadzenPanel>
+            
         </RadzenTabsItem>
         <RadzenTabsItem Text="Timeline view" Icon="timeline">
             <SO_TimelineViewComponent />

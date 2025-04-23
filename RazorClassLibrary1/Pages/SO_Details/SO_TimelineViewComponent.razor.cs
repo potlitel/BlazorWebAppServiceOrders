@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Radzen;
 using RazorClassLibrary1.Dtos;
 
 
@@ -14,5 +15,8 @@ namespace RazorClassLibrary1.Pages.SO_Details
         protected override async Task OnInitializedAsync() =>
             //gets the max value of CreatedAt field
             maxRegister = await Task.FromResult(ServiceOrder.Registers!.Max(entry => entry.CreatedAt.ToString()));
+
+        void ShowTooltip(ElementReference elementReference, string msg, TooltipOptions options = null!) => 
+            tooltipService.Open(elementReference, msg, options);
     }
 }
