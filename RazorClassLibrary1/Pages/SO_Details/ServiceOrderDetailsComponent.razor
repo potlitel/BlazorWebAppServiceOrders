@@ -26,13 +26,11 @@
                     <SO_TasksComponent />
 
                 </RadzenTabsItem>
-
                 <RadzenTabsItem Text="@Localizer["Features"]" Icon="strategy">
                 
                     Order Details
                 
-                </RadzenTabsItem>
-                
+                </RadzenTabsItem>                
                 <RadzenTabsItem Text="@Localizer["Registers"]" Icon="sweep">
 
                     <RadzenTabs>
@@ -72,36 +70,7 @@
 
                             </RadzenTabsItem>
                             <RadzenTabsItem Text="Timeline view" Icon="timeline">
-                                <RadzenTimeline>
-                                    <Items>
-                                        @foreach (var item in ServiceOrder.Registers.Reverse())
-                                        {
-                                            if (item.CreatedAt.ToString() == maxRegister)
-                                            {
-                                                <RadzenTimelineItem PointStyle="PointStyle.Primary">
-                                                    <LabelContent>
-                                                        <RadzenText TextStyle="TextStyle.Subtitle2" class="rz-m-0">@item.CreatedAt</RadzenText>
-                                                    </LabelContent>
-                                                    <ChildContent>
-                                                        @item.StateFrom - @item.StateTo | @item.Observations
-                                                    </ChildContent>
-                                                </RadzenTimelineItem>
-                                            }
-                                            else
-                                            {
-                                                <RadzenTimelineItem>
-                                                    <LabelContent>
-                                                        <RadzenText TextStyle="TextStyle.Subtitle2" class="rz-m-0">@item.CreatedAt</RadzenText>
-                                                    </LabelContent>
-                                                    <ChildContent>
-                                                        @item.StateFrom - @item.StateTo | @item.Observations
-                                                    </ChildContent>
-                                                </RadzenTimelineItem>
-                                            }
-                                        
-                                        }
-                                    </Items>
-                                </RadzenTimeline>
+                                <SO_TimelineViewComponent />
                             </RadzenTabsItem>
                         </Tabs>
                     </RadzenTabs>

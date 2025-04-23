@@ -18,8 +18,6 @@ namespace RazorClassLibrary1.Pages.SO_Details
 
         string SORegisterObservations = string.Empty;
 
-        string maxRegister = string.Empty;
-
         IEnumerable<ServiceOrderTaskStateDto> SOStates = [];
 
         protected override async Task OnInitializedAsync()
@@ -50,8 +48,6 @@ namespace RazorClassLibrary1.Pages.SO_Details
                         selectedIndex = index;
                     }
                 }
-
-                maxRegister = ServiceOrder.Registers.Max(entry => entry.CreatedAt.ToString());
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
