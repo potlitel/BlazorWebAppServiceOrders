@@ -47,19 +47,11 @@ namespace RazorClassLibrary1.Pages.SO_Details
                     },
                     new DataColumn
                     {
-                        Property = nameof(ServiceOrderTaskDto.ServiceOrderTaskStateId),
+                        Property = $"{nameof(ServiceOrderTaskDto.ServiceOrderTaskState)}.{nameof(ServiceOrderTaskDto.ServiceOrderTaskState.Description)}",
                         Title = Localizer["State"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "30px"
-                    },
-                new DataColumn
-                    {
-                        Property = nameof(ServiceOrderTaskDto.ServiceOrderId),
-                        Title = Localizer["ServiceOrder"],
-                        Filterable = true,
-                        Sortable = true,
-                        MinWidth = "50px"
                     },
                     new DataColumn
                     {
