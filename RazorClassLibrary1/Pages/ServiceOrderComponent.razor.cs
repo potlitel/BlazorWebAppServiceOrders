@@ -1,18 +1,9 @@
-﻿using Bogus;
-using FSA.Cache.Models;
+﻿using FSA.Cache.Models;
 using FSA.Core.DataType;
 using FSA.Core.Utils;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using Radzen;
 using RazorClassLibrary1.Dtos;
 using RazorClassLibrary1.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using static FSA.Management.Application.Domain.Constants.Permissions;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 
 namespace RazorClassLibrary1.Pages
@@ -263,7 +254,7 @@ namespace RazorClassLibrary1.Pages
         //{
         //    // Actualizar estado según la notificación
         //    if (key == NotificationsKeys.UpdateRegistersList)
-        //        await LoadItems(false);
+        //        await LoadItems(true);
 
         //    StateHasChanged();
         //    await InvokeAsync(() =>

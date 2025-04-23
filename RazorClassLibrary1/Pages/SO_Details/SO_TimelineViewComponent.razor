@@ -1,4 +1,7 @@
-﻿@inject TooltipService tooltipService
+﻿@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.GetAllBySOId
+@inject TooltipService tooltipService
+@inject NotifierService NotifierService
+@inject IGetServiceOrderRegistersBySOIdService GetServiceOrderRegistersBySOIdService
 
 <RadzenPanel>
 <RadzenTimeline Orientation="Orientation.Horizontal" class="rz-m-4">
