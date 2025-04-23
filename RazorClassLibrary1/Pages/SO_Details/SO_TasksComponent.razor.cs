@@ -9,7 +9,7 @@ namespace RazorClassLibrary1.Pages.SO_Details
 {
     public partial class SO_TasksComponent
     {
-        [Parameter]
+        [CascadingParameter]
         public ServiceOrderDto ServiceOrder { get; set; } = new();
 
         #region Properties
