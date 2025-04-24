@@ -25,6 +25,7 @@ namespace RazorClassLibrary1.Dtos
             Id = dto.Id;
             CreatedAt = dto.CreatedAt;
             UpdatedAt = dto.UpdatedAt;
+            IsActive = dto.IsActive;
             Observations = dto.Observations;
             ExecutionDate = dto.ExecutionDate;
             ServiceOrderTaskState = dto.ServiceOrderTaskState;
