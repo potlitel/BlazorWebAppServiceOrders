@@ -1,9 +1,7 @@
 ﻿using Bogus;
-using FSA.Core.ServiceOrders.Models;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using RazorClassLibrary1.Dtos;
-using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.Create;
 
 namespace RazorClassLibrary1.Pages.SO_Task
 {
@@ -28,7 +26,19 @@ namespace RazorClassLibrary1.Pages.SO_Task
         Faker<ServiceOrderDto> faker = new();
 
         Faker<ServiceOrderTaskStateDto> fakerDoc = new();
+        List<DateTime> dates = [];
         #endregion
+
+        void DateRender(DateRenderEventArgs args)
+        {
+            var special = dates.Select(d => d.Date).Contains(args.Date.Date);
+            if (special)
+            {
+                args.Attributes.Add("style", "background-color: #fafbfd; border-color: white;");
+            }
+
+            args.Disabled = special || args.Disabled || args.Date.DayOfWeek == DayOfWeek.Sunday || args.Date.DayOfWeek == DayOfWeek.Saturday;
+        }
 
         protected override async Task OnInitializedAsync()
         {
@@ -37,16 +47,10 @@ namespace RazorClassLibrary1.Pages.SO_Task
                 await Task.CompletedTask;
                 IsLoading = true;
 
-                #region ToDelete-Bogus
-                //https://github.com/bchavez/Bogus
-                //https://medium.com/@fahrican.kcn/generating-mock-data-in-net-applications-a-comprehensive-guide-to-using-bogus-3fd60cc09f18#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjkxNGZiOWIwODcxODBiYzAzMDMyODQ1MDBjNWY1NDBjNmQ0ZjVlMmYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMTU2MzUxODk4NjQzOTMyNzIzMDIiLCJlbWFpbCI6InBvdGxpdGVsQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYmYiOjE3NDE3MDc1MTMsIm5hbWUiOiJBbGFpbiBKb3JnZSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMajJCbE9zZmZsM21IQWUxREd3dGlkUFkxdDF5cEpMM3U5aWxuWGwzOHAzN0tzUkp2bz1zOTYtYyIsImdpdmVuX25hbWUiOiJBbGFpbiIsImZhbWlseV9uYW1lIjoiSm9yZ2UiLCJpYXQiOjE3NDE3MDc4MTMsImV4cCI6MTc0MTcxMTQxMywianRpIjoiM2UyMDYyZTY3MzJmNzBmODgzY2JjMjUzYjE0ZTcxM2RhNzI3YmY2NCJ9.GDPLzC40vJtA0hCz9whdNZSJ8DzPPJQcGeWQY1fBqPWoS3VVH0soqoYlvg_bAexkZkH1X9RiDd7CmJ02wvxQhQSJIdCMMUH2xUMsu5bqJOD3koiWQ7J44dBHMlyMwlZ18cIgZHMvRPgQUH-Z6yEp8viggoCG83mllEnTOH8DobsFQxqstYhMfmJix_THkIfuLRqxcxSlZxxJwvYEq4CxDwHS0Wx3cQbSL3sPWVpUx4OBfEOdafeLb_4Q2ISUSEZjOhbPJrliIyUBWhoNn0UF1I8UgWd3bzPpTutuK6NSpukoKAKC6I42U8U6pStb7V_3Dosp2YEHhNwz_KEkExzp7w
-                //ServiceOrders = faker
-                //                     .RuleFor(x => x.Number, f => f.Finance.Account(15))
-                //                     .RuleFor(x => x.EstimatedEndingDate, f => f.Date.Future(1))
-                //                     .RuleFor(x => x.Observations, f => f.Address.FullAddress())
-                //                     .RuleFor(x => x.Address, f => f.Address.FullAddress())
-                //                     .Generate(50).ToList();
-                #endregion
+                DateTime startDate = new DateTime(1900, 1, 25);
+                int days = (DateTime.Now - startDate).Days + 1;
+                for (int i = 1; i < days; i++)
+                    dates.Add(DateTime.Today.AddDays(-i));
 
                 var serviceOrdersTask = GetAllServiceOrderService.Handle(null);
                 var statesTask = GetAllServiceOrderTasksStatesService.Handle(null);
@@ -114,7 +118,7 @@ namespace RazorClassLibrary1.Pages.SO_Task
 
                 ServiceOrderTask.ServiceOrderId = ServiceOrderTask.ServiceOrder!.Id;
                 ServiceOrderTask.ServiceOrderTaskStateId = ServiceOrderTask.ServiceOrderTaskState!.Id;
-                ServiceOrderTask.CustomFieldSOTask = "custom field";
+                //ServiceOrderTask.CustomFieldSOTask = "custom field";
 
                 if (ServiceOrderTask.Id == 0)
                 {
@@ -124,14 +128,14 @@ namespace RazorClassLibrary1.Pages.SO_Task
                                                          ServiceOrderTask.Observations!);
                     CloseDialog(response.Succeeded);
                 }
-                //else
-                //{
-                //    var response = await UpdatePolicyService.Handle(Policy);
-                //    NotificationService.ShowNotification(response.Succeeded,
-                //                                        response.StatusCode.ToString(),
-                //                                        Policy.Code);
-                //    CloseDialog(response.Succeeded);
-                //}
+                else
+                {
+                    var response = await UpdateServiceOrderTasksService.Handle(ServiceOrderTask);
+                    NotificationService.ShowNotification(response.Succeeded,
+                                                        response.StatusCode.ToString(),
+                                                        ServiceOrderTask.Observations!);
+                    CloseDialog(response.Succeeded);
+                }
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)

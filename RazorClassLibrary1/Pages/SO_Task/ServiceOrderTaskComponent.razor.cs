@@ -211,13 +211,15 @@ namespace RazorClassLibrary1.Pages.SO_Task
                     case GridGeneralActions.ADD_ITEM:
                         var result = await CustomSODialogService.Open_AddEditSO_ServiceOrderTask(item);
                         if (result)
-                        {
-                        }
+                            await LoadItems(true);
                         break;
                     case GridItemActions.VIEW_DETAILS:
                         await CustomSODialogService.Open_ServiceOrderTaskData(item!);
                         break;
                     case GridItemActions.EDIT_ITEM:
+                        result = await CustomSODialogService.Open_AddEditSO_ServiceOrderTask(item);
+                        if (result)
+                            await LoadItems(true);
                         break;
                 }
             }

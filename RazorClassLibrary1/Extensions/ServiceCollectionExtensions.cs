@@ -1,8 +1,10 @@
 ﻿using FSA.Cache;
 using FSA.Management.Application.DependencyContainers;
 using FSA.Razor.Components.Extensions;
+using Mapster;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RazorClassLibrary1.Dtos;
 using RazorClassLibrary1.Services;
 using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll;
@@ -21,6 +23,7 @@ using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.Update;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.GetAllBySOId;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.Update;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetById;
@@ -100,6 +103,7 @@ namespace RazorClassLibrary1.Extensions
             services.AddScoped<IUpdateSupplyOperationService, UpdateSupplyOperationService>();
             services.AddScoped<IUpdateServiceOrderService, UpdateServiceOrderService>();
             services.AddScoped<IUpdateSupplyService, UpdateSupplyService>();
+            services.AddScoped<IUpdateServiceOrderTasksService, UpdateServiceOrderTasksService>();
 
             services.AddScoped<IGetDocumentTypeByIdService, GetDocumentTypeByIdService>();
             services.AddScoped<IGetServiceOrderTaskStateByIdService, GetServiceOrderTaskStateByIdService>();
@@ -139,6 +143,18 @@ namespace RazorClassLibrary1.Extensions
 			#endregion
 
 			services.AddLocalization();
+
+            //configure mapster
+            var configUpdateSO_Task = TypeAdapterConfig<ServiceOrderTaskDto, UpdateServiceOrderTasksRequest>
+                .NewConfig()
+                .Map(dest => dest.CustomFieldSOTask, src => src.CustomFieldSOTask);
+
+            var configCreateSO_Task = TypeAdapterConfig<ServiceOrderTaskDto, CreateServiceOrderTasksRequest>
+                .NewConfig()
+                .Map(dest => dest.CustomFieldSOTask, src => src.CustomFieldSOTask);
+
+            services.AddSingleton(configCreateSO_Task);
+            services.AddSingleton(configUpdateSO_Task);
             //CultureInfo obj = new CultureInfo(configuration["FSAManagement:App:Culture"])
             //{
             //    NumberFormat = new NumberFormatInfo

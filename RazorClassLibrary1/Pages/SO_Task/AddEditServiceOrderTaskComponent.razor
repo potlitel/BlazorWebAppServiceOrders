@@ -2,12 +2,14 @@
 @using Radzen.Blazor
 @using RazorClassLibrary1.Dtos
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.Create
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.Update
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll
 
 @inject IGetAllServiceOrdersService GetAllServiceOrderService
 @inject IGetAllServiceOrderTasksStatesService GetAllServiceOrderTasksStatesService
 @inject ICreateServiceOrderTasksService CreateServiceOrderTasksService
+@inject IUpdateServiceOrderTasksService UpdateServiceOrderTasksService
 
 @if (IsLoading)
 {
@@ -32,7 +34,7 @@ else
 
                     <RadzenFormField Text="@(Localizer["ExecutionDate"] + "*")" Variant="@FSARadzenConfig.InputsVariant">
                         <ChildContent>
-                            <RadzenDatePicker Disabled=@Busy @bind-Value="@ServiceOrderTask!.ExecutionDate" Name="ExecutionDate" />
+                            <RadzenDatePicker DateRender=@DateRender Disabled=@Busy @bind-Value="@ServiceOrderTask!.ExecutionDate" Name="ExecutionDate" />
                         </ChildContent>
                         <Helper>
                             <RadzenRequiredValidator Component="ExecutionDate" />
@@ -60,6 +62,16 @@ else
                                 TextProperty="Number"
                                 Change="@((args) => ChangeServiceOrder(args))" />
                     <RadzenRequiredValidator Component="ServiceOrders" />
+
+                    <RadzenFormField Text="@(Localizer["CustomFieldSOTask"] + "*")" Variant="Variant.Outlined">
+                        <ChildContent>
+                            <RadzenTextBox Disabled=@(Busy || IsCreateItem) @bind-Value="@ServiceOrderTask.CustomFieldSOTask" Name="CustomFieldSOTask" Placeholder="@Localizer["CustomFieldSOTask"]" />
+                        </ChildContent>
+                        <Helper>
+                            <RadzenRequiredValidator Component="CustomFieldSOTask" />
+                            <RadzenLengthValidator Component="CustomFieldSOTask" Min="2" Max="50" />
+                        </Helper>
+                    </RadzenFormField>
 
                     <RadzenColumn class="rz-mt-2 rz-mb-2">
                         <RadzenCheckBox Disabled=@Busy @bind-Value=@(ServiceOrderTask!.IsActive) Name="IsActiveCheckBox" />
