@@ -6,8 +6,9 @@ namespace RazorClassLibrary1.Dtos
     {
         public string? Observations { get; set; }
         public DateTime ExecutionDate { get; set; }
-
         public long ServiceOrderTaskStateId { get; set; }
+        public string CustomFieldSOTask { get; set; }
+
         public virtual ServiceOrderTaskStateDto? ServiceOrderTaskState { get; set; }
         public long ServiceOrderId { get; set; }
         public virtual ServiceOrderDto? ServiceOrder { get; set; }
@@ -25,30 +26,31 @@ namespace RazorClassLibrary1.Dtos
             ExecutionDate = dto.ExecutionDate;
             ServiceOrderTaskState = dto.ServiceOrderTaskState;
             ServiceOrderTaskStateId = dto.ServiceOrderTaskStateId;
+            CustomFieldSOTask = dto.CustomFieldSOTask;
             ServiceOrder = dto.ServiceOrder;
             ServiceOrderId = dto.ServiceOrderId;
             Supplies = dto.Supplies;
             Documents = dto.Documents;
         }
 
-        public static ServiceOrderTaskDto ToDto(ServiceOrderTask entity)
-        {
-            if (entity is null)
-                return null!;
+        //public static ServiceOrderTaskDto ToDto(ServiceOrderTask entity)
+        //{
+        //    if (entity is null)
+        //        return null!;
 
-            return new ServiceOrderTaskDto
-            {
-                Id = entity.Id,
-                CreatedAt = entity.CreatedAt,
-                UpdatedAt = entity.UpdatedAt,
-                IsActive = entity.IsActive,
-                Observations = entity.Observations,
-                ExecutionDate = entity.ExecutionDate,
-                ServiceOrderTaskStateId = entity.ServiceOrderTaskStateId,
-                ServiceOrderId = entity.ServiceOrderId,
-                Supplies = (ICollection<SupplyDto>)entity.Supplies,
-                Documents = (ICollection<ServiceOrderTaskDocumentDto>)entity.Documents
-            };
-        }
+        //    return new ServiceOrderTaskDto
+        //    {
+        //        Id = entity.Id,
+        //        CreatedAt = entity.CreatedAt,
+        //        UpdatedAt = entity.UpdatedAt,
+        //        IsActive = entity.IsActive,
+        //        Observations = entity.Observations,
+        //        ExecutionDate = entity.ExecutionDate,
+        //        ServiceOrderTaskStateId = entity.ServiceOrderTaskStateId,
+        //        ServiceOrderId = entity.ServiceOrderId,
+        //        Supplies = (ICollection<SupplyDto>)entity.Supplies,
+        //        Documents = (ICollection<ServiceOrderTaskDocumentDto>)entity.Documents
+        //    };
+        //}
     }
 }

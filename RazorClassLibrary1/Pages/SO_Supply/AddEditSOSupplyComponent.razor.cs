@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Components;
 using Radzen;
 using RazorClassLibrary1.Dtos;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.GetAll;
+using RazorClassLibrary1.Services.HttpClientSrv.Supplies.Create;
+using RazorClassLibrary1.Services.HttpClientSrv.Supplies.Update;
 
 
 namespace RazorClassLibrary1.Pages.SO_Supply
@@ -124,26 +126,26 @@ namespace RazorClassLibrary1.Pages.SO_Supply
         {
             try
             {
-                await Task.CompletedTask;
-                //Busy = true;
-                //Policy.PolicyGroupId = Policy.PolicyGroup.Id;
+                Busy = true;
+                Supply.SupplyOperationId = Supply.SupplyOperation.Id;
+                Supply.ServiceOrderTaskId = Supply.ServiceOrderTask.Id;
 
-                //if (Policy.Id == 0)
-                //{
-                //    var response = await CreatePolicyService.Handle(Policy);
-                //    NotificationService.ShowNotification(response.Succeeded,
-                //                                         response.StatusCode.ToString(),
-                //                                         Policy.Code);
-                //    CloseDialog(response.Succeeded);
-                //}
-                //else
-                //{
-                //    var response = await UpdatePolicyService.Handle(Policy);
-                //    NotificationService.ShowNotification(response.Succeeded,
-                //                                        response.StatusCode.ToString(),
-                //                                        Policy.Code);
-                //    CloseDialog(response.Succeeded);
-                //}
+                if (Supply.Id == 0)
+                {
+                    var response = await CreateSupplyService.Handle(Supply);
+                    NotificationService.ShowNotification(response.Succeeded,
+                                                         response.StatusCode.ToString(),
+                                                         Supply.Description);
+                    CloseDialog(response.Succeeded);
+                }
+                else
+                {
+                    var response = await UpdateSupplyService.Handle(Supply);
+                    NotificationService.ShowNotification(response.Succeeded,
+                                                        response.StatusCode.ToString(),
+                                                        Supply.Description);
+                    CloseDialog(response.Succeeded);
+                }
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)

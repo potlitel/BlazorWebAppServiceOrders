@@ -218,15 +218,8 @@ namespace RazorClassLibrary1.Pages
                         await CustomSODialogService.Open_ServiceOrderSupplyData(item!);
                         break;
                     case GridItemActions.EDIT_ITEM:
-                        //result = await CustomDialogService.Open_AddEditMaster(item, "EditCompanyGroup");
-                        //if (result)
-                        //{
-                        //    var response = await UpdateCompanyGroupService.Handle(item!);
-                        //    NotificationService.ShowNotification(response.Succeeded,
-                        //                                        response.StatusCode.ToString(),
-                        //                                        item!.Code);
-                        //    await LoadItems(true);
-                        //}
+                        result = await CustomSODialogService.Open_AddEditSO_Supply(item);
+                        await LoadItems(true);
                         break;
                 }
             }

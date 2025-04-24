@@ -227,9 +227,7 @@ namespace RazorClassLibrary1.Pages
                     case GridGeneralActions.ADD_ITEM:
                         var result = await CustomSODialogService.Open_AddEditSO_ServiceOrder(item);
                         if (result)
-                        {
                             await LoadItems(true);
-                        }
                         break;
                     case GridItemActions.VIEW_DETAILS:
                         await CustomSODialogService.Open_ServiceOrderData(item!);
@@ -237,9 +235,7 @@ namespace RazorClassLibrary1.Pages
                     case GridItemActions.EDIT_ITEM:
                         result = await CustomSODialogService.Open_AddEditSO_ServiceOrder(item);
                         if (result)
-                        {
                             await LoadItems(true);
-                        }
                         break;
                 }
             }

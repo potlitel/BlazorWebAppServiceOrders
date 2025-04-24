@@ -3,6 +3,7 @@ using FSA.Core.ServiceOrders.Models;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using RazorClassLibrary1.Dtos;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.Create;
 
 namespace RazorClassLibrary1.Pages.SO_Task
 {
@@ -109,17 +110,20 @@ namespace RazorClassLibrary1.Pages.SO_Task
             try
             {
                 await Task.CompletedTask;
-                //Busy = true;
-                //Policy.PolicyGroupId = Policy.PolicyGroup.Id;
+                Busy = true;
 
-                //if (Policy.Id == 0)
-                //{
-                //    var response = await CreatePolicyService.Handle(Policy);
-                //    NotificationService.ShowNotification(response.Succeeded,
-                //                                         response.StatusCode.ToString(),
-                //                                         Policy.Code);
-                //    CloseDialog(response.Succeeded);
-                //}
+                ServiceOrderTask.ServiceOrderId = ServiceOrderTask.ServiceOrder!.Id;
+                ServiceOrderTask.ServiceOrderTaskStateId = ServiceOrderTask.ServiceOrderTaskState!.Id;
+                ServiceOrderTask.CustomFieldSOTask = "custom field";
+
+                if (ServiceOrderTask.Id == 0)
+                {
+                    var response = await CreateServiceOrderTasksService.Handle(ServiceOrderTask);
+                    NotificationService.ShowNotification(response.Succeeded,
+                                                         response.StatusCode.ToString(),
+                                                         ServiceOrderTask.Observations!);
+                    CloseDialog(response.Succeeded);
+                }
                 //else
                 //{
                 //    var response = await UpdatePolicyService.Handle(Policy);

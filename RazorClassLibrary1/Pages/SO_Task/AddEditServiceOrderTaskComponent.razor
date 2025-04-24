@@ -1,11 +1,13 @@
 ﻿@using FSA.Razor.Components.Components.Shared
 @using Radzen.Blazor
 @using RazorClassLibrary1.Dtos
+@using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.Create
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasksStates.GetAll
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll
 
 @inject IGetAllServiceOrdersService GetAllServiceOrderService
 @inject IGetAllServiceOrderTasksStatesService GetAllServiceOrderTasksStatesService
+@inject ICreateServiceOrderTasksService CreateServiceOrderTasksService
 
 @if (IsLoading)
 {
