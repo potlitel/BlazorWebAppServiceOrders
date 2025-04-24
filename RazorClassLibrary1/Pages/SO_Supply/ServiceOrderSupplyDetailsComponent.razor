@@ -3,41 +3,128 @@
 
 <FadeIn>
 
-    <RadzenPanel>
-        <RadzenStack Gap="1rem">
-            <RadzenRow>
-                <RadzenIcon Icon="calculate" />
-                <RadzenColumn>@Localizer["Amount"]</RadzenColumn>
-                <RadzenColumn Size="7">@Supply.Amount</RadzenColumn>
-            </RadzenRow>
+    <RadzenTabs>
+        <Tabs>
+            <RadzenTabsItem Text="@Localizer["BasicInfo"]" Icon="home_max_dots">
+                
+                <RadzenPanel>
+                    <RadzenStack Gap="1rem">
+                        <RadzenRow>
+                            <RadzenIcon Icon="calculate" />
+                            <RadzenColumn>@Localizer["Amount"]</RadzenColumn>
+                            <RadzenColumn Size="7">@Supply.Amount</RadzenColumn>
+                        </RadzenRow>
 
-            <RadzenRow>
-                <RadzenIcon Icon="attach_money" />
-                <RadzenColumn>@Localizer["Price"]</RadzenColumn>
-                <RadzenColumn Size="7">@Supply.Price</RadzenColumn>
-            </RadzenRow>
+                        <RadzenRow>
+                            <RadzenIcon Icon="attach_money" />
+                            <RadzenColumn>@Localizer["Price"]</RadzenColumn>
+                            <RadzenColumn Size="7">@Supply.Price</RadzenColumn>
+                        </RadzenRow>
 
-            <RadzenRow>
-                <RadzenIcon Icon="manufacturing" />
-                <RadzenColumn >@Localizer["SupplyOperation"]</RadzenColumn>
-                <RadzenColumn Size="7">@Supply.SupplyOperation.Description</RadzenColumn>
-            </RadzenRow>
+                        <RadzenRow>
+                            <RadzenIcon Icon="manufacturing" />
+                            <RadzenColumn>@Localizer["SupplyOperation"]</RadzenColumn>
+                            <RadzenColumn Size="7">@Supply.SupplyOperation.Description</RadzenColumn>
+                        </RadzenRow>
 
-            <RadzenRow>
-                <RadzenIcon Icon="format_list_bulleted" />
-                <RadzenColumn>@Localizer["ServiceOrderTask"]</RadzenColumn>
-                <RadzenColumn Size="7">@Supply.ServiceOrderTask.Observations</RadzenColumn>
-            </RadzenRow>
+                        <RadzenRow>
+                            <RadzenIcon Icon="format_list_bulleted" />
+                            <RadzenColumn>@Localizer["ServiceOrderTask"]</RadzenColumn>
+                            <RadzenColumn Size="7">
+                                @Supply.ServiceOrderTask.Observations <br/> 
+                                * @Localizer["ExecutionDate"]: @Supply.ServiceOrderTask.ExecutionDate <br />
+                                * @Localizer["State"]: @Supply.ServiceOrderTask.ServiceOrderTaskState!.Description <br />
+                            </RadzenColumn>
+                        </RadzenRow>
 
-            <RadzenRow>
-                <RadzenIcon Icon="subject" />
-                <RadzenColumn>@Localizer["Observations"]</RadzenColumn>
-                <RadzenColumn Size="7">
-                    <RadzenTextArea Disabled="true" @bind-Value=@Supply.Description Cols="40" Rows="6" />
-                </RadzenColumn>
-            </RadzenRow>
+                        <RadzenRow>
+                            <RadzenIcon Icon="subject" />
+                            <RadzenColumn>@Localizer["Observations"]</RadzenColumn>
+                            <RadzenColumn Size="7">
+                                <RadzenTextArea Disabled="true" @bind-Value=@Supply.Description Cols="40" Rows="6" />
+                            </RadzenColumn>
+                        </RadzenRow>
 
-        </RadzenStack>
+                    </RadzenStack>
 
-    </RadzenPanel>
+                </RadzenPanel>
+
+            </RadzenTabsItem>
+            <RadzenTabsItem Text="Related Service Order" Icon="quick_reference">
+
+                <RadzenPanel>
+                    <RadzenStack Gap="1rem">
+
+                        <RadzenRow>
+                            <RadzenIcon Icon="numbers" /><RadzenColumn>@Localizer["Number"]</RadzenColumn>
+                            <RadzenColumn Size="8">
+                                @Supply.ServiceOrderTask.ServiceOrder?.Number
+                            </RadzenColumn>
+                        </RadzenRow>
+
+                        <RadzenRow>
+                            <RadzenIcon Icon="calendar_month" /><RadzenColumn>@Localizer["EstimatedEndingDate"]</RadzenColumn>
+                            <RadzenColumn Size="8">
+                                @Supply.ServiceOrderTask.ServiceOrder?.EstimatedEndingDate
+                            </RadzenColumn>
+                        </RadzenRow>
+
+                        <RadzenRow>
+                            <RadzenIcon Icon="subject" /><RadzenColumn>@Localizer["Observations"]</RadzenColumn>
+                            <RadzenColumn Size="8">
+                                @Supply.ServiceOrderTask.ServiceOrder?.Observations
+                            </RadzenColumn>
+                        </RadzenRow>
+
+                        <RadzenRow>
+                            <RadzenIcon Icon="where_to_vote" /><RadzenColumn>@Localizer["Address"]</RadzenColumn>
+                            <RadzenColumn Size="8">
+                                @Supply.ServiceOrderTask.ServiceOrder?.Address
+                            </RadzenColumn>
+                        </RadzenRow>
+
+                        <RadzenRow>
+                            <RadzenIcon Icon="unknown_document" /><RadzenColumn>@Localizer["ServiceOrderType"]</RadzenColumn>
+                            <RadzenColumn Size="8">
+                                @Supply.ServiceOrderTask.ServiceOrder?.ServiceOrderType?.Description
+                            </RadzenColumn>
+                        </RadzenRow>
+
+                        <RadzenRow>
+                            <RadzenIcon Icon="account_child_invert" /><RadzenColumn>@Localizer["ParentServiceOrder"]</RadzenColumn>
+                            <RadzenColumn Size="8">
+                                @Supply.ServiceOrderTask.ServiceOrder?.ParentServiceOrder?.Number
+                            </RadzenColumn>
+                        </RadzenRow>
+
+                        <RadzenRow>
+                            <RadzenIcon Icon="engineering" /><RadzenColumn>@Localizer["Executor"]</RadzenColumn>
+                            <RadzenColumn Size="8">
+                                @Supply.ServiceOrderTask.ServiceOrder?.Executor
+                            </RadzenColumn>
+                        </RadzenRow>
+
+                        <RadzenRow>
+                            <RadzenIcon Icon="attribution" /><RadzenColumn>@Localizer["Owner"]</RadzenColumn>
+                            <RadzenColumn Size="8">
+                                @Supply.ServiceOrderTask.ServiceOrder?.Owner
+                            </RadzenColumn>
+                        </RadzenRow>
+
+                        <RadzenRow>
+                            <RadzenIcon Icon="@(@Supply.ServiceOrderTask.ServiceOrder.IsActive ? "toggle_on" : "toggle_off")" /><RadzenColumn>@Localizer["Active"]</RadzenColumn>
+                            <RadzenColumn Size="8">
+                                <div style="display: grid; place-items: right">
+                                    <RadzenIcon Icon="@(@Supply.ServiceOrderTask.ServiceOrder.IsActive ? "check_circle" : "cancel")"
+                                                IconColor="@(@Supply.ServiceOrderTask.ServiceOrder.IsActive ? Colors.Success : Colors.Danger)" />
+                                </div>
+                            </RadzenColumn>
+                        </RadzenRow>
+                    </RadzenStack>
+                </RadzenPanel>
+
+            </RadzenTabsItem>
+        </Tabs>
+    </RadzenTabs>
+
 </FadeIn>
