@@ -39,7 +39,8 @@ namespace RazorClassLibrary1.Pages.SO_Details
                         Title = Localizer["Trigger"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "120px"
+                        MinWidth = "120px",
+                        Width = "180px",
                     },
                     new DataColumn
                     {
@@ -47,7 +48,8 @@ namespace RazorClassLibrary1.Pages.SO_Details
                         Title = Localizer["StateFrom"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "120px"
+                        MinWidth = "120px",
+                        Width = "170px",
                     },
                     new DataColumn
                     {
@@ -55,21 +57,13 @@ namespace RazorClassLibrary1.Pages.SO_Details
                         Title = Localizer["StateTo"],
                         Filterable = true,
                         Sortable = true,
-                        Width = "120px",
+                        Width = "170px",
                         MinWidth = "120px"
                     },
                     new DataColumn
                     {
                         Property = nameof(ServiceOrderRegisterDto.Observations),
                         Title = Localizer["Observations"],
-                        Filterable = true,
-                        Sortable = true,
-                        MinWidth = "120px"
-                    },
-                    new DataColumn
-                    {
-                        Property = nameof(ServiceOrderRegisterDto.ServiceOrderId),
-                        Title = Localizer["ServiceOrder"],
                         Filterable = true,
                         Sortable = true,
                         MinWidth = "120px"
