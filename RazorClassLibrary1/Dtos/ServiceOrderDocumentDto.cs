@@ -1,9 +1,4 @@
-﻿//using FSA.Core.Dtos;
-//using FSA.Core.ServiceOrders.Models;
-
-using FSA.Core.ServiceOrders.Models;
-
-namespace RazorClassLibrary1.Dtos
+﻿namespace RazorClassLibrary1.Dtos
 {
     public class ServiceOrderDocumentDto : BaseDto
     {
@@ -32,24 +27,6 @@ namespace RazorClassLibrary1.Dtos
             Url = serviceOrderDocument.Url;
             ServiceOrderId = serviceOrderDocument.ServiceOrderId;
             DocumentTypeId = serviceOrderDocument.DocumentTypeId;
-        }
-
-        public static ServiceOrderDocumentDto ToDto(ServiceOrderDocument entity)
-        {
-            if (entity is null)
-                return null!;
-
-            return new ServiceOrderDocumentDto
-            {
-                Id = entity.Id,
-                CreatedAt = entity.CreatedAt,
-                UpdatedAt = entity.UpdatedAt,
-                IsActive = entity.IsActive,
-                Name = entity.Name,
-                Url = entity.Url,
-                ServiceOrderId = entity.ServiceOrderId,
-                DocumentTypeId = entity.DocumentTypeId
-            };
         }
     }
 }
