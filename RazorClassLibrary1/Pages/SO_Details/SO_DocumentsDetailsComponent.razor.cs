@@ -1,20 +1,18 @@
-﻿using Bogus;
+﻿using FSA.Cache.Models;
 using FSA.Core.DataType;
 using FSA.Core.Utils;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using Radzen;
 using RazorClassLibrary1.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 
 namespace RazorClassLibrary1.Pages.SO_Details
 {
     public partial class SO_DocumentsDetailsComponent
     {
+        [CascadingParameter]
+        public ServiceOrderDto ServiceOrder { get; set; } = new();
+
         #region Properties
 
         private IQueryable<ServiceOrderDocumentDto>? ListItems { get; set; }
@@ -39,23 +37,17 @@ namespace RazorClassLibrary1.Pages.SO_Details
                         Title = Localizer["Name"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "120px"
-                    },
-                    new DataColumn
-                    {
-                        Property = nameof(ServiceOrderDocumentDto.Url),
-                        Title = "Url",
-                        Filterable = true,
-                        Sortable = true,
-                        MinWidth = "120px"
+                        MinWidth = "50px",
+                        Width = "290px",
                     },
                 new DataColumn
                     {
-                        Property = nameof(ServiceOrderDocumentDto.DocumentTypeId),
+                        Property = $"{nameof(ServiceOrderDocumentDto.DocumentType)}.{nameof(ServiceOrderDocumentDto.DocumentType.Description)}",
                         Title = Localizer["DocumentType"],
                         Filterable = true,
                         Sortable = true,
-                        MinWidth = "50px"
+                        Width = "140px",
+                        MinWidth = "140px"
                     },
                     new DataColumn
                     {
@@ -133,33 +125,26 @@ namespace RazorClassLibrary1.Pages.SO_Details
             try
             {
                 await Task.CompletedTask;
-                //ListItems = new Faker<ServiceOrderDocumentDto>()
-                //                .RuleFor(x => x.Name, f => f.Finance.Account(15))
-                //                .RuleFor(x => x.Url, f => f.Image.PicsumUrl())
-                //                .RuleFor(x => x.ServiceOrderId, f => f.Random.Long())
-                //                .RuleFor(x => x.DocumentTypeId, f => f.Random.Long())
-                //                .Generate(50).ToList().AsQueryable();
-                //TotalItems = 50;
-                //var key = $"GetAllCompanyGroupsService-{Pagination.GetCacheId()}";
-                //if (deleteCache)
-                //    AppCache.RemoveItem(key, CacheType.IndexedDB);
+                var key = $"GetServiceOrderDocumentsBySOIdService-{Pagination.GetCacheId()}";
+                if (deleteCache)
+                    AppCache.RemoveItem(key, CacheType.IndexedDB);
 
-                //var ResponseItemCached = await AppCache.GetItem<ItemCached?>(key, CacheType.IndexedDB);
-                //if (ResponseItemCached != null)
-                //{
-                //    ListItems = ResponseItemCached.Items.AsQueryable();
-                //    TotalItems = ResponseItemCached.TotalItems;
-                //}
-                //else
-                //{
-                //    var response = await GetAllCompanyGroupsService.Handle(Pagination);
-                //    if (response.Succeeded)
-                //    {
-                //        TotalItems = (int)response.Pagination.TotalItems;
-                //        ListItems = response.Data!.CompanyGroups.AsQueryable();
-                //        Pagination = response.Pagination;
-                //    }
-                //}
+                var ResponseItemCached = await AppCache.GetItem<ItemCached?>(key, CacheType.IndexedDB);
+                if (ResponseItemCached != null)
+                {
+                    ListItems = ResponseItemCached.Items.AsQueryable();
+                    TotalItems = ResponseItemCached.TotalItems;
+                }
+                else
+                {
+                    var response = await GetServiceOrderDocumentsBySOIdService.Handle((int)ServiceOrder.Id, Pagination);
+                    if (response.Succeeded)
+                    {
+                        TotalItems = (int)response.Pagination.TotalItems;
+                        ListItems = response.Data!.AsQueryable();
+                        Pagination = response.Pagination;
+                    }
+                }
                 ListItems = ListItems ?? new List<ServiceOrderDocumentDto>().AsQueryable();
             }
             catch (UnauthorizedAccessException) { }

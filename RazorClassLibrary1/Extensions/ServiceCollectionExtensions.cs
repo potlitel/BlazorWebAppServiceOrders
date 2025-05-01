@@ -33,6 +33,7 @@ using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.GetById;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.Update;
 using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments;
+using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.GetAllBySOId;
 using RazorClassLibrary1.Services.HttpClientSrv.Supplies.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.Supplies.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.Supplies.Update;
@@ -117,6 +118,7 @@ namespace RazorClassLibrary1.Extensions
             services.AddScoped<IGetCurrentSORegisterByIdService, GetCurrentSORegisterByIdService>();
             services.AddScoped<IGetServiceOrderTasksBySOIdService, GetServiceOrderTasksBySOIdService>();
             services.AddScoped<IGetServiceOrderRegistersBySOIdService, GetServiceOrderRegistersBySOIdService>();
+            services.AddScoped<IGetServiceOrderDocumentsBySOIdService, GetServiceOrderDocumentsBySOIdService>();
 
             services.AddScoped<NotifierService>();
 
