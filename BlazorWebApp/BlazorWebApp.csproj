@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Content Remove="Components\Pages\ServiceOrderTaskState.razor" />
+    <Content Remove="wwwroot\scripts\downloadScript.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +36,7 @@
 
   <ItemGroup>
     <None Include="Components\Pages\Masters\ServiceOrderTaskState.razor" />
+    <None Include="wwwroot\scripts\downloadScript.js" />
   </ItemGroup>
 
 </Project>

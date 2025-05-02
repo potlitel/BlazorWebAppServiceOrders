@@ -1,11 +1,8 @@
-﻿using Bogus;
-using FSA.Cache.Models;
+﻿using FSA.Cache.Models;
 using FSA.Core.DataType;
 using FSA.Core.Utils;
 using Radzen;
 using RazorClassLibrary1.Dtos;
-using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments;
-using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Download;
 
 
 namespace RazorClassLibrary1.Pages
@@ -95,19 +92,19 @@ namespace RazorClassLibrary1.Pages
                 #region ItemActions
                 ItemActions =
                     [
-                        new GridItemAction
-                        {
-                            Action = GridItemActions.VIEW_DETAILS,
-                            Icon = "preview",
-                            Title = "ViewData",
-                            Style = ButtonStyle.Info.GetHashCode(),
-                            //Show = o => { return (admin || update); }
-                        },
+                        //new GridItemAction
+                        //{
+                        //    Action = GridItemActions.VIEW_DETAILS,
+                        //    Icon = "preview",
+                        //    Title = "ViewData",
+                        //    Style = ButtonStyle.Info.GetHashCode(),
+                        //    //Show = o => { return (admin || update); }
+                        //},
                         new GridItemAction
                         {
                             Action = GridItemActions.TOGGLE_ITEM,
                             Icon = "download",
-                            Title = "Download doc",
+                            Title = "Download",
                             Style = ButtonStyle.Warning.GetHashCode(),
                             //Show = show => { return (admin || update); }
                         },
@@ -207,7 +204,18 @@ namespace RazorClassLibrary1.Pages
                         }
                         break;
                     case GridItemActions.TOGGLE_ITEM:
-                        await DownloadServiceOrderDocumentService.Handle(item.Name);
+                        //var file = await DownloadServiceOrderDocumentService.Handle(item.Name);
+
+                        var stream = await DownloadServiceOrderDocumentAsStreamService.Handle(item.Name);
+                        // Call SaveAsFileAsync method in order to download the file
+                        // and to save it in the Download location.
+                        //await BlobService.SaveAsFileAsync(file);
+
+                        // Create a IBlob and copy data into it.
+                        var blob = await BlobService.CreateBlobAsync(stream);
+                        // Now we can just call SaveAsFileAsync to download the file
+                        await BlobService.SaveAsFileAsync(blob, item.Name);
+
                         break;
                     case GridItemActions.EDIT_ITEM:
                         break;

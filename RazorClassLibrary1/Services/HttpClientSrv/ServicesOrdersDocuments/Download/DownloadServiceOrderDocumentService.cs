@@ -1,5 +1,6 @@
 ﻿using FSA.Core.DataTypes;
 using FSA.Core.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Text;
 using System.Text.Json;
@@ -8,7 +9,7 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Down
 {
     public interface IDownloadServiceOrderDocumentService
     {
-        Task Handle(string blobName);
+        Task<string> Handle(string blobName);
     }
     internal class DownloadServiceOrderDocumentService : HttpClientServiceBase<DownloadServiceOrderDocumentRequest, Result>,
                                                          IDownloadServiceOrderDocumentService
@@ -18,7 +19,7 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Down
         {
         }
 
-        public async Task Handle(string blobName)
+        public async Task<string> Handle(string blobName)
         {
             try
             {
@@ -32,12 +33,12 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Down
                 var result = await _httpClient.PostAsync(url, content);
                 result.EnsureSuccessStatusCode();
 
-                return;
+                return result.Content.Headers.ContentDisposition!.FileName!;
             }
             catch (Exception ex)
             {
                 Result.Failure([ex.Message], CustomStatusCode.StatusUnexpectedError);
-                return;
+                return null!;
             }
         }
     }

@@ -4,6 +4,8 @@ using FSA.Core.Utils;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using RazorClassLibrary1.Dtos;
+using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.DownloadAsStream;
+using SoloX.BlazorJsBlob.Services.Impl;
 
 
 namespace RazorClassLibrary1.Pages.SO_Details
@@ -80,22 +82,22 @@ namespace RazorClassLibrary1.Pages.SO_Details
                 #region ItemActions
                 ItemActions =
                     [
-                        new GridItemAction
-                        {
-                            Action = GridItemActions.VIEW_DETAILS,
-                            Icon = "preview",
-                            Title = "ViewData",
-                            Style = ButtonStyle.Info.GetHashCode(),
-                            //Show = o => { return (admin || update); }
-                        },
                         //new GridItemAction
                         //{
-                        //    Action = GridItemActions.EDIT_ITEM,
-                        //    Icon = "edit",
-                        //    Title = "Edit",
-                        //    Style = ButtonStyle.Warning.GetHashCode(),
-                        //    //Show = show => { return (admin || update); }
+                        //    Action = GridItemActions.VIEW_DETAILS,
+                        //    Icon = "preview",
+                        //    Title = "ViewData",
+                        //    Style = ButtonStyle.Info.GetHashCode(),
+                        //    //Show = o => { return (admin || update); }
                         //},
+                        new GridItemAction
+                        {
+                            Action = GridItemActions.TOGGLE_ITEM,
+                            Icon = "download",
+                            Title = "Download",
+                            Style = ButtonStyle.Warning.GetHashCode(),
+                            //Show = show => { return (admin || update); }
+                        },
 
                     ];
                 #endregion
@@ -181,22 +183,31 @@ namespace RazorClassLibrary1.Pages.SO_Details
         {
             try
             {
-                var itemm = _item as ServiceOrderDocumentDto;
-                itemm = itemm is null ? new ServiceOrderDocumentDto() : new ServiceOrderDocumentDto(itemm);
-
-                var item = _item as DocumentTypeDto;
-                item = item is null ? new DocumentTypeDto() : new DocumentTypeDto(item);
+                var item = _item as ServiceOrderDocumentDto;
+                item = item is null ? new ServiceOrderDocumentDto() : new ServiceOrderDocumentDto(item);
 
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
                         //var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Document Type");
-                        var result = await CustomSODialogService.Open_AddEditSO_Document(itemm);
+                        var result = await CustomSODialogService.Open_AddEditSO_Document(item);
                         if (result)
                         {
                         }
                         break;
-                    case GridItemActions.ADD_SUB_ITEM:
+                    case GridItemActions.TOGGLE_ITEM:
+                        //var file = await DownloadServiceOrderDocumentService.Handle(item.Name);
+
+                        var stream = await DownloadServiceOrderDocumentAsStreamService.Handle(item.Name);
+                        // Call SaveAsFileAsync method in order to download the file
+                        // and to save it in the Download location.
+                        //await BlobService.SaveAsFileAsync(file);
+
+                        // Create a IBlob and copy data into it.
+                        var blob = await BlobService.CreateBlobAsync(stream);
+                        // Now we can just call SaveAsFileAsync to download the file
+                        await BlobService.SaveAsFileAsync(blob, item.Name);
+
                         break;
                     case GridItemActions.EDIT_ITEM:
                         break;

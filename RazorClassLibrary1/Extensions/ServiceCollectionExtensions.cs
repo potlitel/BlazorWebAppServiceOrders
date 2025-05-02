@@ -34,6 +34,7 @@ using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.GetById;
 using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTypes.Update;
 using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments;
 using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Download;
+using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.DownloadAsStream;
 using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.GetAllBySOId;
 using RazorClassLibrary1.Services.HttpClientSrv.Supplies.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.Supplies.GetAll;
@@ -42,6 +43,7 @@ using RazorClassLibrary1.Services.HttpClientSrv.SupplyOperations.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.SupplyOperations.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.SupplyOperations.GetById;
 using RazorClassLibrary1.Services.HttpClientSrv.SupplyOperations.Update;
+using SoloX.BlazorJsBlob;
 using System.Globalization;
 
 namespace RazorClassLibrary1.Extensions
@@ -66,6 +68,10 @@ namespace RazorClassLibrary1.Extensions
             //Components
             services.AddFSARadzenComponentsServices();
             services.AddFSA_ServiceOrders_LocalizationServices(configuration);
+
+            //Resister the SoloX.BlazorJsBlob services
+            services.AddJsBlob();
+
             return services;
         }
 
@@ -122,6 +128,7 @@ namespace RazorClassLibrary1.Extensions
             services.AddScoped<IGetServiceOrderDocumentsBySOIdService, GetServiceOrderDocumentsBySOIdService>();
 
             services.AddScoped<IDownloadServiceOrderDocumentService, DownloadServiceOrderDocumentService>();
+            services.AddScoped<IDownloadServiceOrderDocumentAsStreamService, DownloadServiceOrderDocumentAsStreamService>();
             services.AddScoped<NotifierService>();
 
             return services;

@@ -22,6 +22,7 @@
     <PackageReference Include="FSA.Core" Version="1.1.0" />
     <PackageReference Include="FSA.Razor.Components" Version="1.0.4" />
     <PackageReference Include="Radzen.Blazor" Version="6.1.2" />
+    <PackageReference Include="SoloX.BlazorJsBlob" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
