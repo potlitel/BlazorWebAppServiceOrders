@@ -205,6 +205,15 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose doc.
+        /// </summary>
+        internal static string ChooseDoc {
+            get {
+                return ResourceManager.GetString("ChooseDoc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear.
         /// </summary>
         internal static string Clear {

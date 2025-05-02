@@ -200,8 +200,7 @@ namespace RazorClassLibrary1.Pages
                     case GridGeneralActions.ADD_ITEM:
                         var result = await CustomSODialogService.Open_AddEditSO_Document(item);
                         if (result)
-                        {
-                        }
+                            await LoadItems(true);
                         break;
                     case GridItemActions.TOGGLE_ITEM:
                         //var file = await DownloadServiceOrderDocumentService.Handle(item.Name);

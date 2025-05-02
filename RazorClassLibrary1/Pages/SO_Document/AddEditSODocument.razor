@@ -4,9 +4,11 @@
 @using RazorClassLibrary1.Dtos
 @using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll
 @using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrders.GetAll
+@using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Create
 
 @inject IGetAllServiceOrdersService GetAllServiceOrderService
 @inject IGetAllDocumentTypesService GetAllDocumentTypesService
+@inject ICreateServiceOrderDocumentService CreateServiceOrderDocumentService
 
 @if (IsLoading)
 {
@@ -18,7 +20,9 @@ else
         <RadzenColumn SizeMD=12>
             <RadzenTemplateForm TItem="@(ServiceOrderDocumentDto)" Data="@ServiceOrderDocument" Visible="@(ServiceOrderDocument != null)" Submit="@(async () => await Submit())">
                 <RadzenStack>
-                    <RadzenFormField Text="@(Localizer["Name"] + "*")" Variant="Variant.Outlined">
+
+                    <!-- #ToDelete -->
+                    @* <RadzenFormField Text="@(Localizer["Name"] + "*")" Variant="Variant.Outlined">
                         <ChildContent>
                             <RadzenTextBox Disabled=@Busy style="display: block" class="w-100" @bind-Value="@ServiceOrderDocument!.Name" Name="Name" Placeholder="@Localizer["Name"]" />
                         </ChildContent>
@@ -26,9 +30,9 @@ else
                             <RadzenRequiredValidator Component="Name" />
                             <RadzenLengthValidator Component="Name" Min="2" Max="50" />
                         </Helper>
-                    </RadzenFormField>
+                    </RadzenFormField> *@
 
-                    <RadzenFormField Text="@(Localizer["Url"] + "*")" Variant="Variant.Outlined">
+                    @* <RadzenFormField Text="@(Localizer["Url"] + "*")" Variant="Variant.Outlined">
                         <ChildContent>
                             <RadzenTextBox Disabled=@Busy style="display: block" class="w-100" @bind-Value="@ServiceOrderDocument!.Url" Name="Url" Placeholder="@Localizer["Url"]" />
                         </ChildContent>
@@ -36,7 +40,37 @@ else
                             <RadzenRequiredValidator Component="Name" />
                             <RadzenLengthValidator Component="Name" Min="2" Max="50" />
                         </Helper>
-                    </RadzenFormField>
+                    </RadzenFormField> *@
+
+                    @* <RadzenRow>
+                    <RadzenColumn Size="12">
+                        <button disabled="@Busy" class="rz-button rz-button-md rz-variant-filled rz-base rz-shade-default rz-ripple" style="width:100%" type="button" role="button" onclick="document.getElementById('imagesUploadUpdate').click()">
+                            <span class="rz-button-box">
+                                <i class="rz-button-icon-left rzi">upload</i>
+                                <span class="rz-button-text">@(Localizer["ChooseDoc"])</span>
+                            </span>
+                        </button>
+                        <Microsoft.AspNetCore.Components.Forms.InputFile id="imagesUploadUpdate" OnChange="OnChange" accept=".pdf" style="display: none" />
+                    </RadzenColumn>
+                        @if (Chosse)
+                        {
+                            <RadzenColumn Size="12">
+                                <button disabled="@Busy" class="rz-button rz-button-md rz-variant-filled rz-base rz-shade-default rz-ripple" style="width:100%" type="button" role="button" onclick="document.getElementById('imagesUploadUpdate').click()">
+                                    <span class="rz-button-box">
+                                        <i class="rz-button-icon-left rzi">upload</i>
+                                        <span class="rz-button-text">@(Localizer["ChooseLogo"])</span>
+                                    </span>
+                                </button>
+                            </RadzenColumn>
+                        }
+                    </RadzenRow> *@
+
+                    @* <RadzenFileInput @bind-Value=@ServiceOrderDocument!.File @bind-FileName=@ServiceOrderDocument.Name  TValue="byte[]" Style="width: 100%"
+                                     Change=@(args => OnChange(args, "FileInput")) Error=@(args => OnError(args, "FileInput")) /> *@
+                    <!-- #endregion -->
+
+                    <RadzenUpload Multiple="true" Change=@OnChange Style="width: 100%"
+                                  InputAttributes="@(new Dictionary<string,object>{ { "aria-label", "select file" }})" />
 
                     <FilterList Disabled=@Busy
                                 Name="ServiceOrders"

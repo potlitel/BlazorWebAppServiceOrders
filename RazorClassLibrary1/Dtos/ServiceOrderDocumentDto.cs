@@ -5,13 +5,10 @@
         public string Name { get; set; } = string.Empty;
         public string Url { get; set; } = string.Empty ;
         public long ServiceOrderId { get; set; }
-
         public ServiceOrderDto ServiceOrder { get; set; } = new();
-
         public long DocumentTypeId { get; set; }
-
         public DocumentTypeDto DocumentType { get; set; } = new();
-
+        public byte[]? File { get; set; }
         public ServiceOrderDocumentDto()
         {
             

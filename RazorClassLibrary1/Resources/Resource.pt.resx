@@ -181,6 +181,9 @@
     <value>Informações Básicas</value>
     <comment>Modal</comment>
   </data>
+  <data name="ChooseDoc" xml:space="preserve">
+    <value>Selecione doc</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Limpar</value>
     <comment>Global</comment>

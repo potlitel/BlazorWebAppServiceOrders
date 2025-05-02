@@ -3,7 +3,7 @@ using FSA.Core.Dtos;
 using Mapster;
 using Microsoft.Extensions.Configuration;
 using RazorClassLibrary1.Dtos;
-using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderRegisters.Create;
+using RazorClassLibrary1.Services.HttpClientSrv.ServiceOrderTasks.Create;
 
 namespace RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Create
 {
@@ -16,6 +16,9 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Crea
     {
         public CreateServiceOrderDocumentService(IHttpClientFactory httpClientFactory, IConfiguration configuration) : base(httpClientFactory, configuration)
         {
+            TypeAdapterConfig<ServiceOrderDocumentDto, CreateServiceOrderDocumentRequest>
+                        .NewConfig()
+                        .Map(dest => dest.FileName, src => src.Name);
         }
 
         public async Task<Result<CreateServiceOrderDocumentResponse>> Handle(ServiceOrderDocumentDto item)
@@ -27,7 +30,7 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Crea
 
                 var _httpClient = await GetWebApiAsync(HttpClientName("FSAManagement:AuthServicesSettings:Name"));
 
-                var url = $"so/registers";
+                var url = $"so/documents";
                 var result = await _httpClient.PostAsync(url, content);
                 result.EnsureSuccessStatusCode();
 

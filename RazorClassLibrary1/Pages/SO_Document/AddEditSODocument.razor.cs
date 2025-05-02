@@ -1,18 +1,10 @@
 ﻿using Bogus;
-using FSA.Core.ServiceOrders.Models;
-using FSA.Core.ServiceOrders.Models.Masters;
-using FSA.Management.Application.Domain.Constants;
-using FSA.Management.Application.Features.Policies;
-using FSA.Management.Application.Features.Policies.Create;
-using FSA.Management.Application.Features.Policies.Update;
-using FSA.Management.Application.Features.PolicyGroups;
-using FSA.Management.Application.Features.PolicyGroups.GetAll;
-using FSA.Razor.Components.Components.Shared;
+using Bogus.DataSets;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using Radzen;
 using RazorClassLibrary1.Dtos;
-using RazorClassLibrary1.Services.HttpClientSrv.DocumentTypes.GetAll;
-using static FSA.Management.Application.Domain.Constants.Permissions;
+using System;
 
 namespace RazorClassLibrary1.Pages.SO_Document
 {
@@ -23,6 +15,8 @@ namespace RazorClassLibrary1.Pages.SO_Document
         public ServiceOrderDocumentDto ServiceOrderDocument { get; set; } = new();
         [Parameter]
         public bool IsSideDialog { get; set; } = false;
+
+        public bool Chosse { get; set; } = false;
         #endregion
 
         #region Properties
@@ -64,21 +58,6 @@ namespace RazorClassLibrary1.Pages.SO_Document
                     if (ServiceOrderDocument.DocumentTypeId == 0)
                         ServiceOrderDocument.DocumentType = DocumentTypes.First();
                 }
-                    
-                //DocumentTypes =       fakerDoc
-                //                     .RuleFor(x => x.Code, f => f.Finance.Bic())
-                //                     .RuleFor(x => x.Description, f => f.Lorem.Sentence(8))
-                //                     .Generate(15).ToList();
-
-                    //var policyGroupsTask = GetAllPolicyGroupsService.Handle(null);
-                    //var policyGroups = await policyGroupsTask;
-
-                    //if (policyGroups?.Succeeded == true)
-                    //{
-                    //    PolicyGroups = policyGroups.Data!.PolicyGroups.ToList();
-                    //    if (Policy.PolicyGroupId == 0)
-                    //        Policy.PolicyGroup = PolicyGroups.First();
-                    //}
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
@@ -121,26 +100,15 @@ namespace RazorClassLibrary1.Pages.SO_Document
         {
             try
             {
-                await Task.CompletedTask;
-                //Busy = true;
-                //Policy.PolicyGroupId = Policy.PolicyGroup.Id;
+                Busy = true;
+                ServiceOrderDocument.ServiceOrderId = ServiceOrderDocument.ServiceOrder.Id;
+                ServiceOrderDocument.DocumentTypeId = ServiceOrderDocument.DocumentType.Id;
 
-                //if (Policy.Id == 0)
-                //{
-                //    var response = await CreatePolicyService.Handle(Policy);
-                //    NotificationService.ShowNotification(response.Succeeded,
-                //                                         response.StatusCode.ToString(),
-                //                                         Policy.Code);
-                //    CloseDialog(response.Succeeded);
-                //}
-                //else
-                //{
-                //    var response = await UpdatePolicyService.Handle(Policy);
-                //    NotificationService.ShowNotification(response.Succeeded,
-                //                                        response.StatusCode.ToString(),
-                //                                        Policy.Code);
-                //    CloseDialog(response.Succeeded);
-                //}
+                var response = await CreateServiceOrderDocumentService.Handle(ServiceOrderDocument);
+                NotificationService.ShowNotification(response.Succeeded,
+                                                     response.StatusCode.ToString(),
+                                                     ServiceOrderDocument.Name);
+                CloseDialog(response.Succeeded);
             }
             catch (UnauthorizedAccessException) { }
             catch (Exception ex)
@@ -164,6 +132,54 @@ namespace RazorClassLibrary1.Pages.SO_Document
         protected void Cancel()
         {
             CloseDialog(false);
+        }
+
+        private async Task OnChange(InputFileChangeEventArgs e)
+        {
+            long MaxAllowedSize = (long)Math.Pow(1048576, 1);
+            try
+            {
+                Chosse = true;
+                var stream = e.File.OpenReadStream(MaxAllowedSize);
+                ServiceOrderDocument.Name = e.File.Name;
+                using var ms = new MemoryStream();
+                await stream.CopyToAsync(ms);
+                ServiceOrderDocument.File = ms.ToArray();
+            }
+            catch (Exception ex)
+            {
+                NotificationService.ShowNotification(NotificationSeverity.Error, "DOC_ERROR", ex.Message);
+            }
+        }
+
+        //void OnChange(byte[] bytes, string name)
+        //{
+        //    //console.Log($"{name} value changed");
+        //    ServiceOrderDocument.Name = name;
+        //    ServiceOrderDocument.File = bytes;
+        //}
+
+        //void OnError(UploadErrorEventArgs args, string name)
+        //{
+        //    NotificationService.ShowNotification(NotificationSeverity.Error, "DOC_ERROR", args.Message);
+        //}
+
+        async Task OnChange(UploadChangeEventArgs args)
+        {
+            long MaxAllowedSize = (long)Math.Pow(1048576, 1);
+            try
+            {
+                Chosse = true;
+                var stream = args.Files.ElementAt(0).OpenReadStream(MaxAllowedSize);
+                ServiceOrderDocument.Name = args.Files.ElementAt(0).Name;
+                using var ms = new MemoryStream();
+                await stream.CopyToAsync(ms);
+                ServiceOrderDocument.File = ms.ToArray();
+            }
+            catch (Exception ex)
+            {
+                NotificationService.ShowNotification(NotificationSeverity.Error, "DOC_ERROR", ex.Message);
+            }
         }
     }
 }
