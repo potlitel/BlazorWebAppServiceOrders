@@ -5,6 +5,7 @@ using FSA.Core.Utils;
 using Radzen;
 using RazorClassLibrary1.Dtos;
 using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments;
+using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Download;
 
 
 namespace RazorClassLibrary1.Pages
@@ -194,22 +195,19 @@ namespace RazorClassLibrary1.Pages
         {
             try
             {
-                var itemm = _item as ServiceOrderDocumentDto;
-                itemm = itemm is null ? new ServiceOrderDocumentDto() : new ServiceOrderDocumentDto(itemm);
-
-                var item = _item as DocumentTypeDto;
-                item = item is null ? new DocumentTypeDto() : new DocumentTypeDto(item);
+                var item = _item as ServiceOrderDocumentDto;
+                item = item is null ? new ServiceOrderDocumentDto() : new ServiceOrderDocumentDto(item);
 
                 switch (action)
                 {
                     case GridGeneralActions.ADD_ITEM:
-                        //var result = await CustomSODialogService.Open_AddEditMaster(item, "Add Document Type");
-                        var result = await CustomSODialogService.Open_AddEditSO_Document(itemm);
+                        var result = await CustomSODialogService.Open_AddEditSO_Document(item);
                         if (result)
                         {
                         }
                         break;
                     case GridItemActions.TOGGLE_ITEM:
+                        await DownloadServiceOrderDocumentService.Handle(item.Name);
                         break;
                     case GridItemActions.EDIT_ITEM:
                         break;
