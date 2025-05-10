@@ -34,6 +34,7 @@ namespace RazorClassLibrary1.Services
         Task<bool> Open_ServiceOrderTaskData(ServiceOrderTaskDto item);
         Task<bool> Open_ServiceOrderRegisterData(ServiceOrderRegisterDto item);
         Task<bool> Open_ServiceOrderSupplyData(SupplyDto item);
+        Task<bool> Open_ServiceOrderDocumentDetails(ServiceOrderDocumentDto item, string DocUrl);
     }
 
     public class FSASOCustomDialogService : IFSASOCustomDialogService
@@ -352,6 +353,34 @@ namespace RazorClassLibrary1.Services
                     new Dictionary<string, object>()
                     {
                         { "Supply", dto },
+                        { "IsSideDialog", true }
+                    },
+                    options: new DialogOptions
+                    {
+                        CloseDialogOnOverlayClick = true,
+                        Width = "780px",
+                        ShowClose = false,
+                    }
+                );
+
+                return result is null ? false : (bool)result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> Open_ServiceOrderDocumentDetails(ServiceOrderDocumentDto dto, string DocUrl)
+        {
+            try
+            {
+                var result = await dialogService.OpenAsync<SO_DocumentDetails>(
+                    localizer["SO_DocumentDetails"],
+                    new Dictionary<string, object>()
+                    {
+                        { "Document", dto },
+                        { "DocUrlViewer", DocUrl },
                         { "IsSideDialog", true }
                     },
                     options: new DialogOptions

@@ -31,6 +31,14 @@ namespace RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Down
 
                 var url = $"so/document/downloadAsStream";
                 var result = await _httpClient.PostAsync(url, content);
+
+                //string? contentType = null;
+
+                //if (result.Content.Headers.TryGetValues("Content-Type", out var values))
+                //{
+                //    contentType = values.FirstOrDefault();
+                //}
+
                 result.EnsureSuccessStatusCode();
 
                 return result.Content.ReadAsStream();

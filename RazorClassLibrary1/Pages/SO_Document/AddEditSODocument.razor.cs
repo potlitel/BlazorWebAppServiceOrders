@@ -134,23 +134,23 @@ namespace RazorClassLibrary1.Pages.SO_Document
             CloseDialog(false);
         }
 
-        private async Task OnChange(InputFileChangeEventArgs e)
-        {
-            long MaxAllowedSize = (long)Math.Pow(1048576, 1);
-            try
-            {
-                Chosse = true;
-                var stream = e.File.OpenReadStream(MaxAllowedSize);
-                ServiceOrderDocument.Name = e.File.Name;
-                using var ms = new MemoryStream();
-                await stream.CopyToAsync(ms);
-                ServiceOrderDocument.File = ms.ToArray();
-            }
-            catch (Exception ex)
-            {
-                NotificationService.ShowNotification(NotificationSeverity.Error, "DOC_ERROR", ex.Message);
-            }
-        }
+        //private async Task OnChange(InputFileChangeEventArgs e)
+        //{
+        //    long MaxAllowedSize = (long)Math.Pow(1048576, 1);
+        //    try
+        //    {
+        //        Chosse = true;
+        //        var stream = e.File.OpenReadStream(MaxAllowedSize);
+        //        ServiceOrderDocument.Name = e.File.Name;
+        //        using var ms = new MemoryStream();
+        //        await stream.CopyToAsync(ms);
+        //        ServiceOrderDocument.File = ms.ToArray();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        NotificationService.ShowNotification(NotificationSeverity.Error, "DOC_ERROR", ex.Message);
+        //    }
+        //}
 
         //void OnChange(byte[] bytes, string name)
         //{
@@ -166,15 +166,18 @@ namespace RazorClassLibrary1.Pages.SO_Document
 
         async Task OnChange(UploadChangeEventArgs args)
         {
-            long MaxAllowedSize = (long)Math.Pow(1048576, 1);
+            long MaxAllowedSize = (long)Math.Pow(1048576, 2);
             try
             {
-                Chosse = true;
-                var stream = args.Files.ElementAt(0).OpenReadStream(MaxAllowedSize);
-                ServiceOrderDocument.Name = args.Files.ElementAt(0).Name;
-                using var ms = new MemoryStream();
-                await stream.CopyToAsync(ms);
-                ServiceOrderDocument.File = ms.ToArray();
+                if (args.Files.Any())
+                {
+                    Chosse = true;
+                    var stream = args.Files.ElementAt(0).OpenReadStream(MaxAllowedSize);
+                    ServiceOrderDocument.Name = args.Files.ElementAt(0).Name;
+                    using var ms = new MemoryStream();
+                    await stream.CopyToAsync(ms);
+                    ServiceOrderDocument.File = ms.ToArray();
+                }
             }
             catch (Exception ex)
             {

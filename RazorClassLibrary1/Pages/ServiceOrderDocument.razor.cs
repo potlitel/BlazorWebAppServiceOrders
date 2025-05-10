@@ -20,6 +20,8 @@ namespace RazorClassLibrary1.Pages
         private Pagination Pagination { get; set; } = new Pagination(10);
         record ItemCached(int TotalItems, IQueryable<ServiceOrderDocumentDto> Items);
 
+        private Stream SO_DocStream { get; set; }
+
         #endregion Properties
 
         protected override async Task OnInitializedAsync()
@@ -108,6 +110,14 @@ namespace RazorClassLibrary1.Pages
                             Style = ButtonStyle.Warning.GetHashCode(),
                             //Show = show => { return (admin || update); }
                         },
+                        new GridItemAction
+                        {
+                            Action = GridItemActions.VIEW_DETAILS,
+                            Icon = "preview",
+                            Title = "ViewData",
+                            Style = ButtonStyle.Info.GetHashCode(),
+                            //Show = o => { return (admin || update); }
+                        }
 
                     ];
                 #endregion
@@ -205,18 +215,20 @@ namespace RazorClassLibrary1.Pages
                     case GridItemActions.TOGGLE_ITEM:
                         //var file = await DownloadServiceOrderDocumentService.Handle(item.Name);
 
-                        var stream = await DownloadServiceOrderDocumentAsStreamService.Handle(item.Name);
+                        SO_DocStream = await DownloadServiceOrderDocumentAsStreamService.Handle(item.Name);
                         // Call SaveAsFileAsync method in order to download the file
                         // and to save it in the Download location.
                         //await BlobService.SaveAsFileAsync(file);
 
                         // Create a IBlob and copy data into it.
-                        var blob = await BlobService.CreateBlobAsync(stream);
+                        var blob = await BlobService.CreateBlobAsync(SO_DocStream);
                         // Now we can just call SaveAsFileAsync to download the file
                         await BlobService.SaveAsFileAsync(blob, item.Name);
 
                         break;
-                    case GridItemActions.EDIT_ITEM:
+                    case GridItemActions.VIEW_DETAILS:
+                        //TODO: Crear/Invocar el servicio que retorna la url de documento seleccionado incluyendo el token con permisos de lectura.
+                        await CustomSODialogService.Open_ServiceOrderDocumentDetails(item!, string.Empty);
                         break;
                 }
             }

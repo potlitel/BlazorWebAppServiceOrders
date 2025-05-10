@@ -23,7 +23,9 @@
             Name = serviceOrderDocument.Name;
             Url = serviceOrderDocument.Url;
             ServiceOrderId = serviceOrderDocument.ServiceOrderId;
+            ServiceOrder = serviceOrderDocument.ServiceOrder;
             DocumentTypeId = serviceOrderDocument.DocumentTypeId;
+            DocumentType = serviceOrderDocument.DocumentType;
         }
     }
 }

@@ -1,0 +1,42 @@
+﻿@inject IJSRuntime JS
+
+<iframe @ref="iframeRef" src="@Src" @attributes="AdditionalAttributes" style="height: calc(100vh - 200px)"></iframe>
+
+@code {
+    private ElementReference iframeRef;
+
+    [Parameter]
+    public string? Src { get; set; }
+
+    [Parameter]
+    public string? Content { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> AdditionalAttributes { get; set; } = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+
+    }
+
+    /// <summary>
+    /// https://stackoverflow.com/questions/70549352/element-reference-null-in-blazor
+    /// </summary>
+    /// <param name="firstRender"></param>
+    /// <returns></returns>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (!string.IsNullOrEmpty(Src))
+            {
+                await JS.InvokeVoidAsync("setIframeSrc", iframeRef, Src);
+            }
+            else if (!string.IsNullOrEmpty(Content))
+            {
+                await JS.InvokeVoidAsync("setIframeContent", iframeRef, Content);
+            }
+            StateHasChanged();
+        }
+    }
+}

@@ -12,6 +12,7 @@
   <ItemGroup>
     <Content Remove="Components\Pages\ServiceOrderTaskState.razor" />
     <Content Remove="wwwroot\scripts\downloadScript.js" />
+    <Content Remove="wwwroot\scripts\iframeInterop.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +37,7 @@
 
   <ItemGroup>
     <None Include="Components\Pages\Masters\ServiceOrderTaskState.razor" />
+    <None Include="wwwroot\scripts\iframeInterop.js" />
     <None Include="wwwroot\scripts\downloadScript.js" />
   </ItemGroup>
 

@@ -68,6 +68,7 @@ namespace RazorClassLibrary1.Extensions
             services.AddFSACacheServices();
             //Components
             services.AddFSARadzenComponentsServices();
+            services.AddBlazorBootstrap();
             services.AddFSA_ServiceOrders_LocalizationServices(configuration);
 
             //Resister the SoloX.BlazorJsBlob services

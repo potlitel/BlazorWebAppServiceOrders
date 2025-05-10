@@ -12,10 +12,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\iframeInterop.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazor.Bootstrap" Version="3.3.1" />
     <PackageReference Include="Bogus" Version="35.6.2" />
     <PackageReference Include="D20Tek.BlazorComponents.Timer" Version="1.0.13" />
     <PackageReference Include="FSA.Cache" Version="1.0.1" />
@@ -38,6 +43,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\iframeInterop.js" />
   </ItemGroup>
 
 
