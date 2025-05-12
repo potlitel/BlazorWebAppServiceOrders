@@ -17,6 +17,8 @@
 - With built-in Sidebar component
 - Multi languages
 - Extra custom components
+- Pdf viewer
+- Blog storage
 
 ## Run Locally
 
