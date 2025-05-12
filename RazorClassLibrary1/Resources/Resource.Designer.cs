@@ -412,6 +412,15 @@ namespace RazorClassLibrary1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General Info.
+        /// </summary>
+        internal static string GeneralInfo {
+            get {
+                return ResourceManager.GetString("GeneralInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Masters.
         /// </summary>
         internal static string Masters {
@@ -489,6 +498,15 @@ namespace RazorClassLibrary1.Resources {
         internal static string Registers {
             get {
                 return ResourceManager.GetString("Registers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Related service order.
+        /// </summary>
+        internal static string RelatedServiceOrder {
+            get {
+                return ResourceManager.GetString("RelatedServiceOrder", resourceCulture);
             }
         }
         
@@ -642,6 +660,15 @@ namespace RazorClassLibrary1.Resources {
         internal static string ServiceOrderTypes {
             get {
                 return ResourceManager.GetString("ServiceOrderTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document details.
+        /// </summary>
+        internal static string SO_DocumentDetails {
+            get {
+                return ResourceManager.GetString("SO_DocumentDetails", resourceCulture);
             }
         }
         

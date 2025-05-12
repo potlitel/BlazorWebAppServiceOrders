@@ -376,7 +376,7 @@ namespace RazorClassLibrary1.Services
             try
             {
                 var result = await dialogService.OpenAsync<SO_DocumentDetails>(
-                    localizer["SO_DocumentDetails"],
+                    localizer["SO_DocumentDetails"] + ":" + dto.Name,
                     new Dictionary<string, object>()
                     {
                         { "Document", dto },
@@ -386,7 +386,7 @@ namespace RazorClassLibrary1.Services
                     options: new DialogOptions
                     {
                         CloseDialogOnOverlayClick = true,
-                        Width = "780px",
+                        Width = "1280px",
                         ShowClose = false,
                     }
                 );

@@ -4,7 +4,7 @@
 @using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.DownloadAsStream
 @inject IDownloadServiceOrderDocumentAsStreamService DownloadServiceOrderDocumentAsStreamService
 
-<div class="d-flex flex-column">
+@* <div class="d-flex flex-column">
     <RadzenRow>
         <RadzenIcon Icon="numbers" /><RadzenColumn>@Localizer["Name"]</RadzenColumn>
         <RadzenColumn Size="10">
@@ -18,7 +18,108 @@
             @Document.DocumentType.Description
         </RadzenColumn>
     </RadzenRow>
+    <br/>
+    <RadzenPanel>
+        <PdfViewer Class="mb-3" Url="@DocUrlViewer"/>
+    </RadzenPanel>
+</div> *@
 
-    <PdfViewer Class="mb-3"
-               Url="@DocUrlViewer"/>
-</div>
+<RadzenRow class="rz-text-align-center " Gap="1rem">
+    @* Continuar por estas dos paginas:
+    https://blazor.radzen.com/templateform?theme=material3
+    https://blazor.radzen.com/form-field?theme=material3#variants *@
+    @* <RadzenText TextStyle="TextStyle.Body1">
+        <strong>@Document.Name</strong>
+    </RadzenText> *@
+
+    <RadzenColumn Size="5" class="rz-p-5">
+        <RadzenRow>
+            <RadzenFieldset Text="@Localizer["GeneralInfo"]">
+                <RadzenStack Gap="1rem">
+                    <RadzenRow AlignItems="AlignItems.Center">
+                        @* <RadzenColumn Size="12" SizeMD="4">
+                            <RadzenLabel Text="Name" Component="Name" />
+                        </RadzenColumn>
+                        <RadzenColumn Size="12" SizeMD="8">
+                            <RadzenTextBox Style="width: 100%;" Name="Name" />
+                        </RadzenColumn> *@
+                    </RadzenRow>
+                    <RadzenTabs SelectedIndex="0">
+                        <Tabs>
+                            <RadzenTabsItem Text="@Localizer["BasicInfo"]" Icon="home_max_dots">
+                                <RadzenStack>
+                                    @* <RadzenRow AlignItems="AlignItems.Center">
+                                        <RadzenColumn Size="12" SizeMD="4">
+                                            <RadzenLabel Text="Country" Component="Country" />
+                                        </RadzenColumn>
+                                        <RadzenColumn Size="12" SizeMD="8">
+                                            <RadzenDropDown Placeholder="USA" Style="width: 100%;" Name="Country">
+                                            </RadzenDropDown>
+                                        </RadzenColumn>
+                                    </RadzenRow> *@
+
+                                    <RadzenFormField Text="Credit Card Number">
+                                        <Start>
+                                            <RadzenIcon Icon="credit_card" />
+                                        </Start>
+                                        <ChildContent>
+                                            <RadzenMask Mask="**** **** **** ****" CharacterPattern="[0-9]" Placeholder="0000 0000 0000 0000" Name="CardNr" />
+                                        </ChildContent>
+                                    </RadzenFormField>
+
+                                    <RadzenRow AlignItems="AlignItems.Center">
+                                        <RadzenColumn Size="12" SizeMD="4">
+                                            <RadzenLabel Text="City" Component="City" />
+                                        </RadzenColumn>
+                                        <RadzenColumn Size="12" SizeMD="8">
+                                            <RadzenTextBox Style="width: 100%;" Name="City" />
+                                        </RadzenColumn>
+                                    </RadzenRow>
+                                    <RadzenRow AlignItems="AlignItems.Center">
+                                        <RadzenColumn Size="12" SizeMD="4">
+                                            <RadzenLabel Text="Address Line 1" Component="Address1" />
+                                        </RadzenColumn>
+                                        <RadzenColumn Size="12" SizeMD="8">
+                                            <RadzenTextBox Style="width: 100%;" Name="Address1" />
+                                        </RadzenColumn>
+                                    </RadzenRow>
+                                    <RadzenRow AlignItems="AlignItems.Center">
+                                        <RadzenColumn Size="12" SizeMD="4">
+                                            <RadzenLabel Text="Address Line 2" Component="Address2" />
+                                        </RadzenColumn>
+                                        <RadzenColumn Size="12" SizeMD="8">
+                                            <RadzenTextBox Style="width: 100%;" Name="Address2" />
+                                        </RadzenColumn>
+                                    </RadzenRow>
+                                    <RadzenRow AlignItems="AlignItems.Center">
+                                        <RadzenColumn Size="12" SizeMD="4">
+                                            <RadzenLabel Text="State / Province / Region" Component="State" />
+                                        </RadzenColumn>
+                                        <RadzenColumn Size="12" SizeMD="8">
+                                            <RadzenTextBox Style="width: 100%;" Name="State" />
+                                        </RadzenColumn>
+                                    </RadzenRow>
+                                    <RadzenRow AlignItems="AlignItems.Center">
+                                        <RadzenColumn Size="12" SizeMD="4">
+                                            <RadzenLabel Text="Zip / Postal Code" Component="Zip" />
+                                        </RadzenColumn>
+                                        <RadzenColumn Size="12" SizeMD="8">
+                                            <RadzenTextBox Style="width: 100%;" Name="Zip" />
+                                        </RadzenColumn>
+                                    </RadzenRow>
+                                </RadzenStack>
+                            </RadzenTabsItem>
+                            <RadzenTabsItem Text="@Localizer["RelatedServiceOrder"]" Icon="quick_reference">
+                            </RadzenTabsItem>
+                        </Tabs>
+                    </RadzenTabs>
+                </RadzenStack>
+            </RadzenFieldset>
+        </RadzenRow>
+    </RadzenColumn>
+    <RadzenColumn Size="7" class="rz-p-5">
+        <RadzenPanel>
+            <PdfViewer Class="mb-3" style="" Url="@DocUrlViewer" />
+        </RadzenPanel>
+    </RadzenColumn>
+</RadzenRow>

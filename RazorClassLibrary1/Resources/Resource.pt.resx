@@ -272,6 +272,9 @@
     <value>Filtro</value>
     <comment>Global</comment>
   </data>
+  <data name="GeneralInfo" xml:space="preserve">
+    <value>Informações Gerais</value>
+  </data>
   <data name="Masters" xml:space="preserve">
     <value>Mestras</value>
     <comment>Sidebar</comment>
@@ -307,6 +310,9 @@
   <data name="Registers" xml:space="preserve">
     <value>Registros</value>
     <comment>Modal</comment>
+  </data>
+  <data name="RelatedServiceOrder" xml:space="preserve">
+    <value>Ordem de serviço relacionada</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Procurar</value>
@@ -375,6 +381,9 @@
   <data name="ServiceOrderTypes" xml:space="preserve">
     <value>Tipos de ordem de serviço</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="SO_DocumentDetails" xml:space="preserve">
+    <value>Detalhes do documento</value>
   </data>
   <data name="State" xml:space="preserve">
     <value>Estado</value>

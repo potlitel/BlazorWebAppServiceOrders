@@ -272,6 +272,10 @@
     <value>Filter</value>
     <comment>Global</comment>
   </data>
+  <data name="GeneralInfo" xml:space="preserve">
+    <value>General Info</value>
+    <comment>Modals</comment>
+  </data>
   <data name="Masters" xml:space="preserve">
     <value>Masters</value>
     <comment>Sidebar</comment>
@@ -307,6 +311,10 @@
   <data name="Registers" xml:space="preserve">
     <value>Registers</value>
     <comment>Modal</comment>
+  </data>
+  <data name="RelatedServiceOrder" xml:space="preserve">
+    <value>Related service order</value>
+    <comment>Modals</comment>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
@@ -375,6 +383,10 @@
   <data name="ServiceOrderTypes" xml:space="preserve">
     <value>Service Order Types</value>
     <comment>Sidebar</comment>
+  </data>
+  <data name="SO_DocumentDetails" xml:space="preserve">
+    <value>Document details</value>
+    <comment>Modals</comment>
   </data>
   <data name="State" xml:space="preserve">
     <value>State</value>
