@@ -3,6 +3,7 @@
 @using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments
 @using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Download
 @using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.DownloadAsStream
+@using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.View
 @using SoloX.BlazorJsBlob
 @* @using FSA.Razor.Components.Components.Shared *@
 
@@ -10,6 +11,7 @@
 @inject IGetAllServicesOrdersDocumentsService GetAllServicesOrdersDocumentsService
 @inject IDownloadServiceOrderDocumentService DownloadServiceOrderDocumentService
 @inject IDownloadServiceOrderDocumentAsStreamService DownloadServiceOrderDocumentAsStreamService
+@inject IViewServiceOrderDocumentService ViewServiceOrderDocumentService
 @inject IBlobService BlobService
 
 <h3>@(Localizer["ServiceOrdersDocuments"])</h3>

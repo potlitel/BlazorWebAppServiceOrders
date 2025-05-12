@@ -2,7 +2,6 @@
 @using BlazorBootstrap
 @using RazorClassLibrary1.Components.Shared
 @using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.DownloadAsStream
-@* @inject IJSRuntime JS *@
 @inject IDownloadServiceOrderDocumentAsStreamService DownloadServiceOrderDocumentAsStreamService
 
 <div class="d-flex flex-column">
@@ -19,15 +18,7 @@
             @Document.DocumentType.Description
         </RadzenColumn>
     </RadzenRow>
-    @* <iframe id="docViewer" style="height: calc(100vh - 200px)" /> *@
-    @* <DynamicIframe Content="<h1>Dynamic HTML</h1>" /> *@
-    @* <DynamicIframe Content="@Document.Url" /> *@
-    @* <DynamicIframe Src="@($"https://view.officeapps.live.com/op/view.aspx?src={readUrl}")" /> *@
-
-    @* <DynamicIframe Content="http://127.0.0.1:10000/devstoreaccount1/sodocuments/1746122159_Fingerprint%20Guide.pdf?sv=2025-01-05&se=2025-05-11T18%3A32%3A31Z&sr=b&sp=r&sig=Uzj9fEdBha%2BrPH4G6gJLEQ77EIcMXjtB%2Bvw0gG76aO8%3D" /> *@
 
     <PdfViewer Class="mb-3"
-           Url="@ReadUrl"
-           OnDocumentLoaded="OnDocumentLoaded"
-           OnPageChanged="OnPageChanged" />
+               Url="@DocUrlViewer"/>
 </div>

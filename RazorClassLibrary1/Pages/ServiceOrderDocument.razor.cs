@@ -3,6 +3,7 @@ using FSA.Core.DataType;
 using FSA.Core.Utils;
 using Radzen;
 using RazorClassLibrary1.Dtos;
+using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.View;
 
 
 namespace RazorClassLibrary1.Pages
@@ -228,7 +229,8 @@ namespace RazorClassLibrary1.Pages
                         break;
                     case GridItemActions.VIEW_DETAILS:
                         //TODO: Crear/Invocar el servicio que retorna la url de documento seleccionado incluyendo el token con permisos de lectura.
-                        await CustomSODialogService.Open_ServiceOrderDocumentDetails(item!, string.Empty);
+                        var urlDoc = await ViewServiceOrderDocumentService.Handle(item.Name);
+                        await CustomSODialogService.Open_ServiceOrderDocumentDetails(item!, urlDoc);
                         break;
                 }
             }

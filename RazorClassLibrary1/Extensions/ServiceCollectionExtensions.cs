@@ -37,6 +37,7 @@ using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.Download;
 using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.DownloadAsStream;
 using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.GetAllBySOId;
+using RazorClassLibrary1.Services.HttpClientSrv.ServicesOrdersDocuments.View;
 using RazorClassLibrary1.Services.HttpClientSrv.Supplies.Create;
 using RazorClassLibrary1.Services.HttpClientSrv.Supplies.GetAll;
 using RazorClassLibrary1.Services.HttpClientSrv.Supplies.Update;
@@ -132,6 +133,7 @@ namespace RazorClassLibrary1.Extensions
 
             services.AddScoped<IDownloadServiceOrderDocumentService, DownloadServiceOrderDocumentService>();
             services.AddScoped<IDownloadServiceOrderDocumentAsStreamService, DownloadServiceOrderDocumentAsStreamService>();
+            services.AddScoped<IViewServiceOrderDocumentService, ViewServiceOrderDocumentService>();
             services.AddScoped<NotifierService>();
 
             return services;
